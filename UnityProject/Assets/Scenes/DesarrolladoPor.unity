@@ -8265,7 +8265,7 @@ MonoBehaviour:
   m_EditorClassIdentifier:
   timesPlayed: 0
   mode: 0
-  unlock: 0
+  unlock: 1
   newUpdate: 0
   bonus: 5
   tmPlayer:

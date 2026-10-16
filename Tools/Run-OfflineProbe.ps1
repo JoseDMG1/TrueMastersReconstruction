@@ -1,5 +1,5 @@
 ﻿param(
-    [ValidateSet('Smoke','Rounds','ImpactAndRounds','Survival','Tournament','Roster','Menu','Graphics','Specials','Defenses','Prison','Moves','EarthPrison','Dragonwood','MayaProduction','DesktopControls','ShadowRoster','AbilityAim','MovingTarget','FlightMatrix','AwakeJumps')][string]$Scenario = 'Smoke',
+    [ValidateSet('Smoke','Rounds','ImpactAndRounds','Survival','Tournament','Roster','Menu','Graphics','Specials','Defenses','Prison','Moves','EarthPrison','Dragonwood','MayaProduction','DesktopControls','ShadowRoster','AbilityAim','ReportedFailures','MovingTarget','FlightMatrix','AwakeJumps')][string]$Scenario = 'Smoke',
     [ValidateSet('Sora','Vinea','Diana','Amon','Aura','Eliot','Ren','Rina','Dante','Agata','Raven','Maya')][string]$Fighter,
     [string]$FlightProfile
 )
@@ -21,6 +21,7 @@ if ($Scenario -eq 'Tournament') { $taskArgs += '-rea-tournament-probe' }
 if ($Scenario -eq 'Roster') { $taskArgs += '-rea-roster-probe' }
 if ($Scenario -eq 'Menu') { $taskArgs += '-rea-menu-probe' }
 if ($Scenario -eq 'AbilityAim') { $taskArgs += '-rea-ability-aim-probe' }
+if ($Scenario -eq 'ReportedFailures') { $taskArgs += @('-rea-ability-aim-probe','-rea-reported-failures-probe') }
 if ($Scenario -eq 'MovingTarget') { $taskArgs += @('-rea-ability-aim-probe','-rea-moving-target-probe'); if(-not $Fighter) {$Fighter='Sora'}; if($Fighter -ne 'Sora') {throw 'MovingTarget currently covers Sora UpAttack2 only.'} }
 if ($Scenario -eq 'FlightMatrix') { $taskArgs += @('-rea-ability-aim-probe','-rea-flight-matrix-probe') }
 if ($Scenario -eq 'AwakeJumps') { $taskArgs += @('-rea-ability-aim-probe','-rea-awake-jumps-probe') }
@@ -40,7 +41,7 @@ if ($Scenario -eq 'Dragonwood') { $taskArgs += '-rea-dragonwood-probe' }
 if ($Scenario -eq 'DesktopControls') { $taskArgs += '-rea-desktop-controls-probe' }
 if ($Scenario -eq 'MayaProduction') { $taskArgs += '-rea-maya-production-probe' }
 if ($Fighter) {
-    if ($Scenario -notin @('Specials','Defenses','Moves','AbilityAim','MovingTarget')) { throw '-Fighter selects the Specials, Defenses, Moves, AbilityAim or MovingTarget scenario.' }
+    if ($Scenario -notin @('Specials','Defenses','Moves','AbilityAim','ReportedFailures','MovingTarget')) { throw '-Fighter selects the Specials, Defenses, Moves, AbilityAim, ReportedFailures or MovingTarget scenario.' }
     $taskArgs += @('-rea-fighter', $Fighter)
 }
 $taskProcess = Start-Process -FilePath $taskExe -ArgumentList $taskArgs -WindowStyle Hidden -PassThru

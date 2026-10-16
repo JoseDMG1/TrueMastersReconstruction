@@ -444,6 +444,7 @@ MonoBehaviour:
   StartPosition: {x: 0, y: 0, z: 0}
   EndPosition: {x: -2, y: 0, z: -2}
   changeDirectionAtStart: 1
+  aimAtTarget: 1
   startRotation: 15
 --- !u!114 &114621510681728303
 MonoBehaviour:

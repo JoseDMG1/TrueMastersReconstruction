@@ -33,6 +33,9 @@ public class CharactersManager : MonoBehaviour
 
 	private void RemoveBlockCharacters()
 	{
+		// The offline reconstruction build can opt into the full roster for moveset
+		// review without editing or granting anything in the player's saved account.
+		if (SystemManager.i && SystemManager.i.unlock) return;
 		var player = SystemManager.i.tmPlayer;
 		if (player.tmPremium == 2 || player.tmPremium == 3) return;
 		var c = player.characters;

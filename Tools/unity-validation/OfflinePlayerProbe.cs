@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -187,6 +188,65 @@ public sealed class OfflinePlayerProbe : MonoBehaviour
         if(!moveOrigins.ContainsKey(id)) { moveOrigins[id] = moving.transform.position; moveTravel[id] = 0; moveLabels[id] = moving.GetType().Name+":"+moving.name; }
         moveTravel[id] = Mathf.Max(moveTravel[id], Vector3.Distance(moveOrigins[id],moving.transform.position));
     }
+    void ValidateReportedPrefabFixes(string fighter) {
+        if(fighter == "Sora") {
+            var sora = Resources.Load<GameObject>("photonprefabs/Sora");
+            var extraShield = sora ? sora.GetComponentsInChildren<Transform>(true).FirstOrDefault(t => t.name == "Sphere (2)") : null;
+            if(!extraShield || extraShield.gameObject.activeSelf) { Fail("Sora shield prefab still enables the duplicate Sphere (2)"); return; }
+            var twister = Resources.Load<GameObject>("photonprefabs/AirAtkTwister");
+            var lifetime = twister ? twister.GetComponentsInChildren<DestroyNetObjByTime>(true).FirstOrDefault() : null;
+            if(!lifetime || Mathf.Abs(lifetime.time - 2.7f) > .01f) { Fail("Sora AirAtkTwister lifetime differs from its authored 2.7 second effect"); return; }
+            foreach(string name in new[]{"AirAtkL2", "AirAtkR2"}) {
+                var prefab = Resources.Load<GameObject>("photonprefabs/" + name);
+                var move = prefab ? prefab.GetComponentInChildren<MoveAttack>(true) : null;
+                if(!move || !move.aimAtTarget) { Fail("Sora " + name + " does not aim its side attack at the opponent"); return; }
+            }
+            Observe("reported-prefab-check", "Sora duplicate shield disabled; AirAtkTwister restored to authored lifetime=" + lifetime.time + "s; ChargeAir sphere runtime contraction is checked after the actual move; AirAtkL2/R2 aim at opponent");
+        }
+        if(fighter == "Vinea") {
+            foreach(string name in new[]{"WaterAtkL", "WaterAtkR"}) {
+                var prefab = Resources.Load<GameObject>("photonprefabs/" + name);
+                var move = prefab ? prefab.GetComponentInChildren<MoveAttack>(true) : null;
+                if(!move || !move.aimAtTarget) { Fail("Vinea " + name + " does not aim at the opponent"); return; }
+            }
+            foreach(string name in new[]{"IceAtk", "IceAtkS5"}) {
+                var prefab = Resources.Load<GameObject>("photonprefabs/" + name);
+                var crystal = prefab ? prefab.GetComponentsInChildren<Transform>(true).FirstOrDefault(t => t.name == "IceRock") : null;
+                var expected = name == "IceAtk" ? new Vector3(1f, .08333334f, .33333334f) : new Vector3(1f, .16666667f, .33333334f);
+                if(!crystal || Vector3.Distance(crystal.localScale, expected) > .001f) { Fail("Vinea " + name + " crystal scale differs from the reduced dimensions"); return; }
+            }
+            Observe("reported-prefab-check", "Vinea left/right water attacks aim at opponent; both ice crystal prefabs use reduced scale");
+        }
+        if(fighter == "Amon") {
+            var prefab = Resources.Load<GameObject>("photonprefabs/FireDownAtk2");
+            var move = prefab ? prefab.GetComponentInChildren<MoveAttack>(true) : null;
+            if(!move || !move.aimAtTarget) { Fail("Blaze FireDownAtk2 disk does not aim at opponent"); return; }
+            Observe("reported-prefab-check", "Blaze FireDownAtk2 aims at opponent");
+        }
+        if(fighter == "Diana") {
+            foreach(string name in new[]{"RockL2", "RockR2"}) {
+                var prefab = Resources.Load<GameObject>("photonprefabs/" + name);
+                var move = prefab ? prefab.GetComponentInChildren<MoveAttack>(true) : null;
+                if(!move || !move.aimAtTarget) { Fail("Diana " + name + " does not aim at the opponent"); return; }
+            }
+            foreach(string name in new[]{"RockL", "RockR"}) {
+                var prefab = Resources.Load<GameObject>("photonprefabs/" + name);
+                if(!prefab || !prefab.GetComponent<MoveRock>()) { Fail("Diana " + name + " basic side rock lacks MoveRock"); return; }
+            }
+            var fixture = new GameObject("DianaMoveRockTargetProbe");
+            try {
+                fixture.layer = BattleSceneSingleton.i.MainCharacter.layer;
+                fixture.transform.position = new Vector3(0,4.5f,0);
+                var rock = fixture.AddComponent<MoveRock>();
+                typeof(MoveRock).GetMethod("ChangeDirection",BindingFlags.Instance|BindingFlags.NonPublic).Invoke(rock,null);
+                var intended = (BattleSceneSingleton.i.Opponent.transform.position-fixture.transform.position).normalized;
+                intended.y = 0f;
+                var actual = (Vector3)typeof(MoveRock).GetField("dir",BindingFlags.Instance|BindingFlags.NonPublic).GetValue(rock);
+                if(Vector3.Distance(actual,intended) > .001f) { Fail("Diana basic side rock aimed away from the opponent"); return; }
+            } finally { UnityEngine.Object.Destroy(fixture); }
+            Observe("reported-prefab-check", "Diana side RockL2/RockR2 aim at opponent; RockL/R MoveRock resolves the opposing fighter by layer");
+        }
+    }
     void Observe(string step, string detail) {
         report.observations.Add(new Observation { step = step, detail = detail, scene = SceneManager.GetActiveScene().name, seconds = Time.realtimeSinceStartupAsDouble - started });
         Debug.Log("OFFLINE_PLAYER_PROBE " + step + ": " + detail);
@@ -246,7 +306,7 @@ public sealed class OfflinePlayerProbe : MonoBehaviour
         Observe("boot", "Development Windows player, original boot scene");
         yield return SceneReady("StartMenu");
         if(Environment.GetCommandLineArgs().Contains("-rea-graphics-probe")) {CaptureFixture();PlayerPrefs.SetInt("userQualityGraphics",1);}
-        if (Environment.GetCommandLineArgs().Any(a => a == "-rea-specials-probe" || a == "-rea-defense-probe" || a == "-rea-prison-probe" || a == "-rea-moves-probe" || a == "-rea-earth-prison-probe" || a == "-rea-dragonwood-probe" || a == "-rea-maya-production-probe" || a == "-rea-desktop-controls-probe" || a == "-rea-ability-aim-probe" || a == "-rea-shadow-roster-probe")) {
+        if (Environment.GetCommandLineArgs().Any(a => a == "-rea-specials-probe" || a == "-rea-defense-probe" || a == "-rea-prison-probe" || a == "-rea-moves-probe" || a == "-rea-earth-prison-probe" || a == "-rea-dragonwood-probe" || a == "-rea-maya-production-probe" || a == "-rea-desktop-controls-probe" || a == "-rea-vinea-left-evade-probe" || a == "-rea-ability-aim-probe" || a == "-rea-reported-failures-probe" || a == "-rea-shadow-roster-probe")) {
             yield return CombatTrip(Environment.GetCommandLineArgs().Contains("-rea-defense-probe"), Environment.GetCommandLineArgs().Contains("-rea-prison-probe"));
             if (!done) Finish(report.errors.Count == 0 ? "passed" : "runtime_errors");
             yield break;
@@ -631,9 +691,11 @@ public sealed class OfflinePlayerProbe : MonoBehaviour
         bool dragonwood=args.Contains("-rea-dragonwood-probe");
         bool mayaProduction=args.Contains("-rea-maya-production-probe");
         bool abilityAim=args.Contains("-rea-ability-aim-probe");
+        bool reportedFailures=args.Contains("-rea-reported-failures-probe");
         bool flightMatrix=args.Contains("-rea-flight-matrix-probe"),awakeJumps=args.Contains("-rea-awake-jumps-probe");int awakeIndex=0;
         bool shadowRoster=args.Contains("-rea-shadow-roster-probe");
         bool desktopControls=args.Contains("-rea-desktop-controls-probe"); int desktopCase=0;
+        bool vineaLeftEvade=args.Contains("-rea-vinea-left-evade-probe");
         report.limitation = prisonOnly
             ? "Attempts Maya down-attack prison, synthetic CPU positioning and real trap/crush callbacks; observations and result delimit completion. No natural aiming claim."
             : defensesOnly
@@ -654,12 +716,15 @@ public sealed class OfflinePlayerProbe : MonoBehaviour
         if(prisonOnly) roster = new[] {"Maya"};
         if(earthPrison) roster = new[] {"Diana", "Diana"};
         if(desktopControls) roster = new[] {"Sora", "Sora"};
+        if(vineaLeftEvade) roster = new[] {"Vinea"};
         if(mayaProduction) roster = new[] {"Maya"};
+        if(reportedFailures) roster = new[] {"Sora", "Vinea", "Diana", "Amon"};
         if(dragonwood) roster = new[] {"Maya"};
         int earthCase=0;
         int only = Array.IndexOf(args, "-rea-fighter");
         if(only >= 0) {
-            if(only+1 >= args.Length || !roster.Contains(args[only+1])) { Fail("Unknown selected special fighter"); yield break; }
+            string[] allFighters = {"Sora", "Vinea", "Diana", "Amon", "Aura", "Eliot", "Ren", "Rina", "Dante", "Agata", "Raven", "Maya"};
+            if(only+1 >= args.Length || (!roster.Contains(args[only+1]) && !(desktopControls && allFighters.Contains(args[only+1])))) { Fail("Unknown selected special fighter"); yield break; }
             roster = new[] {args[only+1]};
         }
         foreach(string fighter in roster) {
@@ -676,6 +741,26 @@ public sealed class OfflinePlayerProbe : MonoBehaviour
             var reader = BattleSceneSingleton.i.inputReader;
             reader.dPad = true; reader.keyboard = false; reader.SetXpos(0); reader.SetYpos(0);
             var anim = game.animMainChar;
+            if(vineaLeftEvade) {
+                reader.SetXpos(-1f);
+                yield return new WaitForSecondsRealtime(.25f);
+                game.Jumping(true);
+                yield return new WaitForSecondsRealtime(.3f);
+                var clips = new HashSet<string>();
+                double until = Time.realtimeSinceStartupAsDouble + 1.1;
+                bool entered = false;
+                while(Time.realtimeSinceStartupAsDouble < until) {
+                    entered |= anim.GetCurrentAnimatorStateInfo(0).IsName("JumpL");
+                    foreach(var clip in anim.GetCurrentAnimatorClipInfo(0)) if(clip.clip) clips.Add(clip.clip.name);
+                    if(entered) ScreenCapture.CaptureScreenshot(Path.ChangeExtension(output,".vinea-left-evade.png"));
+                    yield return null;
+                }
+                game.Jumping(false); reader.SetXpos(0);
+                Observe("vinea-left-evade", "input left+B; JumpL state=" + entered + "; clips=" + string.Join(",",clips) + "; mirrored controller state used");
+                if(!entered || clips.Count == 0) { Fail("Vinea left evade did not enter JumpL"); yield break; }
+                game.Restart();
+                continue;
+            }
             if(flightMatrix) {
                 report.limitation="Authored projectile profile fixtures, both sides, controlled moving/elevated targets, projectile edge and real physical synthetic owner interruption. Not natural normal-input routes or guaranteed hits for every trajectory.";
                 yield return OfflineFlightMatrixProbe.Run(game,Path.ChangeExtension(output,".matrix.json"),Observe,Fail);
@@ -870,14 +955,27 @@ public sealed class OfflinePlayerProbe : MonoBehaviour
         var names = new[] {"BasicAttack", "UpAttack", "DownAttack", "RightAttack", "LeftAttack"};
         var axes = new[] {Vector2.zero, Vector2.up, Vector2.down, Vector2.right, Vector2.left};
         bool movingTargetOnly=Environment.GetCommandLineArgs().Contains("-rea-moving-target-probe");
+        bool reportedFailuresOnly=Environment.GetCommandLineArgs().Contains("-rea-reported-failures-probe");
         if(movingTargetOnly) report.limitation="Sora UpAttack followed by natural UpAttack2 input; controlled moving CPU root with original collider/damage active. Flight trace validates target binding, per-frame native steering and contact-correlated damage. Not all roster, free CPU motion, height/edge/interrupt or original runtime parity.";
         var contractAsset=Resources.Load<TextAsset>("MoveInputContracts");
         if(!contractAsset) { Fail("Missing retained controller input contracts"); yield break; }
         var contracts=JsonUtility.FromJson<MoveInputContracts>(contractAsset.text);
+        if(reportedFailuresOnly && contracts.routes.Count(r=>r.fighter==fighter)==10) ValidateReportedPrefabFixes(fighter);
+        if(done) yield break;
         if(shadowPoweredField==null) { Fail("Shadow power owner state field unavailable; no power observation inferred from FX alone"); yield break; }
         if(contracts.routes == null || contracts.routes.Count(r=>r.fighter==fighter)!=10) { Fail("Incomplete input contracts for "+fighter); yield break; }
         Observe("move-input-contract", fighter+"; source="+contracts.source+"; sha256="+contracts.sourceSha256);
-        for(int direction=movingTargetOnly?1:0; direction<(movingTargetOnly?2:names.Length); direction++) for(int variant=0; variant<2; variant++) {
+        for(int direction=movingTargetOnly?1:0; direction<(movingTargetOnly?2:names.Length); direction++) {
+            int firstVariant = anim.GetInteger(names[direction]);
+            for(int variantIndex=0; variantIndex<2; variantIndex++) {
+            int variant = reportedFailuresOnly ? (firstVariant + variantIndex) % 2 : variantIndex;
+            if(reportedFailuresOnly) {
+                bool selected = fighter == "Sora"
+                    ? (direction == 2 && variant <= 1) || ((direction == 3 || direction == 4) && variant <= 1)
+                    : fighter == "Amon" ? direction == 2 && variant <= 1
+                    : (fighter == "Vinea" || fighter == "Diana") && (direction == 3 || direction == 4) && variant <= 1;
+                if(!selected) continue;
+            }
             var attackZone=ActiveAttackZone();
             if(!attackZone) yield break;
             double deadline = Time.realtimeSinceStartupAsDouble+15;
@@ -914,6 +1012,37 @@ public sealed class OfflinePlayerProbe : MonoBehaviour
                 if(created && created.gameObject.layer == game.MainCharacter.layer) {
                     createdNames.Add(created.name);
                     if(flight) flight.Bind(created.gameObject);
+                    if(reportedFailuresOnly) {
+                        string moveAttackName = fighter == "Sora" && direction == 3 && variant == 1 ? "AirAtkR2"
+                            : fighter == "Sora" && direction == 4 && variant == 1 ? "AirAtkL2"
+                            : fighter == "Vinea" && direction == 3 && variant == 1 ? "WaterAtkR"
+                            : fighter == "Vinea" && direction == 4 && variant == 1 ? "WaterAtkL"
+                            : fighter == "Diana" && direction == 3 && variant == 1 ? "RockL2"
+                            : fighter == "Diana" && direction == 4 && variant == 1 ? "RockR2"
+                            : fighter == "Amon" && direction == 2 && variant == 1 ? "FireDownAtk2" : null;
+                        var mover = created.GetComponent<MoveAttack>();
+                        if(moveAttackName != null && created.name.Contains(moveAttackName)) {
+                            if(!mover || !mover.aimAtTarget) { Fail(fighter + " spawned " + moveAttackName + " without aimAtTarget"); return; }
+                            typeof(MoveAttack).GetMethod("ChangeDirection",BindingFlags.Instance|BindingFlags.NonPublic).Invoke(mover,null);
+                            var target = created.gameObject.layer == BattleSceneSingleton.i.MainCharacter.layer ? BattleSceneSingleton.i.Opponent.transform : BattleSceneSingleton.i.MainCharacter.transform;
+                            var intended = target.position - created.transform.position; intended.y = 0f;
+                            var expectedForward = intended.sqrMagnitude > .0001f ? (Quaternion.LookRotation(intended,Vector3.up) * Quaternion.Euler(0,mover.startRotation,0) * Vector3.forward) : Vector3.zero;
+                            float error = expectedForward.sqrMagnitude > .0001f ? Vector3.Angle(created.transform.forward,expectedForward) : 180f;
+                            Observe("reported-live-aim", fighter + "; projectile=" + created.name + "; target=" + target.name + "; authored offset=" + mover.startRotation + "; heading error=" + error);
+                            if(error > .5f) { Fail(fighter + " " + created.name + " is not facing the opposing fighter"); return; }
+                        }
+                        if(fighter == "Diana" && (created.name.Contains("RockL(Clone)") || created.name.Contains("RockR(Clone)"))) {
+                            var rock = created.GetComponent<MoveRock>();
+                            if(!rock || created.gameObject.layer != BattleSceneSingleton.i.MainCharacter.layer) { Fail("Diana side rock did not use the controlled fighter layer"); return; }
+                            typeof(MoveRock).GetMethod("ChangeDirection",BindingFlags.Instance|BindingFlags.NonPublic).Invoke(rock,null);
+                            var target = BattleSceneSingleton.i.Opponent.transform;
+                            var intended = (target.position - created.transform.position).normalized; intended.y = 0f;
+                            var actual = (Vector3)typeof(MoveRock).GetField("dir",BindingFlags.Instance|BindingFlags.NonPublic).GetValue(rock);
+                            float error = Vector3.Distance(actual,intended);
+                            Observe("reported-live-rock-aim", created.name + "; target=" + target.name + "; direction error=" + error);
+                            if(error > .001f) { Fail("Diana side rock did not aim at the opposing fighter"); return; }
+                        }
+                    }
                     var rotation=created.GetComponent<StartRotation>();
                     if(rotation && rotation.enabled) {
                         expectedRotations[id]=created.transform.rotation*Quaternion.Euler(0,rotation.rot,0);
@@ -959,6 +1088,32 @@ public sealed class OfflinePlayerProbe : MonoBehaviour
             }
             // Let delayed projectile producers run after the character leaves the state.
             yield return new WaitForSeconds(2f);
+            if(reportedFailuresOnly) {
+                string required = fighter == "Sora" && direction == 2 && variant == 0 ? "AirAtkTwister"
+                    : fighter == "Sora" && direction == 3 && variant == 1 ? "AirAtkR2"
+                    : fighter == "Sora" && direction == 4 && variant == 1 ? "AirAtkL2"
+                    : fighter == "Vinea" && direction == 3 && variant == 1 ? "WaterAtkR"
+                    : fighter == "Vinea" && direction == 4 && variant == 1 ? "WaterAtkL"
+                    : fighter == "Diana" && direction == 3 && variant == 1 ? "RockL2"
+                    : fighter == "Diana" && direction == 4 && variant == 1 ? "RockR2"
+                    : fighter == "Amon" && direction == 2 && variant == 1 ? "FireDownAtk2" : null;
+                if(required != null && !createdNames.Concat(moveSpawnNames).Any(n => n.Contains(required))) {
+                    Fail(fighter + " reported-failure route did not spawn " + required + "; observed=" + string.Join(",", createdNames.Concat(moveSpawnNames)));
+                    yield break;
+                }
+                if(fighter == "Sora" && direction == 2 && variant == 0 && UnityEngine.Object.FindObjectsByType<MoveWater>(FindObjectsInactive.Exclude).Any(m => m.name == "AirAtkTwister(Clone)")) {
+                    Fail("Sora AirAtkTwister remained active more than two seconds after its down attack");
+                    yield break;
+                }
+                if(fighter == "Sora" && direction == 2 && variant == 1) {
+                    var chargeSphere = UnityEngine.Object.FindObjectsByType<ChangeScale>(FindObjectsInactive.Exclude).FirstOrDefault(c => c.name == "Spheres" && c.transform.parent && c.transform.parent.name.StartsWith("ChargeAir"));
+                    if(!chargeSphere || chargeSphere.transform.localScale.sqrMagnitude > .0025f) {
+                        Fail("Sora ChargeAir sphere did not contract to zero after the second down-attack animation; scale=" + (chargeSphere ? chargeSphere.transform.localScale.ToString() : "not found"));
+                        yield break;
+                    }
+                    Observe("reported-charge-air", "Sora second down-attack ChargeAir sphere scale reached " + chargeSphere.transform.localScale + " while the 8 second cleanup lifetime remains available for trailing audio/particles");
+                }
+            }
             if(flight) {
                 string error=flight.Complete(Observe);
                 Destroy(flight.gameObject);
@@ -975,6 +1130,7 @@ public sealed class OfflinePlayerProbe : MonoBehaviour
             if(shadowPowers.Count>0) Observe("shadow-power-observation",fighter+"; state="+expected+"; watched="+shadowPowers.Count+"; observed="+shadowPowerResults.Count+"; "+string.Join(";",shadowPowerResults)+"; no observed power-up does not establish absence or full trap acceptance");
             if(!recovered) { Fail(fighter+" did not recover after "+expected); yield break; }
             if(rotationErrors.Values.Any(error=>error>.5f)) { Fail(fighter+" authored projectile yaw not observed for "+expected); yield break; }
+            }
         }
     }
     IEnumerator RosterTrip() {
@@ -997,7 +1153,7 @@ public sealed class OfflinePlayerProbe : MonoBehaviour
             yield return SceneReady("Bending Battle");
             while (GameController.i == null || !GameController.i.gameStarted) yield return null;
             var game = GameController.i;
-            if (game.MainCharacter == null || game.MainCharacter.name != fighter + "(Clone)") { Fail("Wrong roster fighter spawned"); yield break; }
+            if (game.MainCharacter == null || game.MainCharacter.name != fighter + "(Clone)") { Fail("Wrong roster fighter spawned: requested=" + fighter + "; actual=" + (game.MainCharacter ? game.MainCharacter.name : "null")); yield break; }
             CaptureRenderState();
             int ownBefore = playerProjectiles, cpuBefore = opponentProjectiles, hitsBefore = hitEvents;
             if (GameEvents.i != null) GameEvents.i.OnPlayerDamaged += CountHit;

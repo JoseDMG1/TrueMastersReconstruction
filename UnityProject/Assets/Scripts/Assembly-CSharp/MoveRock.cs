@@ -39,7 +39,12 @@ public class MoveRock : MonoBehaviour
 	private void ChangeDirection()
 	{
 		if (ready) return;
-		var target = gameObject.layer == 9 ? GuestPlayer.guestPlayer.transform : HostPlayer.hostPlayer.transform;
+		Transform target;
+		if (BattleSceneSingleton.i && BattleSceneSingleton.i.MainCharacter && BattleSceneSingleton.i.Opponent)
+			target = gameObject.layer == BattleSceneSingleton.i.MainCharacter.layer
+				? BattleSceneSingleton.i.Opponent.transform : BattleSceneSingleton.i.MainCharacter.transform;
+		else
+			target = gameObject.layer == 9 ? GuestPlayer.guestPlayer.transform : HostPlayer.hostPlayer.transform;
 		// Normalize before dropping Y: the native horizontal speed retains elevation's effect.
 		dir = (target.position - transform.position).normalized;
 		dir.y = 0f;
