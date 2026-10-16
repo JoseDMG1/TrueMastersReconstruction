@@ -1,0 +1,20 @@
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+import {parseUnity} from './unity-audit/audit.mjs';
+const sha=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+const read=p=>JSON.parse(fs.readFileSync(p,'utf8').replace(/^\uFEFF/,''));
+const names=['ChangeColliderCenter','ChangeColliderScale'];
+const owners=new Map(names.map(name=>[fs.readFileSync(`UnityProject/Assets/Scripts/Assembly-CSharp/${name}.cs.meta`,'utf8').match(/^guid: (.+)$/m)[1],name]));
+const prefabs=['WaterWaveAtk','WaterAtkStrong','ShadowSnakeAtk'].map(name=>{
+ const path=`UnityProject/Assets/Resources/photonprefabs/${name}.prefab`,parsed=parseUnity(fs.readFileSync(path,'utf8'));
+ if(parsed.errors.length)throw Error(JSON.stringify(parsed.errors));
+ const components=parsed.documents.filter(d=>owners.has(d.data.m_Script?.guid)).map(d=>({type:owners.get(d.data.m_Script.guid),id:d.document_id,fields:d.data}));
+ return {path,sha256:sha(path),components};
+});
+const runtimePath=process.argv[2],buildPath=process.argv[3],runtime=runtimePath?read(runtimePath):null;
+const observations=runtime?.observations.filter(o=>o.step.startsWith('collider-geometry-'));
+const componentCount=prefabs.flatMap(p=>p.components).length;
+if(runtime&&(runtime.result!=='passed'||runtime.errors.length||observations.filter(o=>o.step==='collider-geometry-case').length!==componentCount))throw Error('Runtime geometry coverage does not match authored component count');
+const result={generatedUtc:new Date().toISOString(),classification:'native-static-plus-bounded-isolated-runtime',nativeSha256:'d5669fa920c5034ec1ed5b7988149825430f65ea557ba7882567c0790da2dd8c',sources:names.map(name=>{const path=`UnityProject/Assets/Scripts/Assembly-CSharp/${name}.cs`,listing=`Evidence/native-disassembly-${name}.txt`;return {path,sha256:sha(path),listing,listingSha256:sha(listing)};}),slot:read('Evidence/collider-geometry-slot.json'),contracts:{center:{start:'0x121C58C',enable:'0x121C5EC',update:'0x121C5F8',setter:'BoxCollider.center'},size:{start:'0x121C70C',enable:'0x121C76C',update:'0x121C778',setter:'BoxCollider.size'},shared:'duration default 1; Start disables this Behaviour and Invoke EnableDelay after delay. Update uses clamped Vector3.Lerp(start,target,timeElapsed/duration), then timeElapsed+=deltaTime. Strict timeElapsed>duration first sets target and schedules Destroy(this), then still executes the interpolation/increment. Box and GameObject retained.'},prefabs,runtime:runtime?{path:runtimePath,sha256:sha(runtimePath),assemblySha256:read(runtimePath.replace(/\.json$/,'-launch.json')).GameplayAssemblySha256,result:runtime.result,errors:runtime.errors,observations}:null,build:buildPath?{path:buildPath,sha256:sha(buildPath),report:read(buildPath)}:null,limits:['Configured fields copied from recovered prefab resources into isolated live components and box fixtures. No natural attack aiming/overlap or concurrent geometry-writer ordering acceptance.','Native zero-duration division semantics retained; no authored zero-duration case in selected configuration coverage.','Local Capstone/metadata following REA skill; no connected REA server Evidence and no original Android runtime comparison.']};
+fs.writeFileSync('Evidence/collider-geometry-native-contract.json',JSON.stringify(result,null,2)+'\n');
+console.log(JSON.stringify({prefabs:prefabs.length,components:componentCount,runtime:runtime?.result??'not selected'}));

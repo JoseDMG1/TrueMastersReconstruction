@@ -1,0 +1,31 @@
+# Maya collision production and floor beam motion
+
+Restored `sumonOnCollider` and `ZigzagController` from the retained original native input. This is reimplementation, not recovered C# source. Evidence: `Evidence/maya-production-native-contract.json`, corrected `native-disassembly-sumonOnCollider.txt` and `native-disassembly-ZigzagController.txt`; native SHA256 d5669fa920c5034ec1ed5b7988149825430f65ea557ba7882567c0790da2dd8c. Immutable exports were not edited.
+
+## Native contracts observed statically
+
+`sumonOnCollider.OnTriggerEnter` 0x12C70C8 requires Description on the collider itself, not its parent. No layer, damage or Type condition exists. Slot0x28144A0 resolves Component.GetComponent<Description>; slot0x2814548 resolves PhotonView. Offline tail branch calls Sumon0x12C7340: Instantiate<GameObject> (slot0x2814340) at the incoming collider Transform.position/rotation. No parent assignment, owner layer copy or AttackLayerSetUp dispatch occurs here. LeafFrontHit, LeafAtkL/R and FlowerBeam reference this producer; the format-aware audit resolves their exact child prefab GUIDs.
+
+NetworkSumon0x12C7200 uses Path.Combine("PhotonPrefabs",sumon.name); literal slot0x2816DD0. The original trigger guards this with PhotonNetwork.IsConnected and own PhotonView.IsMine. API calls are represented but exported Photon stubs/backend remain unavailable; this is not online acceptance.
+
+`ZigzagController` constructor0x12DD9B4 sets moveDistance=switchTime=1, direction=1. Start0x12DD8B4 initializes timer to half the switchTime. Update0x12DD8C8 subtracts deltaTime, adds transform.right*moveDistance*direction to world position, then flips direction and resets timer when nonpositive. Lateral travel is per Update; multiplying it by deltaTime would change the observed native rule. Overshoot is discarded. Both FloorBeam prefabs author moveDistance=.44, switchTime=.18. No asset/property overrides were changed.
+
+## Validation
+
+The installed Roslyn compiler compiled the complete player gameplay sources and new helper with Unity's retained response file, exit0, no C# errors. Log: `Evidence/maya-production-compile.log`; temporary assembly output is under Evidence and was not installed into the player. This does not establish asset import/build/runtime behavior.
+
+The Editor build at 2026-10-16T06:41:30Z stopped before compilation with "No valid Unity Editor license found", exit198. After the user confirmed their Personal license in Hub, the retry succeeded without licensing configuration changes. This historical licensing failure is resolved. Multiple fresh Windows builds succeeded with zero errors/23 warnings; the prior C#-only output is not the current player. Archived reports include `Evidence/windows-build-validation-20261016-065453.json`.
+
+`Evidence/offline-mayaproduction-probe-20261016-015512.json` passed with errors=[], gameplay assembly5d9460c80e70540fb0c953300c0371e47c515979482c5002703dedf7a7214ec6. All four real recovered-prefab trigger cases rejected targets without Description, then created the correct child with positionError=rotationError=0 and no parent. Fixtures use synthetic remote targets and layer0 self collisions. Leaf trigger activation was awaited naturally; FlowerBeam authors a disabled root collider and has no local enable owner, so its trigger was explicitly enabled for the producer fixture. Natural flower activation remains unaccepted. FloorBeam47frames/6reversals/max lateral error.00002786517; FloorBeam1 48frames/5reversals/error.00002664328. CPU disabled; saved bytes/preferences restored.
+
+That passing report's final limitation text was inadvertently overwritten by the shared Specials runner; its Maya observations retain actual scope. Runner guard was corrected afterward and a fresh probe will retain the Maya limitation. Earlier failures014746/014950/015153/015321 were observer assumptions: disabled root collider, expecting isolated FlowerBeam to self-activate, assuming ZigzagController sits on root, and assuming the sampler starts on the owner's initial Update. The final observer captures actual private direction/timer at operation entry, then checks native displacement and the timer/direction transition in LateUpdate. Gameplay rules were not changed to accommodate these observers.
+
+Natural directional input, flower activation ownership, collision aiming, attack-caused wins, visual parity and all online behavior remain pending. The machine now supports normal Editor build/runtime validation; do not continue describing licensing as blocked.
+
+Final current acceptance: `Evidence/offline-mayaproduction-probe-20261016-015656.json` passed/errors=[], correct Maya limitation retained. Current build `Evidence/windows-build-validation-20261016-065640.json` succeeded0errors/23warnings; assembly2f7417dd77fd43c569c7de8d38835dca362d1d019ffaa125ce374de06e4e477d. Four collision cases again had zero position/rotation error; both floor beams48frames/5reversals, max lateral errors.00002658367/.0000270009. This supersedes the prior report's metadata defect, within the same controlled fixture limitations.
+
+Newer regression: Evidence/offline-mayaproduction-probe-20261015-220052.json passed/errors=[] after restoring DisableColliderOnCollition and its LM variant. Four producer cases retain zero child pose error; both floor beams passed motion checks. Fourteen additional controlled collider-disable cases passed. See Knowledge/collider-disable-reconstruction.md and Evidence/collider-disable-native-contract.json. Natural FlowerBeam enable ownership remains unresolved.
+
+## Newest flower-route clarification
+
+Evidence/offline-mayaproduction-probe-20261015-221526.json passed the actual Maya upward input and authored clip events without manually enabling FlowerBeam. The child visual kept its root collider/Description disabled across140 frames until expiry; a separate FlowerSpecial had active damage/collider. This corrects the earlier missing-enable assumption for the Grass UpAttack route. The isolated producer-enable fixture remains controlled coverage. See Knowledge/animation-collider-reconstruction.md and Evidence/animation-collider-native-contract.json. Other emitters and original runtime parity remain unestablished.

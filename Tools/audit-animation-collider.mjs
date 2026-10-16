@@ -1,0 +1,25 @@
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+import {parseUnity} from './unity-audit/audit.mjs';
+const sha=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+const read=p=>JSON.parse(fs.readFileSync(p,'utf8').replace(/^\uFEFF/,''));
+const all=fs.readdirSync('UnityProject/Assets',{recursive:true}).map(p=>'UnityProject/Assets/'+p.replaceAll('\\','/'));
+const metas=new Map(all.filter(p=>p.endsWith('.meta')).map(p=>[fs.readFileSync(p,'utf8').match(/^guid: (.+)$/m)?.[1],p.slice(0,-5)]));
+const parse=p=>{const r=parseUnity(fs.readFileSync(p,'utf8')); if(r.errors.length)throw Error(JSON.stringify(r.errors)); return r.documents;};
+const path='UnityProject/Assets/Scripts/Assembly-CSharp/DisableColliderAnim.cs',scriptGuid=fs.readFileSync(path+'.meta','utf8').match(/^guid: (.+)$/m)[1];
+const prefabs=all.filter(p=>p.endsWith('.prefab')&&fs.readFileSync(p,'utf8').includes(scriptGuid)).map(path=>{
+ const docs=parse(path),byId=new Map(docs.map(d=>[d.document_id,d]));
+ return {path,sha256:sha(path),components:docs.filter(d=>d.data.m_Script?.guid===scriptGuid).map(d=>({id:d.document_id,delay:d.data.delay,owner:byId.get(d.data.m_GameObject?.fileID)?.data.m_Name,layer:byId.get(d.data.m_GameObject?.fileID)?.data.m_Layer}))};
+});
+const flowerPath='UnityProject/Assets/Resources/photonprefabs/FlowerBeam.prefab',flowerDocs=parse(flowerPath),root=flowerDocs.find(d=>d.type==='GameObject'&&d.data.m_Name==='FlowerBeam');
+const flowerRoot=flowerDocs.filter(d=>d.data.m_GameObject?.fileID===root.document_id).map(d=>({type:d.type,script:metas.get(d.data.m_Script?.guid),enabled:d.data.m_Enabled,fields:d.type==='MonoBehaviour'?d.data:undefined}));
+const clipPath='UnityProject/Assets/AnimationClip/UpAttack_1.anim',clipGuid=fs.readFileSync(clipPath+'.meta','utf8').match(/^guid: (.+)$/m)[1];
+const events=parse(clipPath)[0].data.m_Events.map(e=>({...e,resolvedPrefab:metas.get(e.objectReferenceParameter?.guid)??null}));
+const controllers=all.filter(p=>p.endsWith('.controller')&&fs.readFileSync(p,'utf8').includes(clipGuid)).map(path=>({path,sha256:sha(path),states:parse(path).filter(d=>d.data.m_Motion?.guid===clipGuid).map(d=>({name:d.data.m_Name,id:d.document_id}))}));
+const runtimePath=process.argv[2],buildPath=process.argv[3],runtime=runtimePath?read(runtimePath):null;
+const observations=runtime?.observations.filter(o=>o.step.startsWith('anim-collider-')||o.step==='flower-natural-route');
+if(runtime&&(runtime.result!=='passed'||runtime.errors.length||observations.filter(o=>o.step==='anim-collider-window').length!==6))throw Error('Animation collider runtime did not pass six window observations');
+const nativePath='Evidence/acquired/merged-public-apk/lib/arm64-v8a/libil2cpp.so';
+const result={generatedUtc:new Date().toISOString(),native:{path:nativePath,sha256:sha(nativePath),tool:'Local Capstone/metadata following REA skill; no connected REA server Evidence'},source:{path,sha256:sha(path)},listings:['Evidence/native-disassembly-DisableColliderAnim.txt','Evidence/native-disassembly-DisableColliderAnim__DefineAnim_d__3.txt'].map(path=>({path,sha256:sha(path)})),slots:read('Evidence/animation-collider-slots.json'),generics:read('Evidence/animation-collider-generics.json'),constants:read('Evidence/animation-collider-constants.json'),contract:{startVA:'0x1228858',coroutineVA:'0x1228AF4',checkVA:'0x1228914',bind:'WaitForSeconds(delay); while own layer==1 wait .02; layer8 -> HostPlayer animator; all other layers -> GuestPlayer animator; InvokeRepeating CheckAttack 0/.05',check:'Only selected actor Description.element==Light and state IsName UpAttack2; disable box when normalizedTime>.2 && <.45; enable otherwise within that matching state; nonmatching state/element leaves value unchanged'},prefabs,flower:{path:flowerPath,sha256:sha(flowerPath),rootComponents:flowerRoot,clip:{path:clipPath,sha256:sha(clipPath),events,controllers},scope:'Root authoring plus Grass UpAttack event sequence. Runtime flower-natural-route records bounded natural input observation; do not infer other emitters or original runtime.'},runtime:runtime?{path:runtimePath,sha256:sha(runtimePath),assemblySha256:read(runtimePath.replace(/\.json$/,'-launch.json')).GameplayAssemblySha256,result:runtime.result,errors:runtime.errors,observations,limitation:runtime.limitation}:null,build:buildPath?{path:buildPath,sha256:sha(buildPath),report:read(buildPath)}:null,limits:['Synthetic actor element/state, animation events disabled, no natural Light input or original-runtime acceptance.','No asset edits or invented FlowerBeam enable owner. The authored Grass UpAttack separates visual FlowerBeam from damaging FlowerSpecial.']};
+fs.writeFileSync('Evidence/animation-collider-native-contract.json',JSON.stringify(result,null,2)+'\n');
+console.log(JSON.stringify({prefabs:prefabs.length,components:prefabs.flatMap(p=>p.components).length,flowerControllers:controllers,flowerEvents:events.filter(e=>e.resolvedPrefab?.includes('FlowerBeam')),runtime:runtime?.result??'not selected'}));

@@ -1,0 +1,6 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": { "audit": "node audit.mjs", "test": "node --test audit.test.mjs" },
+  "dependencies": { "yaml": "2.9.0" }
+}

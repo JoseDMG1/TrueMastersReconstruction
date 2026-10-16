@@ -1,0 +1,13 @@
+# Timed collider center and size changes
+
+ChangeColliderCenter and ChangeColliderScale were active stubs. Corrected ARM64 listings establish their behavior: Evidence/native-disassembly-ChangeColliderCenter.txt and Evidence/native-disassembly-ChangeColliderScale.txt. Local Capstone/metadata following the REA skill supplied this evidence; no connected REA MCP output or original Android runtime comparison is claimed.
+
+Start (center 0x121C58C, size 0x121C70C) disables the Behaviour, then invokes EnableDelay after the serialized delay. EnableDelay re-enables it. Constructors default duration to 1. Update (center 0x121C5F8, size 0x121C778) uses clamped Vector3.Lerp between authored start and target using timeElapsed/duration, then increases timeElapsed by deltaTime. The size setter is BoxCollider.size, not transform scale.
+
+When timeElapsed is strictly greater than duration, the original routine writes the target and schedules Destroy(this), then continues through interpolation and elapsed increment. Only the interpolation component is destroyed; the box and GameObject remain. No initial geometry write occurs while waiting. Native zero-duration division semantics are retained; selected authored configurations use positive durations.
+
+Nine components in WaterWaveAtk, WaterAtkStrong and ShadowSnakeAtk supply the serialized configurations. Their fields are copied from recovered prefab resources into isolated runtime box/component fixtures, allowing the normal Start/Invoke/Update/destruction lifecycle to run. An earlier-executing witness samples each elapsed value and checks geometry afterward; the fixture checks delay preservation, interpolated geometry, final target and component-only destruction. This isolates concurrent writers and unrelated movement/lifetime logic. It is not proof of full natural attack overlap or simultaneous writer ordering in ShadowSnakeAtk.
+
+Evidence/collider-geometry-native-contract.json contains exact source/listing hashes, prefab data, native EnableDelay literal resolution and selected runtime/build identities. Reproduce through the MayaProduction runtime scenario, then Tools/audit-collider-geometry.mjs with explicit report and archived build paths.
+
+Final acceptance: Evidence/offline-mayaproduction-probe-20261015-221526.json passed/errors=[] on assembly a68322f582c151a460047b77a4cb3db9b67f2a4213a94a329c166499ed4630fd. Build Evidence/windows-build-validation-collider-geometry-20261016-031515.json succeeded, 0 errors / 27 warnings. Nine geometry cases had zero sampled/final error; six animation windows and all existing physical/producer/floor-beam regressions passed. Natural flower route again observed140 frames with disabled visual root and active separate FlowerSpecial.

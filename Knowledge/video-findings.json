@@ -1,0 +1,571 @@
+﻿{
+  "schema_version": 1,
+  "method": "Visual review of all seven existing sparse contact sheets, plus targeted two-second sample sheets and an exact tutorial frame at 5s. No audio review; not every frame watched. Times of fps-generated tiles are nominal with approximately +/-1 second selection tolerance; wider ranges describe evidence coverage, not continuous viewing.",
+  "source_durations_seconds": {
+    "true masters gameplay multiplayer with a friend.mp4": 848.6,
+    "true masters gameplay singleplayer all charactersmp4.mp4": 1003.2,
+    "true masters gameplay singleplayer mode survival (with the principal menú options).mp4": 264.5
+  },
+  "findings": [
+    {
+      "id": "menu-main",
+      "statement": "Main menu presents 1 PLAYER (VS CPU), 2 PLAYERS (ONLINE), SHARE GAME, SURVIVAL, TOURNAMENT and EXIT GAME.",
+      "status": "observed",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay singleplayer mode survival (with the principal menú options).mp4",
+      "start_seconds": 0,
+      "end_seconds": 3,
+      "tags": [
+        "menu",
+        "navigation"
+      ]
+    },
+    {
+      "id": "menu-social",
+      "statement": "Main menu shows Instagram, YouTube and Discord icons.",
+      "status": "observed",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay singleplayer mode survival (with the principal menú options).mp4",
+      "start_seconds": 0,
+      "end_seconds": 3,
+      "tags": [
+        "menu",
+        "social"
+      ]
+    },
+    {
+      "id": "tutorial",
+      "statement": "HOW TO PLAY has MOVE joystick, A ATTACK, B DEFENSE and CONTINUE.",
+      "status": "observed",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay singleplayer mode survival (with the principal menú options).mp4",
+      "start_seconds": 5,
+      "end_seconds": 5,
+      "tags": [
+        "controls",
+        "tutorial"
+      ]
+    },
+    {
+      "id": "attack-directions",
+      "statement": "Tutorial maps neutral/right/left/down/up joystick + A to BASIC ATK, RIGHT ATK, LEFT ATK, DOWN ATK, UP ATK respectively.",
+      "status": "observed",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay singleplayer mode survival (with the principal menú options).mp4",
+      "start_seconds": 5,
+      "end_seconds": 5,
+      "tags": [
+        "controls",
+        "attack"
+      ]
+    },
+    {
+      "id": "defense-directions",
+      "statement": "Tutorial maps neutral/right/left/down/up joystick + B to BLOCK, JUMP R, JUMP L, BACKFLIP, ROLL respectively.",
+      "status": "observed",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay singleplayer mode survival (with the principal menú options).mp4",
+      "start_seconds": 5,
+      "end_seconds": 5,
+      "tags": [
+        "controls",
+        "defense"
+      ]
+    },
+    {
+      "id": "attack-levels",
+      "statement": "Tutorial labels BASIC ATK (LV1), DOWN ATK (LV2), UP ATK (LV3). What level refers to is not stated there.",
+      "status": "observed",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay singleplayer mode survival (with the principal menú options).mp4",
+      "start_seconds": 5,
+      "end_seconds": 5,
+      "tags": [
+        "controls",
+        "levels"
+      ]
+    },
+    {
+      "id": "survival-select",
+      "statement": "Survival character screen shows CHOOSE YOUR CHARACTER, DIANA, character arrows, stage thumbnails, HIGH SCORE 11, START, QUIT and counters 8 trophy / 1795 diamond.",
+      "status": "observed",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay singleplayer mode survival (with the principal menú options).mp4",
+      "start_seconds": 14,
+      "end_seconds": 20,
+      "tags": [
+        "survival",
+        "character",
+        "menu",
+        "progression"
+      ]
+    },
+    {
+      "id": "stage-picker",
+      "statement": "SELECT STAGE overlay shows image preview, left/right arrows, SELECT and CLOSE; the preview changes from brown terrain to green stone with bright clouds.",
+      "status": "observed",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay singleplayer mode survival (with the principal menú options).mp4",
+      "start_seconds": 16,
+      "end_seconds": 19,
+      "tags": [
+        "stage",
+        "menu"
+      ]
+    },
+    {
+      "id": "survival-play",
+      "statement": "Survival uses SCORE rather than duel score, starting at 0 and reaching 10; player moves on a finite raised green stone arena with bright cloudy sky.",
+      "status": "observed",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay singleplayer mode survival (with the principal menú options).mp4",
+      "start_seconds": 28,
+      "end_seconds": 252,
+      "tags": [
+        "survival",
+        "hud",
+        "arena"
+      ]
+    },
+    {
+      "id": "survival-result",
+      "statement": "After falling below the arena edge, results show SCORE 10, diamond icon 20, BONUS diamond 25, WATCH AD and PLAY AGAIN. Diamond balance is 1815 instead of 1795.",
+      "status": "observed",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay singleplayer mode survival (with the principal menú options).mp4",
+      "start_seconds": 252,
+      "end_seconds": 263,
+      "tags": [
+        "survival",
+        "results",
+        "rewards",
+        "ads"
+      ]
+    },
+    {
+      "id": "survival-award-inference",
+      "statement": "The recorded survival run awards two diamonds per score point (10 -> 20); one run does not establish the universal formula.",
+      "status": "inferred",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay singleplayer mode survival (with the principal menú options).mp4",
+      "start_seconds": 254,
+      "end_seconds": 263,
+      "tags": [
+        "rewards",
+        "balance"
+      ]
+    },
+    {
+      "id": "online-lobby",
+      "statement": "Online lobby shows SERVER - EU, CHANGE dropdown, code 8157-eu, SHARE CODE, WAITING FOR OTHER PLAYER, QUIT and a development notice.",
+      "status": "observed",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay multiplayer with a friend.mp4",
+      "start_seconds": 0,
+      "end_seconds": 30,
+      "tags": [
+        "online",
+        "lobby",
+        "menu"
+      ]
+    },
+    {
+      "id": "online-feedback",
+      "statement": "Lobby shows CONNECTION SUCCESSFUL briefly and A PLAYER HAS ENTER THE MATCH before character selection.",
+      "status": "observed",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay multiplayer with a friend.mp4",
+      "start_seconds": 0,
+      "end_seconds": 30,
+      "tags": [
+        "online",
+        "feedback"
+      ]
+    },
+    {
+      "id": "char-dante",
+      "statement": "DANTE is a selectable name; associated model is an armored knight with sword and shield, clearly seen in singleplayer selection.",
+      "status": "observed",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay singleplayer all charactersmp4.mp4",
+      "start_seconds": 846,
+      "end_seconds": 847,
+      "tags": [
+        "character",
+        "dante"
+      ]
+    },
+    {
+      "id": "char-ren",
+      "statement": "REN is a selectable name; multiplayer selection shows a muscular male in black/yellow sleeveless martial clothing.",
+      "status": "observed",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay multiplayer with a friend.mp4",
+      "start_seconds": 34,
+      "end_seconds": 35,
+      "tags": [
+        "character",
+        "ren"
+      ]
+    },
+    {
+      "id": "char-aura",
+      "statement": "AURA is a selectable name; multiplayer selection shows a light-haired female in dark armor/clothing.",
+      "status": "observed",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay multiplayer with a friend.mp4",
+      "start_seconds": 36,
+      "end_seconds": 37,
+      "tags": [
+        "character",
+        "aura"
+      ]
+    },
+    {
+      "id": "char-rina",
+      "statement": "RINA is a selectable name; model wears red and has dark hair in a bun.",
+      "status": "observed",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay multiplayer with a friend.mp4",
+      "start_seconds": 514,
+      "end_seconds": 515,
+      "tags": [
+        "character",
+        "rina"
+      ]
+    },
+    {
+      "id": "char-sora",
+      "statement": "SORA is a selectable name, associated with light-haired male in gray/black clothing.",
+      "status": "observed",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay singleplayer all charactersmp4.mp4",
+      "start_seconds": 182,
+      "end_seconds": 183,
+      "tags": [
+        "character",
+        "sora"
+      ]
+    },
+    {
+      "id": "char-vinea",
+      "statement": "VINEA is a selectable name, associated with hooded female in blue/gray clothing.",
+      "status": "observed",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay singleplayer all charactersmp4.mp4",
+      "start_seconds": 184,
+      "end_seconds": 185,
+      "tags": [
+        "character",
+        "vinea"
+      ]
+    },
+    {
+      "id": "char-diana",
+      "statement": "DIANA is a selectable name, associated with short-haired female in black/yellow martial clothing.",
+      "status": "observed",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay singleplayer mode survival (with the principal menú options).mp4",
+      "start_seconds": 14,
+      "end_seconds": 20,
+      "tags": [
+        "character",
+        "diana"
+      ]
+    },
+    {
+      "id": "char-blaze",
+      "statement": "BLAZE is a selectable name, associated with a bearded hooded male in red/gold clothing.",
+      "status": "observed",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay singleplayer all charactersmp4.mp4",
+      "start_seconds": 662,
+      "end_seconds": 663,
+      "tags": [
+        "character",
+        "blaze"
+      ]
+    },
+    {
+      "id": "cpu-config",
+      "statement": "Singleplayer selection includes CPU arrows, opponent name or ? and level arrows with Lv 3. Opponent selection changes from SORA to DIANA to ?.",
+      "status": "observed",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay singleplayer all charactersmp4.mp4",
+      "start_seconds": 388,
+      "end_seconds": 394,
+      "tags": [
+        "cpu",
+        "selection",
+        "difficulty"
+      ]
+    },
+    {
+      "id": "air-demo",
+      "statement": "First singleplayer demonstration is captioned air; player creates pale/golden gust arcs, whirlwind-like vertical effects and a spherical translucent defense.",
+      "status": "observed",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay singleplayer all charactersmp4.mp4",
+      "start_seconds": 5,
+      "end_seconds": 178,
+      "tags": [
+        "air",
+        "attack",
+        "effects"
+      ]
+    },
+    {
+      "id": "water-demo",
+      "statement": "VINEA demonstration is captioned water; visible attacks include localized water/ice-like columns, a low spread of columns, and pale projectiles.",
+      "status": "observed",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay singleplayer all charactersmp4.mp4",
+      "start_seconds": 184,
+      "end_seconds": 384,
+      "tags": [
+        "water",
+        "attack",
+        "effects"
+      ]
+    },
+    {
+      "id": "earth-demo",
+      "statement": "DIANA demonstration is captioned earth; visible effects include thrown/raised boulders, upright rock formations and several floating rocks.",
+      "status": "observed",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay singleplayer all charactersmp4.mp4",
+      "start_seconds": 394,
+      "end_seconds": 656,
+      "tags": [
+        "earth",
+        "attack",
+        "effects"
+      ]
+    },
+    {
+      "id": "fire-demo",
+      "statement": "BLAZE demonstration is captioned fire; effects include fiery projectiles, tall flame columns, ground flame lines and broad flame areas.",
+      "status": "observed",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay singleplayer all charactersmp4.mp4",
+      "start_seconds": 662,
+      "end_seconds": 836,
+      "tags": [
+        "fire",
+        "attack",
+        "effects"
+      ]
+    },
+    {
+      "id": "lightning-demo",
+      "statement": "DANTE demonstration is captioned lightning; effects include blue glow around the fighter and bright ground/target flashes.",
+      "status": "observed",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay singleplayer all charactersmp4.mp4",
+      "start_seconds": 846,
+      "end_seconds": 1002,
+      "tags": [
+        "lightning",
+        "attack",
+        "effects"
+      ]
+    },
+    {
+      "id": "roster-elements",
+      "statement": "Characters appear to form alternate representatives of elemental movesets (e.g. DIANA/REN earth, BLAZE/RINA fire, DANTE/AURA lightning). Exact equivalence is unverified.",
+      "status": "inferred",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay multiplayer with a friend.mp4",
+      "start_seconds": 34,
+      "end_seconds": 820,
+      "tags": [
+        "roster",
+        "elements"
+      ]
+    },
+    {
+      "id": "hud-duel",
+      "statement": "Duel HUD shows central two-sided score, translucent joystick bottom left, A/B bottom right, and a higher third button labelled X initially in singleplayer and S later.",
+      "status": "observed",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay singleplayer all charactersmp4.mp4",
+      "start_seconds": 5,
+      "end_seconds": 178,
+      "tags": [
+        "hud",
+        "controls",
+        "duel"
+      ]
+    },
+    {
+      "id": "hud-top",
+      "statement": "Gameplay top bar includes SETTINGS and eye icon; singleplayer also pause icon and CPU label, multiplayer has ? help and a chat/message icon. Top-right counters and X are visible.",
+      "status": "observed",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay multiplayer with a friend.mp4",
+      "start_seconds": 46,
+      "end_seconds": 502,
+      "tags": [
+        "hud",
+        "settings"
+      ]
+    },
+    {
+      "id": "rounds",
+      "statement": "Scores reach 2-2 then 2-3 followed by WINNER online; singleplayer examples reach 3-2 then WINNER.",
+      "status": "observed",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay multiplayer with a friend.mp4",
+      "start_seconds": 486,
+      "end_seconds": 506,
+      "tags": [
+        "duel",
+        "rounds",
+        "winner"
+      ]
+    },
+    {
+      "id": "first-to-three",
+      "statement": "Observed duel outcomes are consistent with first to three round wins.",
+      "status": "inferred",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay singleplayer all charactersmp4.mp4",
+      "start_seconds": 174,
+      "end_seconds": 178,
+      "tags": [
+        "duel",
+        "rules"
+      ]
+    },
+    {
+      "id": "countdown",
+      "statement": "A large countdown numeral and GO! are displayed when the arena match begins.",
+      "status": "observed",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay singleplayer all charactersmp4.mp4",
+      "start_seconds": 666,
+      "end_seconds": 669,
+      "tags": [
+        "duel",
+        "countdown"
+      ]
+    },
+    {
+      "id": "fall-loss",
+      "statement": "Fighters can leave/fall below the finite arena edge. Falling appears associated with losing a point/ending survival; exact hit rules remain unverified.",
+      "status": "inferred",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay singleplayer mode survival (with the principal menú options).mp4",
+      "start_seconds": 250,
+      "end_seconds": 254,
+      "tags": [
+        "arena",
+        "ringout",
+        "rules"
+      ]
+    },
+    {
+      "id": "online-result",
+      "statement": "Online WINNER result has PLAY AGAIN, OPEN CHAT and EXIT GAME; an earlier result selection also shows REMATCH? and READY!.",
+      "status": "observed",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay multiplayer with a friend.mp4",
+      "start_seconds": 504,
+      "end_seconds": 506,
+      "tags": [
+        "online",
+        "results",
+        "rematch"
+      ]
+    },
+    {
+      "id": "chat",
+      "statement": "Online chat overlay has CHAT, close X, Enter message..., SEND, opponent/you message labels and Your opponent is typing... status.",
+      "status": "observed",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay multiplayer with a friend.mp4",
+      "start_seconds": 822,
+      "end_seconds": 832,
+      "tags": [
+        "online",
+        "chat"
+      ]
+    },
+    {
+      "id": "chat-exchange",
+      "statement": "Recorded chat receives (Opponent) - gg, sends aww :/ and gg; messages remain in visible history.",
+      "status": "observed",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay multiplayer with a friend.mp4",
+      "start_seconds": 824,
+      "end_seconds": 832,
+      "tags": [
+        "online",
+        "chat"
+      ]
+    },
+    {
+      "id": "disconnect",
+      "statement": "Return to main menu shows PLAYER HAS DISCONNECTED.",
+      "status": "observed",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay multiplayer with a friend.mp4",
+      "start_seconds": 840,
+      "end_seconds": 847,
+      "tags": [
+        "online",
+        "disconnect",
+        "menu"
+      ]
+    },
+    {
+      "id": "cpu-rewards",
+      "statement": "CPU victory at 3-2 displays RESULTS, RANK B, diamond 8 and PLAY AGAIN. Later last match displays RANK A and diamond 10.",
+      "status": "observed",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay singleplayer all charactersmp4.mp4",
+      "start_seconds": 834,
+      "end_seconds": 1002,
+      "tags": [
+        "cpu",
+        "results",
+        "rewards"
+      ]
+    },
+    {
+      "id": "camera",
+      "statement": "Camera shows the controlled fighter from behind, changing distance/angle with arena position; gameplay is in landscape orientation.",
+      "status": "observed",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay singleplayer mode survival (with the principal menú options).mp4",
+      "start_seconds": 28,
+      "end_seconds": 252,
+      "tags": [
+        "camera",
+        "presentation"
+      ]
+    },
+    {
+      "id": "settings-unknown",
+      "statement": "SETTINGS is visible, but settings contents, persistence and options were not established by inspected frames.",
+      "status": "unknown",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay singleplayer all charactersmp4.mp4",
+      "start_seconds": 5,
+      "end_seconds": 1002,
+      "tags": [
+        "settings",
+        "coverage"
+      ]
+    },
+    {
+      "id": "tournament-unknown",
+      "statement": "TOURNAMENT button exists, but bracket, qualification, rewards and gameplay flow are unobserved.",
+      "status": "unknown",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay singleplayer mode survival (with the principal menú options).mp4",
+      "start_seconds": 0,
+      "end_seconds": 3,
+      "tags": [
+        "tournament",
+        "coverage"
+      ]
+    },
+    {
+      "id": "network-unknown",
+      "statement": "Server protocol, room creation/join UI beyond this lobby, reconnect, synchronization, hosting and backend implementation cannot be recovered from the video alone.",
+      "status": "unknown",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay multiplayer with a friend.mp4",
+      "start_seconds": 0,
+      "end_seconds": 847,
+      "tags": [
+        "online",
+        "coverage",
+        "backend"
+      ]
+    },
+    {
+      "id": "combat-unknown",
+      "statement": "Exact cooldowns, hitboxes, damage, stun, invulnerability, input buffering, hold behavior, physics constants and S/X semantics are not established.",
+      "status": "unknown",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay singleplayer all charactersmp4.mp4",
+      "start_seconds": 5,
+      "end_seconds": 1002,
+      "tags": [
+        "combat",
+        "coverage",
+        "balance"
+      ]
+    },
+    {
+      "id": "coverage-unknown",
+      "statement": "These sampled videos do not establish complete roster, stages, settings, unlock/shop, credits/privacy menus, ad outcomes or all error states.",
+      "status": "unknown",
+      "source_file": "C:\\Users\\Jose\\Desktop\\true masters videos gameplay y menú\\true masters gameplay singleplayer mode survival (with the principal menú options).mp4",
+      "start_seconds": 0,
+      "end_seconds": 264,
+      "tags": [
+        "coverage",
+        "menu"
+      ]
+    }
+  ]
+}

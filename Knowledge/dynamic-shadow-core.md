@@ -1,0 +1,43 @@
+# Dynamic shadow capture: authored Built-In profile reconstruction
+
+This work applies the REA skill to the retained original native binary, corrected Capstone VA/raw listings, metadata slots and serialized Unity resources. No connected REA MCP tools were available; these are local observations, not REA server Evidence or recovered vendor source. Full native SHA256: d5669fa920c5034ec1ed5b7988149825430f65ea557ba7882567c0790da2dd8c.
+
+## Supported scope and native observations
+
+ShadowTextureRenderer and DrawTargetObject were method stubs. The twelve fighter prefabs contain thirteen ShadowTextureRenderer profiles; all inventoried profiles use the basic Built-In path with no blur, no mipmaps, no supersampling and no view clipping. The reconstruction restores that path and gates unsupported profiles off. Numerous advanced private helpers remain stubs; this is not full vendor plugin reconstruction. DrawSceneObject and MipmappedShadowFallback remain incomplete.
+
+Original native listings are Evidence/native-disassembly-DynamicShadowProjector.ShadowTextureRenderer.txt and Evidence/native-disassembly-DynamicShadowProjector.DrawTargetObject.txt. Native AddCommandBuffer 0x12E0EEC removes and adds at CameraEvent 12 (BeforeImageEffectsOpaque); RemoveCommandBuffer 0x12E0FC0 uses the same event. DrawTargetObject.Awake 0x12E0CE0 caches the target position in the projector transform's local space. UpdateTransform 0x12E0AB0 maintains that offset while following the target and optionally aligns using target axes/direction. AddDrawCommandForGameObject 0x12E07B0 checks active hierarchy, renderer enable state and the serialized layer mask before recursion. The generic slot 0x2818810 resolves GameObject.GetComponent<Renderer>. The nearby 0x2818818 slot is a diagnostic string, not a generic method; decoder kinds are retained.
+
+Public serialized-property accessors now return their fields. The core owns a supported-format render texture with serialized dimensions and supported multisampling, synchronizes the capture camera/projector, and gives every projector a separate cloned material and _ShadowTex. It renders selected target submeshes into a neutral-white capture, refreshes draws for enabled/material changes, follows the target and releases its texture, commands and owned materials on disable/destruction. API behavior outside the supported authored profile remains incomplete; this does not imply full parity for arbitrary settings or scene-capture modes.
+
+## Explicit reconstruction decisions
+
+The original exported opaque/transparent/cutout shader bodies were dummy white fragments. They are replaced with newly written approximate masks using a colored silhouette, texture alpha and cutoff where applicable. Original shader source, transparent edge behavior and exact color math have not been recovered. Existing receiver projection/linear falloff was already an approximation and remains so. This restores a measured capture mechanism, not original visual parity.
+
+Per-owner projector material cloning prevents one fighter's texture from overwriting another. Capture uses a depth16 render texture, a white neutral background, compatible supported formats/MSAA, and per-capture draw-command rebuilding instead of reproducing the vendor's complete hashing/cache machinery. These are bounded implementation choices. Source/shader backups are under Evidence/shadow-core-backup; .meta GUIDs, prefab data and immutable exports are preserved. Tools/restore-shadow-core.cjs reproduces the patch from those backups.
+
+## Validation boundaries
+
+Tools/audit-shadow-core.mjs records twelve prefab hashes, all thirteen profiles, native listings/slot resolutions, current source/shader hashes and explicit selected runtime/build identities in Evidence/dynamic-shadow-core-contract.json. Static coverage of all twelve fighters is not all-roster GPU acceptance.
+
+The Graphics scenario now reads the GPU capture textures, requires dark silhouette plus white neutral pixels, verifies unique per-projector texture binding, measures controlled animation-pose response and checks texture release/recreation after disable/enable. Pose events are disabled and original animator/time settings restored; this is not natural combat input coverage. Captures are retained as PNGs alongside the exact report. Existing receiver enabled/disabled and white/black cookie captures remain a separate projection check.
+
+First report Evidence/offline-graphics-probe-20261015-222728.json failed animation response with changedPixels0 despite valid distinct silhouette textures. The initial observer froze Animator.speed at0 and did not check bone changes. That report is a retained failure, not accepted dynamic animation evidence. Follow-up records actual state/time/bone changes before assessing texture response.
+
+Outstanding: advanced blur/mips/supersampling/view clipping, all-roster GPU behavior, transparent shader parity, natural combat/visual comparison, performance and Android. Ordinary directional-light shadows do not prove that this capture owner works.
+
+## Final automatic-render acceptance
+
+User resumed after pausing the build. The interrupted build was replaced with fresh successful builds. Evidence/offline-graphics-probe-20261015-232058.json passed/errors=[] on the Diana/Vinea scene. GPU cookies were distinct128x128 with dark/white pixel counts1578/14738 and991/15324. Vinea BasicAttack controlled normalized times .1/.6 changed52bones and1741texturepixels through automatic camera rendering, with no manual Camera.Render call. Disabling the owner released its texture and stopped the camera; re-enabling recreated it. Save/preferences and animator/time settings were restored.
+
+Exact current build Evidence/windows-build-validation-shadow-core-20261016-042030.json succeeded0errors32warnings. Gameplay assembly b8dc399ba2439279e11c62e9dabdc7e4790dcdd084218b8f4f7276f14effd40e. Evidence/dynamic-shadow-core-contract.json records selected reports, source/shader/listing hashes and image hashes. The automatic pose images and scene were inspected. Receiver screenshots are qualitative rather than registered pixel comparisons because the actor pose settles between captures.
+
+Failed Graphics223137 established that the old observer had chosen auxiliary animator Valen with state/time0 and changedBones0. The correction selects a parent Animator with a runtime controller and requires valid BasicAttack states plus changed bones. Provisional Graphics231818 then passed with manual camera rendering on Diana; final232058 additionally established automatic rendering on Vinea. Gameplay capture owners were not changed to accommodate those observer corrections.
+
+Static twelve-fighter/thirteen-profile inventory does not imply all-roster runtime acceptance. Advanced helpers, DrawSceneObject, MipmappedShadowFallback and ShadowController coordination remain incomplete. Transparent mask parity, performance, all quality settings, natural combat fidelity and Android remain unaccepted.
+
+## Current quality and roster acceptance (supersedes earlier checkpoint limits)
+
+Final build Evidence/windows-build-validation-shadow-quality-20261016-044023.json succeeded with0errors/33warnings; assembly SHA256 11c5bf91564a87b8978c0afd036a6ef070aafb8ee2285cf898c9435f1952c618. Final roster report Evidence/offline-shadowroster-probe-20261015-234058.json passed/errors=[] for twelve normal fighters: sixty quality cases, twelve follow cases, twelve automatic GPU animation cases and twenty-five cookie checks. Forward-vector assertions passed; maximum relative-offset error6.848052E-07. Listener add/remove symmetry passed. Dormant Sora alternate remains outside accepted runtime scope.
+
+Final ordinary Graphics Evidence/offline-graphics-probe-20261015-234404.json passed/errors=[]; Vinea changed52bones/1770pixels through automatic rendering. Both final fixtures recorded restoration after explicit snapshots. Earlier ordinary Graphics restoration claims were unsupported because CaptureFixture was not wired; historical GPU observations remain bounded evidence. Current quality matrix uses actual preference/event dispatch, not resolution buttons. Approximate shaders, advanced plugin features, natural combat, original visual parity, performance and Android remain unaccepted. ShadowController coordination and normal-form all-roster GPU coverage are now accepted within these stated bounds. Contracts: Evidence/shadow-quality-roster-contract.json and Evidence/dynamic-shadow-core-contract.json. See Knowledge/shadow-quality-reconstruction.md for corrected light direction, target up axis and offset caching lifecycle.

@@ -1,0 +1,12 @@
+﻿{
+  "native_sha256": "d5669fa920c5034ec1ed5b7988149825430f65ea557ba7882567c0790da2dd8c",
+  "scope": "Exact ELF target addresses; not portable to other binaries or Unity builds",
+  "contracts": [
+    {"address":"0x2364318","signature":"Animator.Play(string)","proof_owner":"LeafShieldController","proof_method":"ShieldHit","proof_site":"0x1240FA0","isil_call":"Call Animator.Play, X0, X1"},
+    {"address":"0x2364344","signature":"Animator.Play(string,int,float)","proof_owner":"AnimatorStatesManager","proof_method":"PlayAnimation","proof_site":"0x127F138","isil_call":"Call Animator.Play, X0, X1, X2, V0"},
+    {"address":"0x2363508","signature":"Animator.SetTrigger(string)","proof_owner":"GameController","proof_method":"Special","proof_site":"0x1293774","isil_call":"Call Animator.SetTrigger, X0, X1"},
+    {"address":"0x2362FF4","signature":"Animator.SetBool(string,bool)","proof_owner":"DamageOnCollision","proof_method":"blocking","proof_site":"0x1287238","isil_call":"Call Animator.SetBool, X0, X1, X2"},
+    {"address":"0x2363354","signature":"Animator.SetInteger(string,int)","proof_owner":"SpecialAtk","proof_method":"ResetCharge","proof_site":"0x12B119C","isil_call":"Call Animator.SetInteger, X0, X1, X2"},
+    {"address":"0x2362AC4","signature":"Animator.SetFloat(string,float)","proof_owner":"DamageOnCollision","proof_method":"RestoreDamage","proof_site":"0x1287CF0","isil_call":"Call Animator.SetFloat, X0, X1, V0"}
+  ]
+}

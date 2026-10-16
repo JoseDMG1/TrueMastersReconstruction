@@ -1,0 +1,534 @@
+{
+    "schema_version":  1,
+    "scope":  "Observed Windows reconstruction acceptance probes, not original APK runtime or proof of complete game fidelity",
+    "findings":  [
+                     {
+                         "id": "flight-matrix-awake-evades-20261016",
+                         "status": "observed",
+                         "statement": "REA retained local ARM64/metadata/YAML workflow, no MCP server. Final Matrix025820 passed368 authored prefab production cases:46profiles,32active root Follow plus1dormant FlowerBeam branch and13straight MoveLight, both sides/moving-height-edge-physical owner interruption.24712samples,11861turns,5852fixed checks,3858weak samples, rotation error0/translation error0.00000190735;52contact-damage cases.84registered interruptions latch weakness,8unregistered retain original behavior; all8dormant checks pass. Final AwakeJumps030659 passed five actual UGUI routes while awakening active: Raven Shark/Wolf/Bird correct target/yaw, first two contact+Damage1, Bird miss in this layout; Maya two stationary traps travel0. Five post-recovery images inspected, not full VFX parity. Final Sora MovingTarget030909 passed actual UpAttack/UpAttack2,145samples,target2m/drift0,contact+Damage1 at frame1279. All three restore fixtures on same5f27b00b4a836b051af33902ee8adb6e255876858fa950c075296ff39ecbd0ad DLL, build025525 succeeded0errors37warnings. Observer fixes preserve disabled/delayed/native registry semantics; production owners/assets unchanged. Still pending natural all-roster impact/free AI/knockback, natural Light UpAttack2 and concurrent geometry, natural charge/match wins, original runtime/VFX parity, online/Android.",
+                         "source_file": "Evidence/flight-matrix-acceptance.json",
+                         "tags": ["REA", "Follow", "MoveLight", "GoForward", "moving target", "height", "edge", "interrupt", "Raven", "Maya", "awakening", "flowerBonfire", "FlowerBeam", "damage", "fixture"]
+                     },
+                     {
+                         "id": "controlled-moving-target-flight-20261016",
+                         "status": "observed",
+                         "statement": "Sora UpAttack2 naturally created original AirAtkStrong2 via UGUI/Animator. Controlled CPU lateral movement2m over0.3s:153 live samples,10 corrective turns (9 during motion), zero target drift and zero per-frame native-contract rotation error. Projectile OnTriggerEnter and CPU damage event correlated at frame1274, Damage0->1, without forced overlap/direct damage/forced attack state. Collider/damage/Animator reactions active; locomotion/root motion/Rigidbody dynamics controlled and restored. Matching ordinary Sora10-route regression021618 passed on same6b67e19907e4fc2ffdf4894eeddf86a2f26cda6962b9467fdb8ba7520c2776ab assembly. Build021430 succeeded0errors35warnings. Old020414 observer gate removed/superseded; its positional inference was unsupported. Only this controlled route accepted; remaining roster projectiles/heights/edges/interrupts/awake jumps/full matches pending. Prior all-roster acceptance retains older DLL identity.",
+                         "source_file": "Evidence/moving-target-flight-acceptance.json",
+                         "tags": ["REA", "Follow", "GoForward", "Sora", "UpAttack2", "moving target", "impact", "damage", "fixture", "aim"]
+                     },
+                     {
+                         "id":  "maya-production-native-restoration-20261016",
+                         "status":  "inferred",
+                         "statement":  "sumonOnCollider and ZigzagController reconstructed from corrected ARM64 and prefab references. Personal licensing retry resolved initial Editor failure without configuration changes. Current Editor build succeeds; final controlled Maya production probe passes with errors=[]: four collision producers reject missing Description, create correct target-pose children, both floor beams move and reverse. Synthetic remote targets/layer0, FlowerBeam collider explicitly enabled; natural activation and aiming unaccepted.",
+                         "source_file":  "Evidence/maya-production-native-contract.json",
+                         "tags":  [
+                                      "Maya",
+                                      "collision",
+                                      "leaf",
+                                      "flower",
+                                      "floor beam",
+                                      "ZigzagController",
+                                      "sumonOnCollider",
+                                      "license",
+                                      "runtime pending"
+                                  ]
+                     },
+                     {
+                         "id":  "windows-smoke",
+                         "status":  "observed",
+                         "statement":  "Windows player passed boot through menus and selection into Sora versus Amon arena, directional movement2.276128units, exact camera target pose, and one observed player and CPU projectile; no exceptions in this bounded run.",
+                         "source_file":  "Evidence/offline-player-probe-20261015-170651.json",
+                         "tags":  [
+                                      "offline",
+                                      "boot",
+                                      "input",
+                                      "camera",
+                                      "attacks"
+                                  ]
+                     },
+                     {
+                         "id":  "normal-rounds",
+                         "status":  "observed",
+                         "statement":  "Synthetic physics falls through the actual recovered DeathZone awarded points, respawned Amon twice and produced3-0 victory, rankS,6crystals. Repeated InitResults awarded no additional currency. This is not proof of attack-caused falls.",
+                         "source_file":  "Evidence/offline-round-probe-20261015-171155.json",
+                         "tags":  [
+                                      "offline",
+                                      "duel-score",
+                                      "economy",
+                                      "respawn",
+                                      "victory"
+                                  ]
+                     },
+                     {
+                         "id":  "projectile-impact",
+                         "status":  "observed",
+                         "statement":  "Historical pre-effect-field-fix observation; not correct reaction-dispatch acceptance. A recovered AirAtk instantiated inside the CPU collider produced damage accumulator delta0.5 and one damage event. Subsequent normal physics rounds and results also passed without exceptions. Aiming and every elemental attack are outside this fixture.",
+                         "source_file":  "Evidence/offline-impact-probe-20261015-171347.json",
+                         "tags":  [
+                                      "offline",
+                                      "defense",
+                                      "attacks",
+                                      "damage"
+                                  ]
+                     },
+                     {
+                         "id":  "survival-replacements",
+                         "status":  "observed",
+                         "statement":  "Survival probe replaced CPU Dante with Eliot then Aura at points1/2, preserved fighter owner references, and on synthetic host fall produced score2-1,rank2,reward4,record2; no runtime exceptions after fixing the observer\u0027s destroyed-CPU dereference.",
+                         "source_file":  "Evidence/offline-survival-probe-20261015-171702.json",
+                         "tags":  [
+                                      "offline",
+                                      "survival",
+                                      "respawn",
+                                      "save",
+                                      "economy"
+                                  ]
+                     },
+                     {
+                         "id":  "tournament-winning-path",
+                         "status":  "observed",
+                         "statement":  "Tournament probe debited the actual menu fee50, entered the bracket, ran three synthetic3-0 arena wins and returned to finalround6 with7eliminated players and player1 champion. Original reconstruction save data was restored after temporary eligibility fixture.",
+                         "source_file":  "Evidence/offline-tournament-probe-20261015-172112.json",
+                         "tags":  [
+                                      "offline",
+                                      "tournament",
+                                      "navigation",
+                                      "economy"
+                                  ]
+                     },
+                     {
+                         "id":  "tournament-prize",
+                         "status":  "observed",
+                         "statement":  "Final tournament probe additionally delivered exactly1trophy for level1 and activated replay menu, with no exceptions; source native award is tourneyLevel. Original save bytes and captured preferences were restored. Other tournament levels, loss and replay remain unverified.",
+                         "source_file":  "Evidence/offline-tournament-probe-20261015-172532.json",
+                         "tags":  [
+                                      "offline",
+                                      "tournament",
+                                      "economy",
+                                      "save"
+                                  ]
+                     },
+                     {
+                         "id":  "visual-ui-restored",
+                         "status":  "observed",
+                         "statement":  "Opened combat screenshot shows legible TMP text and absent offline WAITING/ExitMenu overlays after owner fixes. The arena floor is still white, so overall visual equivalence has not passed.",
+                         "source_file":  "Evidence/offline-impact-probe-20261015-171347.combat.png",
+                         "tags":  [
+                                      "assets",
+                                      "UI",
+                                      "camera",
+                                      "unknown"
+                                  ]
+                     },
+                     {
+                         "id":  "floor-cause",
+                         "status":  "observed",
+                         "statement":  "Controlled frozen-scene Windows A/B confirmed the dummy DynamicShadowProjector shader causes the white Stage0 floor: disabling only Projector components reveals the existing brown textured ground. Materials/lights were unchanged and original component flags restored. Dynamic shadow texture generation remains unimplemented.",
+                         "source_file":  "Evidence/offline-graphics-probe-20261015-173810.json",
+                         "tags":  [
+                                      "assets",
+                                      "stages",
+                                      "graphics",
+                                      "projector"
+                                  ]
+                     },
+                     {
+                         "id":  "roster-basic-twelve",
+                         "status":  "observed",
+                         "statement":  "Repeat Windows roster probe selected all twelve shipped fighters, spawned each in arena and sampled one basic attack without exceptions. Each produced at least one observed player attack entity. Agata material-cache failure was resolved. Save bytes and captured preferences restored; full specials/defenses/moves and visual fidelity remain unverified.",
+                         "source_file":  "Evidence/offline-roster-probe-20261015-173352.json",
+                         "tags":  [
+                                      "offline",
+                                      "characters",
+                                      "attacks",
+                                      "roster"
+                                  ]
+                     },
+                     {
+                         "id":  "stage-purchase-boundary",
+                         "status":  "observed",
+                         "statement":  "Corrected Windows menu probe passed129 native translation assignments, rejection at299 crystals, exact300 debit and stage1 ownership persisted/read back from JSON, then original Button.onClick OpenSettings and EventTrigger PointerClick CloseSettings callbacks toggled closeBG correctly. Original save bytes/preferences restored. Settings option values and remaining menus were not accepted by this bounded probe.",
+                         "source_file":  "Evidence/offline-menu-probe-20261015-174045.json",
+                         "tags":  [
+                                      "offline",
+                                      "menus",
+                                      "economy",
+                                      "save",
+                                      "stages"
+                                  ]
+                     },
+                     {
+                         "id":  "projector-shader-gpu",
+                         "status":  "observed",
+                         "statement":  "Repaired projector shader Windows probe passed without exceptions. Full1920x1080 frozen frames: original fallback and white-cookie output equal disabled projectors exactly (0changed pixels); black cookie darkens251499pixels and brightens0 aboveRGB tolerance2. Images inspected show textured ground restored. Approximate shader, not original source; dynamic shadow texture generation remains stubbed.",
+                         "source_file":  "Evidence/offline-graphics-probe-20261015-174126.pixel-comparison.json",
+                         "tags":  [
+                                      "graphics",
+                                      "stages",
+                                      "projector",
+                                      "shader",
+                                      "offline"
+                                  ]
+                     },
+                     {
+                         "id":  "all-roster-frontal-defense",
+                         "status":  "observed",
+                         "statement":  "Twelve fighters passed24 synthetic recovered-AirAtk frontal defense collisions through actual B pointer input. Low strength1 adds.5 and preserves Blocking; strength3 adds1.5 and breaks Blocking. Correct Description.effect dispatch was included. No natural aiming, side/back or shield-meter acceptance.",
+                         "source_file":  "Evidence/offline-defenses-probe-20261015-175848.json",
+                         "tags":  [
+                                      "offline",
+                                      "defense",
+                                      "damage",
+                                      "characters"
+                                  ]
+                     },
+                     {
+                         "id":  "specials-roster-phases",
+                         "status":  "observed",
+                         "statement":  "All twelve shipped fighters completed actual Special UI awakening, natural discharge toNumSpecials1 and one phase1 special across retained runs. Ten cases completed before later Raven Torus error; Raven and Maya passed individual reruns after correction. Build hashes retained per case; not one clean full-roster run or full moveset acceptance.",
+                         "source_file":  "Evidence/specials-roster-acceptance.json",
+                         "tags":  [
+                                      "offline",
+                                      "characters",
+                                      "special",
+                                      "awakening"
+                                  ]
+                     },
+                     {
+                         "id":  "maya-prison-chain",
+                         "status":  "observed",
+                         "statement":  "Fresh Maya actual SetAButton pointer input created opponent-positioned BranchPrisonATK and real trap without synthetic CPU relocation. PrisonExplosion, synchronous BranchCrushAtk layer9/correct cage target, cage destruction and cleared owner passed. Brief collider enable/disable window was not directly sampled. No miss/weak/general aiming parity claim.",
+                         "source_file":  "Evidence/offline-prison-probe-20261015-191606.json",
+                         "tags":  [
+                                      "offline",
+                                      "Maya",
+                                      "prison",
+                                      "animation",
+                                      "cleanup",
+                                      "positioning"
+                                  ]
+                     },
+                     {
+                         "id":  "maya-healing-special",
+                         "status":  "observed",
+                         "statement":  "Isolated Maya special probe passed both phases, restored synthetic damage to0, observed healing particles and wings scale magnitude1.732051, with0 destroyed life crystals remaining. Charge was accelerated and CPU disabled; save/preferences restored.",
+                         "source_file":  "Evidence/offline-specials-probe-20261015-182812.json",
+                         "tags":  [
+                                      "offline",
+                                      "Maya",
+                                      "healing",
+                                      "special",
+                                      "UI"
+                                  ]
+                     },
+                     {
+                         "id":  "post-effect-projectile-impact",
+                         "status":  "observed",
+                         "statement":  "After Description.effect dispatch correction, recovered AirAtk overlap produced damage delta1 and two damage events; synthetic physics rounds then passed two respawns,3-0/rankS/reward6 and idempotent reward. Short natural observation counted player1/CPU2 attacks and four hit events. This is not natural aiming or attack-caused win acceptance.",
+                         "source_file":  "Evidence/offline-impactandrounds-probe-20261015-182930.json",
+                         "tags":  [
+                                      "offline",
+                                      "damage",
+                                      "attacks",
+                                      "effect",
+                                      "victory"
+                                  ]
+                     },
+                     {
+                         "id":  "settings-settled-poses",
+                         "status":  "observed",
+                         "statement":  "Original settings UI callbacks reached authored open x=-160.4 and closed x=-722.7173 within1 of key -723, using native Play animation states. Both screenshots inspected; settings text panel disappears after close. Open labels remain clipped and character overexposure remains unresolved; no full graphics/UI fidelity claim. Economy/persistence checks passed and exact save bytes restored.",
+                         "source_file":  "Evidence/offline-menu-probe-20261015-183440.json",
+                         "tags":  [
+                                      "offline",
+                                      "menus",
+                                      "animation",
+                                      "settings",
+                                      "graphics"
+                                  ]
+                     },
+                     {
+                         "id":  "all-roster-directional-routes",
+                         "status":  "observed",
+                         "statement":  "One clean Windows run passed120 actual pointer-input routes, ten each for all12 fighters, with native variant alternation and controller-specific state entry/exit. Sampled42 motion records and12 authored yaw objects. CPU disabled and spatial reset fixture; no natural aiming, attack-caused match-win, every dependency or full combat fidelity claim. This build predates later touch-input restoration.",
+                         "source_file":  "Evidence/directional-moves-acceptance.json",
+                         "tags":  [
+                                      "offline",
+                                      "characters",
+                                      "combat",
+                                      "directional",
+                                      "A",
+                                      "X",
+                                      "attacks",
+                                      "motion",
+                                      "rotation"
+                                  ]
+                     },
+                     {
+                         "id":  "earth-prison-caught-miss",
+                         "status":  "observed",
+                         "statement":  "Diana real alternating down inputs passed centered trap and synthetic sideways CPU miss in fresh scenes. Actual physics PrisonFree/trap, all4walls closure3.201, no reverse and expiry5.770964s; miss reversed all4walls by3.347..3.605 and expired4.013809s. No Ren, weak/release or natural evasion acceptance. Save/preferences restored.",
+                         "source_file":  "Evidence/offline-earthprison-probe-20261015-190624.json",
+                         "tags":  [
+                                      "offline",
+                                      "Diana",
+                                      "earth",
+                                      "prison",
+                                      "walls",
+                                      "collision",
+                                      "cleanup"
+                                  ]
+                     },
+                     {
+                         "id":  "dragonwood-chain-motion",
+                         "status":  "observed",
+                         "statement":  "Actual Maya down-input alternation produced DragonWood. Over5.201756scaled seconds/243samples speed0-\u003e13 at1.501787s, roottravel48.37587, headtravel81.85461, localYrange3.999998, history60 and12followers each171matching moving poses. Synthetic GetDamage.5 emitted1realGameEvents and set playerWeak; That baseline did not test onDamageRecived; later accepted overlap case is recorded separately in dragonwood-collision-interruption.",
+                         "source_file":  "Evidence/offline-dragonwood-probe-20261015-190932.json",
+                         "tags":  [
+                                      "offline",
+                                      "Maya",
+                                      "dragon",
+                                      "path",
+                                      "motion",
+                                      "followers",
+                                      "damage"
+                                  ]
+                     },
+                     {
+                         "id":  "touch-controls-and-settings",
+                         "status":  "observed",
+                         "statement":  "Actual settings PointerClick callbacks and inversion Toggle persisted native values; Dpad Right PointerEnter/Exit input1-\u003e0 movedfighter1.708534. Fixed joystick pointer/drag half(.5,0) forwarded byInputReader, full clamp(1,0) movedfighter1.790758, releasezero. Original prefs/save restored. Controller UI retainedA/B; no physical gamepad/Android/allmodes acceptance.",
+                         "source_file":  "Evidence/offline-menu-probe-20261015-190827.json",
+                         "tags":  [
+                                      "offline",
+                                      "menus",
+                                      "controls",
+                                      "joystick",
+                                      "dpad",
+                                      "touch",
+                                      "input",
+                                      "save"
+                                  ]
+                     },
+                     {
+                         "id":  "physical-gamepad-locomotion",
+                         "status":  "unknown",
+                         "statement":  "Physical controller locomotion has not been demonstrated. Native JoystickSettings writes GameController-\u003eMobileInputs legacy x/z, but native MobileInputs movement reads InputReader.inputSet. No new bridge was invented. Preference/UI switching is accepted separately and does not prove physical gamepad play.",
+                         "source_file":  "Knowledge/joystick-settings-reconstruction.md",
+                         "tags":  [
+                                      "controls",
+                                      "controller",
+                                      "gamepad",
+                                      "input",
+                                      "unknown"
+                                  ]
+                     },
+                     {
+                         "id":  "dragonwood-collision-interruption",
+                         "status":  "observed",
+                         "statement":  "Fresh DragonWood motion/12follower checks passed, then synthetic recovered AirAtk overlap inside Maya collider on layer8 emitted one NATURAL damage callback. StopMovePath changed jumps3-\u003e6(max6), disableJump true, headlocalY delta-.2999997 in3Updates expected-.3. No direct HitAnimation/event/parameter mutation; aiming/other collision/lifetime and postdestroy cleanup behavior remain unverified.",
+                         "source_file":  "Evidence/offline-dragonwood-probe-20261015-192028.json",
+                         "tags":  [
+                                      "offline",
+                                      "Maya",
+                                      "dragon",
+                                      "collision",
+                                      "interruption",
+                                      "damage",
+                                      "path"
+                                  ]
+                     },
+                     {
+                         "id":  "raven-trap-power-up",
+                         "status":  "observed",
+                         "statement":  "Fresh Raven ten-route run passed, errors empty. Read-only owner powered flag plus actual damage/defense/FX observed: Snake2-\u003e3/1-\u003e2, Wolf1-\u003e2/0-\u003e1, Bat1-\u003e2/0-\u003e1, Bird1-\u003e2/0-\u003e1 through normal trap detection. CPU disabled and actor positions reset per move. Scale at operation entry was not sampled, so exact1.25 multiplier/local child curves/cooldown/no-stack/Spider jump remain unaccepted.",
+                         "source_file":  "Evidence/offline-moves-probe-20261015-192535.json",
+                         "tags":  [
+                                      "offline",
+                                      "Raven",
+                                      "shadow",
+                                      "trap",
+                                      "power-up",
+                                      "damage",
+                                      "defense",
+                                      "special"
+                                  ]
+                     },
+                     {
+                         "id":  "maya-production-runtime-20261016",
+                         "status":  "observed",
+                         "statement":  "Final Windows probe015656 passed/errors=[]: LeafFrontHit/LeafAtkL/LeafAtkR produce SlashFX and FlowerBeam produces CircleExplotion after real trigger overlaps, target-pose errors0/no parent. Missing Description rejected. Both floor beams48sampledframes/5reversals, lateral errors below.000028. Synthetic layer0 targets, FlowerBeam explicitly enabled, CPU disabled, save restored. Natural activation/aiming and visual parity not accepted. Unity Personal license retry succeeded; initial exit198 historical.",
+                         "source_file":  "Evidence/offline-mayaproduction-probe-20261016-015656.json",
+                         "tags":  [
+                                      "Maya",
+                                      "collision",
+                                      "leaf",
+                                      "flower",
+                                      "zigzag",
+                                      "runtime",
+                                      "license resolved"
+                                  ]
+                     },
+                     {
+                         "id":  "desktop-controls-os-acceptance",
+                         "status":  "observed",
+                         "statement":  "Windows reconstruction Sora passed actual OS default arrows/Z/X/C and alternate WASD/left-click/left-Shift/Space input. Eight cardinal movement/release cases, BasicAttack, directional Evade JumpL, Awakening and phase1 Special observed. CPU disabled; super charge accelerated. Hover did not attack. Alternate toggle persisted across scene reload without inversion changes. Both screenshots inspected. Menu regression passed on the same rebuilt assembly ff47aa8fb7ee511de062e70e4f9324a6d6f25a6dfce7252a0cf39ef74db39779. Reports: offline-desktopcontrols-probe-20261015-214806.json and offline-menu-probe-20261015-215010.json. Neutral shield, right Shift, full roster, all evade directions, natural charge, focus/pause and original fidelity remain unaccepted.",
+                         "source_file":  "Evidence/desktop-controls-acceptance.json",
+                         "tags":  [
+                                      "keyboard",
+                                      "teclado",
+                                      "raton",
+                                      "mouse",
+                                      "flechas",
+                                      "arrows",
+                                      "WASD",
+                                      "Space",
+                                      "esquivar",
+                                      "super",
+                                      "settings",
+                                      "controls",
+                                      "input",
+                                      "Shift",
+                                      "Z/X/C"
+                                  ]
+                     },
+                     {
+                         "id":  "collider-disable-native-physics",
+                         "status":  "observed",
+                         "statement":  "DisableColliderOnCollition and LM restored from corrected original ARM64 evidence. First filters opposite layer 8/9 and its OWN Description.Type when onlyByPlayers=true; LM uses its own BoxCollider Attack/Player tag and ignores the incoming collider. Twelve serialized prefab references inventoried. Fourteen synthetic real-physics branch cases passed in offline-mayaproduction-probe-20261015-220052.json, plus four Maya producers and two floor beams. Deliberate adaptation: skip null col, matching missing reference in original LeftWaterAtk2 asset, instead of native null fault. No fallback or asset edit. Current Windows build030029 succeeded 0 errors/25 warnings. FlowerBeam natural activation, natural aiming and original runtime parity remain unknown. Local Capstone/metadata evidence following REA skill, not connected REA MCP output.",
+                         "source_file":  "Evidence/collider-disable-native-contract.json",
+                         "tags":  [
+                                      "REA",
+                                      "native",
+                                      "collider",
+                                      "collision",
+                                      "colision",
+                                      "Maya",
+                                      "water",
+                                      "shadow",
+                                      "stub",
+                                      "onlyByPlayers",
+                                      "Char",
+                                      "DisableColliderOnCollition"
+                                  ]
+                     },
+                     {
+                         "id":  "animation-collider-native-window",
+                         "status":  "observed",
+                         "statement":  "DisableColliderAnim restored from corrected native ARM64 and metadata. Wait scaled delay and layer1 retry .02; layer8 selects HostPlayer animator, others GuestPlayer; CheckAttack repeats .05. Only Light actor UpAttack2 changes own box: false strictly between normalized .2 and .45, true otherwise in matching state, unrelated state/element unchanged. Inventory25 prefabs26 instances. Final MayaProduction221526 passed both delayed bindings, six window cases and filters. Controlled actor element/state, animation events disabled/restored, not natural Light combat. Current build031515 succeeded0errors27warnings.",
+                         "source_file":  "Evidence/animation-collider-native-contract.json",
+                         "tags":  [
+                                      "REA",
+                                      "native",
+                                      "Light",
+                                      "luz",
+                                      "animacion",
+                                      "collider",
+                                      "DisableColliderAnim",
+                                      "UpAttack2"
+                                  ]
+                     },
+                     {
+                         "id":  "flower-natural-visual-damage-route",
+                         "status":  "observed",
+                         "statement":  "Grass UpAttack original clip creates child FlowerBeam at3.3666666 then FlowerSpecial via CreateAttack at3.4833333. Maya actual directional/button UGUI route in report221526 produced parented FlowerBeam:140 sampledframes, disabled root collider and Description until natural expiry; separate FlowerSpecial active collider/damage. No manual enable in this route. Supports visual/damage split for this route rather than missing FlowerBeam enable owner; other emitters/original runtime remain unknown. Older isolated producer fixture still explicitly enables FlowerBeam and is separate coverage.",
+                         "source_file":  "Evidence/animation-collider-native-contract.json",
+                         "tags":  [
+                                      "REA",
+                                      "FlowerBeam",
+                                      "FlowerSpecial",
+                                      "Maya",
+                                      "flor",
+                                      "natural",
+                                      "visual",
+                                      "damage",
+                                      "activacion",
+                                      "UpAttack"
+                                  ]
+                     },
+                     {
+                         "id":  "collider-geometry-native-lifecycle",
+                         "status":  "observed",
+                         "statement":  "ChangeColliderCenter and ChangeColliderScale restored from original corrected ARM64. Start disables Behaviour until delayed Invoke, default duration1; BoxCollider.center/size Lerp uses elapsed/duration then increments deltaTime. Strict elapsed\u003eduration schedules Destroy(this), retaining box/GameObject. Nine recovered configurations across WaterWaveAtk, WaterAtkStrong, ShadowSnakeAtk passed isolated real Start/Invoke/Update/destroy fixtures with zero sampled/final error in report221526. Natural attack impacts and simultaneous-writer ordering remain unaccepted. Current Windows031515 build0errors27warnings.",
+                         "source_file":  "Evidence/collider-geometry-native-contract.json",
+                         "tags":  [
+                                      "REA",
+                                      "native",
+                                      "collider",
+                                      "geometry",
+                                      "geometria",
+                                      "agua",
+                                      "WaterWaveAtk",
+                                      "WaterAtkStrong",
+                                      "ShadowSnakeAtk",
+                                      "ChangeColliderCenter",
+                                      "ChangeColliderScale"
+                                  ]
+                     },
+                     {
+                         "id":  "dynamic-shadow-basic-gpu-automatic",
+                         "status":  "observed",
+                         "statement":  "Partial authored Built-In ShadowTextureRenderer/DrawTargetObject core and approximate opaque/transparent/cutout masks restored following REA skill with local retained native evidence. Static12fighters13basic profiles, no advanced blur/mip/supersampling/view clipping. Graphics offline-graphics-probe-20261015-232058.json passed/errors=[] on Diana/Vinea. Two unique128x128 GPU silhouettes correctly bound; controlled Vinea BasicAttack .1/.6 changed52bones and1741pixels with automatic camera rendering, no Camera.Render. Disable released texture/stopped camera; enable recreated it. Animator/time restored; historical ordinary Graphics save/preferences restoration claim was unsupported because its snapshot was not wired. Build042030 succeeded0errors32warnings, assembly b8dc399ba2439279e11c62e9dabdc7e4790dcdd084218b8f4f7276f14effd40e. Earlier failed observer picked auxiliary Valen animator state0; no skinning failure established. Historical checkpoint; later shadow-quality-roster-native finding supersedes all-roster/quality limits. No full vendor recovery, original parity or performance acceptance.",
+                         "source_file":  "Evidence/dynamic-shadow-core-contract.json",
+                         "tags":  [
+                                      "REA",
+                                      "shadow",
+                                      "sombras",
+                                      "dinamicas",
+                                      "GPU",
+                                      "ShadowTextureRenderer",
+                                      "DrawTargetObject",
+                                      "automatic",
+                                      "animacion",
+                                      "texture",
+                                      "lifecycle",
+                                      "Diana",
+                                      "Vinea"
+                                  ]
+                     },
+                     {
+                         "id":  "shadow-quality-roster-native",
+                         "status":  "observed",
+                         "statement":  "ShadowController restored from retained native evidence: MainLight tag, graphicsChange subscription through inactivity, exact quality==1, unsubscribe on destroy; retained publisher/null guards are adaptations. Corrected DrawTargetObject light-forward/target-axis orientation and preserved Awake offset across OnEnable. Final roster234058 passed all12 normal fighters/60 quality/12 follow/12 automatic animation/25 GPU cookie checks, maximum follow error6.848052E-07; dormant Sora alternate excluded. Final Graphics234404 passed Vinea52bones/1770pixels. Both final runs explicitly snapshot/restore fixtures; old ordinary Graphics restoration claims unsupported. Build044023 succeeded0errors33warnings, assembly11c5bf91564a87b8978c0afd036a6ef070aafb8ee2285cf898c9435f1952c618. Pref/event matrix does not establish resolution UI, original shader parity, advanced shadows, natural combat, performance or Android.",
+                         "source_file":  "Evidence/shadow-quality-roster-contract.json",
+                         "tags":  [
+                                      "REA",
+                                      "shadow",
+                                      "sombras",
+                                      "ShadowController",
+                                      "DrawTargetObject",
+                                      "MainLight",
+                                      "quality",
+                                      "GPU",
+                                      "roster",
+                                      "follow",
+                                      "lifecycle"
+                                  ]
+                     },
+                     {
+                         "id":  "ability-aiming-normal-and-super",
+                         "status":  "observed",
+                         "statement":  "REA local native/YAML reconstruction corrected18 targeting/motion/spawn owners and approximate2 additive particle shaders. Static12fighters/132states/164prefabs/109sources. Final AbilityAim012136 passed120 UGUI routes/live facing,96 root cases,60 homing/24 lock/12 curve profiles and supplemental checks;48 accumulated Follow entity samples, maximum facing0.02797646 degrees. Final Specials013210 passed12 active-awakening normal routes,12 natural decharge transitions and12 phase1 supers. Each awakened normal route recovered while awakening remained active; supers measured in separate361–374 frame windows. Maximum facing0.02797646 degrees. REA event audit: Raven3 and Maya2 authored CreateAwakeAtk events; dynamic jump projectile aim pending. Same build012047 succeeded0 errors/34 warnings, assembly93a66d4f0d01754eb4d65afabc54142e77e3b9fd236256a60abbe6e103761722.120 move/12 awakened/12 super images retained;12 current contact sheets reviewed. Save/preferences restored. Still pending moving targets/impact/interrupts/all awakened directions, natural charging, original visual parity, performance, online and Android.",
+                         "source_file":  "Evidence/ability-aiming-acceptance.json",
+                         "tags":  [
+                                      "REA",
+                                      "aim",
+                                      "apuntar",
+                                      "oponente",
+                                      "habilidades",
+                                      "roster",
+                                      "Follow",
+                                      "GoForward",
+                                      "LookAt",
+                                      "super",
+                                      "awakening",
+                                      "particle",
+                                      "shader",
+                                      "Maya",
+                                      "Raven",
+                                      "awakened-normal",
+                                      "CreateAwakeAtk"
+                                  ]
+                     }
+                 ]
+}

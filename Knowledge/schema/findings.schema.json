@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:true-masters-reconstruction:findings:v1",
+  "title": "Evidence finding ledger",
+  "description": "Accepted as an array or an entries/findings envelope. Extra metadata is retained.",
+  "$defs": {
+    "finding": {
+      "type": "object",
+      "required": ["id", "statement", "status", "source_file"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "statement": {"type": "string", "minLength": 1},
+        "status": {"enum": ["observed", "inferred", "unknown"]},
+        "source_file": {"type": "string", "minLength": 1},
+        "start_seconds": {"type": ["number", "null"], "minimum": 0},
+        "end_seconds": {"type": ["number", "null"], "minimum": 0},
+        "tags": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": true
+    },
+    "entries": {"type": "array", "items": {"$ref": "#/$defs/finding"}}
+  },
+  "oneOf": [
+    {"$ref": "#/$defs/entries"},
+    {"type": "object", "required": ["entries"], "properties": {"entries": {"$ref": "#/$defs/entries"}}, "not": {"required": ["findings"]}, "additionalProperties": true},
+    {"type": "object", "required": ["findings"], "properties": {"findings": {"$ref": "#/$defs/entries"}}, "not": {"required": ["entries"]}, "additionalProperties": true}
+  ]
+}

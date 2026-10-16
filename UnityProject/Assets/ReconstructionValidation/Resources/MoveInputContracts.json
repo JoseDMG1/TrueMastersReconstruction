@@ -1,0 +1,1207 @@
+{
+  "scope": "Static expected state, not runtime acceptance",
+  "source": "Evidence/roster-moveset-audit.json",
+  "sourceSha256": "968593d73af5c20f51bdff7c6beb80c42192ffcd8e5b6be385f9fbdba3f78c40",
+  "routes": [
+    {
+      "fighter": "Sora",
+      "direction": 0,
+      "variant": 0,
+      "state": "BasicAttack",
+      "controller": "UnityProject/Assets/AnimatorController/AirAnimatorController.controller",
+      "controllerSha256": "4be1a3a02382c156e8f7eb03708e49584f5871ea0d25d4c5887c48386635bdea",
+      "transitionId": "1109693062532245359",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Sora",
+      "direction": 0,
+      "variant": 1,
+      "state": "BasicAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/AirAnimatorController.controller",
+      "controllerSha256": "4be1a3a02382c156e8f7eb03708e49584f5871ea0d25d4c5887c48386635bdea",
+      "transitionId": "1109292246286975720",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Sora",
+      "direction": 1,
+      "variant": 0,
+      "state": "UpAttack",
+      "controller": "UnityProject/Assets/AnimatorController/AirAnimatorController.controller",
+      "controllerSha256": "4be1a3a02382c156e8f7eb03708e49584f5871ea0d25d4c5887c48386635bdea",
+      "transitionId": "1109043919389829319",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Sora",
+      "direction": 1,
+      "variant": 1,
+      "state": "UpAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/AirAnimatorController.controller",
+      "controllerSha256": "4be1a3a02382c156e8f7eb03708e49584f5871ea0d25d4c5887c48386635bdea",
+      "transitionId": "1109149520701623706",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Sora",
+      "direction": 2,
+      "variant": 0,
+      "state": "DownAttack",
+      "controller": "UnityProject/Assets/AnimatorController/AirAnimatorController.controller",
+      "controllerSha256": "4be1a3a02382c156e8f7eb03708e49584f5871ea0d25d4c5887c48386635bdea",
+      "transitionId": "1109743393880019028",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Sora",
+      "direction": 2,
+      "variant": 1,
+      "state": "DownAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/AirAnimatorController.controller",
+      "controllerSha256": "4be1a3a02382c156e8f7eb03708e49584f5871ea0d25d4c5887c48386635bdea",
+      "transitionId": "1109384403120170545",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Sora",
+      "direction": 3,
+      "variant": 0,
+      "state": "RightAttack",
+      "controller": "UnityProject/Assets/AnimatorController/AirAnimatorController.controller",
+      "controllerSha256": "4be1a3a02382c156e8f7eb03708e49584f5871ea0d25d4c5887c48386635bdea",
+      "transitionId": "1109572839542275309",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Sora",
+      "direction": 3,
+      "variant": 1,
+      "state": "RightAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/AirAnimatorController.controller",
+      "controllerSha256": "4be1a3a02382c156e8f7eb03708e49584f5871ea0d25d4c5887c48386635bdea",
+      "transitionId": "1109026196548002408",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Sora",
+      "direction": 4,
+      "variant": 0,
+      "state": "LeftAttack",
+      "controller": "UnityProject/Assets/AnimatorController/AirAnimatorController.controller",
+      "controllerSha256": "4be1a3a02382c156e8f7eb03708e49584f5871ea0d25d4c5887c48386635bdea",
+      "transitionId": "1109279359913592680",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Sora",
+      "direction": 4,
+      "variant": 1,
+      "state": "LeftAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/AirAnimatorController.controller",
+      "controllerSha256": "4be1a3a02382c156e8f7eb03708e49584f5871ea0d25d4c5887c48386635bdea",
+      "transitionId": "1109094320201520353",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Vinea",
+      "direction": 0,
+      "variant": 0,
+      "state": "BasicAttack",
+      "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
+      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "transitionId": null,
+      "defaultEntry": true
+    },
+    {
+      "fighter": "Vinea",
+      "direction": 0,
+      "variant": 1,
+      "state": "BasicAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
+      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "transitionId": "1109630643969539439",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Vinea",
+      "direction": 1,
+      "variant": 0,
+      "state": "UpAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
+      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "transitionId": "1109094320201520353",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Vinea",
+      "direction": 1,
+      "variant": 1,
+      "state": "UpAttack",
+      "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
+      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "transitionId": "1109693062532245359",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Vinea",
+      "direction": 2,
+      "variant": 0,
+      "state": "DownAttack",
+      "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
+      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "transitionId": "1109026196548002408",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Vinea",
+      "direction": 2,
+      "variant": 1,
+      "state": "DownAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
+      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "transitionId": "1109572839542275309",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Vinea",
+      "direction": 3,
+      "variant": 0,
+      "state": "RightAttack",
+      "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
+      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "transitionId": "1109279359913592680",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Vinea",
+      "direction": 3,
+      "variant": 1,
+      "state": "RightAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
+      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "transitionId": "1109149520701623706",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Vinea",
+      "direction": 4,
+      "variant": 0,
+      "state": "LeftAttack",
+      "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
+      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "transitionId": "1109384403120170545",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Vinea",
+      "direction": 4,
+      "variant": 1,
+      "state": "LeftAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
+      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "transitionId": "1109292246286975720",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Diana",
+      "direction": 0,
+      "variant": 0,
+      "state": "BasicAttack",
+      "controller": "UnityProject/Assets/AnimatorController/EarthAnimatorController.controller",
+      "controllerSha256": "33a92cc907628efec8ab6da4fdf3b49a725f853b50b75e6e14071308fadea2fc",
+      "transitionId": "1109693062532245359",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Diana",
+      "direction": 0,
+      "variant": 1,
+      "state": "BasicAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/EarthAnimatorController.controller",
+      "controllerSha256": "33a92cc907628efec8ab6da4fdf3b49a725f853b50b75e6e14071308fadea2fc",
+      "transitionId": "1109292246286975720",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Diana",
+      "direction": 1,
+      "variant": 0,
+      "state": "UpAttack",
+      "controller": "UnityProject/Assets/AnimatorController/EarthAnimatorController.controller",
+      "controllerSha256": "33a92cc907628efec8ab6da4fdf3b49a725f853b50b75e6e14071308fadea2fc",
+      "transitionId": "1109043919389829319",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Diana",
+      "direction": 1,
+      "variant": 1,
+      "state": "UpAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/EarthAnimatorController.controller",
+      "controllerSha256": "33a92cc907628efec8ab6da4fdf3b49a725f853b50b75e6e14071308fadea2fc",
+      "transitionId": "1109279359913592680",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Diana",
+      "direction": 2,
+      "variant": 0,
+      "state": "DownAttack",
+      "controller": "UnityProject/Assets/AnimatorController/EarthAnimatorController.controller",
+      "controllerSha256": "33a92cc907628efec8ab6da4fdf3b49a725f853b50b75e6e14071308fadea2fc",
+      "transitionId": "1109743393880019028",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Diana",
+      "direction": 2,
+      "variant": 1,
+      "state": "DownAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/EarthAnimatorController.controller",
+      "controllerSha256": "33a92cc907628efec8ab6da4fdf3b49a725f853b50b75e6e14071308fadea2fc",
+      "transitionId": "1109572839542275309",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Diana",
+      "direction": 3,
+      "variant": 0,
+      "state": "RightAttack",
+      "controller": "UnityProject/Assets/AnimatorController/EarthAnimatorController.controller",
+      "controllerSha256": "33a92cc907628efec8ab6da4fdf3b49a725f853b50b75e6e14071308fadea2fc",
+      "transitionId": "1109026196548002408",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Diana",
+      "direction": 3,
+      "variant": 1,
+      "state": "RightAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/EarthAnimatorController.controller",
+      "controllerSha256": "33a92cc907628efec8ab6da4fdf3b49a725f853b50b75e6e14071308fadea2fc",
+      "transitionId": "1109384403120170545",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Diana",
+      "direction": 4,
+      "variant": 0,
+      "state": "LeftAttack",
+      "controller": "UnityProject/Assets/AnimatorController/EarthAnimatorController.controller",
+      "controllerSha256": "33a92cc907628efec8ab6da4fdf3b49a725f853b50b75e6e14071308fadea2fc",
+      "transitionId": "1109094320201520353",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Diana",
+      "direction": 4,
+      "variant": 1,
+      "state": "LeftAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/EarthAnimatorController.controller",
+      "controllerSha256": "33a92cc907628efec8ab6da4fdf3b49a725f853b50b75e6e14071308fadea2fc",
+      "transitionId": "1109149520701623706",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Amon",
+      "direction": 0,
+      "variant": 0,
+      "state": "BasicAttack",
+      "controller": "UnityProject/Assets/AnimatorController/char1_Animation_controller.controller",
+      "controllerSha256": "7c700dd186d28065895f7e19d780e2b4cbd9748c06b48596e68224140fa7fb67",
+      "transitionId": "1109149520701623706",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Amon",
+      "direction": 0,
+      "variant": 1,
+      "state": "BasicAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/char1_Animation_controller.controller",
+      "controllerSha256": "7c700dd186d28065895f7e19d780e2b4cbd9748c06b48596e68224140fa7fb67",
+      "transitionId": "1109384403120170545",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Amon",
+      "direction": 1,
+      "variant": 0,
+      "state": "UpAttack",
+      "controller": "UnityProject/Assets/AnimatorController/char1_Animation_controller.controller",
+      "controllerSha256": "7c700dd186d28065895f7e19d780e2b4cbd9748c06b48596e68224140fa7fb67",
+      "transitionId": "1109215879266689626",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Amon",
+      "direction": 1,
+      "variant": 1,
+      "state": "UpAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/char1_Animation_controller.controller",
+      "controllerSha256": "7c700dd186d28065895f7e19d780e2b4cbd9748c06b48596e68224140fa7fb67",
+      "transitionId": "1109572839542275309",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Amon",
+      "direction": 2,
+      "variant": 0,
+      "state": "DownAttack",
+      "controller": "UnityProject/Assets/AnimatorController/char1_Animation_controller.controller",
+      "controllerSha256": "7c700dd186d28065895f7e19d780e2b4cbd9748c06b48596e68224140fa7fb67",
+      "transitionId": "1109689364072382846",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Amon",
+      "direction": 2,
+      "variant": 1,
+      "state": "DownAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/char1_Animation_controller.controller",
+      "controllerSha256": "7c700dd186d28065895f7e19d780e2b4cbd9748c06b48596e68224140fa7fb67",
+      "transitionId": "1109043919389829319",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Amon",
+      "direction": 3,
+      "variant": 0,
+      "state": "RightAttack",
+      "controller": "UnityProject/Assets/AnimatorController/char1_Animation_controller.controller",
+      "controllerSha256": "7c700dd186d28065895f7e19d780e2b4cbd9748c06b48596e68224140fa7fb67",
+      "transitionId": "1109743393880019028",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Amon",
+      "direction": 3,
+      "variant": 1,
+      "state": "RightAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/char1_Animation_controller.controller",
+      "controllerSha256": "7c700dd186d28065895f7e19d780e2b4cbd9748c06b48596e68224140fa7fb67",
+      "transitionId": "1109094320201520353",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Amon",
+      "direction": 4,
+      "variant": 0,
+      "state": "LeftAttack",
+      "controller": "UnityProject/Assets/AnimatorController/char1_Animation_controller.controller",
+      "controllerSha256": "7c700dd186d28065895f7e19d780e2b4cbd9748c06b48596e68224140fa7fb67",
+      "transitionId": "1109026196548002408",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Amon",
+      "direction": 4,
+      "variant": 1,
+      "state": "LeftAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/char1_Animation_controller.controller",
+      "controllerSha256": "7c700dd186d28065895f7e19d780e2b4cbd9748c06b48596e68224140fa7fb67",
+      "transitionId": "1109279359913592680",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Aura",
+      "direction": 0,
+      "variant": 0,
+      "state": "BasicAttack",
+      "controller": "UnityProject/Assets/AnimatorController/AirAnimatorController.controller",
+      "controllerSha256": "4be1a3a02382c156e8f7eb03708e49584f5871ea0d25d4c5887c48386635bdea",
+      "transitionId": "1109693062532245359",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Aura",
+      "direction": 0,
+      "variant": 1,
+      "state": "BasicAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/AirAnimatorController.controller",
+      "controllerSha256": "4be1a3a02382c156e8f7eb03708e49584f5871ea0d25d4c5887c48386635bdea",
+      "transitionId": "1109292246286975720",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Aura",
+      "direction": 1,
+      "variant": 0,
+      "state": "UpAttack",
+      "controller": "UnityProject/Assets/AnimatorController/AirAnimatorController.controller",
+      "controllerSha256": "4be1a3a02382c156e8f7eb03708e49584f5871ea0d25d4c5887c48386635bdea",
+      "transitionId": "1109043919389829319",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Aura",
+      "direction": 1,
+      "variant": 1,
+      "state": "UpAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/AirAnimatorController.controller",
+      "controllerSha256": "4be1a3a02382c156e8f7eb03708e49584f5871ea0d25d4c5887c48386635bdea",
+      "transitionId": "1109149520701623706",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Aura",
+      "direction": 2,
+      "variant": 0,
+      "state": "DownAttack",
+      "controller": "UnityProject/Assets/AnimatorController/AirAnimatorController.controller",
+      "controllerSha256": "4be1a3a02382c156e8f7eb03708e49584f5871ea0d25d4c5887c48386635bdea",
+      "transitionId": "1109743393880019028",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Aura",
+      "direction": 2,
+      "variant": 1,
+      "state": "DownAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/AirAnimatorController.controller",
+      "controllerSha256": "4be1a3a02382c156e8f7eb03708e49584f5871ea0d25d4c5887c48386635bdea",
+      "transitionId": "1109384403120170545",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Aura",
+      "direction": 3,
+      "variant": 0,
+      "state": "RightAttack",
+      "controller": "UnityProject/Assets/AnimatorController/AirAnimatorController.controller",
+      "controllerSha256": "4be1a3a02382c156e8f7eb03708e49584f5871ea0d25d4c5887c48386635bdea",
+      "transitionId": "1109572839542275309",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Aura",
+      "direction": 3,
+      "variant": 1,
+      "state": "RightAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/AirAnimatorController.controller",
+      "controllerSha256": "4be1a3a02382c156e8f7eb03708e49584f5871ea0d25d4c5887c48386635bdea",
+      "transitionId": "1109026196548002408",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Aura",
+      "direction": 4,
+      "variant": 0,
+      "state": "LeftAttack",
+      "controller": "UnityProject/Assets/AnimatorController/AirAnimatorController.controller",
+      "controllerSha256": "4be1a3a02382c156e8f7eb03708e49584f5871ea0d25d4c5887c48386635bdea",
+      "transitionId": "1109279359913592680",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Aura",
+      "direction": 4,
+      "variant": 1,
+      "state": "LeftAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/AirAnimatorController.controller",
+      "controllerSha256": "4be1a3a02382c156e8f7eb03708e49584f5871ea0d25d4c5887c48386635bdea",
+      "transitionId": "1109094320201520353",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Eliot",
+      "direction": 0,
+      "variant": 0,
+      "state": "BasicAttack",
+      "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
+      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "transitionId": null,
+      "defaultEntry": true
+    },
+    {
+      "fighter": "Eliot",
+      "direction": 0,
+      "variant": 1,
+      "state": "BasicAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
+      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "transitionId": "1109630643969539439",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Eliot",
+      "direction": 1,
+      "variant": 0,
+      "state": "UpAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
+      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "transitionId": "1109094320201520353",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Eliot",
+      "direction": 1,
+      "variant": 1,
+      "state": "UpAttack",
+      "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
+      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "transitionId": "1109693062532245359",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Eliot",
+      "direction": 2,
+      "variant": 0,
+      "state": "DownAttack",
+      "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
+      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "transitionId": "1109026196548002408",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Eliot",
+      "direction": 2,
+      "variant": 1,
+      "state": "DownAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
+      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "transitionId": "1109572839542275309",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Eliot",
+      "direction": 3,
+      "variant": 0,
+      "state": "RightAttack",
+      "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
+      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "transitionId": "1109279359913592680",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Eliot",
+      "direction": 3,
+      "variant": 1,
+      "state": "RightAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
+      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "transitionId": "1109149520701623706",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Eliot",
+      "direction": 4,
+      "variant": 0,
+      "state": "LeftAttack",
+      "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
+      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "transitionId": "1109384403120170545",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Eliot",
+      "direction": 4,
+      "variant": 1,
+      "state": "LeftAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
+      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "transitionId": "1109292246286975720",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Ren",
+      "direction": 0,
+      "variant": 0,
+      "state": "BasicAttack",
+      "controller": "UnityProject/Assets/AnimatorController/EarthAnimatorController.controller",
+      "controllerSha256": "33a92cc907628efec8ab6da4fdf3b49a725f853b50b75e6e14071308fadea2fc",
+      "transitionId": "1109693062532245359",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Ren",
+      "direction": 0,
+      "variant": 1,
+      "state": "BasicAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/EarthAnimatorController.controller",
+      "controllerSha256": "33a92cc907628efec8ab6da4fdf3b49a725f853b50b75e6e14071308fadea2fc",
+      "transitionId": "1109292246286975720",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Ren",
+      "direction": 1,
+      "variant": 0,
+      "state": "UpAttack",
+      "controller": "UnityProject/Assets/AnimatorController/EarthAnimatorController.controller",
+      "controllerSha256": "33a92cc907628efec8ab6da4fdf3b49a725f853b50b75e6e14071308fadea2fc",
+      "transitionId": "1109043919389829319",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Ren",
+      "direction": 1,
+      "variant": 1,
+      "state": "UpAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/EarthAnimatorController.controller",
+      "controllerSha256": "33a92cc907628efec8ab6da4fdf3b49a725f853b50b75e6e14071308fadea2fc",
+      "transitionId": "1109279359913592680",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Ren",
+      "direction": 2,
+      "variant": 0,
+      "state": "DownAttack",
+      "controller": "UnityProject/Assets/AnimatorController/EarthAnimatorController.controller",
+      "controllerSha256": "33a92cc907628efec8ab6da4fdf3b49a725f853b50b75e6e14071308fadea2fc",
+      "transitionId": "1109743393880019028",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Ren",
+      "direction": 2,
+      "variant": 1,
+      "state": "DownAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/EarthAnimatorController.controller",
+      "controllerSha256": "33a92cc907628efec8ab6da4fdf3b49a725f853b50b75e6e14071308fadea2fc",
+      "transitionId": "1109572839542275309",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Ren",
+      "direction": 3,
+      "variant": 0,
+      "state": "RightAttack",
+      "controller": "UnityProject/Assets/AnimatorController/EarthAnimatorController.controller",
+      "controllerSha256": "33a92cc907628efec8ab6da4fdf3b49a725f853b50b75e6e14071308fadea2fc",
+      "transitionId": "1109026196548002408",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Ren",
+      "direction": 3,
+      "variant": 1,
+      "state": "RightAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/EarthAnimatorController.controller",
+      "controllerSha256": "33a92cc907628efec8ab6da4fdf3b49a725f853b50b75e6e14071308fadea2fc",
+      "transitionId": "1109384403120170545",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Ren",
+      "direction": 4,
+      "variant": 0,
+      "state": "LeftAttack",
+      "controller": "UnityProject/Assets/AnimatorController/EarthAnimatorController.controller",
+      "controllerSha256": "33a92cc907628efec8ab6da4fdf3b49a725f853b50b75e6e14071308fadea2fc",
+      "transitionId": "1109094320201520353",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Ren",
+      "direction": 4,
+      "variant": 1,
+      "state": "LeftAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/EarthAnimatorController.controller",
+      "controllerSha256": "33a92cc907628efec8ab6da4fdf3b49a725f853b50b75e6e14071308fadea2fc",
+      "transitionId": "1109149520701623706",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Rina",
+      "direction": 0,
+      "variant": 0,
+      "state": "BasicAttack",
+      "controller": "UnityProject/Assets/AnimatorController/char1_Animation_controller.controller",
+      "controllerSha256": "7c700dd186d28065895f7e19d780e2b4cbd9748c06b48596e68224140fa7fb67",
+      "transitionId": "1109149520701623706",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Rina",
+      "direction": 0,
+      "variant": 1,
+      "state": "BasicAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/char1_Animation_controller.controller",
+      "controllerSha256": "7c700dd186d28065895f7e19d780e2b4cbd9748c06b48596e68224140fa7fb67",
+      "transitionId": "1109384403120170545",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Rina",
+      "direction": 1,
+      "variant": 0,
+      "state": "UpAttack",
+      "controller": "UnityProject/Assets/AnimatorController/char1_Animation_controller.controller",
+      "controllerSha256": "7c700dd186d28065895f7e19d780e2b4cbd9748c06b48596e68224140fa7fb67",
+      "transitionId": "1109215879266689626",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Rina",
+      "direction": 1,
+      "variant": 1,
+      "state": "UpAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/char1_Animation_controller.controller",
+      "controllerSha256": "7c700dd186d28065895f7e19d780e2b4cbd9748c06b48596e68224140fa7fb67",
+      "transitionId": "1109572839542275309",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Rina",
+      "direction": 2,
+      "variant": 0,
+      "state": "DownAttack",
+      "controller": "UnityProject/Assets/AnimatorController/char1_Animation_controller.controller",
+      "controllerSha256": "7c700dd186d28065895f7e19d780e2b4cbd9748c06b48596e68224140fa7fb67",
+      "transitionId": "1109689364072382846",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Rina",
+      "direction": 2,
+      "variant": 1,
+      "state": "DownAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/char1_Animation_controller.controller",
+      "controllerSha256": "7c700dd186d28065895f7e19d780e2b4cbd9748c06b48596e68224140fa7fb67",
+      "transitionId": "1109043919389829319",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Rina",
+      "direction": 3,
+      "variant": 0,
+      "state": "RightAttack",
+      "controller": "UnityProject/Assets/AnimatorController/char1_Animation_controller.controller",
+      "controllerSha256": "7c700dd186d28065895f7e19d780e2b4cbd9748c06b48596e68224140fa7fb67",
+      "transitionId": "1109743393880019028",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Rina",
+      "direction": 3,
+      "variant": 1,
+      "state": "RightAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/char1_Animation_controller.controller",
+      "controllerSha256": "7c700dd186d28065895f7e19d780e2b4cbd9748c06b48596e68224140fa7fb67",
+      "transitionId": "1109094320201520353",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Rina",
+      "direction": 4,
+      "variant": 0,
+      "state": "LeftAttack",
+      "controller": "UnityProject/Assets/AnimatorController/char1_Animation_controller.controller",
+      "controllerSha256": "7c700dd186d28065895f7e19d780e2b4cbd9748c06b48596e68224140fa7fb67",
+      "transitionId": "1109026196548002408",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Rina",
+      "direction": 4,
+      "variant": 1,
+      "state": "LeftAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/char1_Animation_controller.controller",
+      "controllerSha256": "7c700dd186d28065895f7e19d780e2b4cbd9748c06b48596e68224140fa7fb67",
+      "transitionId": "1109279359913592680",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Dante",
+      "direction": 0,
+      "variant": 0,
+      "state": "BasicAttack",
+      "controller": "UnityProject/Assets/AnimatorController/LightingAnimatorController.controller",
+      "controllerSha256": "75127e4cb94245d8ed21b807bd59f3822c0e1155a5089c695a2854b406389fdb",
+      "transitionId": "1109574304967836189",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Dante",
+      "direction": 0,
+      "variant": 1,
+      "state": "BasicAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/LightingAnimatorController.controller",
+      "controllerSha256": "75127e4cb94245d8ed21b807bd59f3822c0e1155a5089c695a2854b406389fdb",
+      "transitionId": "1109370222726513266",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Dante",
+      "direction": 1,
+      "variant": 0,
+      "state": "UpAttack",
+      "controller": "UnityProject/Assets/AnimatorController/LightingAnimatorController.controller",
+      "controllerSha256": "75127e4cb94245d8ed21b807bd59f3822c0e1155a5089c695a2854b406389fdb",
+      "transitionId": "1109279359913592680",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Dante",
+      "direction": 1,
+      "variant": 1,
+      "state": "UpAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/LightingAnimatorController.controller",
+      "controllerSha256": "75127e4cb94245d8ed21b807bd59f3822c0e1155a5089c695a2854b406389fdb",
+      "transitionId": "1109292246286975720",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Dante",
+      "direction": 2,
+      "variant": 0,
+      "state": "DownAttack",
+      "controller": "UnityProject/Assets/AnimatorController/LightingAnimatorController.controller",
+      "controllerSha256": "75127e4cb94245d8ed21b807bd59f3822c0e1155a5089c695a2854b406389fdb",
+      "transitionId": "1109026196548002408",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Dante",
+      "direction": 2,
+      "variant": 1,
+      "state": "DownAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/LightingAnimatorController.controller",
+      "controllerSha256": "75127e4cb94245d8ed21b807bd59f3822c0e1155a5089c695a2854b406389fdb",
+      "transitionId": "1109572839542275309",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Dante",
+      "direction": 3,
+      "variant": 0,
+      "state": "RightAttack",
+      "controller": "UnityProject/Assets/AnimatorController/LightingAnimatorController.controller",
+      "controllerSha256": "75127e4cb94245d8ed21b807bd59f3822c0e1155a5089c695a2854b406389fdb",
+      "transitionId": "1109384403120170545",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Dante",
+      "direction": 3,
+      "variant": 1,
+      "state": "RightAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/LightingAnimatorController.controller",
+      "controllerSha256": "75127e4cb94245d8ed21b807bd59f3822c0e1155a5089c695a2854b406389fdb",
+      "transitionId": "1109693062532245359",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Dante",
+      "direction": 4,
+      "variant": 0,
+      "state": "LeftAttack",
+      "controller": "UnityProject/Assets/AnimatorController/LightingAnimatorController.controller",
+      "controllerSha256": "75127e4cb94245d8ed21b807bd59f3822c0e1155a5089c695a2854b406389fdb",
+      "transitionId": "1109149520701623706",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Dante",
+      "direction": 4,
+      "variant": 1,
+      "state": "LeftAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/LightingAnimatorController.controller",
+      "controllerSha256": "75127e4cb94245d8ed21b807bd59f3822c0e1155a5089c695a2854b406389fdb",
+      "transitionId": "1109630643969539439",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Agata",
+      "direction": 0,
+      "variant": 0,
+      "state": "BasicAttack",
+      "controller": "UnityProject/Assets/AnimatorController/LightingAnimatorController.controller",
+      "controllerSha256": "75127e4cb94245d8ed21b807bd59f3822c0e1155a5089c695a2854b406389fdb",
+      "transitionId": "1109574304967836189",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Agata",
+      "direction": 0,
+      "variant": 1,
+      "state": "BasicAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/LightingAnimatorController.controller",
+      "controllerSha256": "75127e4cb94245d8ed21b807bd59f3822c0e1155a5089c695a2854b406389fdb",
+      "transitionId": "1109370222726513266",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Agata",
+      "direction": 1,
+      "variant": 0,
+      "state": "UpAttack",
+      "controller": "UnityProject/Assets/AnimatorController/LightingAnimatorController.controller",
+      "controllerSha256": "75127e4cb94245d8ed21b807bd59f3822c0e1155a5089c695a2854b406389fdb",
+      "transitionId": "1109279359913592680",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Agata",
+      "direction": 1,
+      "variant": 1,
+      "state": "UpAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/LightingAnimatorController.controller",
+      "controllerSha256": "75127e4cb94245d8ed21b807bd59f3822c0e1155a5089c695a2854b406389fdb",
+      "transitionId": "1109292246286975720",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Agata",
+      "direction": 2,
+      "variant": 0,
+      "state": "DownAttack",
+      "controller": "UnityProject/Assets/AnimatorController/LightingAnimatorController.controller",
+      "controllerSha256": "75127e4cb94245d8ed21b807bd59f3822c0e1155a5089c695a2854b406389fdb",
+      "transitionId": "1109026196548002408",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Agata",
+      "direction": 2,
+      "variant": 1,
+      "state": "DownAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/LightingAnimatorController.controller",
+      "controllerSha256": "75127e4cb94245d8ed21b807bd59f3822c0e1155a5089c695a2854b406389fdb",
+      "transitionId": "1109572839542275309",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Agata",
+      "direction": 3,
+      "variant": 0,
+      "state": "RightAttack",
+      "controller": "UnityProject/Assets/AnimatorController/LightingAnimatorController.controller",
+      "controllerSha256": "75127e4cb94245d8ed21b807bd59f3822c0e1155a5089c695a2854b406389fdb",
+      "transitionId": "1109384403120170545",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Agata",
+      "direction": 3,
+      "variant": 1,
+      "state": "RightAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/LightingAnimatorController.controller",
+      "controllerSha256": "75127e4cb94245d8ed21b807bd59f3822c0e1155a5089c695a2854b406389fdb",
+      "transitionId": "1109693062532245359",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Agata",
+      "direction": 4,
+      "variant": 0,
+      "state": "LeftAttack",
+      "controller": "UnityProject/Assets/AnimatorController/LightingAnimatorController.controller",
+      "controllerSha256": "75127e4cb94245d8ed21b807bd59f3822c0e1155a5089c695a2854b406389fdb",
+      "transitionId": "1109149520701623706",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Agata",
+      "direction": 4,
+      "variant": 1,
+      "state": "LeftAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/LightingAnimatorController.controller",
+      "controllerSha256": "75127e4cb94245d8ed21b807bd59f3822c0e1155a5089c695a2854b406389fdb",
+      "transitionId": "1109630643969539439",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Raven",
+      "direction": 0,
+      "variant": 0,
+      "state": "BasicAttack",
+      "controller": "UnityProject/Assets/AnimatorController/ShadowAnimatorController.controller",
+      "controllerSha256": "9a0736f8fdce591dac7a6fc71693ff85bf2aa39649fa006e3fbc69652a3a6f76",
+      "transitionId": "1109292246286975720",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Raven",
+      "direction": 0,
+      "variant": 1,
+      "state": "BasicAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/ShadowAnimatorController.controller",
+      "controllerSha256": "9a0736f8fdce591dac7a6fc71693ff85bf2aa39649fa006e3fbc69652a3a6f76",
+      "transitionId": "1109149520701623706",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Raven",
+      "direction": 1,
+      "variant": 0,
+      "state": "UpAttack",
+      "controller": "UnityProject/Assets/AnimatorController/ShadowAnimatorController.controller",
+      "controllerSha256": "9a0736f8fdce591dac7a6fc71693ff85bf2aa39649fa006e3fbc69652a3a6f76",
+      "transitionId": "1109689364072382846",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Raven",
+      "direction": 1,
+      "variant": 1,
+      "state": "UpAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/ShadowAnimatorController.controller",
+      "controllerSha256": "9a0736f8fdce591dac7a6fc71693ff85bf2aa39649fa006e3fbc69652a3a6f76",
+      "transitionId": "1109279359913592680",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Raven",
+      "direction": 2,
+      "variant": 0,
+      "state": "DownAttack",
+      "controller": "UnityProject/Assets/AnimatorController/ShadowAnimatorController.controller",
+      "controllerSha256": "9a0736f8fdce591dac7a6fc71693ff85bf2aa39649fa006e3fbc69652a3a6f76",
+      "transitionId": "1109043919389829319",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Raven",
+      "direction": 2,
+      "variant": 1,
+      "state": "DownAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/ShadowAnimatorController.controller",
+      "controllerSha256": "9a0736f8fdce591dac7a6fc71693ff85bf2aa39649fa006e3fbc69652a3a6f76",
+      "transitionId": "1109743393880019028",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Raven",
+      "direction": 3,
+      "variant": 0,
+      "state": "RightAttack",
+      "controller": "UnityProject/Assets/AnimatorController/ShadowAnimatorController.controller",
+      "controllerSha256": "9a0736f8fdce591dac7a6fc71693ff85bf2aa39649fa006e3fbc69652a3a6f76",
+      "transitionId": "1109094320201520353",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Raven",
+      "direction": 3,
+      "variant": 1,
+      "state": "RightAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/ShadowAnimatorController.controller",
+      "controllerSha256": "9a0736f8fdce591dac7a6fc71693ff85bf2aa39649fa006e3fbc69652a3a6f76",
+      "transitionId": "1109026196548002408",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Raven",
+      "direction": 4,
+      "variant": 0,
+      "state": "LeftAttack",
+      "controller": "UnityProject/Assets/AnimatorController/ShadowAnimatorController.controller",
+      "controllerSha256": "9a0736f8fdce591dac7a6fc71693ff85bf2aa39649fa006e3fbc69652a3a6f76",
+      "transitionId": "1109572839542275309",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Raven",
+      "direction": 4,
+      "variant": 1,
+      "state": "LeftAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/ShadowAnimatorController.controller",
+      "controllerSha256": "9a0736f8fdce591dac7a6fc71693ff85bf2aa39649fa006e3fbc69652a3a6f76",
+      "transitionId": "1109384403120170545",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Maya",
+      "direction": 0,
+      "variant": 0,
+      "state": "BasicAttack",
+      "controller": "UnityProject/Assets/AnimatorController/GrassAnimatorController.controller",
+      "controllerSha256": "78dd565c5f8e271fd2df15660f25ece581e683b9f48c45bd45e4d1a86353217f",
+      "transitionId": null,
+      "defaultEntry": true
+    },
+    {
+      "fighter": "Maya",
+      "direction": 0,
+      "variant": 1,
+      "state": "BasicAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/GrassAnimatorController.controller",
+      "controllerSha256": "78dd565c5f8e271fd2df15660f25ece581e683b9f48c45bd45e4d1a86353217f",
+      "transitionId": "1109370222726513266",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Maya",
+      "direction": 1,
+      "variant": 0,
+      "state": "UpAttack",
+      "controller": "UnityProject/Assets/AnimatorController/GrassAnimatorController.controller",
+      "controllerSha256": "78dd565c5f8e271fd2df15660f25ece581e683b9f48c45bd45e4d1a86353217f",
+      "transitionId": "1109630643969539439",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Maya",
+      "direction": 1,
+      "variant": 1,
+      "state": "UpAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/GrassAnimatorController.controller",
+      "controllerSha256": "78dd565c5f8e271fd2df15660f25ece581e683b9f48c45bd45e4d1a86353217f",
+      "transitionId": "1109026196548002408",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Maya",
+      "direction": 2,
+      "variant": 0,
+      "state": "DownAttack",
+      "controller": "UnityProject/Assets/AnimatorController/GrassAnimatorController.controller",
+      "controllerSha256": "78dd565c5f8e271fd2df15660f25ece581e683b9f48c45bd45e4d1a86353217f",
+      "transitionId": "1109572839542275309",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Maya",
+      "direction": 2,
+      "variant": 1,
+      "state": "DownAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/GrassAnimatorController.controller",
+      "controllerSha256": "78dd565c5f8e271fd2df15660f25ece581e683b9f48c45bd45e4d1a86353217f",
+      "transitionId": "1109279359913592680",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Maya",
+      "direction": 3,
+      "variant": 0,
+      "state": "RightAttack",
+      "controller": "UnityProject/Assets/AnimatorController/GrassAnimatorController.controller",
+      "controllerSha256": "78dd565c5f8e271fd2df15660f25ece581e683b9f48c45bd45e4d1a86353217f",
+      "transitionId": "1109384403120170545",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Maya",
+      "direction": 3,
+      "variant": 1,
+      "state": "RightAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/GrassAnimatorController.controller",
+      "controllerSha256": "78dd565c5f8e271fd2df15660f25ece581e683b9f48c45bd45e4d1a86353217f",
+      "transitionId": "1109292246286975720",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Maya",
+      "direction": 4,
+      "variant": 0,
+      "state": "LeftAttack",
+      "controller": "UnityProject/Assets/AnimatorController/GrassAnimatorController.controller",
+      "controllerSha256": "78dd565c5f8e271fd2df15660f25ece581e683b9f48c45bd45e4d1a86353217f",
+      "transitionId": "1109149520701623706",
+      "defaultEntry": false
+    },
+    {
+      "fighter": "Maya",
+      "direction": 4,
+      "variant": 1,
+      "state": "LeftAttack2",
+      "controller": "UnityProject/Assets/AnimatorController/GrassAnimatorController.controller",
+      "controllerSha256": "78dd565c5f8e271fd2df15660f25ece581e683b9f48c45bd45e4d1a86353217f",
+      "transitionId": "1109693062532245359",
+      "defaultEntry": false
+    }
+  ]
+}

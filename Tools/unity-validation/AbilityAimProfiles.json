@@ -1,0 +1,196 @@
+{
+  "profiles": [
+    {
+      "resource": "photonprefabs/BasicWaterAtk",
+      "type": "HomingAttack",
+      "id": "114025901758691103",
+      "delay": 0,
+      "horizontalSpeed": 25,
+      "verticalSpeed": 0
+    },
+    {
+      "resource": "photonprefabs/DownAirAtk",
+      "type": "HomingAttack",
+      "id": "114977153420339851",
+      "delay": 0,
+      "horizontalSpeed": 40,
+      "verticalSpeed": 0
+    },
+    {
+      "resource": "photonprefabs/DownEarthAtk",
+      "type": "LockToTarget",
+      "id": "114587765826080250",
+      "delay": 0.5,
+      "horizontalSpeed": 40,
+      "verticalSpeed": 0
+    },
+    {
+      "resource": "photonprefabs/DownWaterAtk2",
+      "type": "HomingAttack",
+      "id": "114705390221481576",
+      "delay": 0,
+      "horizontalSpeed": 40,
+      "verticalSpeed": 0
+    },
+    {
+      "resource": "photonprefabs/EarthSpecial_LM",
+      "type": "LockToTarget",
+      "id": "114371939378208658",
+      "delay": 0.7,
+      "horizontalSpeed": 40,
+      "verticalSpeed": 0
+    },
+    {
+      "resource": "photonprefabs/EarthSpecial_LM",
+      "type": "LockToTarget",
+      "id": "114220653531496868",
+      "delay": 1.1,
+      "horizontalSpeed": 40,
+      "verticalSpeed": 0
+    },
+    {
+      "resource": "photonprefabs/EarthSpecial_LM",
+      "type": "LockToTarget",
+      "id": "114801075752484240",
+      "delay": 1.6,
+      "horizontalSpeed": 40,
+      "verticalSpeed": 0
+    },
+    {
+      "resource": "photonprefabs/EarthSpecial_LM",
+      "type": "LockToTarget",
+      "id": "114094320201520353",
+      "delay": 2,
+      "horizontalSpeed": 40,
+      "verticalSpeed": 0
+    },
+    {
+      "resource": "photonprefabs/EarthSpecial_LM",
+      "type": "LockToTarget",
+      "id": "114799762105739359",
+      "delay": 2.5,
+      "horizontalSpeed": 40,
+      "verticalSpeed": 0
+    },
+    {
+      "resource": "photonprefabs/FlowerAtkL",
+      "type": "MoveToTarget",
+      "id": "114694121525821480",
+      "delay": 0,
+      "horizontalSpeed": 40,
+      "verticalSpeed": 0
+    },
+    {
+      "resource": "photonprefabs/FlowerSumonerL",
+      "type": "MoveToTarget",
+      "id": "114243736805655561",
+      "delay": 0,
+      "horizontalSpeed": 40,
+      "verticalSpeed": 0
+    },
+    {
+      "resource": "photonprefabs/FlowerSumonerR",
+      "type": "MoveToTarget",
+      "id": "114243736805655561",
+      "delay": 0,
+      "horizontalSpeed": 40,
+      "verticalSpeed": 0
+    },
+    {
+      "resource": "photonprefabs/LeftAirAtk2",
+      "type": "HomingAttack",
+      "id": "114002669891404536",
+      "delay": 0,
+      "horizontalSpeed": 40,
+      "verticalSpeed": 0
+    },
+    {
+      "resource": "photonprefabs/RightAirAtk2",
+      "type": "HomingAttack",
+      "id": "114002669891404536",
+      "delay": 0,
+      "horizontalSpeed": 40,
+      "verticalSpeed": 0
+    },
+    {
+      "resource": "photonprefabs/SpecialWaterAtk1",
+      "type": "HomingAttack",
+      "id": "114372920208702427",
+      "delay": 0,
+      "horizontalSpeed": 40,
+      "verticalSpeed": 30
+    },
+    {
+      "resource": "photonprefabs/SpecialWaterAtk2",
+      "type": "HomingAttack",
+      "id": "114372920208702427",
+      "delay": 0,
+      "horizontalSpeed": 40,
+      "verticalSpeed": 30
+    },
+    {
+      "resource": "photonprefabs/SpecialWaterAtk3",
+      "type": "HomingAttack",
+      "id": "114372920208702427",
+      "delay": 0,
+      "horizontalSpeed": 40,
+      "verticalSpeed": 30
+    },
+    {
+      "resource": "photonprefabs/SpecialWaterAtk4",
+      "type": "HomingAttack",
+      "id": "114372920208702427",
+      "delay": 0,
+      "horizontalSpeed": 40,
+      "verticalSpeed": 30
+    },
+    {
+      "resource": "photonprefabs/SpecialWaterAtk5",
+      "type": "HomingAttack",
+      "id": "114372920208702427",
+      "delay": 0,
+      "horizontalSpeed": 40,
+      "verticalSpeed": 30
+    },
+    {
+      "resource": "photonprefabs/SpecialWaterAtkTest",
+      "type": "HomingAttack",
+      "id": "114372920208702427",
+      "delay": 0,
+      "horizontalSpeed": 40,
+      "verticalSpeed": 40
+    },
+    {
+      "resource": "photonprefabs/UpAirAtk2",
+      "type": "HomingAttack",
+      "id": "114256069497284392",
+      "delay": 0,
+      "horizontalSpeed": 40,
+      "verticalSpeed": 0
+    },
+    {
+      "resource": "photonprefabs/UpEarthAtk2",
+      "type": "HomingAttack",
+      "id": "114044625135789424",
+      "delay": 0,
+      "horizontalSpeed": 40,
+      "verticalSpeed": 0
+    },
+    {
+      "resource": "photonprefabs/UpWaterAtk",
+      "type": "HomingAttack",
+      "id": "114025901758691103",
+      "delay": 0,
+      "horizontalSpeed": 40,
+      "verticalSpeed": 0
+    },
+    {
+      "resource": "photonprefabs/UpWaterAtk2",
+      "type": "HomingAttack",
+      "id": "114025901758691103",
+      "delay": 0,
+      "horizontalSpeed": 40,
+      "verticalSpeed": 0
+    }
+  ]
+}

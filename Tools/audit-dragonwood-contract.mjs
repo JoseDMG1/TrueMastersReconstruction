@@ -1,0 +1,18 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import {parseUnity} from './unity-audit/audit.mjs';
+const root=process.cwd(), asset='UnityProject/Assets/Resources/photonprefabs/DragonWoodATK.prefab';
+const sha=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+const sources=['MoveForward','MovePath','PathManager','FollowPath','TransformData','StopMovePath','ChangeMoveSpeed'];
+const metas=new Map(sources.map(n=>[fs.readFileSync(`UnityProject/Assets/Scripts/Assembly-CSharp/${n}.cs.meta`,'utf8').match(/^guid: (.+)$/m)[1],n]));
+const parsed=parseUnity(fs.readFileSync(asset,'utf8'));
+if(parsed.errors.length) throw Error(JSON.stringify(parsed.errors));
+const objects=new Map(parsed.documents.map(d=>[d.document_id,d]));
+const components=parsed.documents.filter(d=>metas.has(d.data.m_Script?.guid)).map(d=>({id:d.document_id,owner:objects.get(d.data.m_GameObject.fileID)?.data.m_Name,type:metas.get(d.data.m_Script.guid),fields:d.data}));
+const f=JSON.parse(fs.readFileSync('Evidence/roster-moveset-audit.json')).fighters.find(f=>f.name==='Maya');
+const state=f.states.find(s=>s.name==='DownAttack2');
+const entries=f.stateMachines.flatMap(m=>m.entryTransitions.filter(t=>t.destination.fileID===state.id).map(t=>({stateMachine:m.name,transition:t})));
+const evidence={generatedUtc:new Date().toISOString(),classification:'source-derived-native-and-serialized-contract',nativeSha256:'d5669fa920c5034ec1ed5b7988149825430f65ea557ba7882567c0790da2dd8c',input:asset,inputSha256:sha(asset),components,route:{fighter:'Maya',state:state.name,stateId:state.id,entry:entries,clips:state.clips},sources:sources.map(n=>{let p=`UnityProject/Assets/Scripts/Assembly-CSharp/${n}.cs`;return {path:p,sha256:sha(p),nativeListing:`Evidence/native-disassembly-${n}.txt`,nativeListingSha256:sha(`Evidence/native-disassembly-${n}.txt`)};}),retainedNoOps:['MoveForward.Start','FollowPath.Start','StopMovePath.Update','ChangeMoveSpeed.Update'],deviations:['PathManager rejects nonpositive/nonfinite spacing rather than entering an unbounded native loop.','StopMovePath retains and unregisters the exact DamageOnCollision publisher instead of looking it up again from mutable owner.'],limitations:['No Unity build, execution, collision or visual acceptance was performed by this audit.','sumonOnCollider and ZigzagController are separate unimplemented Maya units, outside this change.','Changing phases, directional variants, interrupts, lifetime and chain motion require runtime fixtures.']};
+fs.writeFileSync('Evidence/dragonwood-path-native-contract.json',JSON.stringify(evidence,null,2)+'\n');
+console.log(JSON.stringify({components:components.map(x=>({type:x.type,owner:x.owner})),entry:entries,sources:sources.length}));

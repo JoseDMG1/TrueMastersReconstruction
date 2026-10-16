@@ -1,0 +1,5523 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-10-15",
+  "scope": "Complete editable Unity reconstruction requirements; evidence and obligations, not a declaration of implementation completion",
+  "source_version": {
+    "apk": "2.99 (299)",
+    "original_apk_sha256": "51e274bd08fd72ff2be562960d21f31871c0318a1e99d9a5c193e4f5d6024c4d",
+    "metadata_sha256": "c79db4f28d92a0d5959ec74c3e8a2267b8838f7e924640096b5a811237eddfd4",
+    "video_version": "unknown; apparent feature/catalog differences require reconciliation",
+    "native_recovery": "Original APK lacked native ABI code; companion/native-assisted export is a separate ongoing recovery and not assessed as code-body evidence here"
+  },
+  "evidence_semantics": {
+    "observed": "Video pixels or static serialized/declaration facts only",
+    "inferred": "Association or flow suggested by independent evidence; requires confirmation",
+    "unknown": "No sufficient proof",
+    "prohibition": "Type/member/object names do not establish code behavior, active UI, numeric constants, backend availability or implementation completion"
+  },
+  "scene_inventory_source": "Evidence/recovered-scenes-inventory.json",
+  "scene_report": "Knowledge/apk-scenes.md",
+  "subsystems": [
+    {
+      "id": "version-provenance",
+      "priority": "P0",
+      "title": "Versiones y procedencia",
+      "evidence_status": "partial_visual_and_static",
+      "implementation_status": "not_assessed_by_this_specification",
+      "video_findings": [
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "menu-main"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "char-sora"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "char-aura"
+        }
+      ],
+      "metadata": [
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3285,
+          "type_name": "CharacterEnum",
+          "declared_fields": [
+            "value__",
+            "Sora",
+            "Aura",
+            "Vinea",
+            "Eliot",
+            "Diana",
+            "Ren"
+          ],
+          "declared_methods": []
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3545,
+          "type_name": "CharacterName",
+          "declared_fields": [
+            "value__",
+            "Sora",
+            "Aura",
+            "Vinea",
+            "Eliot",
+            "Diana",
+            "Ren"
+          ],
+          "declared_methods": []
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3643,
+          "type_name": "ElementType",
+          "declared_fields": [
+            "value__",
+            "Wind",
+            "Water",
+            "Earth",
+            "Fire",
+            "Electricity",
+            "Shadow"
+          ],
+          "declared_methods": []
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3884,
+          "type_name": "GameMode",
+          "declared_fields": [
+            "value__",
+            "SinglePlayer",
+            "Survival",
+            "Tournament",
+            "LocalMultiplayer",
+            "Online",
+            "StartMenu",
+            "Lobby",
+            "FriendsMenu",
+            "AccountMenu",
+            "Spectator"
+          ],
+          "declared_methods": []
+        }
+      ],
+      "scene_references": [
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/StartMenu.unity"
+        },
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Character Selection.unity"
+        }
+      ],
+      "known_or_declared": "El APK suministrado es 2.99(299); los videos no muestran una versión verificable. Su interfaz/roster no delimita el catálogo actual.",
+      "recovery_obligations": "Fijar APK, splits y recursos por versión; comparar layout, roster y controles en ejecución antes de aplicar constantes del video al APK.",
+      "completion_evidence_required": "Identidad y hash del conjunto documentados; matriz que marca cada diferencia APK/video y decisión explícita de objetivo.",
+      "open": true
+    },
+    {
+      "id": "project-runtime",
+      "priority": "P0",
+      "title": "Proyecto Unity editable y ejecutable",
+      "evidence_status": "static_declarations_only",
+      "implementation_status": "not_assessed_by_this_specification",
+      "video_findings": [],
+      "metadata": [],
+      "scene_references": [],
+      "known_or_declared": "Exportar recursos y clases vacías no demuestra compilación ni comportamiento.",
+      "recovery_obligations": "Terminar recuperación asistida por binarios y revisar scripts, referencias serializadas, shaders, rigs, SDK y escenas; importar con versión Unity apropiada.",
+      "completion_evidence_required": "Editor compila sin clases dummy usadas como lógica; escenas abren; flujo de arranque y build Android se ejecutan con evidencia.",
+      "open": true
+    },
+    {
+      "id": "boot",
+      "priority": "P1",
+      "title": "Inicio, versión y ciclo de aplicación",
+      "evidence_status": "partial_visual_and_static",
+      "implementation_status": "not_assessed_by_this_specification",
+      "video_findings": [
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "menu-main"
+        }
+      ],
+      "metadata": [
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3886,
+          "type_name": "SystemManager",
+          "declared_fields": [
+            "i",
+            "timesPlayed",
+            "mode",
+            "async",
+            "unlock",
+            "newUpdate",
+            "bonus",
+            "tmPlayer",
+            "playedTime",
+            "howToPlayShowed",
+            "playerType"
+          ],
+          "declared_methods": [
+            "Awake",
+            "ChangePlayingMode",
+            "RefreshPlayingMode",
+            "NextScene",
+            "SaveData",
+            "SaveDataInDevice",
+            "LoadDataFromDevice",
+            "SavePlayerData",
+            "LoadPlayerData",
+            "Update",
+            "CheckForUpdate",
+            "CheckBonus",
+            "OnApplicationQuit",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3737,
+          "type_name": "InitialConfig",
+          "declared_fields": [],
+          "declared_methods": [
+            "Start",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3943,
+          "type_name": "StarMenuManager",
+          "declared_fields": [
+            "tourneyAlert",
+            "points",
+            "missingCharacters",
+            "version",
+            "TournamentPrice",
+            "PriceText",
+            "blockButtons",
+            "isoLogo",
+            "base_UI",
+            "multiplayer_UI"
+          ],
+          "declared_methods": [
+            "Start",
+            "OnConnectedToMaster",
+            "ShowVersion",
+            "ShowMultiplayerUI",
+            "TourneyAlert",
+            "CloseTourneyAlert",
+            "EnterTournament",
+            "PlayTeddies",
+            "AllCharactersUnlocked",
+            "GoToScene",
+            "SurvivalMode",
+            "SinglePlayerMode",
+            "Online2Players",
+            "GoToLocalMultiplayer",
+            "Connect",
+            "CheckConnection",
+            ".ctor"
+          ]
+        }
+      ],
+      "scene_references": [
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/DesarrolladoPor.unity"
+        },
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/StartMenu.unity"
+        }
+      ],
+      "known_or_declared": "Escenas de inicio y métodos de actualización existen; su orden y efectos no están demostrados.",
+      "recovery_obligations": "Recuperar BuildSettings, inicializadores, DontDestroyOnLoad y cambios de escena; definir comportamiento offline, actualización y salida.",
+      "completion_evidence_required": "Arranque frío/caliente, regreso al menú y suspensión/reanudación conservan estado apropiado.",
+      "open": true
+    },
+    {
+      "id": "navigation",
+      "priority": "P1",
+      "title": "Menú principal y navegación",
+      "evidence_status": "partial_visual_and_static",
+      "implementation_status": "not_assessed_by_this_specification",
+      "video_findings": [
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "menu-main"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "menu-social"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "disconnect"
+        }
+      ],
+      "metadata": [
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3943,
+          "type_name": "StarMenuManager",
+          "declared_fields": [
+            "tourneyAlert",
+            "points",
+            "missingCharacters",
+            "version",
+            "TournamentPrice",
+            "PriceText",
+            "blockButtons",
+            "isoLogo",
+            "base_UI",
+            "multiplayer_UI"
+          ],
+          "declared_methods": [
+            "Start",
+            "OnConnectedToMaster",
+            "ShowVersion",
+            "ShowMultiplayerUI",
+            "TourneyAlert",
+            "CloseTourneyAlert",
+            "EnterTournament",
+            "PlayTeddies",
+            "AllCharactersUnlocked",
+            "GoToScene",
+            "SurvivalMode",
+            "SinglePlayerMode",
+            "Online2Players",
+            "GoToLocalMultiplayer",
+            "Connect",
+            "CheckConnection",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3884,
+          "type_name": "GameMode",
+          "declared_fields": [
+            "value__",
+            "SinglePlayer",
+            "Survival",
+            "Tournament",
+            "LocalMultiplayer",
+            "Online",
+            "StartMenu",
+            "Lobby",
+            "FriendsMenu",
+            "AccountMenu",
+            "Spectator"
+          ],
+          "declared_methods": []
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3980,
+          "type_name": "Translation",
+          "declared_fields": [
+            "StartMenu_1Player",
+            "StartMenu_Online",
+            "StartMenu_ShareGame",
+            "StartMenu_ShareGame_ThanksMessage",
+            "StartMenu_ExitGame",
+            "StartMenu_Tournament",
+            "StartMenu_Survival",
+            "StartMenu_NewVersion",
+            "StartMenu_UpdateNow",
+            "StartMenu_Text_PleaseSharYourFeedback",
+            "StartMenu_LoadingData",
+            "StartMenu_PleasWait",
+            "StartMenu_Text_Welcome",
+            "StartMenu_Text_Account",
+            "Online_Text_ErrorCheckYourInternet",
+            "Online_Text_ConnectingWithServe",
+            "Online_Text_ConnectionSuccessful",
+            "Online_Text_ConnectionSuccessfulServer",
+            "Online_Text_PlayerHasDisconected",
+            "Online_Text_ThereAreNoMatches",
+            "Online_QuickPlay",
+            "Online_QuickPlay_WaitingForOtherPlayer",
+            "Online_Text_WaitingForOtherPlayer",
+            "Online_CreatePrivate",
+            "Online_EnterCode",
+            "Online_JoinPrivate",
+            "Online_Text_ThisIsNewGame",
+            "Online_Server",
+            "Online_Server_Change",
+            "Online_Text_WaitingForYourOponent",
+            "Online_Text_APlayerHasEnterTheMatch",
+            "Online_Text_YouMostEnterACodeToJoinAPrivate",
+            "Online_CreatePrivate_ShareCode",
+            "Online_Text_FailedToConnect",
+            "Online_Text_WaitingForYourFriendToJoinTheGame",
+            "Online_Text_TheCodeYouEnteredMayNotBe",
+            "Online_Text_JoiningGame",
+            "Online_Text_ChangingServer",
+            "Online_Text_ConnectingTo",
+            "Online_Text_PleaseWait",
+            "Online_Text_Loading",
+            "Online_Text_TheBattleIsAboutToStart",
+            "HowToPlay_HowToPlay",
+            "HowToPlay_Move",
+            "HowToPlay_Attack",
+            "HowToPlay_Defense",
+            "HowToPlay_BasicAtk",
+            "HowToPlay_RightAtk",
+            "HowToPlay_LeftAtk",
+            "HowToPlay_DownAtk",
+            "HowToPlay_UpAtk",
+            "HowToPlay_Block",
+            "HowToPlay_JumpR",
+            "HowToPlay_JumpL",
+            "HowToPlay_BackFlip",
+            "HowToPlay_Roll",
+            "HowToPlay_LevelAttacks",
+            "HowToPlay_Continue",
+            "HowToPlay_Start",
+            "QuitBotton",
+            "QuitBotton_Text_AreYouSure",
+            "QuitBotton_Quit",
+            "QuitBotton_Cancel",
+            "ChooseCharacter_ChooseCharacter",
+            "ChooseCharacter_Random",
+            "ChooseCharacter_Unlock",
+            "ChooseCharacter_Text_GetReady",
+            "ChooseCharacter_Text_WaitingForOtherPlayer",
+            "ChooseCharacter_Text_YouNeedMoreCrystals",
+            "ChooseCharacter_Text_YouNeedMoreTrophies",
+            "ChooseCharacter_CPU",
+            "ChooseCharacter_LV1",
+            "ChooseCharacter_LV2",
+            "ChooseCharacter_LV3",
+            "ChooseCharacter_LV4",
+            "ChooseCharacter_LV5",
+            "ChooseCharacter_Start",
+            "ChooseCharacter_SelectStage",
+            "ChooseCharacter_SelectStage_Select",
+            "ChooseCharacter_SelectStage_Close",
+            "ChooseCharacter_SelectStage_UnlockStage",
+            "ChooseCharacter_Text_NewStageUnlock",
+            "Loading",
+            "BottonA",
+            "BottonB",
+            "Battle_Cpu",
+            "Battle_Quit_PlayAgain",
+            "Battle_Quit_MainMenu",
+            "Battle_Quit_ResumeGame",
+            "Battle_Settings",
+            "Battle_Settings_Lock30FPS",
+            "Battle_Settings_Min",
+            "Battle_Settings_Med",
+            "Battle_Settings_Max",
+            "Battle_Settings_Music",
+            "Battle_Settings_Mute",
+            "Battle_Settings_Joystick",
+            "Battle_Settings_Dpad",
+            "Battle_Settings_Controller",
+            "Battle_Settings_Inv",
+            "Winner_Winner",
+            "Winner_Results",
+            "Winner_Rank",
+            "Winner_PlayAgain",
+            "Winner_WatchAd",
+            "Winner_Bonus",
+            "Winner_Score",
+            "Winner_Text_CrystalsDisabled",
+            "Winner_Text_CongratsYouWon25ExtraCrystals",
+            "Winner_Rewarded",
+            "Winner_Continue",
+            "Tournament_Text_YouMostUnlock",
+            "Tournament_EntryFee",
+            "Tournament_Enter",
+            "Tournament_Cancel",
+            "Tournament_MainMenu",
+            "Tournament_PlayAgain",
+            "Tournament_ExitGame",
+            "SharingGame_HeyCheckThisGame",
+            "SharingGame_Video",
+            "SharingGame_InstallGame",
+            "RateGame_Description",
+            "RateGame_ThanksForPlaying",
+            "RateGame_RateNow",
+            "RateGame_NoThanks",
+            "RateGame_RemindMeLater",
+            "GameStillInDevelopment",
+            "ChooseCharacter_HighScore",
+            "ChooseCharacter_SelectStage_Price",
+            "ChooseCharacter_YouNeedMoreCrystalsToUnlockStage"
+          ],
+          "declared_methods": [
+            ".ctor"
+          ]
+        }
+      ],
+      "scene_references": [
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/StartMenu.unity"
+        }
+      ],
+      "known_or_declared": "Video muestra seis botones; APK añade objetos de cuenta y submenú multiplayer.",
+      "recovery_obligations": "Recuperar callbacks y estados activos; evitar ocultar cuentas/local/friends/spectator por no estar en los videos.",
+      "completion_evidence_required": "Todos los destinos del objetivo de versión son navegables, con retorno/cancelación y mensajes de error.",
+      "open": true
+    },
+    {
+      "id": "tutorial",
+      "priority": "P1",
+      "title": "Tutorial y niveles",
+      "evidence_status": "partial_visual_and_static",
+      "implementation_status": "not_assessed_by_this_specification",
+      "video_findings": [
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "tutorial"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "attack-directions"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "defense-directions"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "attack-levels"
+        }
+      ],
+      "metadata": [
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3502,
+          "type_name": "HowToPlayManager",
+          "declared_fields": [],
+          "declared_methods": [
+            "Continue",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3980,
+          "type_name": "Translation",
+          "declared_fields": [
+            "StartMenu_1Player",
+            "StartMenu_Online",
+            "StartMenu_ShareGame",
+            "StartMenu_ShareGame_ThanksMessage",
+            "StartMenu_ExitGame",
+            "StartMenu_Tournament",
+            "StartMenu_Survival",
+            "StartMenu_NewVersion",
+            "StartMenu_UpdateNow",
+            "StartMenu_Text_PleaseSharYourFeedback",
+            "StartMenu_LoadingData",
+            "StartMenu_PleasWait",
+            "StartMenu_Text_Welcome",
+            "StartMenu_Text_Account",
+            "Online_Text_ErrorCheckYourInternet",
+            "Online_Text_ConnectingWithServe",
+            "Online_Text_ConnectionSuccessful",
+            "Online_Text_ConnectionSuccessfulServer",
+            "Online_Text_PlayerHasDisconected",
+            "Online_Text_ThereAreNoMatches",
+            "Online_QuickPlay",
+            "Online_QuickPlay_WaitingForOtherPlayer",
+            "Online_Text_WaitingForOtherPlayer",
+            "Online_CreatePrivate",
+            "Online_EnterCode",
+            "Online_JoinPrivate",
+            "Online_Text_ThisIsNewGame",
+            "Online_Server",
+            "Online_Server_Change",
+            "Online_Text_WaitingForYourOponent",
+            "Online_Text_APlayerHasEnterTheMatch",
+            "Online_Text_YouMostEnterACodeToJoinAPrivate",
+            "Online_CreatePrivate_ShareCode",
+            "Online_Text_FailedToConnect",
+            "Online_Text_WaitingForYourFriendToJoinTheGame",
+            "Online_Text_TheCodeYouEnteredMayNotBe",
+            "Online_Text_JoiningGame",
+            "Online_Text_ChangingServer",
+            "Online_Text_ConnectingTo",
+            "Online_Text_PleaseWait",
+            "Online_Text_Loading",
+            "Online_Text_TheBattleIsAboutToStart",
+            "HowToPlay_HowToPlay",
+            "HowToPlay_Move",
+            "HowToPlay_Attack",
+            "HowToPlay_Defense",
+            "HowToPlay_BasicAtk",
+            "HowToPlay_RightAtk",
+            "HowToPlay_LeftAtk",
+            "HowToPlay_DownAtk",
+            "HowToPlay_UpAtk",
+            "HowToPlay_Block",
+            "HowToPlay_JumpR",
+            "HowToPlay_JumpL",
+            "HowToPlay_BackFlip",
+            "HowToPlay_Roll",
+            "HowToPlay_LevelAttacks",
+            "HowToPlay_Continue",
+            "HowToPlay_Start",
+            "QuitBotton",
+            "QuitBotton_Text_AreYouSure",
+            "QuitBotton_Quit",
+            "QuitBotton_Cancel",
+            "ChooseCharacter_ChooseCharacter",
+            "ChooseCharacter_Random",
+            "ChooseCharacter_Unlock",
+            "ChooseCharacter_Text_GetReady",
+            "ChooseCharacter_Text_WaitingForOtherPlayer",
+            "ChooseCharacter_Text_YouNeedMoreCrystals",
+            "ChooseCharacter_Text_YouNeedMoreTrophies",
+            "ChooseCharacter_CPU",
+            "ChooseCharacter_LV1",
+            "ChooseCharacter_LV2",
+            "ChooseCharacter_LV3",
+            "ChooseCharacter_LV4",
+            "ChooseCharacter_LV5",
+            "ChooseCharacter_Start",
+            "ChooseCharacter_SelectStage",
+            "ChooseCharacter_SelectStage_Select",
+            "ChooseCharacter_SelectStage_Close",
+            "ChooseCharacter_SelectStage_UnlockStage",
+            "ChooseCharacter_Text_NewStageUnlock",
+            "Loading",
+            "BottonA",
+            "BottonB",
+            "Battle_Cpu",
+            "Battle_Quit_PlayAgain",
+            "Battle_Quit_MainMenu",
+            "Battle_Quit_ResumeGame",
+            "Battle_Settings",
+            "Battle_Settings_Lock30FPS",
+            "Battle_Settings_Min",
+            "Battle_Settings_Med",
+            "Battle_Settings_Max",
+            "Battle_Settings_Music",
+            "Battle_Settings_Mute",
+            "Battle_Settings_Joystick",
+            "Battle_Settings_Dpad",
+            "Battle_Settings_Controller",
+            "Battle_Settings_Inv",
+            "Winner_Winner",
+            "Winner_Results",
+            "Winner_Rank",
+            "Winner_PlayAgain",
+            "Winner_WatchAd",
+            "Winner_Bonus",
+            "Winner_Score",
+            "Winner_Text_CrystalsDisabled",
+            "Winner_Text_CongratsYouWon25ExtraCrystals",
+            "Winner_Rewarded",
+            "Winner_Continue",
+            "Tournament_Text_YouMostUnlock",
+            "Tournament_EntryFee",
+            "Tournament_Enter",
+            "Tournament_Cancel",
+            "Tournament_MainMenu",
+            "Tournament_PlayAgain",
+            "Tournament_ExitGame",
+            "SharingGame_HeyCheckThisGame",
+            "SharingGame_Video",
+            "SharingGame_InstallGame",
+            "RateGame_Description",
+            "RateGame_ThanksForPlaying",
+            "RateGame_RateNow",
+            "RateGame_NoThanks",
+            "RateGame_RemindMeLater",
+            "GameStillInDevelopment",
+            "ChooseCharacter_HighScore",
+            "ChooseCharacter_SelectStage_Price",
+            "ChooseCharacter_YouNeedMoreCrystalsToUnlockStage"
+          ],
+          "declared_methods": [
+            ".ctor"
+          ]
+        }
+      ],
+      "scene_references": [
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/HowToPlay.unity"
+        },
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Bending Battle.unity"
+        }
+      ],
+      "known_or_declared": "Tutorial comprobado, significado exacto del nivel pendiente.",
+      "recovery_obligations": "Cruzar texto y callbacks con modelos InputSet/AttackData; conservar tabla direccional; determinar primera aparición y opción de reapertura.",
+      "completion_evidence_required": "Las diez entradas reproducen acciones correctas; tutorial, omisión y persistencia se verifican.",
+      "open": true
+    },
+    {
+      "id": "input",
+      "priority": "P1",
+      "title": "Entrada táctil, Dpad, teclado y mando",
+      "evidence_status": "partial_visual_and_static",
+      "implementation_status": "not_assessed_by_this_specification",
+      "video_findings": [
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "attack-directions"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "defense-directions"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "hud-duel"
+        }
+      ],
+      "metadata": [
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3507,
+          "type_name": "InputSet",
+          "declared_fields": [
+            "x",
+            "y",
+            "a",
+            "b",
+            "s"
+          ],
+          "declared_methods": [
+            "Equals",
+            "Clone",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3508,
+          "type_name": "InputReader",
+          "declared_fields": [
+            "inputSet",
+            "onInputSet",
+            "joystick",
+            "blockInputs",
+            "dPad",
+            "keyboard"
+          ],
+          "declared_methods": [
+            "Start",
+            "Update",
+            "SetJoystick",
+            "ActivateDpad",
+            "UpDownDpad",
+            "LeftRightDpad",
+            "SetAButton",
+            "SetBButton",
+            "SetSButton",
+            "SetXpos",
+            "SetYpos",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3522,
+          "type_name": "JoystickSettings",
+          "declared_fields": [
+            "dpadToggle",
+            "joystickToggle",
+            "controllerToggle",
+            "invertedToggle",
+            "dpad",
+            "joystick",
+            "buttonA",
+            "buttonB",
+            "inverted"
+          ],
+          "declared_methods": [
+            "Start",
+            "Invert",
+            "DpadOn",
+            "JoystickOn",
+            "ControllerOn",
+            "Update",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3772,
+          "type_name": "MobileInputs",
+          "declared_fields": [
+            "joystick",
+            "anim",
+            "speed",
+            "PV",
+            "x",
+            "z"
+          ],
+          "declared_methods": [
+            "Start",
+            "Update",
+            "DetectInputs",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3683,
+          "type_name": "DesktopInputs",
+          "declared_fields": [
+            "speed",
+            "anim",
+            "PV",
+            "horizontal",
+            "vertical",
+            "fire",
+            "jump",
+            "Special"
+          ],
+          "declared_methods": [
+            "Start",
+            "Update",
+            "DetectInputs",
+            "Actions",
+            "StopAttacking",
+            "StopJumping",
+            ".ctor"
+          ]
+        }
+      ],
+      "scene_references": [
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Bending Battle.unity"
+        }
+      ],
+      "known_or_declared": "Hay declaraciones para teclado, Dpad, controller e inversión; no se sabe cuáles son activas en cada plataforma.",
+      "recovery_obligations": "Recuperar umbrales, zonas muertas, orientación, prioridades A/B/S, hold/release, cancelación, layouts y mapeos.",
+      "completion_evidence_required": "Matriz de todas las entradas con resultados por dispositivo, simultaneidad y pérdida de foco.",
+      "open": true
+    },
+    {
+      "id": "roster",
+      "priority": "P1",
+      "title": "Personajes, variantes y disponibilidad",
+      "evidence_status": "partial_visual_and_static",
+      "implementation_status": "not_assessed_by_this_specification",
+      "video_findings": [
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "char-sora"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "char-vinea"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "char-diana"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "char-blaze"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "char-ren"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "char-rina"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "char-dante"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "char-aura"
+        }
+      ],
+      "metadata": [
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3845,
+          "type_name": "SelectionController",
+          "declared_fields": [
+            "i",
+            "actualCharacterIndex",
+            "actualCharacterName",
+            "nameText",
+            "buttonText",
+            "hostReady",
+            "guestReady",
+            "inBattle",
+            "unlockName",
+            "UnlockScreen",
+            "beforeArrow",
+            "afterArrow",
+            "crystalsView",
+            "trophiesView",
+            "beforeArrowStage",
+            "afterArrowStage",
+            "beforeArrowSpeed",
+            "afterArrowSpeed",
+            "ready",
+            "Price",
+            "PriceTrophy",
+            "Characters",
+            "cpuController",
+            "comingSoonScreen",
+            "trophyRequirement",
+            "crystalsPrice",
+            "timeText",
+            "times",
+            "actualTime",
+            "onStart",
+            "charNotAvialable"
+          ],
+          "declared_methods": [
+            "Awake",
+            "SetOnlineCode",
+            "ChangeTime",
+            "SetTime",
+            "Start",
+            "OnDestroy",
+            "ResetPlayerProperties",
+            "RefreshCharsAndStages",
+            "SetDefaultCharacters",
+            "nextCharacter",
+            "previousCharacter",
+            "ChangeCharacter",
+            "RemoveButtons",
+            "OnlineMode",
+            "start",
+            "GoToBattle",
+            "CheckIfLocked",
+            "UnlockCharacter",
+            "UnlockTrophyCharacter",
+            "Unlock",
+            "UnlockAnim",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3336,
+          "type_name": "CharactersManager",
+          "declared_fields": [
+            "i",
+            "characters",
+            "playableCharacters",
+            "lastCharacter"
+          ],
+          "declared_methods": [
+            "Start",
+            "SetCharacters",
+            "SetPlayableCharacters",
+            "RemoveBlockCharacters",
+            "RemoveRandom",
+            "IsCharUnlocked",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3338,
+          "type_name": "CharacterSwap",
+          "declared_fields": [],
+          "declared_methods": [
+            "Start",
+            "Update",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3270,
+          "type_name": "AltCharacter",
+          "declared_fields": [
+            "anim"
+          ],
+          "declared_methods": [
+            "Start",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3285,
+          "type_name": "CharacterEnum",
+          "declared_fields": [
+            "value__",
+            "Sora",
+            "Aura",
+            "Vinea",
+            "Eliot",
+            "Diana",
+            "Ren"
+          ],
+          "declared_methods": []
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3545,
+          "type_name": "CharacterName",
+          "declared_fields": [
+            "value__",
+            "Sora",
+            "Aura",
+            "Vinea",
+            "Eliot",
+            "Diana",
+            "Ren"
+          ],
+          "declared_methods": []
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3892,
+          "type_name": "TMPlayerCharacters",
+          "declared_fields": [
+            "aura",
+            "eliot",
+            "ren",
+            "rina",
+            "dante",
+            "agata",
+            "raven",
+            "maya"
+          ],
+          "declared_methods": [
+            ".ctor",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3643,
+          "type_name": "ElementType",
+          "declared_fields": [
+            "value__",
+            "Wind",
+            "Water",
+            "Earth",
+            "Fire",
+            "Electricity",
+            "Shadow"
+          ],
+          "declared_methods": []
+        }
+      ],
+      "scene_references": [
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Character Selection.unity"
+        },
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Tournament.unity"
+        }
+      ],
+      "known_or_declared": "Ocho nombres observados en video; APK contiene además Eliot/Amon/Maya/Raven/Agata. No afirmar número final ni equivalencia entre variantes.",
+      "recovery_obligations": "Recuperar lista Characters, prefabs, orden, nombres traducidos, precios, restricciones y variantes; resolver enums parciales frente a escena más amplia.",
+      "completion_evidence_required": "Cada personaje del catálogo objetivo selecciona su prefab/animaciones/movimientos y guardado correctos.",
+      "open": true
+    },
+    {
+      "id": "selection",
+      "priority": "P1",
+      "title": "Selección de rival y parámetros",
+      "evidence_status": "partial_visual_and_static",
+      "implementation_status": "not_assessed_by_this_specification",
+      "video_findings": [
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "cpu-config"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "survival-select"
+        }
+      ],
+      "metadata": [
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3845,
+          "type_name": "SelectionController",
+          "declared_fields": [
+            "i",
+            "actualCharacterIndex",
+            "actualCharacterName",
+            "nameText",
+            "buttonText",
+            "hostReady",
+            "guestReady",
+            "inBattle",
+            "unlockName",
+            "UnlockScreen",
+            "beforeArrow",
+            "afterArrow",
+            "crystalsView",
+            "trophiesView",
+            "beforeArrowStage",
+            "afterArrowStage",
+            "beforeArrowSpeed",
+            "afterArrowSpeed",
+            "ready",
+            "Price",
+            "PriceTrophy",
+            "Characters",
+            "cpuController",
+            "comingSoonScreen",
+            "trophyRequirement",
+            "crystalsPrice",
+            "timeText",
+            "times",
+            "actualTime",
+            "onStart",
+            "charNotAvialable"
+          ],
+          "declared_methods": [
+            "Awake",
+            "SetOnlineCode",
+            "ChangeTime",
+            "SetTime",
+            "Start",
+            "OnDestroy",
+            "ResetPlayerProperties",
+            "RefreshCharsAndStages",
+            "SetDefaultCharacters",
+            "nextCharacter",
+            "previousCharacter",
+            "ChangeCharacter",
+            "RemoveButtons",
+            "OnlineMode",
+            "start",
+            "GoToBattle",
+            "CheckIfLocked",
+            "UnlockCharacter",
+            "UnlockTrophyCharacter",
+            "Unlock",
+            "UnlockAnim",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3674,
+          "type_name": "CPUController",
+          "declared_fields": [
+            "characters",
+            "actualCharacter",
+            "nameText"
+          ],
+          "declared_methods": [
+            "Start",
+            "nextCharacter",
+            "previousCharacter",
+            "ChangeCharacter",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3483,
+          "type_name": "GameSpeed",
+          "declared_fields": [
+            "speedText",
+            "speedList",
+            "actualSpeed"
+          ],
+          "declared_methods": [
+            "Start",
+            "SetSpeed",
+            "ChangeSpeed",
+            ".ctor"
+          ]
+        }
+      ],
+      "scene_references": [
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Character Selection.unity"
+        }
+      ],
+      "known_or_declared": "LV3 observado; Translation declara LV1-LV5; campo times y GameSpeed pueden ampliar opciones.",
+      "recovery_obligations": "Recuperar nivel/duración/velocidad, random ?, valores permitidos y sincronización ready del online/local.",
+      "completion_evidence_required": "Parámetros escogidos llegan a la batalla y son consistentes al volver/jugar de nuevo.",
+      "open": true
+    },
+    {
+      "id": "stages",
+      "priority": "P1",
+      "title": "Escenarios y límites",
+      "evidence_status": "partial_visual_and_static",
+      "implementation_status": "not_assessed_by_this_specification",
+      "video_findings": [
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "stage-picker"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "survival-play"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "fall-loss"
+        }
+      ],
+      "metadata": [
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3942,
+          "type_name": "StagesManager",
+          "declared_fields": [
+            "i",
+            "stages",
+            "playableStages",
+            "actualStage",
+            "lastStage"
+          ],
+          "declared_methods": [
+            "Start",
+            "AddFreeStages",
+            "SetPlayableStages",
+            "RemoveBlockStages",
+            "CheckInitialStage",
+            "HasStage",
+            "RemoveRandom",
+            "IsStageUnlocked",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3872,
+          "type_name": "StageSelector",
+          "declared_fields": [
+            "stageSelector",
+            "stageImage",
+            "unlockButton"
+          ],
+          "declared_methods": [
+            "Awake",
+            "OnDestroy",
+            "nextStage",
+            "previousStage",
+            "ChangeStage",
+            "CheckStage",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3871,
+          "type_name": "StageController",
+          "declared_fields": [
+            "i",
+            "stages",
+            "stage",
+            "music"
+          ],
+          "declared_methods": [
+            "Awake",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3899,
+          "type_name": "UnlockStage",
+          "declared_fields": [
+            "crystalsView"
+          ],
+          "declared_methods": [
+            "Start",
+            "Update",
+            "Unlock",
+            ".ctor"
+          ]
+        }
+      ],
+      "scene_references": [
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Character Selection.unity"
+        },
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Bending Battle.unity"
+        }
+      ],
+      "known_or_declared": "Algunos escenarios y bordes visibles; número, escala, colisión y catálogo no confirmados.",
+      "recovery_obligations": "Recuperar assets stages/playableStages, colisionadores, DeathZone/FinalZone, música, skybox y bloqueos.",
+      "completion_evidence_required": "Todos los escenarios del objetivo cargan con spawn, cámara, límites y desbloqueos correctos.",
+      "open": true
+    },
+    {
+      "id": "movement",
+      "priority": "P1",
+      "title": "Movimiento, orientación y física",
+      "evidence_status": "partial_visual_and_static",
+      "implementation_status": "not_assessed_by_this_specification",
+      "video_findings": [
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "camera"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "fall-loss"
+        }
+      ],
+      "metadata": [
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3636,
+          "type_name": "Character",
+          "declared_fields": [
+            "moveSpeed",
+            "rotationSpeed",
+            "anim",
+            "x",
+            "y"
+          ],
+          "declared_methods": [
+            "Start",
+            "FixedUpdate",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3725,
+          "type_name": "GameController",
+          "declared_fields": [
+            "i",
+            "resumeButton",
+            "counter",
+            "playerPrefab",
+            "enemyPrefab",
+            "hostPlayer",
+            "guestPlayer",
+            "MainCharacter",
+            "OpponentCharacter",
+            "multiplayer",
+            "mobile",
+            "online",
+            "counterStarted",
+            "draw",
+            "SpecialButton",
+            "practiceMode",
+            "WaitingMsg",
+            "WaitingMsgText",
+            "battleStarted",
+            "pause",
+            "opponentReadyToAttack",
+            "PV",
+            "animMainChar",
+            "mobInputsMainChar",
+            "notMove",
+            "lastAttackButton",
+            "uiManager",
+            "gameStarted"
+          ],
+          "declared_methods": [
+            "Awake",
+            "IsOutsideStage",
+            "GetAttackOwner",
+            "GetEnemyByOwnerLayer",
+            "GetDistancesBetweenPlayers",
+            "MainMenu",
+            "LoadAds",
+            "CreateCharacters_LM",
+            "SetupCharacters",
+            "ConfigSpectator",
+            "OnlineRestart",
+            "Restart",
+            "PrepareBattle",
+            "StartBattle",
+            "CreatePlayer",
+            "EnableInputs",
+            "ReadyToAttack",
+            "StartCounter",
+            "CounterOnline",
+            "StartCounterWhenTimeServerIs",
+            "StartCounterNow",
+            "CompleteMainChar",
+            "IsPlayerWeak",
+            "EnableSpecial",
+            "DisableSpecial",
+            "IsMainChar",
+            "EnableMobileInputs",
+            "EnableDesktopInputs",
+            "Attacking",
+            "AttackingButton",
+            "Special",
+            "Jumping",
+            "UpDown",
+            "RightLeft",
+            "pauseGame",
+            "ResumeGame",
+            "quitGame",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3496,
+          "type_name": "HitController",
+          "declared_fields": [],
+          "declared_methods": [
+            "Start",
+            "GetHitAnimationName",
+            "IsShieldBroken",
+            "GetAngleDiference",
+            ".ctor"
+          ]
+        }
+      ],
+      "scene_references": [
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Bending Battle.unity"
+        }
+      ],
+      "known_or_declared": "Clases exponen moveSpeed/rotationSpeed; no hay constantes validadas.",
+      "recovery_obligations": "Recuperar curvas, gravedad, control aéreo, saltos/rodar/backflip, colisión y edge behavior de todas las variantes.",
+      "completion_evidence_required": "Trayectorias y tiempos comparados contra referencia con tolerancias explícitas.",
+      "open": true
+    },
+    {
+      "id": "camera",
+      "priority": "P1",
+      "title": "Cámara y vistas",
+      "evidence_status": "partial_visual_and_static",
+      "implementation_status": "not_assessed_by_this_specification",
+      "video_findings": [
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "camera"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "hud-top"
+        }
+      ],
+      "metadata": [
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3664,
+          "type_name": "CameraManager",
+          "declared_fields": [
+            "cameraM",
+            "transitionSpeed",
+            "transitionDuration",
+            "elapsedTime",
+            "ViewCameraClose",
+            "ViewCameraFar",
+            "ViewCamaraRot",
+            "ViewWinCamera",
+            "ViewWinCamaraRot",
+            "SceneCameraPos",
+            "SceneCameraRot",
+            "SceneCameraPosFar",
+            "SceneCameraRotFar"
+          ],
+          "declared_methods": [
+            "Start",
+            "ChangeCameraParent",
+            "ChangeCameraToClose",
+            "ChangeCameraToFar",
+            "ChangeToSceneCamera",
+            "ChangeToSceneCameraClose",
+            "ChangeToSceneCameraFar",
+            "ChangeCameraToWinner",
+            "ChangeCameraSmooth",
+            "SwitchCamera",
+            ".ctor"
+          ]
+        }
+      ],
+      "scene_references": [
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Bending Battle.unity"
+        }
+      ],
+      "known_or_declared": "Vista trasera observada; declaraciones distinguen close/far/scene/winner.",
+      "recovery_obligations": "Recuperar rigs y transiciones, eye toggle, spectator, colisiones y sensibilidad.",
+      "completion_evidence_required": "Encuadre de ambos jugadores, bordes y resultados comprobado en arenas y resoluciones objetivo.",
+      "open": true
+    },
+    {
+      "id": "attacks",
+      "priority": "P1",
+      "title": "Ataques por elemento y potencia",
+      "evidence_status": "partial_visual_and_static",
+      "implementation_status": "not_assessed_by_this_specification",
+      "video_findings": [
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "air-demo"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "water-demo"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "earth-demo"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "fire-demo"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "lightning-demo"
+        }
+      ],
+      "metadata": [
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3280,
+          "type_name": "AttacksManager",
+          "declared_fields": [
+            "MainCharAttacks",
+            "OpponentAttacks",
+            "i"
+          ],
+          "declared_methods": [
+            "Start",
+            "GetOwnAttacks",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3644,
+          "type_name": "AttackData",
+          "declared_fields": [
+            "elementType",
+            "powerLevel",
+            "jumpable",
+            "explotion"
+          ],
+          "declared_methods": [
+            "GetDamage",
+            "GetDefense",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3645,
+          "type_name": "Attack_SO",
+          "declared_fields": [
+            "originalSpeed",
+            "speed"
+          ],
+          "declared_methods": [
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3642,
+          "type_name": "PowerLevel",
+          "declared_fields": [
+            "value__",
+            "Lv1",
+            "Lv2",
+            "Lv3",
+            "Indestructible"
+          ],
+          "declared_methods": []
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3643,
+          "type_name": "ElementType",
+          "declared_fields": [
+            "value__",
+            "Wind",
+            "Water",
+            "Earth",
+            "Fire",
+            "Electricity",
+            "Shadow"
+          ],
+          "declared_methods": []
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3751,
+          "type_name": "AtkName",
+          "declared_fields": [
+            "value__",
+            "BasicAirAtk",
+            "BasicAirAtk2",
+            "UpAirAtk",
+            "UpAirAtk2",
+            "DownAirAtk",
+            "DownAirAtk2",
+            "RightAirAtk",
+            "RightAirAtk2",
+            "LeftAirAtk",
+            "LeftAirAtk2",
+            "BasicWaterAtk",
+            "BasicWaterAtk2",
+            "UpWaterAtk",
+            "UpWaterAtk2a",
+            "UpWaterAtk2b",
+            "DownWaterAtk",
+            "DownWaterAtk2",
+            "RightWaterAtk",
+            "RightWaterAtk2",
+            "LeftWaterAtk",
+            "LeftWaterAtk2",
+            "LandAirAtk",
+            "LandWaterAtk",
+            "LandEarthAtk",
+            "BasicEarthAtk",
+            "BasicEarthAtk2",
+            "UpEarthAtk",
+            "UpEarthAtk2",
+            "DownEarthAtk",
+            "DownEarthAtk2",
+            "LeftEarthAtk",
+            "LeftEarthAtk2",
+            "RightEarthAtk",
+            "RightEarthAtk2",
+            "EarthSpecial_LM",
+            "SpecialAirAtkLow",
+            "SpecialAirTwisterAtk",
+            "SpecialWaterAtk1",
+            "SpecialWaterAtk2",
+            "SpecialWaterAtk3",
+            "SpecialWaterAtk4",
+            "SpecialWaterAtk5"
+          ],
+          "declared_methods": []
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3725,
+          "type_name": "GameController",
+          "declared_fields": [
+            "i",
+            "resumeButton",
+            "counter",
+            "playerPrefab",
+            "enemyPrefab",
+            "hostPlayer",
+            "guestPlayer",
+            "MainCharacter",
+            "OpponentCharacter",
+            "multiplayer",
+            "mobile",
+            "online",
+            "counterStarted",
+            "draw",
+            "SpecialButton",
+            "practiceMode",
+            "WaitingMsg",
+            "WaitingMsgText",
+            "battleStarted",
+            "pause",
+            "opponentReadyToAttack",
+            "PV",
+            "animMainChar",
+            "mobInputsMainChar",
+            "notMove",
+            "lastAttackButton",
+            "uiManager",
+            "gameStarted"
+          ],
+          "declared_methods": [
+            "Awake",
+            "IsOutsideStage",
+            "GetAttackOwner",
+            "GetEnemyByOwnerLayer",
+            "GetDistancesBetweenPlayers",
+            "MainMenu",
+            "LoadAds",
+            "CreateCharacters_LM",
+            "SetupCharacters",
+            "ConfigSpectator",
+            "OnlineRestart",
+            "Restart",
+            "PrepareBattle",
+            "StartBattle",
+            "CreatePlayer",
+            "EnableInputs",
+            "ReadyToAttack",
+            "StartCounter",
+            "CounterOnline",
+            "StartCounterWhenTimeServerIs",
+            "StartCounterNow",
+            "CompleteMainChar",
+            "IsPlayerWeak",
+            "EnableSpecial",
+            "DisableSpecial",
+            "IsMainChar",
+            "EnableMobileInputs",
+            "EnableDesktopInputs",
+            "Attacking",
+            "AttackingButton",
+            "Special",
+            "Jumping",
+            "UpDown",
+            "RightLeft",
+            "pauseGame",
+            "ResumeGame",
+            "quitGame",
+            ".ctor"
+          ]
+        }
+      ],
+      "scene_references": [
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Bending Battle.unity"
+        }
+      ],
+      "known_or_declared": "Cinco familias vistas; Shadow declarado; AtkName es parcial y no define todo el repertorio.",
+      "recovery_obligations": "Inventariar prefabs/clips/eventos por personaje y entrada; recuperar daño/defensa, alcance, spawn, velocidad, lifespan y capas.",
+      "completion_evidence_required": "Tabla completa por personaje/entrada y pruebas de colisión, potencia, bloqueabilidad y limpieza.",
+      "open": true
+    },
+    {
+      "id": "defense",
+      "priority": "P1",
+      "title": "Vida, escudo, impactos y estados",
+      "evidence_status": "partial_visual_and_static",
+      "implementation_status": "not_assessed_by_this_specification",
+      "video_findings": [
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "defense-directions"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "fall-loss"
+        }
+      ],
+      "metadata": [
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3822,
+          "type_name": "PlayerStats",
+          "declared_fields": [
+            "i",
+            "lifes",
+            "defense",
+            "lifesText",
+            "defenseText"
+          ],
+          "declared_methods": [
+            "Start",
+            "RestoreStats",
+            "RefreshText",
+            "LoseLife",
+            "LoseDefense",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3496,
+          "type_name": "HitController",
+          "declared_fields": [],
+          "declared_methods": [
+            "Start",
+            "GetHitAnimationName",
+            "IsShieldBroken",
+            "GetAngleDiference",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3952,
+          "type_name": "StatsController",
+          "declared_fields": [
+            "healthbarOp",
+            "healthbar",
+            "lifePlayer",
+            "lifeOp",
+            "Shieldbar",
+            "ShieldbarOp",
+            "shieldbarMax",
+            "iconA",
+            "iconB",
+            "iconAop",
+            "iconBop",
+            "player1Name",
+            "player2Name",
+            "healFxP1",
+            "healFxP2",
+            "i"
+          ],
+          "declared_methods": [
+            "Start",
+            "SetPlayersName",
+            "LoseHealth",
+            "SetHealth",
+            "SetHealthLM",
+            "RestoreHealth",
+            "RestoreHeal2",
+            "Hit",
+            "GrassHealing",
+            "ChangeColorIcon",
+            "SetShieldBar",
+            "ChargeShieldBar",
+            "Update",
+            "GetPlayerLifeCrystals",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3644,
+          "type_name": "AttackData",
+          "declared_fields": [
+            "elementType",
+            "powerLevel",
+            "jumpable",
+            "explotion"
+          ],
+          "declared_methods": [
+            "GetDamage",
+            "GetDefense",
+            ".ctor"
+          ]
+        }
+      ],
+      "scene_references": [
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Bending Battle.unity"
+        }
+      ],
+      "known_or_declared": "lifes/defense, GetDamage/GetDefense, IsShieldBroken declarados; video no basta para deducir ecuaciones.",
+      "recovery_obligations": "Recuperar defensa, agotamiento, regen, stun, knockback, invulnerabilidad y compatibilidad de niveles.",
+      "completion_evidence_required": "Casos hit/block/shield-break, múltiples impactos, choque simultáneo y ringout medidos.",
+      "open": true
+    },
+    {
+      "id": "special",
+      "priority": "P1",
+      "title": "Especial, carga y estados S/X",
+      "evidence_status": "partial_visual_and_static",
+      "implementation_status": "not_assessed_by_this_specification",
+      "video_findings": [
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "hud-duel"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "combat-unknown"
+        }
+      ],
+      "metadata": [
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3866,
+          "type_name": "SpecialAtk",
+          "declared_fields": [
+            "specialAtk",
+            "charge",
+            "newCharge",
+            "lastCharge",
+            "speed",
+            "letter",
+            "circle",
+            "chargeImg",
+            "sYellow",
+            "sBlack",
+            "charged",
+            "soundPlayed",
+            "numberOfSpecial",
+            "decharging"
+          ],
+          "declared_methods": [
+            "Start",
+            "OnDestroy",
+            "FixedUpdate",
+            "ChargeSpecial",
+            "ResetCharge",
+            "DechargeSpecialLM",
+            "DechargeSpecial",
+            "FinishEnemyAwakening",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3725,
+          "type_name": "GameController",
+          "declared_fields": [
+            "i",
+            "resumeButton",
+            "counter",
+            "playerPrefab",
+            "enemyPrefab",
+            "hostPlayer",
+            "guestPlayer",
+            "MainCharacter",
+            "OpponentCharacter",
+            "multiplayer",
+            "mobile",
+            "online",
+            "counterStarted",
+            "draw",
+            "SpecialButton",
+            "practiceMode",
+            "WaitingMsg",
+            "WaitingMsgText",
+            "battleStarted",
+            "pause",
+            "opponentReadyToAttack",
+            "PV",
+            "animMainChar",
+            "mobInputsMainChar",
+            "notMove",
+            "lastAttackButton",
+            "uiManager",
+            "gameStarted"
+          ],
+          "declared_methods": [
+            "Awake",
+            "IsOutsideStage",
+            "GetAttackOwner",
+            "GetEnemyByOwnerLayer",
+            "GetDistancesBetweenPlayers",
+            "MainMenu",
+            "LoadAds",
+            "CreateCharacters_LM",
+            "SetupCharacters",
+            "ConfigSpectator",
+            "OnlineRestart",
+            "Restart",
+            "PrepareBattle",
+            "StartBattle",
+            "CreatePlayer",
+            "EnableInputs",
+            "ReadyToAttack",
+            "StartCounter",
+            "CounterOnline",
+            "StartCounterWhenTimeServerIs",
+            "StartCounterNow",
+            "CompleteMainChar",
+            "IsPlayerWeak",
+            "EnableSpecial",
+            "DisableSpecial",
+            "IsMainChar",
+            "EnableMobileInputs",
+            "EnableDesktopInputs",
+            "Attacking",
+            "AttackingButton",
+            "Special",
+            "Jumping",
+            "UpDown",
+            "RightLeft",
+            "pauseGame",
+            "ResumeGame",
+            "quitGame",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3508,
+          "type_name": "InputReader",
+          "declared_fields": [
+            "inputSet",
+            "onInputSet",
+            "joystick",
+            "blockInputs",
+            "dPad",
+            "keyboard"
+          ],
+          "declared_methods": [
+            "Start",
+            "Update",
+            "SetJoystick",
+            "ActivateDpad",
+            "UpDownDpad",
+            "LeftRightDpad",
+            "SetAButton",
+            "SetBButton",
+            "SetSButton",
+            "SetXpos",
+            "SetYpos",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3651,
+          "type_name": "AI",
+          "declared_fields": [
+            "anim",
+            "animPlayer",
+            "player",
+            "direction",
+            "centerPos",
+            "Score",
+            "easyMove",
+            "on",
+            "cpuElement",
+            "playerElement",
+            "HardMode",
+            "SpecialDone",
+            "Special2Done",
+            "modeCpu",
+            "moving",
+            "callback",
+            "onlyJump",
+            "blockActive",
+            "atkType",
+            "Active"
+          ],
+          "declared_methods": [
+            "Start",
+            "NewAI",
+            "Lv1",
+            "Lv2",
+            "Lv3",
+            "RandomAtk",
+            "FastAttack",
+            "FastAttackFloor",
+            "EvadeAttack",
+            "EvadeAttackDelay",
+            "DoInTime",
+            "CheckAttacks",
+            "IsOnFront",
+            "Move",
+            "Update",
+            "CPUSelection",
+            "SinglePlay",
+            "NormalTourney",
+            "EasyTourney",
+            "ProTourney",
+            "ActivateAI",
+            "DeativateAI",
+            "ManageAI",
+            "ChangeEasyMove",
+            "ChangeDirection",
+            "IsNearEdge",
+            "CenterSide",
+            "DistanceFromPlayer",
+            "DistanceFromCenter",
+            "IsCenterOnFront",
+            "Legend",
+            "FireVsFire",
+            "FireVsEarth",
+            "FireVsAir",
+            "FireVsWater",
+            "FireVsLight",
+            "EarthVsEarth",
+            "EarthVsFire",
+            "EarthVsAir",
+            "EarthVsWater",
+            "EarthVsLight",
+            "AirVsEarth",
+            "AirVsAir",
+            "AirVsFire",
+            "AirVsWater",
+            "AirVsLight",
+            "WaterVsFire",
+            "WaterVsEarth",
+            "WaterVsAir",
+            "WaterVsWater",
+            "WaterVsLight",
+            "LightVsWater",
+            "LightVsFire",
+            "LightVsEarth",
+            "LightVsAir",
+            "LightVsLight",
+            "Pro",
+            "Hard",
+            "Normal",
+            "Noob",
+            "Easy",
+            "restore",
+            "RandomAtk2",
+            "RandomSideOrDownAtk",
+            "RandomSideOrUpAtk",
+            "RandomSideOrBasic",
+            "RandomAtkButDownAtk",
+            "RandomAtkFront",
+            "RandomAtkStrong",
+            "RandomAtkSide",
+            "RandomBasicAtk",
+            "BasicAtk",
+            "SideAtkL",
+            "SideAtkR",
+            "Jump",
+            "Block",
+            "DeactiveBlock",
+            "BackFlip",
+            "Roll",
+            "DownAtk",
+            "UpAtk",
+            "CPUAwakening",
+            "FinishAwakening",
+            "Special",
+            "HasSpecial",
+            "Special2",
+            "MoveToSide",
+            "MoveFront",
+            ".ctor"
+          ]
+        }
+      ],
+      "scene_references": [
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Bending Battle.unity"
+        }
+      ],
+      "known_or_declared": "ChargeSpecial/ResetCharge/DechargeSpecial y EnableSpecial declarados; nombres no prueban cuál es el disparador o significado de X.",
+      "recovery_obligations": "Recuperar cálculo de carga, daño recibido/dado, estado cargado, posibles especiales múltiples/awakening y transiciones del botón.",
+      "completion_evidence_required": "Para cada personaje se documentan activación, coste, ejecución, reset, muerte y sincronización; fidelidad no afirmada antes.",
+      "open": true
+    },
+    {
+      "id": "duel-score",
+      "priority": "P1",
+      "title": "Duelo, contador y victoria",
+      "evidence_status": "partial_visual_and_static",
+      "implementation_status": "not_assessed_by_this_specification",
+      "video_findings": [
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "rounds"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "first-to-three"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "countdown"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "fall-loss"
+        }
+      ],
+      "metadata": [
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3725,
+          "type_name": "GameController",
+          "declared_fields": [
+            "i",
+            "resumeButton",
+            "counter",
+            "playerPrefab",
+            "enemyPrefab",
+            "hostPlayer",
+            "guestPlayer",
+            "MainCharacter",
+            "OpponentCharacter",
+            "multiplayer",
+            "mobile",
+            "online",
+            "counterStarted",
+            "draw",
+            "SpecialButton",
+            "practiceMode",
+            "WaitingMsg",
+            "WaitingMsgText",
+            "battleStarted",
+            "pause",
+            "opponentReadyToAttack",
+            "PV",
+            "animMainChar",
+            "mobInputsMainChar",
+            "notMove",
+            "lastAttackButton",
+            "uiManager",
+            "gameStarted"
+          ],
+          "declared_methods": [
+            "Awake",
+            "IsOutsideStage",
+            "GetAttackOwner",
+            "GetEnemyByOwnerLayer",
+            "GetDistancesBetweenPlayers",
+            "MainMenu",
+            "LoadAds",
+            "CreateCharacters_LM",
+            "SetupCharacters",
+            "ConfigSpectator",
+            "OnlineRestart",
+            "Restart",
+            "PrepareBattle",
+            "StartBattle",
+            "CreatePlayer",
+            "EnableInputs",
+            "ReadyToAttack",
+            "StartCounter",
+            "CounterOnline",
+            "StartCounterWhenTimeServerIs",
+            "StartCounterNow",
+            "CompleteMainChar",
+            "IsPlayerWeak",
+            "EnableSpecial",
+            "DisableSpecial",
+            "IsMainChar",
+            "EnableMobileInputs",
+            "EnableDesktopInputs",
+            "Attacking",
+            "AttackingButton",
+            "Special",
+            "Jumping",
+            "UpDown",
+            "RightLeft",
+            "pauseGame",
+            "ResumeGame",
+            "quitGame",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3816,
+          "type_name": "ScoreController",
+          "declared_fields": [
+            "score",
+            "anim",
+            "PV",
+            "newRecord"
+          ],
+          "declared_methods": [
+            "Start",
+            "OnTriggerEnter",
+            "AddPoints",
+            "UpdateScore",
+            "Draw",
+            "DanceSurvival",
+            "Dance",
+            "TimeOver",
+            "EndBattle",
+            "CheckPoints",
+            "FoeWin",
+            "finishMenu",
+            "DisableSpecialButton",
+            "showWinnerText",
+            "changeCamera",
+            "changeMusic",
+            "disableMovement",
+            "DropAtks",
+            "Falling",
+            "Death",
+            "FinalDeath",
+            "DelayWin",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3822,
+          "type_name": "PlayerStats",
+          "declared_fields": [
+            "i",
+            "lifes",
+            "defense",
+            "lifesText",
+            "defenseText"
+          ],
+          "declared_methods": [
+            "Start",
+            "RestoreStats",
+            "RefreshText",
+            "LoseLife",
+            "LoseDefense",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3791,
+          "type_name": "NormalMode",
+          "declared_fields": [
+            "resumeButton",
+            "counter",
+            "playerPrefab",
+            "enemyPrefab",
+            "player",
+            "enemy",
+            "multiplayer",
+            "mobile",
+            "online"
+          ],
+          "declared_methods": [
+            "Start",
+            "FixedUpdate",
+            "Attacking",
+            "Jumping",
+            "pauseGame",
+            "ResumeGame",
+            "quitGame",
+            ".ctor"
+          ]
+        }
+      ],
+      "scene_references": [
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Bending Battle.unity"
+        }
+      ],
+      "known_or_declared": "Primero a tres compatible con muestras; puede variar con versión/modo/vida/tiempo.",
+      "recovery_obligations": "Recuperar reglas de punto, draw, vida, timeout, respawn, reinicio, fin de batalla y desconexión.",
+      "completion_evidence_required": "Matriz de puntuación y resultado cubre empate, caída, victoria y abandono en cada modo.",
+      "open": true
+    },
+    {
+      "id": "ai",
+      "priority": "P1",
+      "title": "CPU y dificultad",
+      "evidence_status": "partial_visual_and_static",
+      "implementation_status": "not_assessed_by_this_specification",
+      "video_findings": [
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "cpu-config"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "air-demo"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "water-demo"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "earth-demo"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "fire-demo"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "lightning-demo"
+        }
+      ],
+      "metadata": [
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3651,
+          "type_name": "AI",
+          "declared_fields": [
+            "anim",
+            "animPlayer",
+            "player",
+            "direction",
+            "centerPos",
+            "Score",
+            "easyMove",
+            "on",
+            "cpuElement",
+            "playerElement",
+            "HardMode",
+            "SpecialDone",
+            "Special2Done",
+            "modeCpu",
+            "moving",
+            "callback",
+            "onlyJump",
+            "blockActive",
+            "atkType",
+            "Active"
+          ],
+          "declared_methods": [
+            "Start",
+            "NewAI",
+            "Lv1",
+            "Lv2",
+            "Lv3",
+            "RandomAtk",
+            "FastAttack",
+            "FastAttackFloor",
+            "EvadeAttack",
+            "EvadeAttackDelay",
+            "DoInTime",
+            "CheckAttacks",
+            "IsOnFront",
+            "Move",
+            "Update",
+            "CPUSelection",
+            "SinglePlay",
+            "NormalTourney",
+            "EasyTourney",
+            "ProTourney",
+            "ActivateAI",
+            "DeativateAI",
+            "ManageAI",
+            "ChangeEasyMove",
+            "ChangeDirection",
+            "IsNearEdge",
+            "CenterSide",
+            "DistanceFromPlayer",
+            "DistanceFromCenter",
+            "IsCenterOnFront",
+            "Legend",
+            "FireVsFire",
+            "FireVsEarth",
+            "FireVsAir",
+            "FireVsWater",
+            "FireVsLight",
+            "EarthVsEarth",
+            "EarthVsFire",
+            "EarthVsAir",
+            "EarthVsWater",
+            "EarthVsLight",
+            "AirVsEarth",
+            "AirVsAir",
+            "AirVsFire",
+            "AirVsWater",
+            "AirVsLight",
+            "WaterVsFire",
+            "WaterVsEarth",
+            "WaterVsAir",
+            "WaterVsWater",
+            "WaterVsLight",
+            "LightVsWater",
+            "LightVsFire",
+            "LightVsEarth",
+            "LightVsAir",
+            "LightVsLight",
+            "Pro",
+            "Hard",
+            "Normal",
+            "Noob",
+            "Easy",
+            "restore",
+            "RandomAtk2",
+            "RandomSideOrDownAtk",
+            "RandomSideOrUpAtk",
+            "RandomSideOrBasic",
+            "RandomAtkButDownAtk",
+            "RandomAtkFront",
+            "RandomAtkStrong",
+            "RandomAtkSide",
+            "RandomBasicAtk",
+            "BasicAtk",
+            "SideAtkL",
+            "SideAtkR",
+            "Jump",
+            "Block",
+            "DeactiveBlock",
+            "BackFlip",
+            "Roll",
+            "DownAtk",
+            "UpAtk",
+            "CPUAwakening",
+            "FinishAwakening",
+            "Special",
+            "HasSpecial",
+            "Special2",
+            "MoveToSide",
+            "MoveFront",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3674,
+          "type_name": "CPUController",
+          "declared_fields": [
+            "characters",
+            "actualCharacter",
+            "nameText"
+          ],
+          "declared_methods": [
+            "Start",
+            "nextCharacter",
+            "previousCharacter",
+            "ChangeCharacter",
+            ".ctor"
+          ]
+        }
+      ],
+      "scene_references": [
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Character Selection.unity"
+        },
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Bending Battle.unity"
+        }
+      ],
+      "known_or_declared": "AI declara Lv1/Lv2/Lv3 y perfiles Noob/Easy/Normal/Hard/Pro/Legend, matchups y evasión; selección expone potencialmente LV1-LV5.",
+      "recovery_obligations": "Recuperar funciones, estado, temporizadores, detección, azar y relación nivel/perfil/modo; no sustituir por proyectil aleatorio y llamarlo completo.",
+      "completion_evidence_required": "Cada dificultad/modo y matchup relevante produce decisiones verificadas sin entrada humana.",
+      "open": true
+    },
+    {
+      "id": "survival",
+      "priority": "P1",
+      "title": "Supervivencia",
+      "evidence_status": "partial_visual_and_static",
+      "implementation_status": "not_assessed_by_this_specification",
+      "video_findings": [
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "survival-play"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "survival-result"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "survival-award-inference"
+        }
+      ],
+      "metadata": [
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3880,
+          "type_name": "SurvivalController",
+          "declared_fields": [
+            "survivalController",
+            "survivalMode",
+            "currentChar",
+            "disableRespawn"
+          ],
+          "declared_methods": [
+            "Start",
+            "OnDestroy",
+            "Update",
+            "SurvivalModeOn",
+            "RespawnOff",
+            "RespawnOn",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3886,
+          "type_name": "SystemManager",
+          "declared_fields": [
+            "i",
+            "timesPlayed",
+            "mode",
+            "async",
+            "unlock",
+            "newUpdate",
+            "bonus",
+            "tmPlayer",
+            "playedTime",
+            "howToPlayShowed",
+            "playerType"
+          ],
+          "declared_methods": [
+            "Awake",
+            "ChangePlayingMode",
+            "RefreshPlayingMode",
+            "NextScene",
+            "SaveData",
+            "SaveDataInDevice",
+            "LoadDataFromDevice",
+            "SavePlayerData",
+            "LoadPlayerData",
+            "Update",
+            "CheckForUpdate",
+            "CheckBonus",
+            "OnApplicationQuit",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3829,
+          "type_name": "ResultsController",
+          "declared_fields": [
+            "resultsController",
+            "rank",
+            "crystalsView",
+            "bonus",
+            "crystalViewBattle",
+            "crystalsReward",
+            "playAgainButton"
+          ],
+          "declared_methods": [
+            "Awake",
+            "OnDestroy",
+            "InitResults",
+            "DisplayBonus",
+            "CalculateCrystalReward",
+            "CalculateRank",
+            "ShowRewardedAd",
+            ".ctor"
+          ]
+        }
+      ],
+      "scene_references": [
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Character Selection.unity"
+        },
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Bending Battle.unity"
+        }
+      ],
+      "known_or_declared": "Score y premio vistos; reglas de respawn/escalado y fin desconocidas.",
+      "recovery_obligations": "Recuperar secuencia enemigos, puntuación, daño/vida, récord, spawn y escalado.",
+      "completion_evidence_required": "Partidas completas cubren progresión, muerte, récord y premio persistido.",
+      "open": true
+    },
+    {
+      "id": "tournament",
+      "priority": "P1",
+      "title": "Torneo y cuadros",
+      "evidence_status": "partial_visual_and_static",
+      "implementation_status": "not_assessed_by_this_specification",
+      "video_findings": [
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "tournament-unknown"
+        }
+      ],
+      "metadata": [
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3896,
+          "type_name": "TournamentController",
+          "declared_fields": [
+            "i",
+            "checkpoints",
+            "round",
+            "loseTournament",
+            "losers",
+            "characters",
+            "battle",
+            "times",
+            "stage",
+            "tourneyLevel"
+          ],
+          "declared_methods": [
+            "Start",
+            "OnDestroy",
+            "Reset",
+            "Update",
+            "PayTournament",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3978,
+          "type_name": "TournamentManager",
+          "declared_fields": [
+            "i",
+            "players",
+            "winners",
+            "round",
+            "roundVS",
+            "sun",
+            "charactersTournament",
+            "zoomCanvas",
+            "winnerMusic",
+            "music",
+            "finalMusic",
+            "canvas",
+            "stars",
+            "menu",
+            "alert"
+          ],
+          "declared_methods": [
+            "Start",
+            "StartMusic",
+            "SetLosers",
+            "SetPositions",
+            "SetCheckpoints",
+            "Continue",
+            "showMenu",
+            "DelayStart",
+            "ShowVS",
+            "RotateSun",
+            "ShowStars",
+            "NextRound",
+            "NextCheckpoint",
+            "NextTurn",
+            "SetOpponents",
+            "ActivateVS",
+            "RemoveVS",
+            "StartBattle",
+            "Zoom",
+            "GoToBattle",
+            "DisableCanvas",
+            "EnableCanvas",
+            "PlayAgain",
+            "QuitAlert",
+            "CancelAlert",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3337,
+          "type_name": "CharactersTournament",
+          "declared_fields": [
+            "i",
+            "characters",
+            "players"
+          ],
+          "declared_methods": [
+            "Awake",
+            "Start",
+            "Init",
+            "SetCharacters",
+            "SetPlayer",
+            "Suffle",
+            "SetIcons",
+            "SaveCharacters",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3600,
+          "type_name": "PlayerCheckpointsProgress",
+          "declared_fields": [
+            "checkpoints",
+            "nextCheckpoint",
+            "moveSpeed",
+            "checkpoint",
+            "loser",
+            "player",
+            "playerName",
+            "currentCheckpoint",
+            "opponent"
+          ],
+          "declared_methods": [
+            "Start",
+            "SetPosition",
+            "FixedUpdate",
+            "NextCheckpoint",
+            "Lose",
+            "SetOpponent",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3979,
+          "type_name": "TourneyLevel",
+          "declared_fields": [
+            "level",
+            "actualLevel",
+            "maxLv"
+          ],
+          "declared_methods": [
+            "Start",
+            "Update",
+            "NextLevel",
+            "BackLevel",
+            "SetLevel",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3943,
+          "type_name": "StarMenuManager",
+          "declared_fields": [
+            "tourneyAlert",
+            "points",
+            "missingCharacters",
+            "version",
+            "TournamentPrice",
+            "PriceText",
+            "blockButtons",
+            "isoLogo",
+            "base_UI",
+            "multiplayer_UI"
+          ],
+          "declared_methods": [
+            "Start",
+            "OnConnectedToMaster",
+            "ShowVersion",
+            "ShowMultiplayerUI",
+            "TourneyAlert",
+            "CloseTourneyAlert",
+            "EnterTournament",
+            "PlayTeddies",
+            "AllCharactersUnlocked",
+            "GoToScene",
+            "SurvivalMode",
+            "SinglePlayerMode",
+            "Online2Players",
+            "GoToLocalMultiplayer",
+            "Connect",
+            "CheckConnection",
+            ".ctor"
+          ]
+        }
+      ],
+      "scene_references": [
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Tournament.unity"
+        },
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/StartMenu.unity"
+        },
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Bending Battle.unity"
+        }
+      ],
+      "known_or_declared": "APK contiene Brackets, Player-1..8, rondas/checkpoints y entrada con coste; no prueba formato/reglas exactos.",
+      "recovery_obligations": "Recuperar cuota, requisitos, ocho jugadores candidatos, shuffle, avance, derrota, dificultad, reentrada, recompensas y guardado.",
+      "completion_evidence_required": "Torneo completo verificable desde pago/requisito hasta ganador; derrota, retorno y restauración cubiertos.",
+      "open": true
+    },
+    {
+      "id": "local",
+      "priority": "P1",
+      "title": "Multijugador local LAN",
+      "evidence_status": "static_declarations_only",
+      "implementation_status": "not_assessed_by_this_specification",
+      "video_findings": [],
+      "metadata": [
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3884,
+          "type_name": "GameMode",
+          "declared_fields": [
+            "value__",
+            "SinglePlayer",
+            "Survival",
+            "Tournament",
+            "LocalMultiplayer",
+            "Online",
+            "StartMenu",
+            "Lobby",
+            "FriendsMenu",
+            "AccountMenu",
+            "Spectator"
+          ],
+          "declared_methods": []
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3547,
+          "type_name": "LocalMultiplayerManager",
+          "declared_fields": [
+            "start_UI",
+            "create_UI",
+            "Waiting_UI",
+            "roomsNotFound",
+            "searchRoomUI",
+            "roomListUI",
+            "onResetUI"
+          ],
+          "declared_methods": [
+            "Start",
+            "ShowStartUI",
+            "ShowCreateUI",
+            "ShowWaitingUI",
+            "ShowSearchRoomUI",
+            "ShowRoomsNotFound",
+            "ShowRoomsListUI",
+            "ToggleUI",
+            "GoToMainMenu",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3546,
+          "type_name": "LocalMultiplayerData",
+          "declared_fields": [
+            "HostCharacter",
+            "GuestCharacter",
+            "stage",
+            "gameSpeed",
+            "isHost",
+            "timer",
+            "guestScene",
+            "hostScene",
+            "battleStarted",
+            "onPlayerTypeChanged",
+            "onPlayersInSameScene",
+            "onPlayersReachBattleScene"
+          ],
+          "declared_methods": [
+            "PlayersInSameScene",
+            "SetHostScene",
+            "SetGuestScene",
+            "CheckAndTriggerSceneEvents",
+            "ChangePlayerType",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3359,
+          "type_name": "CreateRoomManager",
+          "declared_fields": [
+            "roomNameInput",
+            "passwordInput",
+            "UIManager",
+            "udpManager",
+            "currentRoomName",
+            "currentPassword",
+            "broadCastRoom"
+          ],
+          "declared_methods": [
+            "Start",
+            "Create",
+            "ValidateFields",
+            "ManualBroadCast",
+            "ManualBroadCastCO",
+            "BroadcastRoomInfo",
+            "Test",
+            "CloseConnection",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3512,
+          "type_name": "JoinRoomManager",
+          "declared_fields": [
+            "udpManager",
+            "UI_Manager",
+            "roomDataList",
+            "roomItemPrefab",
+            "roomContainer",
+            "passwordManager"
+          ],
+          "declared_methods": [
+            "InitSearchRooms",
+            "HandleIncomingMessage",
+            "SearchRooms",
+            "CheckRooms",
+            "RoomsNotFound",
+            "CloseRoomServer",
+            "InitRoomList",
+            "Test",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3970,
+          "type_name": "TCPConnection",
+          "declared_fields": [
+            "localData",
+            "tcpListener",
+            "tcpClient",
+            "networkStream",
+            "buffer",
+            "accumulator",
+            "isServer",
+            "isConnected",
+            "bytesQueue",
+            "onMessageReceived",
+            "onConnect",
+            "onClientConnected",
+            "port"
+          ],
+          "declared_methods": [
+            "Start",
+            "OnDestroy",
+            "Init",
+            "Update",
+            "CreateMessage",
+            "CreateAndSendMessage",
+            "SendShortMessage",
+            "ParseShortMessage",
+            "ParseMessage",
+            "ProcessMessages",
+            "GetLocalIPAddress",
+            "SendNetMessage",
+            "SendByteMessage",
+            "StartServer",
+            "ConnectToHost",
+            "HandleMessage",
+            "SendMessage",
+            "ConnectCoroutine",
+            "OnApplicationQuit",
+            "CloseConnection",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3897,
+          "type_name": "UDPConnectionManager",
+          "declared_fields": [
+            "udpClient",
+            "remoteEndPoint",
+            "port",
+            "byteQueue",
+            "onRawDataReceived",
+            "targetIP",
+            "lastClientIP"
+          ],
+          "declared_methods": [
+            "Start",
+            "EnableMulticast",
+            "BroadCast",
+            "StartServer",
+            "Update",
+            "SendRawData",
+            "ListenForMessages",
+            "OnMessageReceived",
+            "StructToBytes",
+            "GetLocalIPAddress",
+            "GetBroadcastAddress",
+            "OnApplicationQuit",
+            "OnDestroy",
+            "ChangeRemoteEndPoint",
+            "CloseConnection",
+            ".ctor"
+          ]
+        }
+      ],
+      "scene_references": [
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/LocalMultiplayer.unity"
+        },
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Bending Battle.unity"
+        }
+      ],
+      "known_or_declared": "Declaraciones indican descubrimiento UDP, sala/clave y conexión TCP; no equivale a dos jugadores en un mismo teclado.",
+      "recovery_obligations": "Recuperar protocolo real, permisos LAN, host/guest, formato/mensajes/orden, escenas ready, desconexión, inputs y reconciliación.",
+      "completion_evidence_required": "Dos dispositivos reales descubren, crean, unen y completan partida; errores y cancelación cierran sockets/threads.",
+      "open": true
+    },
+    {
+      "id": "online",
+      "priority": "P1",
+      "title": "Multijugador online y autoridad",
+      "evidence_status": "partial_visual_and_static",
+      "implementation_status": "not_assessed_by_this_specification",
+      "video_findings": [
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "online-lobby"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "online-feedback"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "online-result"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "disconnect"
+        }
+      ],
+      "metadata": [
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3811,
+          "type_name": "PhotonRoom",
+          "declared_fields": [
+            "customProperties",
+            "roomManager",
+            "regionText",
+            "connectionText",
+            "regionChanged"
+          ],
+          "declared_methods": [
+            "Awake",
+            "OnEnable",
+            "OnDisable",
+            "OnConnectedToMaster",
+            "DelayJoinRoom",
+            "OnJoinRandomFailed",
+            "CreateRoom",
+            "OnCreateRoomFailed",
+            "OnJoinedRoom",
+            "StartAsSpectator",
+            "OnJoinRoomFailed",
+            "OnPlayerEnteredRoom",
+            "OnCreatedRoom",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3725,
+          "type_name": "GameController",
+          "declared_fields": [
+            "i",
+            "resumeButton",
+            "counter",
+            "playerPrefab",
+            "enemyPrefab",
+            "hostPlayer",
+            "guestPlayer",
+            "MainCharacter",
+            "OpponentCharacter",
+            "multiplayer",
+            "mobile",
+            "online",
+            "counterStarted",
+            "draw",
+            "SpecialButton",
+            "practiceMode",
+            "WaitingMsg",
+            "WaitingMsgText",
+            "battleStarted",
+            "pause",
+            "opponentReadyToAttack",
+            "PV",
+            "animMainChar",
+            "mobInputsMainChar",
+            "notMove",
+            "lastAttackButton",
+            "uiManager",
+            "gameStarted"
+          ],
+          "declared_methods": [
+            "Awake",
+            "IsOutsideStage",
+            "GetAttackOwner",
+            "GetEnemyByOwnerLayer",
+            "GetDistancesBetweenPlayers",
+            "MainMenu",
+            "LoadAds",
+            "CreateCharacters_LM",
+            "SetupCharacters",
+            "ConfigSpectator",
+            "OnlineRestart",
+            "Restart",
+            "PrepareBattle",
+            "StartBattle",
+            "CreatePlayer",
+            "EnableInputs",
+            "ReadyToAttack",
+            "StartCounter",
+            "CounterOnline",
+            "StartCounterWhenTimeServerIs",
+            "StartCounterNow",
+            "CompleteMainChar",
+            "IsPlayerWeak",
+            "EnableSpecial",
+            "DisableSpecial",
+            "IsMainChar",
+            "EnableMobileInputs",
+            "EnableDesktopInputs",
+            "Attacking",
+            "AttackingButton",
+            "Special",
+            "Jumping",
+            "UpDown",
+            "RightLeft",
+            "pauseGame",
+            "ResumeGame",
+            "quitGame",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3884,
+          "type_name": "GameMode",
+          "declared_fields": [
+            "value__",
+            "SinglePlayer",
+            "Survival",
+            "Tournament",
+            "LocalMultiplayer",
+            "Online",
+            "StartMenu",
+            "Lobby",
+            "FriendsMenu",
+            "AccountMenu",
+            "Spectator"
+          ],
+          "declared_methods": []
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3980,
+          "type_name": "Translation",
+          "declared_fields": [
+            "StartMenu_1Player",
+            "StartMenu_Online",
+            "StartMenu_ShareGame",
+            "StartMenu_ShareGame_ThanksMessage",
+            "StartMenu_ExitGame",
+            "StartMenu_Tournament",
+            "StartMenu_Survival",
+            "StartMenu_NewVersion",
+            "StartMenu_UpdateNow",
+            "StartMenu_Text_PleaseSharYourFeedback",
+            "StartMenu_LoadingData",
+            "StartMenu_PleasWait",
+            "StartMenu_Text_Welcome",
+            "StartMenu_Text_Account",
+            "Online_Text_ErrorCheckYourInternet",
+            "Online_Text_ConnectingWithServe",
+            "Online_Text_ConnectionSuccessful",
+            "Online_Text_ConnectionSuccessfulServer",
+            "Online_Text_PlayerHasDisconected",
+            "Online_Text_ThereAreNoMatches",
+            "Online_QuickPlay",
+            "Online_QuickPlay_WaitingForOtherPlayer",
+            "Online_Text_WaitingForOtherPlayer",
+            "Online_CreatePrivate",
+            "Online_EnterCode",
+            "Online_JoinPrivate",
+            "Online_Text_ThisIsNewGame",
+            "Online_Server",
+            "Online_Server_Change",
+            "Online_Text_WaitingForYourOponent",
+            "Online_Text_APlayerHasEnterTheMatch",
+            "Online_Text_YouMostEnterACodeToJoinAPrivate",
+            "Online_CreatePrivate_ShareCode",
+            "Online_Text_FailedToConnect",
+            "Online_Text_WaitingForYourFriendToJoinTheGame",
+            "Online_Text_TheCodeYouEnteredMayNotBe",
+            "Online_Text_JoiningGame",
+            "Online_Text_ChangingServer",
+            "Online_Text_ConnectingTo",
+            "Online_Text_PleaseWait",
+            "Online_Text_Loading",
+            "Online_Text_TheBattleIsAboutToStart",
+            "HowToPlay_HowToPlay",
+            "HowToPlay_Move",
+            "HowToPlay_Attack",
+            "HowToPlay_Defense",
+            "HowToPlay_BasicAtk",
+            "HowToPlay_RightAtk",
+            "HowToPlay_LeftAtk",
+            "HowToPlay_DownAtk",
+            "HowToPlay_UpAtk",
+            "HowToPlay_Block",
+            "HowToPlay_JumpR",
+            "HowToPlay_JumpL",
+            "HowToPlay_BackFlip",
+            "HowToPlay_Roll",
+            "HowToPlay_LevelAttacks",
+            "HowToPlay_Continue",
+            "HowToPlay_Start",
+            "QuitBotton",
+            "QuitBotton_Text_AreYouSure",
+            "QuitBotton_Quit",
+            "QuitBotton_Cancel",
+            "ChooseCharacter_ChooseCharacter",
+            "ChooseCharacter_Random",
+            "ChooseCharacter_Unlock",
+            "ChooseCharacter_Text_GetReady",
+            "ChooseCharacter_Text_WaitingForOtherPlayer",
+            "ChooseCharacter_Text_YouNeedMoreCrystals",
+            "ChooseCharacter_Text_YouNeedMoreTrophies",
+            "ChooseCharacter_CPU",
+            "ChooseCharacter_LV1",
+            "ChooseCharacter_LV2",
+            "ChooseCharacter_LV3",
+            "ChooseCharacter_LV4",
+            "ChooseCharacter_LV5",
+            "ChooseCharacter_Start",
+            "ChooseCharacter_SelectStage",
+            "ChooseCharacter_SelectStage_Select",
+            "ChooseCharacter_SelectStage_Close",
+            "ChooseCharacter_SelectStage_UnlockStage",
+            "ChooseCharacter_Text_NewStageUnlock",
+            "Loading",
+            "BottonA",
+            "BottonB",
+            "Battle_Cpu",
+            "Battle_Quit_PlayAgain",
+            "Battle_Quit_MainMenu",
+            "Battle_Quit_ResumeGame",
+            "Battle_Settings",
+            "Battle_Settings_Lock30FPS",
+            "Battle_Settings_Min",
+            "Battle_Settings_Med",
+            "Battle_Settings_Max",
+            "Battle_Settings_Music",
+            "Battle_Settings_Mute",
+            "Battle_Settings_Joystick",
+            "Battle_Settings_Dpad",
+            "Battle_Settings_Controller",
+            "Battle_Settings_Inv",
+            "Winner_Winner",
+            "Winner_Results",
+            "Winner_Rank",
+            "Winner_PlayAgain",
+            "Winner_WatchAd",
+            "Winner_Bonus",
+            "Winner_Score",
+            "Winner_Text_CrystalsDisabled",
+            "Winner_Text_CongratsYouWon25ExtraCrystals",
+            "Winner_Rewarded",
+            "Winner_Continue",
+            "Tournament_Text_YouMostUnlock",
+            "Tournament_EntryFee",
+            "Tournament_Enter",
+            "Tournament_Cancel",
+            "Tournament_MainMenu",
+            "Tournament_PlayAgain",
+            "Tournament_ExitGame",
+            "SharingGame_HeyCheckThisGame",
+            "SharingGame_Video",
+            "SharingGame_InstallGame",
+            "RateGame_Description",
+            "RateGame_ThanksForPlaying",
+            "RateGame_RateNow",
+            "RateGame_NoThanks",
+            "RateGame_RemindMeLater",
+            "GameStillInDevelopment",
+            "ChooseCharacter_HighScore",
+            "ChooseCharacter_SelectStage_Price",
+            "ChooseCharacter_YouNeedMoreCrystalsToUnlockStage"
+          ],
+          "declared_methods": [
+            ".ctor"
+          ]
+        }
+      ],
+      "scene_references": [
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/ConnectingServer.unity"
+        },
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Bending Battle.unity"
+        }
+      ],
+      "known_or_declared": "Photon room callback declarations and components establish integration presence, not a working accessible backend or trust/authority model.",
+      "recovery_obligations": "Recuperar room properties, región, quickplay/private code, contador sincronizado, autoridad, RPC/eventos, recreación/destrucción y salida; definir servicio propio si falta.",
+      "completion_evidence_required": "Dos clientes separados completan partidas; latencia/pérdida/reconexión y autoridad documentadas sin depender de una UI simulada.",
+      "open": true
+    },
+    {
+      "id": "friends",
+      "priority": "P2",
+      "title": "Amigos, invitaciones y perfiles",
+      "evidence_status": "static_declarations_only",
+      "implementation_status": "not_assessed_by_this_specification",
+      "video_findings": [],
+      "metadata": [
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3721,
+          "type_name": "FriendsController",
+          "declared_fields": [
+            "i",
+            "inputField",
+            "alert",
+            "friendList_UI",
+            "addFriend_UI",
+            "friendRequests_UI",
+            "loading_UI",
+            "friendList_Btn",
+            "addFriend_Btn",
+            "friendRequests_Btn",
+            "invite_Btn",
+            "watchBattle_Btn",
+            "scroll",
+            "friendReqsPanel",
+            "friendReqPrefab",
+            "tmFriendPanel",
+            "tmFriendPrefab",
+            "completeFriendsList",
+            "requestFriendsList",
+            "tmFriendsList",
+            "friendSelected",
+            "friendReqSelected"
+          ],
+          "declared_methods": [
+            "Awake",
+            "Start",
+            "LoginScreen",
+            "RefreshFriendsList",
+            "SearchFriend",
+            "FriendRequestSent",
+            "QuestionDeleteFriend",
+            "DeleteFriend",
+            "FriendDeleted",
+            "FailToDeleteFriend",
+            "SearchFriendDatabase",
+            "CheckIfHaveFriend",
+            "CleanUI",
+            "ShowAddFriendUI",
+            "ShowFriendListUI",
+            "ShowfriendRequestsUI",
+            "ShowLoadingUI",
+            "HideLoadingUI",
+            "AcceptFriendRequest",
+            "FillRequestList",
+            "FillTmFriendsList",
+            "OnFriendSelected",
+            "OrderFriendList",
+            "OrderFriendListCo",
+            "SortFriendListPanel",
+            "InitFriendScene",
+            "SearchFriendsDatabase",
+            "SearchFriendsInJson",
+            "SendInvitation",
+            "CheckIfFriendHasOtherInvitation",
+            "GoToFriendConnection",
+            "WatchBattle",
+            "GetOnlineCode",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3463,
+          "type_name": "FirebaseController",
+          "declared_fields": [
+            "i",
+            "dependencyStatus",
+            "auth",
+            "DBreference",
+            "tmPlayer",
+            "canSave",
+            "guestInvitation",
+            "currentInvitation",
+            "user_reference",
+            "noInternet"
+          ],
+          "declared_methods": [
+            "Start",
+            "InitializeFirebase",
+            "IsConnected",
+            "AutoLog",
+            "StartUpdateCorroutines",
+            "HandleInvitationChanged",
+            "CheckInvitationStatus",
+            "CleanInvitations",
+            "AutoLogin",
+            "CheckInternet",
+            "CheckIfOnline",
+            "CheckLastInvitation",
+            "CheckIfPremium",
+            "GetLastVersion",
+            "CheckIfLogged",
+            "CheckStatus",
+            "CheckMode",
+            "CreateData",
+            "LoadUserData",
+            "LoadDataInGame",
+            "UpdatePlayingMode",
+            "UpdateLastSessionDate",
+            "UpdatePlayedTime",
+            "UpdateLastDevice",
+            "CheckSaveData",
+            "SaveCrystals",
+            "SaveTrophies",
+            "SaveSurvivalRecord",
+            "SaveCharacters",
+            "SaveStages",
+            "SaveFriend",
+            "SendFriendRequest",
+            "AcceptFriendRequest",
+            "DeleteFriendCo",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3766,
+          "type_name": "FirebaseManager",
+          "declared_fields": [
+            "i",
+            "emailLoginField",
+            "passwordLoginField",
+            "warningLoginText",
+            "confirmLoginText",
+            "usernameRegisterField",
+            "emailRegisterField",
+            "passwordRegisterField",
+            "passwordRegisterVerifyField",
+            "warningRegisterText",
+            "emailResetPassField",
+            "warningResetPassText",
+            "usernameField",
+            "xpField",
+            "killsField",
+            "deathsField",
+            "scoreElement",
+            "scoreboardContent"
+          ],
+          "declared_methods": [
+            "Awake",
+            "ClearLoginFeilds",
+            "ClearRegisterFeilds",
+            "LoginButton",
+            "GoToFriendsScene",
+            "RegisterButton",
+            "ResetPasswordButton",
+            "SignOutButton",
+            "SaveDataButton",
+            "Login",
+            "Register",
+            "ResetPassword",
+            "CheckUsernameDatabase",
+            "UpdateUsernameDatabase",
+            "FormatString",
+            "GoToPatreon",
+            "QuestionLoad",
+            ".ctor"
+          ]
+        }
+      ],
+      "scene_references": [
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/OnlineFriends.unity"
+        },
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/FriendsConnection.unity"
+        },
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Login.unity"
+        }
+      ],
+      "known_or_declared": "APK contiene listas/peticiones/invitar/WatchBattle; videos no los muestran.",
+      "recovery_obligations": "Recuperar IDs, peticiones/aceptación/borrado, presencia, invitación y caducidad; separar identidad local de usuario remoto.",
+      "completion_evidence_required": "Dos cuentas de prueba ejercitan ciclos completos y fallos sin servicios originales implícitos.",
+      "open": true
+    },
+    {
+      "id": "spectator",
+      "priority": "P2",
+      "title": "Espectador",
+      "evidence_status": "static_declarations_only",
+      "implementation_status": "not_assessed_by_this_specification",
+      "video_findings": [],
+      "metadata": [
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3884,
+          "type_name": "GameMode",
+          "declared_fields": [
+            "value__",
+            "SinglePlayer",
+            "Survival",
+            "Tournament",
+            "LocalMultiplayer",
+            "Online",
+            "StartMenu",
+            "Lobby",
+            "FriendsMenu",
+            "AccountMenu",
+            "Spectator"
+          ],
+          "declared_methods": []
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3725,
+          "type_name": "GameController",
+          "declared_fields": [
+            "i",
+            "resumeButton",
+            "counter",
+            "playerPrefab",
+            "enemyPrefab",
+            "hostPlayer",
+            "guestPlayer",
+            "MainCharacter",
+            "OpponentCharacter",
+            "multiplayer",
+            "mobile",
+            "online",
+            "counterStarted",
+            "draw",
+            "SpecialButton",
+            "practiceMode",
+            "WaitingMsg",
+            "WaitingMsgText",
+            "battleStarted",
+            "pause",
+            "opponentReadyToAttack",
+            "PV",
+            "animMainChar",
+            "mobInputsMainChar",
+            "notMove",
+            "lastAttackButton",
+            "uiManager",
+            "gameStarted"
+          ],
+          "declared_methods": [
+            "Awake",
+            "IsOutsideStage",
+            "GetAttackOwner",
+            "GetEnemyByOwnerLayer",
+            "GetDistancesBetweenPlayers",
+            "MainMenu",
+            "LoadAds",
+            "CreateCharacters_LM",
+            "SetupCharacters",
+            "ConfigSpectator",
+            "OnlineRestart",
+            "Restart",
+            "PrepareBattle",
+            "StartBattle",
+            "CreatePlayer",
+            "EnableInputs",
+            "ReadyToAttack",
+            "StartCounter",
+            "CounterOnline",
+            "StartCounterWhenTimeServerIs",
+            "StartCounterNow",
+            "CompleteMainChar",
+            "IsPlayerWeak",
+            "EnableSpecial",
+            "DisableSpecial",
+            "IsMainChar",
+            "EnableMobileInputs",
+            "EnableDesktopInputs",
+            "Attacking",
+            "AttackingButton",
+            "Special",
+            "Jumping",
+            "UpDown",
+            "RightLeft",
+            "pauseGame",
+            "ResumeGame",
+            "quitGame",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3721,
+          "type_name": "FriendsController",
+          "declared_fields": [
+            "i",
+            "inputField",
+            "alert",
+            "friendList_UI",
+            "addFriend_UI",
+            "friendRequests_UI",
+            "loading_UI",
+            "friendList_Btn",
+            "addFriend_Btn",
+            "friendRequests_Btn",
+            "invite_Btn",
+            "watchBattle_Btn",
+            "scroll",
+            "friendReqsPanel",
+            "friendReqPrefab",
+            "tmFriendPanel",
+            "tmFriendPrefab",
+            "completeFriendsList",
+            "requestFriendsList",
+            "tmFriendsList",
+            "friendSelected",
+            "friendReqSelected"
+          ],
+          "declared_methods": [
+            "Awake",
+            "Start",
+            "LoginScreen",
+            "RefreshFriendsList",
+            "SearchFriend",
+            "FriendRequestSent",
+            "QuestionDeleteFriend",
+            "DeleteFriend",
+            "FriendDeleted",
+            "FailToDeleteFriend",
+            "SearchFriendDatabase",
+            "CheckIfHaveFriend",
+            "CleanUI",
+            "ShowAddFriendUI",
+            "ShowFriendListUI",
+            "ShowfriendRequestsUI",
+            "ShowLoadingUI",
+            "HideLoadingUI",
+            "AcceptFriendRequest",
+            "FillRequestList",
+            "FillTmFriendsList",
+            "OnFriendSelected",
+            "OrderFriendList",
+            "OrderFriendListCo",
+            "SortFriendListPanel",
+            "InitFriendScene",
+            "SearchFriendsDatabase",
+            "SearchFriendsInJson",
+            "SendInvitation",
+            "CheckIfFriendHasOtherInvitation",
+            "GoToFriendConnection",
+            "WatchBattle",
+            "GetOnlineCode",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3811,
+          "type_name": "PhotonRoom",
+          "declared_fields": [
+            "customProperties",
+            "roomManager",
+            "regionText",
+            "connectionText",
+            "regionChanged"
+          ],
+          "declared_methods": [
+            "Awake",
+            "OnEnable",
+            "OnDisable",
+            "OnConnectedToMaster",
+            "DelayJoinRoom",
+            "OnJoinRandomFailed",
+            "CreateRoom",
+            "OnCreateRoomFailed",
+            "OnJoinedRoom",
+            "StartAsSpectator",
+            "OnJoinRoomFailed",
+            "OnPlayerEnteredRoom",
+            "OnCreatedRoom",
+            ".ctor"
+          ]
+        }
+      ],
+      "scene_references": [
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Spectator.unity"
+        },
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/OnlineFriends.unity"
+        },
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Bending Battle.unity"
+        }
+      ],
+      "known_or_declared": "Modo/escena/métodos de espectador existen; semántica y autorización no demostradas.",
+      "recovery_obligations": "Recuperar ruta WatchBattle/StartAsSpectator y observación, cámara, capacidad y salida.",
+      "completion_evidence_required": "Cliente espectador ve partida real y sale; nunca altera autoridad o puntuación.",
+      "open": true
+    },
+    {
+      "id": "chat",
+      "priority": "P2",
+      "title": "Chat de texto",
+      "evidence_status": "partial_visual_and_static",
+      "implementation_status": "not_assessed_by_this_specification",
+      "video_findings": [
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "chat"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "chat-exchange"
+        }
+      ],
+      "metadata": [
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3576,
+          "type_name": "OnlineChat",
+          "declared_fields": [
+            "chatText",
+            "input",
+            "iconMsg",
+            "iconAlertMsg",
+            "chatInit",
+            "TypingAlert",
+            "typingAlertText",
+            "yourUsername"
+          ],
+          "declared_methods": [
+            "Start",
+            "SendText",
+            "CloseChat",
+            "Typing",
+            "ShowTypingAlert",
+            "HideTypingAlert",
+            "ReciveMSG",
+            "OpenChat",
+            "Update",
+            ".ctor"
+          ]
+        }
+      ],
+      "scene_references": [
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Bending Battle.unity"
+        }
+      ],
+      "known_or_declared": "Intercambio y typing vistos; transporte, límite y vida de historial desconocidos.",
+      "recovery_obligations": "Recuperar orden, identidad, teclado/safe area, typing, alertas, desconexión y estado rematch.",
+      "completion_evidence_required": "Mensajes entre dos clientes se ordenan y muestran en estados correctos.",
+      "open": true
+    },
+    {
+      "id": "voice",
+      "priority": "P2",
+      "title": "Voz y micrófono",
+      "evidence_status": "static_declarations_only",
+      "implementation_status": "not_assessed_by_this_specification",
+      "video_findings": [],
+      "metadata": [
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3904,
+          "type_name": "VoiceChatManager",
+          "declared_fields": [
+            "alert",
+            "micOn",
+            "micOff",
+            "loading",
+            "playerVoice",
+            "playerVoiceCreated",
+            "voices"
+          ],
+          "declared_methods": [
+            "Start",
+            "ShowIcon",
+            "InitVoiceChat",
+            "CreatePlayerVoice",
+            "StartRecording",
+            "StopRecording",
+            "ShowAlert",
+            "RemoveAlert",
+            "ToggleVoiceChat",
+            "VoiceChatOn",
+            "VoiceChatOff",
+            "PermissionCallbacks_PermissionGranted",
+            "AddToVoices",
+            "MuteAll",
+            "UnMuteAll",
+            ".ctor"
+          ]
+        }
+      ],
+      "scene_references": [
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Bending Battle.unity"
+        },
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Character Selection.unity"
+        }
+      ],
+      "known_or_declared": "Declaraciones StartRecording/StopRecording/MuteAll y callbacks permisos; no prueba audio en video.",
+      "recovery_obligations": "Recuperar proveedor, permisos, creación/destrucción y mute; estados denegado/ausente/desconexión.",
+      "completion_evidence_required": "Dos clientes validan permisos y voz/mute; release limpia stream/micrófono.",
+      "open": true
+    },
+    {
+      "id": "account",
+      "priority": "P2",
+      "title": "Cuenta, login y nube",
+      "evidence_status": "static_declarations_only",
+      "implementation_status": "not_assessed_by_this_specification",
+      "video_findings": [],
+      "metadata": [
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3766,
+          "type_name": "FirebaseManager",
+          "declared_fields": [
+            "i",
+            "emailLoginField",
+            "passwordLoginField",
+            "warningLoginText",
+            "confirmLoginText",
+            "usernameRegisterField",
+            "emailRegisterField",
+            "passwordRegisterField",
+            "passwordRegisterVerifyField",
+            "warningRegisterText",
+            "emailResetPassField",
+            "warningResetPassText",
+            "usernameField",
+            "xpField",
+            "killsField",
+            "deathsField",
+            "scoreElement",
+            "scoreboardContent"
+          ],
+          "declared_methods": [
+            "Awake",
+            "ClearLoginFeilds",
+            "ClearRegisterFeilds",
+            "LoginButton",
+            "GoToFriendsScene",
+            "RegisterButton",
+            "ResetPasswordButton",
+            "SignOutButton",
+            "SaveDataButton",
+            "Login",
+            "Register",
+            "ResetPassword",
+            "CheckUsernameDatabase",
+            "UpdateUsernameDatabase",
+            "FormatString",
+            "GoToPatreon",
+            "QuestionLoad",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3463,
+          "type_name": "FirebaseController",
+          "declared_fields": [
+            "i",
+            "dependencyStatus",
+            "auth",
+            "DBreference",
+            "tmPlayer",
+            "canSave",
+            "guestInvitation",
+            "currentInvitation",
+            "user_reference",
+            "noInternet"
+          ],
+          "declared_methods": [
+            "Start",
+            "InitializeFirebase",
+            "IsConnected",
+            "AutoLog",
+            "StartUpdateCorroutines",
+            "HandleInvitationChanged",
+            "CheckInvitationStatus",
+            "CleanInvitations",
+            "AutoLogin",
+            "CheckInternet",
+            "CheckIfOnline",
+            "CheckLastInvitation",
+            "CheckIfPremium",
+            "GetLastVersion",
+            "CheckIfLogged",
+            "CheckStatus",
+            "CheckMode",
+            "CreateData",
+            "LoadUserData",
+            "LoadDataInGame",
+            "UpdatePlayingMode",
+            "UpdateLastSessionDate",
+            "UpdatePlayedTime",
+            "UpdateLastDevice",
+            "CheckSaveData",
+            "SaveCrystals",
+            "SaveTrophies",
+            "SaveSurvivalRecord",
+            "SaveCharacters",
+            "SaveStages",
+            "SaveFriend",
+            "SendFriendRequest",
+            "AcceptFriendRequest",
+            "DeleteFriendCo",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3661,
+          "type_name": "AuthManager",
+          "declared_fields": [
+            "dependencyStatus",
+            "auth",
+            "User",
+            "emailLoginField",
+            "passwordLoginField",
+            "warningLoginText",
+            "confirmLoginText",
+            "usernameRegisterField",
+            "emailRegisterField",
+            "passwordRegisterField",
+            "passwordRegisterVerifyField",
+            "warningRegisterText"
+          ],
+          "declared_methods": [
+            "Awake",
+            "InitializeFirebase",
+            "LoginButton",
+            "RegisterButton",
+            "Login",
+            "Register",
+            ".ctor",
+            "<Awake>b__12_0"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3681,
+          "type_name": "DatabaseManager",
+          "declared_fields": [
+            "i",
+            "_name",
+            "_email",
+            "databaseName",
+            "userID",
+            "dbReference",
+            "app"
+          ],
+          "declared_methods": [
+            "Awake",
+            "Start",
+            "CreateNewUser",
+            "HandleValueChanged",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3486,
+          "type_name": "GPGSManager",
+          "declared_fields": [],
+          "declared_methods": [
+            "Start",
+            ".ctor"
+          ]
+        }
+      ],
+      "scene_references": [
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Login.unity"
+        }
+      ],
+      "known_or_declared": "Login/register/reset/Google-load/estadísticas presentes en escena y declaraciones; posible legado/coexistencia sin determinar.",
+      "recovery_obligations": "Recuperar componentes activos, backend schema, flujo guest, carga/confirmación de datos, errores y políticas de conflicto.",
+      "completion_evidence_required": "Registro/login/reset/logout y offline fallan o completan de forma explícita sin fingir servidor.",
+      "open": true
+    },
+    {
+      "id": "save",
+      "priority": "P1",
+      "title": "Guardado local y sincronización",
+      "evidence_status": "partial_visual_and_static",
+      "implementation_status": "not_assessed_by_this_specification",
+      "video_findings": [
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "survival-select"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "survival-result"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "cpu-rewards"
+        }
+      ],
+      "metadata": [
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3886,
+          "type_name": "SystemManager",
+          "declared_fields": [
+            "i",
+            "timesPlayed",
+            "mode",
+            "async",
+            "unlock",
+            "newUpdate",
+            "bonus",
+            "tmPlayer",
+            "playedTime",
+            "howToPlayShowed",
+            "playerType"
+          ],
+          "declared_methods": [
+            "Awake",
+            "ChangePlayingMode",
+            "RefreshPlayingMode",
+            "NextScene",
+            "SaveData",
+            "SaveDataInDevice",
+            "LoadDataFromDevice",
+            "SavePlayerData",
+            "LoadPlayerData",
+            "Update",
+            "CheckForUpdate",
+            "CheckBonus",
+            "OnApplicationQuit",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3463,
+          "type_name": "FirebaseController",
+          "declared_fields": [
+            "i",
+            "dependencyStatus",
+            "auth",
+            "DBreference",
+            "tmPlayer",
+            "canSave",
+            "guestInvitation",
+            "currentInvitation",
+            "user_reference",
+            "noInternet"
+          ],
+          "declared_methods": [
+            "Start",
+            "InitializeFirebase",
+            "IsConnected",
+            "AutoLog",
+            "StartUpdateCorroutines",
+            "HandleInvitationChanged",
+            "CheckInvitationStatus",
+            "CleanInvitations",
+            "AutoLogin",
+            "CheckInternet",
+            "CheckIfOnline",
+            "CheckLastInvitation",
+            "CheckIfPremium",
+            "GetLastVersion",
+            "CheckIfLogged",
+            "CheckStatus",
+            "CheckMode",
+            "CreateData",
+            "LoadUserData",
+            "LoadDataInGame",
+            "UpdatePlayingMode",
+            "UpdateLastSessionDate",
+            "UpdatePlayedTime",
+            "UpdateLastDevice",
+            "CheckSaveData",
+            "SaveCrystals",
+            "SaveTrophies",
+            "SaveSurvivalRecord",
+            "SaveCharacters",
+            "SaveStages",
+            "SaveFriend",
+            "SendFriendRequest",
+            "AcceptFriendRequest",
+            "DeleteFriendCo",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3891,
+          "type_name": "TMPlayer",
+          "declared_fields": [
+            "userID",
+            "lastSessionDate",
+            "lastDevice",
+            "playedTime",
+            "username",
+            "crystals",
+            "trophies",
+            "survivalRecord",
+            "characters",
+            "stages",
+            "playingMode",
+            "tmPremium"
+          ],
+          "declared_methods": [
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3892,
+          "type_name": "TMPlayerCharacters",
+          "declared_fields": [
+            "aura",
+            "eliot",
+            "ren",
+            "rina",
+            "dante",
+            "agata",
+            "raven",
+            "maya"
+          ],
+          "declared_methods": [
+            ".ctor",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3893,
+          "type_name": "TMPlayerStages",
+          "declared_fields": [
+            "stage1",
+            "stage2",
+            "stage3",
+            "stage4",
+            "stage5",
+            "stage6",
+            "stage7"
+          ],
+          "declared_methods": [
+            ".ctor",
+            ".ctor"
+          ]
+        }
+      ],
+      "scene_references": [
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/StartMenu.unity"
+        },
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Login.unity"
+        },
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Character Selection.unity"
+        }
+      ],
+      "known_or_declared": "SaveManager no tiene miembros en este extracto; SystemManager y FirebaseController sí declaran guardado. Nombres no establecen el formato.",
+      "recovery_obligations": "Recuperar modelo jugador, claves/formato/versionado y dueño de cada dato, valores iniciales, migraciones, offline/cloud y atomicidad.",
+      "completion_evidence_required": "Cierre/reinicio, datos malformados y conflicto de nube no duplican/revierten premios o compras.",
+      "open": true
+    },
+    {
+      "id": "economy",
+      "priority": "P1",
+      "title": "Crystals, trofeos, récords y desbloqueos",
+      "evidence_status": "partial_visual_and_static",
+      "implementation_status": "not_assessed_by_this_specification",
+      "video_findings": [
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "survival-result"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "cpu-rewards"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "survival-award-inference"
+        }
+      ],
+      "metadata": [
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3845,
+          "type_name": "SelectionController",
+          "declared_fields": [
+            "i",
+            "actualCharacterIndex",
+            "actualCharacterName",
+            "nameText",
+            "buttonText",
+            "hostReady",
+            "guestReady",
+            "inBattle",
+            "unlockName",
+            "UnlockScreen",
+            "beforeArrow",
+            "afterArrow",
+            "crystalsView",
+            "trophiesView",
+            "beforeArrowStage",
+            "afterArrowStage",
+            "beforeArrowSpeed",
+            "afterArrowSpeed",
+            "ready",
+            "Price",
+            "PriceTrophy",
+            "Characters",
+            "cpuController",
+            "comingSoonScreen",
+            "trophyRequirement",
+            "crystalsPrice",
+            "timeText",
+            "times",
+            "actualTime",
+            "onStart",
+            "charNotAvialable"
+          ],
+          "declared_methods": [
+            "Awake",
+            "SetOnlineCode",
+            "ChangeTime",
+            "SetTime",
+            "Start",
+            "OnDestroy",
+            "ResetPlayerProperties",
+            "RefreshCharsAndStages",
+            "SetDefaultCharacters",
+            "nextCharacter",
+            "previousCharacter",
+            "ChangeCharacter",
+            "RemoveButtons",
+            "OnlineMode",
+            "start",
+            "GoToBattle",
+            "CheckIfLocked",
+            "UnlockCharacter",
+            "UnlockTrophyCharacter",
+            "Unlock",
+            "UnlockAnim",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3829,
+          "type_name": "ResultsController",
+          "declared_fields": [
+            "resultsController",
+            "rank",
+            "crystalsView",
+            "bonus",
+            "crystalViewBattle",
+            "crystalsReward",
+            "playAgainButton"
+          ],
+          "declared_methods": [
+            "Awake",
+            "OnDestroy",
+            "InitResults",
+            "DisplayBonus",
+            "CalculateCrystalReward",
+            "CalculateRank",
+            "ShowRewardedAd",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3891,
+          "type_name": "TMPlayer",
+          "declared_fields": [
+            "userID",
+            "lastSessionDate",
+            "lastDevice",
+            "playedTime",
+            "username",
+            "crystals",
+            "trophies",
+            "survivalRecord",
+            "characters",
+            "stages",
+            "playingMode",
+            "tmPremium"
+          ],
+          "declared_methods": [
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3942,
+          "type_name": "StagesManager",
+          "declared_fields": [
+            "i",
+            "stages",
+            "playableStages",
+            "actualStage",
+            "lastStage"
+          ],
+          "declared_methods": [
+            "Start",
+            "AddFreeStages",
+            "SetPlayableStages",
+            "RemoveBlockStages",
+            "CheckInitialStage",
+            "HasStage",
+            "RemoveRandom",
+            "IsStageUnlocked",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3899,
+          "type_name": "UnlockStage",
+          "declared_fields": [
+            "crystalsView"
+          ],
+          "declared_methods": [
+            "Start",
+            "Update",
+            "Unlock",
+            ".ctor"
+          ]
+        }
+      ],
+      "scene_references": [
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Character Selection.unity"
+        },
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Bending Battle.unity"
+        },
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/StartMenu.unity"
+        }
+      ],
+      "known_or_declared": "Premios observados de versión no confirmada; existen precios/trofeos/requisitos de escenario/personaje.",
+      "recovery_obligations": "Recuperar fórmulas rank/reward, saldo, condición de desbloqueo y coste/reembolso/duplicación.",
+      "completion_evidence_required": "Cada transacción y recompensa tiene regla trazable, persistencia y cobertura de saldo insuficiente.",
+      "open": true
+    },
+    {
+      "id": "ads-iap",
+      "priority": "P2",
+      "title": "Anuncios, bonus y compras",
+      "evidence_status": "partial_visual_and_static",
+      "implementation_status": "not_assessed_by_this_specification",
+      "video_findings": [
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "survival-result"
+        }
+      ],
+      "metadata": [
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3729,
+          "type_name": "GoogleAdsManager",
+          "declared_fields": [
+            "i",
+            "skipAd",
+            "interstitialAd",
+            "rewardedAd"
+          ],
+          "declared_methods": [
+            "Start",
+            "LoadInterstitialAd",
+            "ShowAd",
+            "RegisterEventHandlers",
+            "LoadRewardedAd",
+            "ShowRewardedAd",
+            ".ctor",
+            "<LoadInterstitialAd>b__5_0",
+            "<LoadRewardedAd>b__8_0",
+            "<ShowRewardedAd>b__9_0"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3829,
+          "type_name": "ResultsController",
+          "declared_fields": [
+            "resultsController",
+            "rank",
+            "crystalsView",
+            "bonus",
+            "crystalViewBattle",
+            "crystalsReward",
+            "playAgainButton"
+          ],
+          "declared_methods": [
+            "Awake",
+            "OnDestroy",
+            "InitResults",
+            "DisplayBonus",
+            "CalculateCrystalReward",
+            "CalculateRank",
+            "ShowRewardedAd",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3828,
+          "type_name": "RestorePurchases",
+          "declared_fields": [],
+          "declared_methods": [
+            ".ctor"
+          ]
+        }
+      ],
+      "scene_references": [
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Character Selection.unity"
+        },
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Bending Battle.unity"
+        }
+      ],
+      "known_or_declared": "GoogleAdsManager declara interstitial/rewarded; escena incluye IAPManager pero no se encontró ese tipo entre las declaraciones seleccionadas Assembly-CSharp.",
+      "recovery_obligations": "Identificar assembly SDK IAP y callbacks; recuperar unidades/estado/cancelación/error y entitlement; usar configuración propia/test para servicios de reconstrucción.",
+      "completion_evidence_required": "Bonus se entrega exactamente una vez tras éxito; no-fill/cancel/error no lo entregan; compra/restauración verificadas con proveedor de prueba.",
+      "open": true
+    },
+    {
+      "id": "settings",
+      "priority": "P2",
+      "title": "Ajustes gráficos, audio y controles",
+      "evidence_status": "partial_visual_and_static",
+      "implementation_status": "not_assessed_by_this_specification",
+      "video_findings": [
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "settings-unknown"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "hud-top"
+        }
+      ],
+      "metadata": [
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3914,
+          "type_name": "SettingsOptions",
+          "declared_fields": [
+            "anim",
+            "closeBG"
+          ],
+          "declared_methods": [
+            "Start",
+            "Update",
+            "CloseSettings",
+            "OpenSettings",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3730,
+          "type_name": "GraphicsManager",
+          "declared_fields": [
+            "i",
+            "fps",
+            "deltaTime",
+            "originalHeight",
+            "originalWidth",
+            "medResH",
+            "medResW",
+            "minResH",
+            "minResW",
+            "max",
+            "med",
+            "min",
+            "frameCapToogle",
+            "fpsText",
+            "resText",
+            "qualityText",
+            "userQualityGraphics",
+            "userFrameCap",
+            "debug",
+            "graphicsChange"
+          ],
+          "declared_methods": [
+            "Start",
+            "OnDestroy",
+            "Update",
+            "SetInitialRes",
+            "setMinRes",
+            "setMedRes",
+            "setOriginalRes",
+            "CapFrameRate",
+            "toogleSettings",
+            "setInitialFrameCap",
+            "setInitialQualityGraphics",
+            "setResolutions",
+            "restartButtonsColor",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3726,
+          "type_name": "GameManager",
+          "declared_fields": [
+            "resumeButton",
+            "fps",
+            "deltaTime",
+            "originalHeight",
+            "originalWidth",
+            "medResH",
+            "medResW",
+            "minResH",
+            "minResW",
+            "qualitySlider",
+            "max",
+            "med",
+            "min",
+            "frameCapToogle",
+            "fpsText",
+            "resText",
+            "qualityText",
+            "userQualityGraphics",
+            "userFrameCap"
+          ],
+          "declared_methods": [
+            "Start",
+            "Update",
+            "SetInitialRes",
+            "setMinRes",
+            "setMedRes",
+            "setOriginalRes",
+            "CapFrameRate",
+            "changeQuality",
+            "toogleSettings",
+            "setInitialFrameCap",
+            "setInitialQualityGraphics",
+            "setResolutions",
+            "restartButtonsColor",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3522,
+          "type_name": "JoystickSettings",
+          "declared_fields": [
+            "dpadToggle",
+            "joystickToggle",
+            "controllerToggle",
+            "invertedToggle",
+            "dpad",
+            "joystick",
+            "buttonA",
+            "buttonB",
+            "inverted"
+          ],
+          "declared_methods": [
+            "Start",
+            "Invert",
+            "DpadOn",
+            "JoystickOn",
+            "ControllerOn",
+            "Update",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3562,
+          "type_name": "MusicController",
+          "declared_fields": [
+            "lastVolume"
+          ],
+          "declared_methods": [
+            "Start",
+            "Music",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3563,
+          "type_name": "MuteController",
+          "declared_fields": [],
+          "declared_methods": [
+            "Start",
+            "Mute",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3980,
+          "type_name": "Translation",
+          "declared_fields": [
+            "StartMenu_1Player",
+            "StartMenu_Online",
+            "StartMenu_ShareGame",
+            "StartMenu_ShareGame_ThanksMessage",
+            "StartMenu_ExitGame",
+            "StartMenu_Tournament",
+            "StartMenu_Survival",
+            "StartMenu_NewVersion",
+            "StartMenu_UpdateNow",
+            "StartMenu_Text_PleaseSharYourFeedback",
+            "StartMenu_LoadingData",
+            "StartMenu_PleasWait",
+            "StartMenu_Text_Welcome",
+            "StartMenu_Text_Account",
+            "Online_Text_ErrorCheckYourInternet",
+            "Online_Text_ConnectingWithServe",
+            "Online_Text_ConnectionSuccessful",
+            "Online_Text_ConnectionSuccessfulServer",
+            "Online_Text_PlayerHasDisconected",
+            "Online_Text_ThereAreNoMatches",
+            "Online_QuickPlay",
+            "Online_QuickPlay_WaitingForOtherPlayer",
+            "Online_Text_WaitingForOtherPlayer",
+            "Online_CreatePrivate",
+            "Online_EnterCode",
+            "Online_JoinPrivate",
+            "Online_Text_ThisIsNewGame",
+            "Online_Server",
+            "Online_Server_Change",
+            "Online_Text_WaitingForYourOponent",
+            "Online_Text_APlayerHasEnterTheMatch",
+            "Online_Text_YouMostEnterACodeToJoinAPrivate",
+            "Online_CreatePrivate_ShareCode",
+            "Online_Text_FailedToConnect",
+            "Online_Text_WaitingForYourFriendToJoinTheGame",
+            "Online_Text_TheCodeYouEnteredMayNotBe",
+            "Online_Text_JoiningGame",
+            "Online_Text_ChangingServer",
+            "Online_Text_ConnectingTo",
+            "Online_Text_PleaseWait",
+            "Online_Text_Loading",
+            "Online_Text_TheBattleIsAboutToStart",
+            "HowToPlay_HowToPlay",
+            "HowToPlay_Move",
+            "HowToPlay_Attack",
+            "HowToPlay_Defense",
+            "HowToPlay_BasicAtk",
+            "HowToPlay_RightAtk",
+            "HowToPlay_LeftAtk",
+            "HowToPlay_DownAtk",
+            "HowToPlay_UpAtk",
+            "HowToPlay_Block",
+            "HowToPlay_JumpR",
+            "HowToPlay_JumpL",
+            "HowToPlay_BackFlip",
+            "HowToPlay_Roll",
+            "HowToPlay_LevelAttacks",
+            "HowToPlay_Continue",
+            "HowToPlay_Start",
+            "QuitBotton",
+            "QuitBotton_Text_AreYouSure",
+            "QuitBotton_Quit",
+            "QuitBotton_Cancel",
+            "ChooseCharacter_ChooseCharacter",
+            "ChooseCharacter_Random",
+            "ChooseCharacter_Unlock",
+            "ChooseCharacter_Text_GetReady",
+            "ChooseCharacter_Text_WaitingForOtherPlayer",
+            "ChooseCharacter_Text_YouNeedMoreCrystals",
+            "ChooseCharacter_Text_YouNeedMoreTrophies",
+            "ChooseCharacter_CPU",
+            "ChooseCharacter_LV1",
+            "ChooseCharacter_LV2",
+            "ChooseCharacter_LV3",
+            "ChooseCharacter_LV4",
+            "ChooseCharacter_LV5",
+            "ChooseCharacter_Start",
+            "ChooseCharacter_SelectStage",
+            "ChooseCharacter_SelectStage_Select",
+            "ChooseCharacter_SelectStage_Close",
+            "ChooseCharacter_SelectStage_UnlockStage",
+            "ChooseCharacter_Text_NewStageUnlock",
+            "Loading",
+            "BottonA",
+            "BottonB",
+            "Battle_Cpu",
+            "Battle_Quit_PlayAgain",
+            "Battle_Quit_MainMenu",
+            "Battle_Quit_ResumeGame",
+            "Battle_Settings",
+            "Battle_Settings_Lock30FPS",
+            "Battle_Settings_Min",
+            "Battle_Settings_Med",
+            "Battle_Settings_Max",
+            "Battle_Settings_Music",
+            "Battle_Settings_Mute",
+            "Battle_Settings_Joystick",
+            "Battle_Settings_Dpad",
+            "Battle_Settings_Controller",
+            "Battle_Settings_Inv",
+            "Winner_Winner",
+            "Winner_Results",
+            "Winner_Rank",
+            "Winner_PlayAgain",
+            "Winner_WatchAd",
+            "Winner_Bonus",
+            "Winner_Score",
+            "Winner_Text_CrystalsDisabled",
+            "Winner_Text_CongratsYouWon25ExtraCrystals",
+            "Winner_Rewarded",
+            "Winner_Continue",
+            "Tournament_Text_YouMostUnlock",
+            "Tournament_EntryFee",
+            "Tournament_Enter",
+            "Tournament_Cancel",
+            "Tournament_MainMenu",
+            "Tournament_PlayAgain",
+            "Tournament_ExitGame",
+            "SharingGame_HeyCheckThisGame",
+            "SharingGame_Video",
+            "SharingGame_InstallGame",
+            "RateGame_Description",
+            "RateGame_ThanksForPlaying",
+            "RateGame_RateNow",
+            "RateGame_NoThanks",
+            "RateGame_RemindMeLater",
+            "GameStillInDevelopment",
+            "ChooseCharacter_HighScore",
+            "ChooseCharacter_SelectStage_Price",
+            "ChooseCharacter_YouNeedMoreCrystalsToUnlockStage"
+          ],
+          "declared_methods": [
+            ".ctor"
+          ]
+        }
+      ],
+      "scene_references": [
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Bending Battle.unity"
+        }
+      ],
+      "known_or_declared": "30 FPS, resolución MIN/MED/MAX, quality, music/mute, joystick/Dpad/controller/Inv aparecen en declaraciones/objetos, no panel visual confirmado.",
+      "recovery_obligations": "Recuperar callbacks y constantes, persistencia, defaults, presentación y adaptación móvil.",
+      "completion_evidence_required": "Cada opción cambia el sistema esperado, persiste según contrato y conserva rendimiento/legibilidad.",
+      "open": true
+    },
+    {
+      "id": "localization",
+      "priority": "P2",
+      "title": "Traducciones y textos",
+      "evidence_status": "partial_visual_and_static",
+      "implementation_status": "not_assessed_by_this_specification",
+      "video_findings": [
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "menu-main"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "tutorial"
+        }
+      ],
+      "metadata": [
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3980,
+          "type_name": "Translation",
+          "declared_fields": [
+            "StartMenu_1Player",
+            "StartMenu_Online",
+            "StartMenu_ShareGame",
+            "StartMenu_ShareGame_ThanksMessage",
+            "StartMenu_ExitGame",
+            "StartMenu_Tournament",
+            "StartMenu_Survival",
+            "StartMenu_NewVersion",
+            "StartMenu_UpdateNow",
+            "StartMenu_Text_PleaseSharYourFeedback",
+            "StartMenu_LoadingData",
+            "StartMenu_PleasWait",
+            "StartMenu_Text_Welcome",
+            "StartMenu_Text_Account",
+            "Online_Text_ErrorCheckYourInternet",
+            "Online_Text_ConnectingWithServe",
+            "Online_Text_ConnectionSuccessful",
+            "Online_Text_ConnectionSuccessfulServer",
+            "Online_Text_PlayerHasDisconected",
+            "Online_Text_ThereAreNoMatches",
+            "Online_QuickPlay",
+            "Online_QuickPlay_WaitingForOtherPlayer",
+            "Online_Text_WaitingForOtherPlayer",
+            "Online_CreatePrivate",
+            "Online_EnterCode",
+            "Online_JoinPrivate",
+            "Online_Text_ThisIsNewGame",
+            "Online_Server",
+            "Online_Server_Change",
+            "Online_Text_WaitingForYourOponent",
+            "Online_Text_APlayerHasEnterTheMatch",
+            "Online_Text_YouMostEnterACodeToJoinAPrivate",
+            "Online_CreatePrivate_ShareCode",
+            "Online_Text_FailedToConnect",
+            "Online_Text_WaitingForYourFriendToJoinTheGame",
+            "Online_Text_TheCodeYouEnteredMayNotBe",
+            "Online_Text_JoiningGame",
+            "Online_Text_ChangingServer",
+            "Online_Text_ConnectingTo",
+            "Online_Text_PleaseWait",
+            "Online_Text_Loading",
+            "Online_Text_TheBattleIsAboutToStart",
+            "HowToPlay_HowToPlay",
+            "HowToPlay_Move",
+            "HowToPlay_Attack",
+            "HowToPlay_Defense",
+            "HowToPlay_BasicAtk",
+            "HowToPlay_RightAtk",
+            "HowToPlay_LeftAtk",
+            "HowToPlay_DownAtk",
+            "HowToPlay_UpAtk",
+            "HowToPlay_Block",
+            "HowToPlay_JumpR",
+            "HowToPlay_JumpL",
+            "HowToPlay_BackFlip",
+            "HowToPlay_Roll",
+            "HowToPlay_LevelAttacks",
+            "HowToPlay_Continue",
+            "HowToPlay_Start",
+            "QuitBotton",
+            "QuitBotton_Text_AreYouSure",
+            "QuitBotton_Quit",
+            "QuitBotton_Cancel",
+            "ChooseCharacter_ChooseCharacter",
+            "ChooseCharacter_Random",
+            "ChooseCharacter_Unlock",
+            "ChooseCharacter_Text_GetReady",
+            "ChooseCharacter_Text_WaitingForOtherPlayer",
+            "ChooseCharacter_Text_YouNeedMoreCrystals",
+            "ChooseCharacter_Text_YouNeedMoreTrophies",
+            "ChooseCharacter_CPU",
+            "ChooseCharacter_LV1",
+            "ChooseCharacter_LV2",
+            "ChooseCharacter_LV3",
+            "ChooseCharacter_LV4",
+            "ChooseCharacter_LV5",
+            "ChooseCharacter_Start",
+            "ChooseCharacter_SelectStage",
+            "ChooseCharacter_SelectStage_Select",
+            "ChooseCharacter_SelectStage_Close",
+            "ChooseCharacter_SelectStage_UnlockStage",
+            "ChooseCharacter_Text_NewStageUnlock",
+            "Loading",
+            "BottonA",
+            "BottonB",
+            "Battle_Cpu",
+            "Battle_Quit_PlayAgain",
+            "Battle_Quit_MainMenu",
+            "Battle_Quit_ResumeGame",
+            "Battle_Settings",
+            "Battle_Settings_Lock30FPS",
+            "Battle_Settings_Min",
+            "Battle_Settings_Med",
+            "Battle_Settings_Max",
+            "Battle_Settings_Music",
+            "Battle_Settings_Mute",
+            "Battle_Settings_Joystick",
+            "Battle_Settings_Dpad",
+            "Battle_Settings_Controller",
+            "Battle_Settings_Inv",
+            "Winner_Winner",
+            "Winner_Results",
+            "Winner_Rank",
+            "Winner_PlayAgain",
+            "Winner_WatchAd",
+            "Winner_Bonus",
+            "Winner_Score",
+            "Winner_Text_CrystalsDisabled",
+            "Winner_Text_CongratsYouWon25ExtraCrystals",
+            "Winner_Rewarded",
+            "Winner_Continue",
+            "Tournament_Text_YouMostUnlock",
+            "Tournament_EntryFee",
+            "Tournament_Enter",
+            "Tournament_Cancel",
+            "Tournament_MainMenu",
+            "Tournament_PlayAgain",
+            "Tournament_ExitGame",
+            "SharingGame_HeyCheckThisGame",
+            "SharingGame_Video",
+            "SharingGame_InstallGame",
+            "RateGame_Description",
+            "RateGame_ThanksForPlaying",
+            "RateGame_RateNow",
+            "RateGame_NoThanks",
+            "RateGame_RemindMeLater",
+            "GameStillInDevelopment",
+            "ChooseCharacter_HighScore",
+            "ChooseCharacter_SelectStage_Price",
+            "ChooseCharacter_YouNeedMoreCrystalsToUnlockStage"
+          ],
+          "declared_methods": [
+            ".ctor"
+          ]
+        }
+      ],
+      "scene_references": [
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/StartMenu.unity"
+        },
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/HowToPlay.unity"
+        },
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Bending Battle.unity"
+        },
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Login.unity"
+        }
+      ],
+      "known_or_declared": "Clase Translation contiene nombres de claves, no necesariamente los textos o todos los idiomas.",
+      "recovery_obligations": "Recuperar tablas de idioma/fontes/selección y fallback; no reemplazar silenciosamente textos originales con claves.",
+      "completion_evidence_required": "Todos los menús soportados y estados de fallo resuelven textos y glifos.",
+      "open": true
+    },
+    {
+      "id": "assets",
+      "priority": "P1",
+      "title": "Modelos, rigs, animaciones, materiales y VFX",
+      "evidence_status": "partial_visual_and_static",
+      "implementation_status": "not_assessed_by_this_specification",
+      "video_findings": [
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "air-demo"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "water-demo"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "earth-demo"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "fire-demo"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "lightning-demo"
+        },
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "camera"
+        }
+      ],
+      "metadata": [
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3338,
+          "type_name": "CharacterSwap",
+          "declared_fields": [],
+          "declared_methods": [
+            "Start",
+            "Update",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3280,
+          "type_name": "AttacksManager",
+          "declared_fields": [
+            "MainCharAttacks",
+            "OpponentAttacks",
+            "i"
+          ],
+          "declared_methods": [
+            "Start",
+            "GetOwnAttacks",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3664,
+          "type_name": "CameraManager",
+          "declared_fields": [
+            "cameraM",
+            "transitionSpeed",
+            "transitionDuration",
+            "elapsedTime",
+            "ViewCameraClose",
+            "ViewCameraFar",
+            "ViewCamaraRot",
+            "ViewWinCamera",
+            "ViewWinCamaraRot",
+            "SceneCameraPos",
+            "SceneCameraRot",
+            "SceneCameraPosFar",
+            "SceneCameraRotFar"
+          ],
+          "declared_methods": [
+            "Start",
+            "ChangeCameraParent",
+            "ChangeCameraToClose",
+            "ChangeCameraToFar",
+            "ChangeToSceneCamera",
+            "ChangeToSceneCameraClose",
+            "ChangeToSceneCameraFar",
+            "ChangeCameraToWinner",
+            "ChangeCameraSmooth",
+            "SwitchCamera",
+            ".ctor"
+          ]
+        }
+      ],
+      "scene_references": [
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Character Selection.unity"
+        },
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Bending Battle.unity"
+        }
+      ],
+      "known_or_declared": "Export inicial contiene recursos pero shaders dummy y scripts sin campos; export asistido pendiente de evaluación.",
+      "recovery_obligations": "Conservar IDs/GUIDs y vínculos, verificar skins/avatar/animator/root motion/eventos, colisión y shaders/URP.",
+      "completion_evidence_required": "Cada personaje y ataque tiene vista/animación/VFX/material correctos; sin recursos faltantes ni apariencias genéricas presentadas como finales.",
+      "open": true
+    },
+    {
+      "id": "audio",
+      "priority": "P2",
+      "title": "Música y efectos",
+      "evidence_status": "static_declarations_only",
+      "implementation_status": "not_assessed_by_this_specification",
+      "video_findings": [],
+      "metadata": [
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3562,
+          "type_name": "MusicController",
+          "declared_fields": [
+            "lastVolume"
+          ],
+          "declared_methods": [
+            "Start",
+            "Music",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3563,
+          "type_name": "MuteController",
+          "declared_fields": [],
+          "declared_methods": [
+            "Start",
+            "Mute",
+            ".ctor"
+          ]
+        }
+      ],
+      "scene_references": [
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Bending Battle.unity"
+        },
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Tournament.unity"
+        },
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/StartMenu.unity"
+        }
+      ],
+      "known_or_declared": "No se escuchó audio; export inicial contiene clips OGG.",
+      "recovery_obligations": "Inventariar clips y bindings de escenas/animaciones, volumen/fades, mute y mezcla.",
+      "completion_evidence_required": "Música de fases y sonido de acciones comparados por escucha y eventos.",
+      "open": true
+    },
+    {
+      "id": "reliability",
+      "priority": "P1",
+      "title": "Rendimiento, dispositivos y ciclo de recursos",
+      "evidence_status": "partial_visual_and_static",
+      "implementation_status": "not_assessed_by_this_specification",
+      "video_findings": [
+        {
+          "source": "Knowledge/video-findings.json",
+          "finding_id": "camera"
+        }
+      ],
+      "metadata": [
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3726,
+          "type_name": "GameManager",
+          "declared_fields": [
+            "resumeButton",
+            "fps",
+            "deltaTime",
+            "originalHeight",
+            "originalWidth",
+            "medResH",
+            "medResW",
+            "minResH",
+            "minResW",
+            "qualitySlider",
+            "max",
+            "med",
+            "min",
+            "frameCapToogle",
+            "fpsText",
+            "resText",
+            "qualityText",
+            "userQualityGraphics",
+            "userFrameCap"
+          ],
+          "declared_methods": [
+            "Start",
+            "Update",
+            "SetInitialRes",
+            "setMinRes",
+            "setMedRes",
+            "setOriginalRes",
+            "CapFrameRate",
+            "changeQuality",
+            "toogleSettings",
+            "setInitialFrameCap",
+            "setInitialQualityGraphics",
+            "setResolutions",
+            "restartButtonsColor",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3730,
+          "type_name": "GraphicsManager",
+          "declared_fields": [
+            "i",
+            "fps",
+            "deltaTime",
+            "originalHeight",
+            "originalWidth",
+            "medResH",
+            "medResW",
+            "minResH",
+            "minResW",
+            "max",
+            "med",
+            "min",
+            "frameCapToogle",
+            "fpsText",
+            "resText",
+            "qualityText",
+            "userQualityGraphics",
+            "userFrameCap",
+            "debug",
+            "graphicsChange"
+          ],
+          "declared_methods": [
+            "Start",
+            "OnDestroy",
+            "Update",
+            "SetInitialRes",
+            "setMinRes",
+            "setMedRes",
+            "setOriginalRes",
+            "CapFrameRate",
+            "toogleSettings",
+            "setInitialFrameCap",
+            "setInitialQualityGraphics",
+            "setResolutions",
+            "restartButtonsColor",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3886,
+          "type_name": "SystemManager",
+          "declared_fields": [
+            "i",
+            "timesPlayed",
+            "mode",
+            "async",
+            "unlock",
+            "newUpdate",
+            "bonus",
+            "tmPlayer",
+            "playedTime",
+            "howToPlayShowed",
+            "playerType"
+          ],
+          "declared_methods": [
+            "Awake",
+            "ChangePlayingMode",
+            "RefreshPlayingMode",
+            "NextScene",
+            "SaveData",
+            "SaveDataInDevice",
+            "LoadDataFromDevice",
+            "SavePlayerData",
+            "LoadPlayerData",
+            "Update",
+            "CheckForUpdate",
+            "CheckBonus",
+            "OnApplicationQuit",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3970,
+          "type_name": "TCPConnection",
+          "declared_fields": [
+            "localData",
+            "tcpListener",
+            "tcpClient",
+            "networkStream",
+            "buffer",
+            "accumulator",
+            "isServer",
+            "isConnected",
+            "bytesQueue",
+            "onMessageReceived",
+            "onConnect",
+            "onClientConnected",
+            "port"
+          ],
+          "declared_methods": [
+            "Start",
+            "OnDestroy",
+            "Init",
+            "Update",
+            "CreateMessage",
+            "CreateAndSendMessage",
+            "SendShortMessage",
+            "ParseShortMessage",
+            "ParseMessage",
+            "ProcessMessages",
+            "GetLocalIPAddress",
+            "SendNetMessage",
+            "SendByteMessage",
+            "StartServer",
+            "ConnectToHost",
+            "HandleMessage",
+            "SendMessage",
+            "ConnectCoroutine",
+            "OnApplicationQuit",
+            "CloseConnection",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3897,
+          "type_name": "UDPConnectionManager",
+          "declared_fields": [
+            "udpClient",
+            "remoteEndPoint",
+            "port",
+            "byteQueue",
+            "onRawDataReceived",
+            "targetIP",
+            "lastClientIP"
+          ],
+          "declared_methods": [
+            "Start",
+            "EnableMulticast",
+            "BroadCast",
+            "StartServer",
+            "Update",
+            "SendRawData",
+            "ListenForMessages",
+            "OnMessageReceived",
+            "StructToBytes",
+            "GetLocalIPAddress",
+            "GetBroadcastAddress",
+            "OnApplicationQuit",
+            "OnDestroy",
+            "ChangeRemoteEndPoint",
+            "CloseConnection",
+            ".ctor"
+          ]
+        },
+        {
+          "source": "Evidence/assembly-csharp-metadata.json",
+          "type_index": 3904,
+          "type_name": "VoiceChatManager",
+          "declared_fields": [
+            "alert",
+            "micOn",
+            "micOff",
+            "loading",
+            "playerVoice",
+            "playerVoiceCreated",
+            "voices"
+          ],
+          "declared_methods": [
+            "Start",
+            "ShowIcon",
+            "InitVoiceChat",
+            "CreatePlayerVoice",
+            "StartRecording",
+            "StopRecording",
+            "ShowAlert",
+            "RemoveAlert",
+            "ToggleVoiceChat",
+            "VoiceChatOn",
+            "VoiceChatOff",
+            "PermissionCallbacks_PermissionGranted",
+            "AddToVoices",
+            "MuteAll",
+            "UnMuteAll",
+            ".ctor"
+          ]
+        }
+      ],
+      "scene_references": [
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/Bending Battle.unity"
+        },
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/LocalMultiplayer.unity"
+        },
+        {
+          "source": "Evidence/recovered-scenes-inventory.json",
+          "path": "Assets/Scenes/StartMenu.unity"
+        }
+      ],
+      "known_or_declared": "No hay medición runtime, build Android ni batería de dispositivos validada aquí.",
+      "recovery_obligations": "Verificar safe area/aspectos, pausa Android, cleanup de sockets/voz/objetos, serialización, pool/GC y tiempo/frame en dispositivos objetivo.",
+      "completion_evidence_required": "Resultados medidos de CPU/memoria/frame y estabilidad de partidas largas; cancelación sin recursos retenidos.",
+      "open": true
+    }
+  ],
+  "menu_edges": [
+    {
+      "from": "StartMenu",
+      "to": "HowToPlay",
+      "status": "visual",
+      "evidence": "tutorial: S 0-5s",
+      "limitations": "El video muestra menú y tutorial; el botón concreto pulsado no es visible en el muestreo."
+    },
+    {
+      "from": "HowToPlay",
+      "to": "Character Selection",
+      "status": "visual",
+      "evidence": "survival-select: S5-14s",
+      "limitations": "Carga intermedia."
+    },
+    {
+      "from": "Character Selection",
+      "to": "Bending Battle",
+      "status": "visual",
+      "evidence": "survival-select,stage-picker: S14-28s",
+      "limitations": "Mismo concepto de batalla; identidad del nombre de escena es correspondencia inferida con inventario."
+    },
+    {
+      "from": "StartMenu",
+      "to": "ConnectingServer",
+      "status": "candidate_static",
+      "evidence": "StarMenuManager.Online2Players/Connect; scene ConnectingServer",
+      "limitations": "Callback y destino exacto pendientes."
+    },
+    {
+      "from": "ConnectingServer",
+      "to": "Character Selection",
+      "status": "visual_plus_static",
+      "evidence": "online-lobby,online-feedback: M0-37s; corresponding scene names",
+      "limitations": "Lobby a selección observado; nombres de escena propuestos por inventario."
+    },
+    {
+      "from": "Bending Battle",
+      "to": "Character Selection",
+      "status": "visual",
+      "evidence": "M506-514s; online-result",
+      "limitations": "PLAY AGAIN conduce a carga y selección en muestra."
+    },
+    {
+      "from": "Bending Battle",
+      "to": "StartMenu",
+      "status": "visual",
+      "evidence": "disconnect: M834-847s",
+      "limitations": "Volver tras EXIT GAME y mensaje de desconexión; entrada pulsada no capturada por muestras."
+    },
+    {
+      "from": "StartMenu",
+      "to": "Tournament",
+      "status": "candidate_static",
+      "evidence": "StarMenuManager.EnterTournament; TournamentController; Tournament.unity",
+      "limitations": "Cuota/requisitos/alerta declarados, no flujo observado."
+    },
+    {
+      "from": "Tournament",
+      "to": "Bending Battle",
+      "status": "candidate_static",
+      "evidence": "TournamentManager.GoToBattle/StartBattle; scene objects",
+      "limitations": "Regreso, checkpoints y momento de guardado pendientes."
+    },
+    {
+      "from": "StartMenu",
+      "to": "LocalMultiplayer",
+      "status": "candidate_static",
+      "evidence": "StarMenuManager.GoToLocalMultiplayer; LocalMultiplayer.unity",
+      "limitations": "Crear, buscar, contraseña y estados UI por declaraciones."
+    },
+    {
+      "from": "LocalMultiplayer",
+      "to": "Bending Battle",
+      "status": "candidate_static",
+      "evidence": "LocalMultiplayerData.hostScene/guestScene,onPlayersReachBattleScene",
+      "limitations": "Sin conexión funcional demostrada."
+    },
+    {
+      "from": "StartMenu",
+      "to": "Login",
+      "status": "candidate_static",
+      "evidence": "StartMenu Account object; GameMode.AccountMenu; Login.unity",
+      "limitations": "Botón y navegación a cuenta por verificar."
+    },
+    {
+      "from": "Login",
+      "to": "OnlineFriends",
+      "status": "candidate_static",
+      "evidence": "FirebaseManager.GoToFriendsScene; FriendsController.LoginScreen",
+      "limitations": "Condiciones de cuenta y retorno por verificar."
+    },
+    {
+      "from": "OnlineFriends",
+      "to": "FriendsConnection",
+      "status": "candidate_static",
+      "evidence": "FriendsController.GoToFriendConnection/SendInvitation",
+      "limitations": "Ruta de invitación, aceptación y timeout pendientes."
+    },
+    {
+      "from": "OnlineFriends",
+      "to": "Spectator",
+      "status": "candidate_static",
+      "evidence": "FriendsController.WatchBattle; Spectator.unity",
+      "limitations": "Espectación solo candidate_static."
+    },
+    {
+      "from": "Spectator",
+      "to": "Bending Battle",
+      "status": "candidate_static",
+      "evidence": "GameController.ConfigSpectator; PhotonRoom.StartAsSpectator",
+      "limitations": "No demostrar conexión ni acceso con nombre de método."
+    },
+    {
+      "from": "DesarrolladoPor",
+      "to": "StartMenu",
+      "status": "candidate_static",
+      "evidence": "DesarrolladoPor.unity, StartMenu.unity",
+      "limitations": "Orden de arranque no recuperado en esta inspección."
+    }
+  ],
+  "completion_policy": "All open obligations require evidence or an explicitly documented scope decision before claiming the entire game is reconstructed. A compiling shell, RAG corpus, exported assets or generic playable prototype does not satisfy behavioral completeness."
+}

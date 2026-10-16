@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Deep Dusk
+  m_Shader: {fileID: 10700, guid: 0000000000000000f000000000000000, type: 0}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties:
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+      _BackTex:
+        m_Texture: {fileID: 2800000, guid: 78930438405e69a46b1cb38c1fc1397b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+      _DownTex:
+        m_Texture: {fileID: 2800000, guid: 95a7b3a1f3a01474b97e56411c67a63c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+      _FrontTex:
+        m_Texture: {fileID: 2800000, guid: 32181f244c17fbd449a35848bbd3c5a4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+      _LeftTex:
+        m_Texture: {fileID: 2800000, guid: eadedd620ccf6ad4085895fa5aee799e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+      _RightTex:
+        m_Texture: {fileID: 2800000, guid: 5574a16b3c84b3c4183abe2c119976a3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+      _UpTex:
+        m_Texture: {fileID: 2800000, guid: 2af2bef0add97e54d8d26ddae00ce7af, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: {}
+    m_Floats: {}
+    m_Colors: {}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 0
