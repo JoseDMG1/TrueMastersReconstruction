@@ -19,26 +19,31 @@ public class CameraManager : MonoBehaviour
     private Quaternion SceneCameraRotFar = Quaternion.Euler(15f, -45f, 0f);
 
     private void Start() { cameraM = this; }
-    public void ChangeCameraParent(GameObject newParent) { transform.parent = newParent.transform; }
-    public void ChangeCameraToClose() { BeginTransition(ViewCameraClose, ViewCamaraRot); }
-    public void ChangeCameraToFar() { BeginTransition(ViewCameraFar, ViewCamaraRot); }
+    private bool IsSplitScreenMode => SystemManager.i && SystemManager.i.mode == GameMode.LocalOffline;
+    public void ChangeCameraParent(GameObject newParent) { if (!IsSplitScreenMode) transform.parent = newParent.transform; }
+    public void ChangeCameraToClose() { if (!IsSplitScreenMode) BeginTransition(ViewCameraClose, ViewCamaraRot); }
+    public void ChangeCameraToFar() { if (!IsSplitScreenMode) BeginTransition(ViewCameraFar, ViewCamaraRot); }
     public void ChangeToSceneCamera()
     {
+        if (IsSplitScreenMode) return;
         if (PlayerPrefs.GetInt("Cam", 0) != 0) ChangeToSceneCameraFar();
         else ChangeToSceneCameraClose();
     }
     public void ChangeToSceneCameraClose()
     {
+        if (IsSplitScreenMode) return;
         transform.parent = null;
         BeginTransition(SceneCameraPos, SceneCameraRot);
     }
     public void ChangeToSceneCameraFar()
     {
+        if (IsSplitScreenMode) return;
         transform.parent = null;
         BeginTransition(SceneCameraPosFar, SceneCameraRotFar);
     }
     public void ChangeCameraToWinner(GameObject winner)
     {
+        if (IsSplitScreenMode) return;
         ChangeCameraParent(winner);
         BeginTransition(ViewWinCamera, ViewWinCamaraRot);
     }
@@ -66,6 +71,7 @@ public class CameraManager : MonoBehaviour
     }
     public void SwitchCamera()
     {
+        if (IsSplitScreenMode) return;
         PlayerPrefs.SetInt("Cam", PlayerPrefs.GetInt("Cam", 0) == 0 ? 1 : 0);
         if (transform.parent == null) ChangeToSceneCamera();
         else if (PlayerPrefs.GetInt("Cam", 0) != 0) ChangeCameraToFar();

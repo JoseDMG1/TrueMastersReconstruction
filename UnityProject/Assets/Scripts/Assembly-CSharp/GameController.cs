@@ -199,6 +199,8 @@ public class GameController : MonoBehaviour
 
 	private bool counterStarted;
 
+	private bool specialUnlocked;
+
 	public bool draw;
 
 	public GameObject SpecialButton;
@@ -231,6 +233,7 @@ public class GameController : MonoBehaviour
 
 	private void Awake()
 	{
+		if (!Application.isMobilePlatform && SpecialButton) SpecialButton.SetActive(false);
 		// Reconstructed offline branch, native VA 0x12911D0.
 		if (SystemManager.i.mode == GameMode.LocalMultiplayer) return;
 		if (SystemManager.i.mode == GameMode.Survival)
@@ -238,7 +241,7 @@ public class GameController : MonoBehaviour
 			var names = CharactersManager.i.characters;
 			PlayerPrefs.SetString("CharacterCPU", names[UnityEngine.Random.Range(0, names.Count - 1)]);
 		}
-		online = PhotonNetwork.IsConnected;
+		online = SystemManager.i.mode != GameMode.LocalOffline && PhotonNetwork.IsConnected;
 		PV = GetComponent<PhotonView>();
 		if (i != null && i != this) { Destroy(this); return; }
 		i = this;
@@ -293,16 +296,37 @@ public class GameController : MonoBehaviour
 		guestPlayer = Instantiate(opponentPrefab, new Vector3(-5, 0, -5), transform.rotation);
 		hostPlayer.AddComponent<HostPlayer>();
 		guestPlayer.AddComponent<GuestPlayer>();
+		if (SystemManager.i.mode == GameMode.LocalOffline)
+		{
+			var ai = guestPlayer.GetComponent<AI>();
+			if (ai) ai.enabled = false;
+			guestPlayer.AddComponent<LocalOfflinePlayerInput>();
+		}
 		var scene = BattleSceneSingleton.i;
 		scene.MainCharacter = hostPlayer;
 		scene.Opponent = guestPlayer;
 		hostPlayer.layer = LayerMask.NameToLayer("Player");
 		guestPlayer.layer = LayerMask.NameToLayer("Enemy");
-		scene.aiToggle.gameObject.SetActive(true);
+		if (scene.aiToggle) scene.aiToggle.gameObject.SetActive(SystemManager.i.mode != GameMode.LocalOffline);
 		if (SystemManager.i.mode == GameMode.SinglePlayer) scene.aiToggle.ChangeVisibility(true);
 		MainCharacter = hostPlayer;
 		OpponentCharacter = guestPlayer;
 		CompleteMainChar();
+		if (SystemManager.i.mode == GameMode.LocalOffline)
+		{
+			if (guestPlayer.GetComponent<Description>().moveset == 1)
+				foreach (string parameter in new[] { "BasicAttack", "UpAttack", "DownAttack", "LeftAttack", "RightAttack" })
+					guestPlayer.GetComponent<Animator>().SetInteger(parameter, 1);
+			var splitScreen = gameObject.AddComponent<LocalOfflineSplitScreen>();
+			splitScreen.Configure(MainCharacter, OpponentCharacter);
+		}
+		if (!Application.isMobilePlatform &&
+			(SystemManager.i.mode == GameMode.SinglePlayer || SystemManager.i.mode == GameMode.Survival ||
+			 SystemManager.i.mode == GameMode.Tournament || SystemManager.i.mode == GameMode.LocalOffline))
+		{
+			var desktopHud = gameObject.AddComponent<DesktopCombatHud>();
+			desktopHud.Configure(MainCharacter, SystemManager.i.mode == GameMode.LocalOffline ? OpponentCharacter : null);
+		}
 		scene.counter.GetComponent<Animator>().SetTrigger("Start");
 	}
 
@@ -351,6 +375,11 @@ public class GameController : MonoBehaviour
 		// 0x1292888. Exact ownership is the scene's controlled fighter.
 		gameStarted = true;
 		BattleSceneSingleton.i.MainCharacter.GetComponent<MobileInputs>().enabled = true;
+		if (SystemManager.i.mode == GameMode.LocalOffline && OpponentCharacter)
+		{
+			var secondPlayer = OpponentCharacter.GetComponent<LocalOfflinePlayerInput>();
+			if (secondPlayer) secondPlayer.enabled = true;
+		}
 	}
 
 	[PunRPC]
@@ -416,12 +445,14 @@ public class GameController : MonoBehaviour
 			case "Diana(Clone)": case "Ren(Clone)": key = "Ren"; break;
 			default: return;
 		}
-		if (PlayerPrefs.HasKey(key)) SpecialButton.SetActive(true);
+		specialUnlocked = PlayerPrefs.HasKey(key);
+		if (SpecialButton) SpecialButton.SetActive(Application.isMobilePlatform && specialUnlocked);
 	}
 
 	public void DisableSpecial()
 	{
-		SpecialButton.SetActive(false);
+		specialUnlocked = false;
+		if (SpecialButton) SpecialButton.SetActive(false);
 	}
 
 	public bool IsMainChar(int layer)
@@ -464,7 +495,7 @@ public class GameController : MonoBehaviour
 	public void Special()
 	{
 		// 0x1293668. The Stunned parameter gates entry and is set on activation.
-		if (SpecialButton.activeSelf && SpecialAtk.specialAtk.charged && MainCharacter &&
+		if (specialUnlocked && SpecialAtk.specialAtk.charged && MainCharacter &&
 			!SpecialAtk.specialAtk.decharging && !animMainChar.GetBool("Stunned"))
 		{
 			animMainChar.SetTrigger("Special");
@@ -482,11 +513,9 @@ public class GameController : MonoBehaviour
 	{
 		var reader = BattleSceneSingleton.i ? BattleSceneSingleton.i.inputReader : null;
 		if (!reader || !reader.keyboard || Application.isMobilePlatform) return true;
-		// Authored touch zones also call these methods on PointerEnter. Desktop hover is not a press.
-		if (Input.GetMouseButton(0)) return true;
-		if (PlayerPrefs.GetInt("AlternateKeyboardControls", 0) == 1)
-			return dodge && Input.GetKey(KeyCode.Space);
-		return Input.GetKey(dodge ? KeyCode.X : KeyCode.Z);
+		// The configured local binding is the authority for desktop keyboard and gamepad input.
+		var local = LocalControls.ReadPlayerOne();
+		return dodge ? local.b : local.a;
 	}
 
 	public void UpDown(float vertical)

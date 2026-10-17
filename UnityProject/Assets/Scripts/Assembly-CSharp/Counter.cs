@@ -31,6 +31,7 @@ public class Counter : MonoBehaviour
 
     public void ChangeCamera()
     {
+        if (SystemManager.i && SystemManager.i.mode == GameMode.LocalOffline) return;
         var battle = BattleSceneSingleton.i;
         if (value == 0f)
         {

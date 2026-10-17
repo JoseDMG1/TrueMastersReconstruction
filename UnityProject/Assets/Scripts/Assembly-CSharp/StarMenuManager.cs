@@ -23,8 +23,20 @@ public class StarMenuManager : MonoBehaviourPunCallbacks
         // 0x12C2A48: network LeaveRoom/Disconnect is outside the offline profile.
         TournamentController.i.Reset();
         SystemManager.i.ChangePlayingMode(GameMode.StartMenu);
+        ConfigureTwoPlayerMenu();
+        ConfigureDesktopMenu();
         PriceText.text = TournamentPrice.ToString();
         if (OnlineManager.i != null) OnlineManager.i.spectatorCode = null;
+    }
+
+    private void ConfigureDesktopMenu()
+    {
+#if UNITY_STANDALONE || UNITY_EDITOR
+        foreach (var social in FindObjectsByType<SocialMedia>(FindObjectsInactive.Include))
+            social.gameObject.SetActive(false);
+        foreach (var updateNotice in FindObjectsByType<UpdateController>(FindObjectsInactive.Include))
+            updateNotice.gameObject.SetActive(false);
+#endif
     }
 
     public override void OnConnectedToMaster()
@@ -101,7 +113,89 @@ public class StarMenuManager : MonoBehaviourPunCallbacks
         Notifications.i.Remove();
     }
 
-    public void Online2Players() { Unavailable(nameof(Online2Players)); }
+    public void Online2Players() { ShowMultiplayerUI(true); }
+
+    private void ConfigureTwoPlayerMenu()
+    {
+        if (!multiplayer_UI) return;
+        var local = multiplayer_UI.transform.Find("Local");
+        if (!local) return;
+        SetButtonLabel(local.gameObject, "Local LAN");
+        var offline = multiplayer_UI.transform.Find("Local Offline");
+        if (!offline)
+        {
+            offline = CreateLocalOfflineOption(local).transform;
+        }
+        var offlineRect = offline as RectTransform;
+        if (offlineRect) offlineRect.anchoredPosition = new Vector2(0f, -175f);
+        var online = multiplayer_UI.transform.Find("Online") as RectTransform;
+        var localRect = local as RectTransform;
+        var back = multiplayer_UI.transform.Find("Back") as RectTransform;
+        if (online) online.anchoredPosition = new Vector2(0f, -80f);
+        if (localRect) localRect.anchoredPosition = new Vector2(0f, -270f);
+        if (back) back.anchoredPosition = new Vector2(0f, -365f);
+    }
+
+    private GameObject CreateLocalOfflineOption(Transform local)
+    {
+        var localRect = local as RectTransform;
+        var option = new GameObject("Local Offline", typeof(RectTransform), typeof(Image), typeof(Button));
+        option.transform.SetParent(local.parent, false);
+        var rect = option.GetComponent<RectTransform>();
+        rect.anchorMin = localRect.anchorMin; rect.anchorMax = localRect.anchorMax; rect.pivot = localRect.pivot;
+        rect.sizeDelta = localRect.sizeDelta; rect.localScale = localRect.localScale;
+        rect.anchoredPosition = new Vector2(0f, -175f);
+        var image = option.GetComponent<Image>();
+        var sourceImage = local.GetComponent<Image>();
+        if (sourceImage) { image.sprite = sourceImage.sprite; image.color = sourceImage.color; image.type = sourceImage.type; }
+        var button = option.GetComponent<Button>();
+        var sourceButton = local.GetComponent<Button>();
+        if (sourceButton) { button.colors = sourceButton.colors; button.transition = sourceButton.transition; button.navigation = sourceButton.navigation; }
+        button.targetGraphic = image;
+        button.onClick.AddListener(LocalOfflineMode);
+        var sourceTmp = local.GetComponentInChildren<TMP_Text>(true);
+        if (sourceTmp)
+        {
+            var label = new GameObject("Label", typeof(RectTransform), typeof(TextMeshProUGUI));
+            label.transform.SetParent(option.transform, false);
+            var labelRect = label.GetComponent<RectTransform>(); labelRect.anchorMin = Vector2.zero; labelRect.anchorMax = Vector2.one; labelRect.offsetMin = Vector2.zero; labelRect.offsetMax = Vector2.zero;
+            var text = label.GetComponent<TextMeshProUGUI>();
+            text.font = sourceTmp.font; text.fontSize = sourceTmp.fontSize; text.color = sourceTmp.color;
+            text.alignment = sourceTmp.alignment; text.enableAutoSizing = true; text.fontSizeMin = 22; text.fontSizeMax = 46;
+            text.text = "Local Offline"; text.raycastTarget = false;
+        }
+        else
+        {
+            var sourceLegacy = local.GetComponentInChildren<Text>(true);
+            var label = new GameObject("Label", typeof(RectTransform), typeof(Text));
+            label.transform.SetParent(option.transform, false);
+            var labelRect = label.GetComponent<RectTransform>(); labelRect.anchorMin = Vector2.zero; labelRect.anchorMax = Vector2.one; labelRect.offsetMin = Vector2.zero; labelRect.offsetMax = Vector2.zero;
+            var text = label.GetComponent<Text>();
+            if (sourceLegacy) { text.font = sourceLegacy.font; text.fontSize = sourceLegacy.fontSize; text.color = sourceLegacy.color; text.alignment = sourceLegacy.alignment; }
+            text.text = "Local Offline"; text.resizeTextForBestFit = true; text.raycastTarget = false;
+        }
+        return option;
+    }
+
+    private static void SetButtonLabel(GameObject target, string label)
+    {
+        var tmp = target.GetComponentInChildren<TMP_Text>(true);
+        if (tmp) { tmp.text = label; tmp.enableAutoSizing = true; tmp.fontSizeMin = 22; tmp.fontSizeMax = 46; }
+        else
+        {
+            var legacy = target.GetComponentInChildren<Text>(true);
+            if (legacy) { legacy.text = label; legacy.resizeTextForBestFit = true; }
+        }
+    }
+
+    public void LocalOfflineMode()
+    {
+        SystemManager.i.ChangePlayingMode(GameMode.LocalOffline);
+        if (string.IsNullOrEmpty(PlayerPrefs.GetString("Character"))) PlayerPrefs.SetString("Character", "Sora");
+        if (string.IsNullOrEmpty(PlayerPrefs.GetString("CharacterCPU"))) PlayerPrefs.SetString("CharacterCPU", "Amon");
+        PlayerPrefs.Save();
+        LevelChanger.i.FadeToLevel(4);
+    }
 
     public void GoToLocalMultiplayer()
     {

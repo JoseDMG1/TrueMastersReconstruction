@@ -20,7 +20,16 @@ public class DesktopInputs : MonoBehaviour
   if (Input.GetKeyUp(KeyCode.K)) anim.Play("Taunt2");
   DetectInputs();
  }
- private void DetectInputs() { Actions(Input.GetAxis(horizontal), Input.GetAxis(vertical), Input.GetAxis(fire), Input.GetAxis(jump), Input.GetAxis(Special)); }
+ private void DetectInputs()
+ {
+  if (GameController.i && !GameController.i.online && !Application.isMobilePlatform)
+  {
+   var local = LocalControls.ReadPlayerOne();
+   Actions(local.x, local.y, local.a ? 1f : 0f, local.b ? 1f : 0f, local.s ? 1f : 0f);
+   return;
+  }
+  Actions(Input.GetAxis(horizontal), Input.GetAxis(vertical), Input.GetAxis(fire), Input.GetAxis(jump), Input.GetAxis(Special));
+ }
  [PunRPC]
  public void Actions(float x, float z, float a, float j, float s)
  {

@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dd0ce86caac22102493fbef66031362, type: 3}
   m_Name:
   m_EditorClassIdentifier:
-  AddVector: {x: 0, y: 0, z: 0}
+  AddVector: {x: 0, y: -3, z: 0}
   speed: 0.05
   delay: 0.5
   finishMove: 1

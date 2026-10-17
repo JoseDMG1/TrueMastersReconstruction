@@ -8,7 +8,7 @@ public class AIToggle : MonoBehaviour
 
     private void Start()
     {
-        if (SystemManager.i.mode == GameMode.LocalMultiplayer || GameController.i.online) return;
+        if (SystemManager.i.mode == GameMode.LocalMultiplayer || SystemManager.i.mode == GameMode.LocalOffline || GameController.i.online) return;
         subscribedCounter = BattleSceneSingleton.i.counter;
         subscribedCounter.onCounterFinish.AddListener(StartAI);
         BattleSceneSingleton.i.Opponent.GetComponent<AI>().enabled = true;

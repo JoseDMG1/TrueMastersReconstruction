@@ -48,7 +48,7 @@
     },
     {
       "file": "UnityProject/Assets/Resources/photonprefabs/AirAtkR2.prefab",
-      "sha256": "40971eb45bd18ca8b52c65d3fd51c81f823ab424d685512f163dc3a3b6d6f121",
+      "sha256": "265ab40fbd5d1b99cdb88b82df32583d1b3e00b0fe0a02959baae3bc6cf4e5c2",
       "resource": "photonprefabs/AirAtkR2",
       "name": "AirAtkR2",
       "follow": true,
@@ -71,7 +71,7 @@
     },
     {
       "file": "UnityProject/Assets/Resources/photonprefabs/AirAtkL2.prefab",
-      "sha256": "319bfd9dc5a0bda96979062f90576d84d6b1e1d21693a1719b846b1cd81ac510",
+      "sha256": "9c83000b1e32de9f8def8189f05e17c5cb03bdc90542a16a8b53b59fb1c2367d",
       "resource": "photonprefabs/AirAtkL2",
       "name": "AirAtkL2",
       "follow": true,
@@ -186,7 +186,7 @@
     },
     {
       "file": "UnityProject/Assets/Resources/photonprefabs/IceAtk.prefab",
-      "sha256": "7934f64bf75d643567a856b00c33ba3a8df433ae41ad9ac6ff36405a70585757",
+      "sha256": "ed7bf86fcb6998ee43a9f8f9674ea4588c9c96dfe1a521dea2c82b510daf9551",
       "resource": "photonprefabs/IceAtk",
       "name": "IceAtk",
       "follow": true,
@@ -324,7 +324,7 @@
     },
     {
       "file": "UnityProject/Assets/Resources/photonprefabs/IceAtkS5.prefab",
-      "sha256": "d7772b411ae5d83b4afd17e610771cf488ba9ef1dc25c2c061fbfacd9c736cdf",
+      "sha256": "4125e81dde3475b2a86a8778038ee2c53fa90a83a0819faab33f032399eed167",
       "resource": "photonprefabs/IceAtkS5",
       "name": "IceAtkS5",
       "follow": true,
@@ -393,7 +393,7 @@
     },
     {
       "file": "UnityProject/Assets/Resources/photonprefabs/FireDownAtk2.prefab",
-      "sha256": "d96518bf7e46e9c13969b44cf28c0b08763e84f1909151b3724fe808e0b2a564",
+      "sha256": "8797da2a38c56e92a8c3cee73cab1bf5e57af72999fee2307613653e00d29aa8",
       "resource": "photonprefabs/FireDownAtk2",
       "name": "FireDownAtk2",
       "follow": true,

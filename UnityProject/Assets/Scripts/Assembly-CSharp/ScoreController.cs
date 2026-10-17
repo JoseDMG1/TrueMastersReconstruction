@@ -208,6 +208,8 @@ public class ScoreController : MonoBehaviour
         player.GetComponent<AnimationMovement>().enabled = false;
         player.GetComponent<DesktopInputs>().enabled = false;
         player.GetComponent<MobileInputs>().enabled = false;
+        var localInput = player.GetComponent<LocalOfflinePlayerInput>();
+        if (localInput) localInput.enabled = false;
         StartCoroutine(DropAtks(1f, player));
         player.GetComponent<LookAt>().enabled = false;
         // Reconstruction correction: preserve yaw using a valid quaternion (native zeroes x/z/w).

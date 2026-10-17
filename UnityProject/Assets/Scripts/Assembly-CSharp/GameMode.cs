@@ -9,5 +9,6 @@ public enum GameMode
 	Lobby = 6,
 	FriendsMenu = 7,
 	AccountMenu = 8,
-	Spectator = 9
+	Spectator = 9,
+	LocalOffline = 10
 }

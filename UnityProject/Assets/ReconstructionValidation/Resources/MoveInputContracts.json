@@ -1,7 +1,7 @@
 {
   "scope": "Static expected state, not runtime acceptance",
   "source": "Evidence/roster-moveset-audit.json",
-  "sourceSha256": "968593d73af5c20f51bdff7c6beb80c42192ffcd8e5b6be385f9fbdba3f78c40",
+  "sourceSha256": "15223cb487f2568e7c8f6fd3129d3646158b2302d3fb4d5925e69871461979d9",
   "routes": [
     {
       "fighter": "Sora",
@@ -109,7 +109,7 @@
       "variant": 0,
       "state": "BasicAttack",
       "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
-      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "controllerSha256": "9515e802473e6748b2693880c4a5061c5405557d5e647bad0d75055bd0277f45",
       "transitionId": null,
       "defaultEntry": true
     },
@@ -119,7 +119,7 @@
       "variant": 1,
       "state": "BasicAttack2",
       "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
-      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "controllerSha256": "9515e802473e6748b2693880c4a5061c5405557d5e647bad0d75055bd0277f45",
       "transitionId": "1109630643969539439",
       "defaultEntry": false
     },
@@ -129,7 +129,7 @@
       "variant": 0,
       "state": "UpAttack2",
       "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
-      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "controllerSha256": "9515e802473e6748b2693880c4a5061c5405557d5e647bad0d75055bd0277f45",
       "transitionId": "1109094320201520353",
       "defaultEntry": false
     },
@@ -139,7 +139,7 @@
       "variant": 1,
       "state": "UpAttack",
       "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
-      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "controllerSha256": "9515e802473e6748b2693880c4a5061c5405557d5e647bad0d75055bd0277f45",
       "transitionId": "1109693062532245359",
       "defaultEntry": false
     },
@@ -149,7 +149,7 @@
       "variant": 0,
       "state": "DownAttack",
       "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
-      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "controllerSha256": "9515e802473e6748b2693880c4a5061c5405557d5e647bad0d75055bd0277f45",
       "transitionId": "1109026196548002408",
       "defaultEntry": false
     },
@@ -159,7 +159,7 @@
       "variant": 1,
       "state": "DownAttack2",
       "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
-      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "controllerSha256": "9515e802473e6748b2693880c4a5061c5405557d5e647bad0d75055bd0277f45",
       "transitionId": "1109572839542275309",
       "defaultEntry": false
     },
@@ -169,7 +169,7 @@
       "variant": 0,
       "state": "RightAttack",
       "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
-      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "controllerSha256": "9515e802473e6748b2693880c4a5061c5405557d5e647bad0d75055bd0277f45",
       "transitionId": "1109279359913592680",
       "defaultEntry": false
     },
@@ -179,7 +179,7 @@
       "variant": 1,
       "state": "RightAttack2",
       "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
-      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "controllerSha256": "9515e802473e6748b2693880c4a5061c5405557d5e647bad0d75055bd0277f45",
       "transitionId": "1109149520701623706",
       "defaultEntry": false
     },
@@ -189,7 +189,7 @@
       "variant": 0,
       "state": "LeftAttack",
       "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
-      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "controllerSha256": "9515e802473e6748b2693880c4a5061c5405557d5e647bad0d75055bd0277f45",
       "transitionId": "1109384403120170545",
       "defaultEntry": false
     },
@@ -199,7 +199,7 @@
       "variant": 1,
       "state": "LeftAttack2",
       "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
-      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "controllerSha256": "9515e802473e6748b2693880c4a5061c5405557d5e647bad0d75055bd0277f45",
       "transitionId": "1109292246286975720",
       "defaultEntry": false
     },
@@ -509,7 +509,7 @@
       "variant": 0,
       "state": "BasicAttack",
       "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
-      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "controllerSha256": "9515e802473e6748b2693880c4a5061c5405557d5e647bad0d75055bd0277f45",
       "transitionId": null,
       "defaultEntry": true
     },
@@ -519,7 +519,7 @@
       "variant": 1,
       "state": "BasicAttack2",
       "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
-      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "controllerSha256": "9515e802473e6748b2693880c4a5061c5405557d5e647bad0d75055bd0277f45",
       "transitionId": "1109630643969539439",
       "defaultEntry": false
     },
@@ -529,7 +529,7 @@
       "variant": 0,
       "state": "UpAttack2",
       "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
-      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "controllerSha256": "9515e802473e6748b2693880c4a5061c5405557d5e647bad0d75055bd0277f45",
       "transitionId": "1109094320201520353",
       "defaultEntry": false
     },
@@ -539,7 +539,7 @@
       "variant": 1,
       "state": "UpAttack",
       "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
-      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "controllerSha256": "9515e802473e6748b2693880c4a5061c5405557d5e647bad0d75055bd0277f45",
       "transitionId": "1109693062532245359",
       "defaultEntry": false
     },
@@ -549,7 +549,7 @@
       "variant": 0,
       "state": "DownAttack",
       "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
-      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "controllerSha256": "9515e802473e6748b2693880c4a5061c5405557d5e647bad0d75055bd0277f45",
       "transitionId": "1109026196548002408",
       "defaultEntry": false
     },
@@ -559,7 +559,7 @@
       "variant": 1,
       "state": "DownAttack2",
       "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
-      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "controllerSha256": "9515e802473e6748b2693880c4a5061c5405557d5e647bad0d75055bd0277f45",
       "transitionId": "1109572839542275309",
       "defaultEntry": false
     },
@@ -569,7 +569,7 @@
       "variant": 0,
       "state": "RightAttack",
       "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
-      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "controllerSha256": "9515e802473e6748b2693880c4a5061c5405557d5e647bad0d75055bd0277f45",
       "transitionId": "1109279359913592680",
       "defaultEntry": false
     },
@@ -579,7 +579,7 @@
       "variant": 1,
       "state": "RightAttack2",
       "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
-      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "controllerSha256": "9515e802473e6748b2693880c4a5061c5405557d5e647bad0d75055bd0277f45",
       "transitionId": "1109149520701623706",
       "defaultEntry": false
     },
@@ -589,7 +589,7 @@
       "variant": 0,
       "state": "LeftAttack",
       "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
-      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "controllerSha256": "9515e802473e6748b2693880c4a5061c5405557d5e647bad0d75055bd0277f45",
       "transitionId": "1109384403120170545",
       "defaultEntry": false
     },
@@ -599,7 +599,7 @@
       "variant": 1,
       "state": "LeftAttack2",
       "controller": "UnityProject/Assets/AnimatorController/WaterAnimatorController.controller",
-      "controllerSha256": "34deba927293c1f28dc39ae9a6d88f83461e8a1e1ac22c417392c138fa702124",
+      "controllerSha256": "9515e802473e6748b2693880c4a5061c5405557d5e647bad0d75055bd0277f45",
       "transitionId": "1109292246286975720",
       "defaultEntry": false
     },

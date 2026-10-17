@@ -24,25 +24,11 @@ public class InputReader : MonoBehaviour
   if (blockInputs || Time.timeScale <= 0f) { ResetControls(); return; }
   if (keyboard && !Application.isMobilePlatform)
   {
-   // Touch zones use PointerEnter. A desktop hover must not become a held action.
-   inputSet.a &= Input.GetMouseButton(0);
-   inputSet.b &= Input.GetMouseButton(0);
-   inputSet.s &= Input.GetMouseButton(0);
-   bool alternate = PlayerPrefs.GetInt("AlternateKeyboardControls", 0) == 1;
-   bool overControl = alternate && PointerOverControl();
-   KeyCode left = alternate ? KeyCode.A : KeyCode.LeftArrow;
-   KeyCode right = alternate ? KeyCode.D : KeyCode.RightArrow;
-   KeyCode up = alternate ? KeyCode.W : KeyCode.UpArrow;
-   KeyCode down = alternate ? KeyCode.S : KeyCode.DownArrow;
-   if (Input.GetKey(left) || Input.GetKey(right))
-    inputSet.x = (Input.GetKey(right) ? 1f : 0f) - (Input.GetKey(left) ? 1f : 0f);
-   if (Input.GetKey(up) || Input.GetKey(down))
-    inputSet.y = (Input.GetKey(up) ? 1f : 0f) - (Input.GetKey(down) ? 1f : 0f);
-   inputSet.a |= alternate ? !overControl && Input.GetMouseButton(0) : Input.GetKey(KeyCode.Z);
-   inputSet.b |= alternate
-    ? Input.GetKey(KeyCode.Space)
-    : Input.GetKey(KeyCode.X);
-   inputSet.s |= alternate ? !overControl && Input.GetMouseButton(1) : Input.GetKey(KeyCode.C);
+   // Local-only mappings support keyboard or a specific legacy-input joystick.
+   // Touch controls can still contribute through screenInput.
+   var localInput = LocalControls.ReadPlayerOne();
+   inputSet.x = localInput.x; inputSet.y = localInput.y;
+   inputSet.a |= localInput.a; inputSet.b |= localInput.b; inputSet.s |= localInput.s;
    var game = GameController.i;
    if (game)
    {

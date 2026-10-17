@@ -306,7 +306,7 @@ public sealed class OfflinePlayerProbe : MonoBehaviour
         Observe("boot", "Development Windows player, original boot scene");
         yield return SceneReady("StartMenu");
         if(Environment.GetCommandLineArgs().Contains("-rea-graphics-probe")) {CaptureFixture();PlayerPrefs.SetInt("userQualityGraphics",1);}
-        if (Environment.GetCommandLineArgs().Any(a => a == "-rea-specials-probe" || a == "-rea-defense-probe" || a == "-rea-prison-probe" || a == "-rea-moves-probe" || a == "-rea-earth-prison-probe" || a == "-rea-dragonwood-probe" || a == "-rea-maya-production-probe" || a == "-rea-desktop-controls-probe" || a == "-rea-vinea-left-evade-probe" || a == "-rea-ability-aim-probe" || a == "-rea-reported-failures-probe" || a == "-rea-shadow-roster-probe")) {
+        if (Environment.GetCommandLineArgs().Any(a => a == "-rea-specials-probe" || a == "-rea-defense-probe" || a == "-rea-prison-probe" || a == "-rea-moves-probe" || a == "-rea-earth-prison-probe" || a == "-rea-dragonwood-probe" || a == "-rea-maya-production-probe" || a == "-rea-desktop-controls-probe" || a == "-rea-vinea-left-evade-probe" || a == "-rea-diana-evade-probe" || a == "-rea-desktop-hud-probe" || a == "-rea-ability-aim-probe" || a == "-rea-reported-failures-probe" || a == "-rea-shadow-roster-probe")) {
             yield return CombatTrip(Environment.GetCommandLineArgs().Contains("-rea-defense-probe"), Environment.GetCommandLineArgs().Contains("-rea-prison-probe"));
             if (!done) Finish(report.errors.Count == 0 ? "passed" : "runtime_errors");
             yield break;
@@ -688,6 +688,8 @@ public sealed class OfflinePlayerProbe : MonoBehaviour
     IEnumerator CombatTrip(bool defensesOnly, bool prisonOnly) {
         var args = Environment.GetCommandLineArgs();
         bool earthPrison=args.Contains("-rea-earth-prison-probe");
+        bool dianaEvade=args.Contains("-rea-diana-evade-probe");
+        bool hudProbe=args.Contains("-rea-desktop-hud-probe"); int hudCase=0;
         bool dragonwood=args.Contains("-rea-dragonwood-probe");
         bool mayaProduction=args.Contains("-rea-maya-production-probe");
         bool abilityAim=args.Contains("-rea-ability-aim-probe");
@@ -715,6 +717,8 @@ public sealed class OfflinePlayerProbe : MonoBehaviour
         if(awakeJumps)roster=OfflineFlightMatrixProbe.Load().jumps.Select(j=>j.fighter).ToArray();
         if(prisonOnly) roster = new[] {"Maya"};
         if(earthPrison) roster = new[] {"Diana", "Diana"};
+        if(dianaEvade) roster = new[] {"Diana"};
+        if(hudProbe) roster = new[] {"Sora", "Sora"};
         if(desktopControls) roster = new[] {"Sora", "Sora"};
         if(vineaLeftEvade) roster = new[] {"Vinea"};
         if(mayaProduction) roster = new[] {"Maya"};
@@ -731,6 +735,7 @@ public sealed class OfflinePlayerProbe : MonoBehaviour
             yield return SceneReady("Character Selection");
             SelectionController.i.ChangeCharacter(fighter);
             SelectionController.i.cpuController.ChangeCharacter("Amon");
+            if(hudProbe) SystemManager.i.ChangePlayingMode(hudCase == 0 ? GameMode.SinglePlayer : GameMode.LocalOffline);
             Observe("special-select", fighter);
             Click("start", true);
             yield return SceneReady("Bending Battle");
@@ -741,6 +746,19 @@ public sealed class OfflinePlayerProbe : MonoBehaviour
             var reader = BattleSceneSingleton.i.inputReader;
             reader.dPad = true; reader.keyboard = false; reader.SetXpos(0); reader.SetYpos(0);
             var anim = game.animMainChar;
+            if(hudProbe) {
+                report.limitation="Desktop HUD in actual single-player and local split-screen scenes; source sprite, geometry, non-interactivity and controlled super-meter checks. No physical input claim.";
+                yield return DesktopHudProbe.Run(game, output, Observe, Fail);
+                if(done) yield break;
+                hudCase++; game.Restart(); continue;
+            }
+            if(dianaEvade) {
+                report.limitation="Isolated real lateral-evade prefabs from Diana animation events; scaled-time rise/sink/expiry samples. CPU disabled; save/preferences restored. Not original-game visual parity or natural input acceptance.";
+                yield return OfflineDianaRockProbe.Run(game,Path.ChangeExtension(output,".rocks.json"),Observe,Fail);
+                if(done) yield break;
+                game.Restart();
+                continue;
+            }
             if(vineaLeftEvade) {
                 reader.SetXpos(-1f);
                 yield return new WaitForSecondsRealtime(.25f);
@@ -880,7 +898,7 @@ public sealed class OfflinePlayerProbe : MonoBehaviour
             yield return new WaitForEndOfFrame();
             game.Restart();
         }
-        if(abilityAim || flightMatrix || awakeJumps || args.Contains("-rea-moves-probe") || earthPrison || dragonwood || mayaProduction || desktopControls || shadowRoster) yield break;
+        if(hudProbe || dianaEvade || abilityAim || flightMatrix || awakeJumps || args.Contains("-rea-moves-probe") || earthPrison || dragonwood || mayaProduction || desktopControls || shadowRoster) yield break;
         report.limitation = prisonOnly
             ? "Maya down attack entered through actual pointer input; native opponent placement and real physics trap, prison animation, crush creation and cleanup tested. Any synthetic CPU placement is explicitly reported; no claim of general natural aiming or every branch-prison outcome. Save/preferences restored."
             : defensesOnly

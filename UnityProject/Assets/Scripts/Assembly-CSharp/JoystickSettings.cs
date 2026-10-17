@@ -13,6 +13,18 @@ public class JoystickSettings : MonoBehaviour
 
 	private Toggle alternateKeysToggle;
 
+	private bool desktopControls;
+
+	private void Awake()
+	{
+		desktopControls = !Application.isMobilePlatform;
+		if (!desktopControls) return;
+		HideObject(dpad);
+		HideObject(joystick);
+		HideObject(buttonA);
+		HideObject(buttonB);
+	}
+
 	public GameObject dpad;
 
 	public GameObject joystick;
@@ -25,6 +37,15 @@ public class JoystickSettings : MonoBehaviour
 
 	private void Start()
 	{
+		if (desktopControls)
+		{
+			CreateAlternateKeysToggle();
+			HideObject(dpadToggle ? dpadToggle.gameObject : null);
+			HideObject(joystickToggle ? joystickToggle.gameObject : null);
+			HideObject(controllerToggle ? controllerToggle.gameObject : null);
+			HideObject(invertedToggle ? invertedToggle.gameObject : null);
+			return;
+		}
 		if (Photon.Pun.PhotonNetwork.IsConnected && OnlineManager.i && OnlineManager.i.IsSpectator()) return;
 		string mode = PlayerPrefs.GetString("Joystick", "Joystick");
 		if (mode == "Joystick") JoystickOn();
@@ -62,9 +83,13 @@ public class JoystickSettings : MonoBehaviour
 
 	public void UseAlternateKeyboardControls(bool alternate)
 	{
-		PlayerPrefs.SetInt("AlternateKeyboardControls", alternate ? 1 : 0);
-		PlayerPrefs.Save();
+		LocalControls.SetAlternateActive(alternate);
 		if (BattleSceneSingleton.i && BattleSceneSingleton.i.inputReader) BattleSceneSingleton.i.inputReader.ResetControls();
+	}
+
+	private static void HideObject(GameObject target)
+	{
+		if (target) target.SetActive(false);
 	}
 
 	public void Invert(bool inv)
@@ -109,6 +134,7 @@ public class JoystickSettings : MonoBehaviour
 
 	private void Update()
 	{
+		if (desktopControls) return;
 		var game = GameController.i;
 		if (!game || !game.MainCharacter) return;
 		if (BattleSceneSingleton.i.counter && BattleSceneSingleton.i.counter.value > 0f) return;
