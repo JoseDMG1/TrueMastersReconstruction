@@ -265,21 +265,28 @@ public class DamageOnCollision : MonoBehaviour
     {
         if (Online) return;
         if (GameEvents.i) GameEvents.i.PlayerDamaged(gameObject.layer);
-        specialCharge += .75f; Damage += amount;
+        if (LocalOfflinePlayerInput.IsLocalBattle) LocalOfflinePlayerInput.AddSpecialCharge(gameObject, .75f);
+        else specialCharge += .75f;
+        Damage += amount;
         if (anim) anim.SetFloat("Damage", Damage);
         DropAllAtks(); Invoke(nameof(DropAllAtks), .2f);
-        if (!Opponent && SpecialAtk.specialAtk) SpecialAtk.specialAtk.ChargeSpecial(.05f);
+        if (!LocalOfflinePlayerInput.IsLocalBattle && !Opponent && SpecialAtk.specialAtk) SpecialAtk.specialAtk.ChargeSpecial(.05f);
         if (StatsController.i) StatsController.i.SetHealth(Damage, Opponent);
     }
     [PunRPC] public void SetDamageOnline(float damage) { Damage = damage; if (anim) anim.SetFloat("Damage", Damage); }
     public void ResetSpecialAtk()
     {
+        if (LocalOfflinePlayerInput.IsLocalBattle) { specialCharge = 0f; return; }
         if (Opponent) return;
         if (SystemManager.i && SystemManager.i.mode == GameMode.Survival)
         { specialCharge = 0f; if (SpecialAtk.specialAtk) SpecialAtk.specialAtk.ResetCharge(); }
         else if (GameController.i) GameController.i.DisableSpecial();
     }
-    public void ResetSpecialFreeze() { if (!Opponent && SpecialAtk.specialAtk) SpecialAtk.specialAtk.ResetCharge(); }
+    public void ResetSpecialFreeze()
+    {
+        if (LocalOfflinePlayerInput.IsLocalBattle) { specialCharge = 0f; return; }
+        if (!Opponent && SpecialAtk.specialAtk) SpecialAtk.specialAtk.ResetCharge();
+    }
     public void RestoreDamage()
     {
         Damage = 0f; shieldDamage = 0f; restoringShield = false;

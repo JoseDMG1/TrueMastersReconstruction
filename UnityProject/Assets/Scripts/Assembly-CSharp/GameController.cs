@@ -494,6 +494,11 @@ public class GameController : MonoBehaviour
 
 	public void Special()
 	{
+		if (LocalOfflinePlayerInput.IsLocalBattle)
+		{
+			LocalOfflinePlayerInput.TryActivateSpecial(MainCharacter);
+			return;
+		}
 		// 0x1293668. The Stunned parameter gates entry and is set on activation.
 		if (specialUnlocked && SpecialAtk.specialAtk.charged && MainCharacter &&
 			!SpecialAtk.specialAtk.decharging && !animMainChar.GetBool("Stunned"))

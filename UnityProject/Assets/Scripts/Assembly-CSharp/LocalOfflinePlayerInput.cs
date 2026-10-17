@@ -37,24 +37,37 @@ public sealed class LocalOfflinePlayerInput : MonoBehaviour
 
     private void TrySpecial()
     {
-        string key = SpecialPreferenceKey(gameObject.name);
-        var damage = GetComponent<DamageOnCollision>();
-        if (string.IsNullOrEmpty(key) || !PlayerPrefs.HasKey(key) || !damage || damage.specialCharge <= 10f) return;
-        damage.specialCharge = 0f;
-        anim.SetTrigger("Special");
-        anim.SetBool("Stunned", true);
+        TryActivateSpecial(gameObject);
     }
 
-    private static string SpecialPreferenceKey(string fighter)
+    public static bool IsLocalBattle => SystemManager.i && SystemManager.i.mode == GameMode.LocalOffline;
+    public const float SpecialCapacity = 10f;
+
+    public static bool IsSpecialReady(GameObject fighter)
     {
-        switch (fighter)
-        {
-            case "Rina(Clone)": case "Amon(Clone)": return "Rina";
-            case "Dante(Clone)": case "Agata(Clone)": return "Dante";
-            case "Eliot(Clone)": case "Vinea(Clone)": return "Eliot";
-            case "Sora(Clone)": case "Aura(Clone)": return "Aura";
-            case "Diana(Clone)": case "Ren(Clone)": return "Ren";
-            default: return null;
-        }
+        var damage = fighter ? fighter.GetComponent<DamageOnCollision>() : null;
+        var states = fighter ? fighter.GetComponent<AnimatorStatesManager>() : null;
+        return damage && damage.specialCharge >= SpecialCapacity && (!states || !states.awakening);
+    }
+
+    public static void AddSpecialCharge(GameObject fighter, float amount)
+    {
+        var damage = fighter ? fighter.GetComponent<DamageOnCollision>() : null;
+        var states = fighter ? fighter.GetComponent<AnimatorStatesManager>() : null;
+        if (!damage || (states && states.awakening)) return;
+        damage.specialCharge = Mathf.Clamp(damage.specialCharge + amount, 0f, SpecialCapacity);
+    }
+
+    public static bool TryActivateSpecial(GameObject fighter)
+    {
+        var game = GameController.i;
+        var animator = fighter ? fighter.GetComponent<Animator>() : null;
+        if (!IsLocalBattle || !game || !game.gameStarted || Time.timeScale <= 0f || !BattleCanStart() ||
+            !animator || animator.GetBool("Stunned") || !IsSpecialReady(fighter)) return false;
+        // Local versus gives both players the same access, independently of campaign unlocks.
+        fighter.GetComponent<DamageOnCollision>().specialCharge = 0f;
+        animator.SetTrigger("Special");
+        animator.SetBool("Stunned", true);
+        return true;
     }
 }

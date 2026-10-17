@@ -35,8 +35,17 @@ public class AnimatorStatesManager : MonoBehaviour
   if (aura) aura.StartAura();
   var damage = GetComponent<DamageOnCollision>();
   if (damage) damage.ShakeCamera(4f, 3f, 0f, 2f);
-  if (GameController.i && gameObject == GameController.i.MainCharacter && BattleSceneSingleton.i && BattleSceneSingleton.i.SpecialAtk)
+  if (LocalOfflinePlayerInput.IsLocalBattle) StartCoroutine(FinishLocalAwakening());
+  else if (GameController.i && gameObject == GameController.i.MainCharacter && BattleSceneSingleton.i && BattleSceneSingleton.i.SpecialAtk)
    StartCoroutine(BattleSceneSingleton.i.SpecialAtk.DechargeSpecial(20f));
+ }
+ private System.Collections.IEnumerator FinishLocalAwakening()
+ {
+  yield return new WaitForSeconds(20f);
+  var aura = GetComponent<AuraController>();
+  if (aura) aura.StopAura();
+  awakening = false;
+  if (anim) anim.SetInteger("NumSpecials", 1);
  }
  [PunRPC] public void Hit() { if (anim) anim.SetTrigger("Hit"); }
  [PunRPC] public void Falling() { if (anim) anim.SetTrigger("Falling"); }

@@ -11,13 +11,13 @@ public sealed class DesktopCombatHud : MonoBehaviour
         public int playerIndex;
         public GameObject fighter;
         public Image attackCircle;
+        public Image attackBackground;
         public Image dodgeCircle;
         public Image specialCircle;
         public Image specialCharge;
         public Text attackLetter;
         public Text dodgeLetter;
         public Text specialLetter;
-        public Text specialValue;
         public Color attackRest;
         public Color dodgeRest;
         public Color specialRest;
@@ -80,7 +80,7 @@ public sealed class DesktopCombatHud : MonoBehaviour
     private PlayerIndicator CreateIndicator(Transform parent, GameObject fighter, int player, bool rightViewport, bool splitScreen)
     {
         var indicator = new PlayerIndicator { playerIndex = player, fighter = fighter };
-        float diameter = splitScreen ? 88f : 112f;
+        float diameter = (splitScreen ? 98f : 124f) * 1.25f;
         float gap = splitScreen ? 12f : 18f;
         float slot = diameter + gap;
         float anchorX = rightViewport ? .5f : 0f;
@@ -108,14 +108,37 @@ public sealed class DesktopCombatHud : MonoBehaviour
         // Desktop indicators own a simple fixed layout with no button scripts.
         indicator.attackCircle = CreateActionVisual(row.transform, "Attack", attackCircleSource, attackTextSource,
             0, diameter, slot, "A", null, out indicator.attackLetter, out _);
+        var attackRadial = buttons && buttons.buttonAttackA ? buttons.buttonAttackA.currentRadialFX : null;
+        var attackFillSource = attackRadial ? attackRadial.radialImage : null;
+        if (attackFillSource && attackCircleSource)
+        {
+            // Reuse Android's full radial graphic, including its overhang beyond the outline.
+            var background = new GameObject("AttackAlternateBackground", typeof(RectTransform), typeof(Image));
+            background.transform.SetParent(indicator.attackCircle.transform, false);
+            background.transform.SetAsFirstSibling();
+            var rect = background.GetComponent<RectTransform>();
+            var corners = new Vector3[4];
+            attackFillSource.rectTransform.GetWorldCorners(corners);
+            var sourceRect = attackCircleSource.rectTransform;
+            Vector2 min = sourceRect.InverseTransformPoint(corners[0]);
+            Vector2 max = sourceRect.InverseTransformPoint(corners[2]);
+            rect.anchorMin = new Vector2((min.x - sourceRect.rect.xMin) / sourceRect.rect.width,
+                (min.y - sourceRect.rect.yMin) / sourceRect.rect.height);
+            rect.anchorMax = new Vector2((max.x - sourceRect.rect.xMin) / sourceRect.rect.width,
+                (max.y - sourceRect.rect.yMin) / sourceRect.rect.height);
+            rect.offsetMin = rect.offsetMax = Vector2.zero;
+            indicator.attackBackground = background.GetComponent<Image>();
+            indicator.attackBackground.sprite = attackFillSource.sprite;
+            indicator.attackBackground.material = attackFillSource.material;
+            indicator.attackBackground.color = new Color(1f, 1f, 1f, .5f);
+            indicator.attackBackground.raycastTarget = false;
+            background.SetActive(false);
+        }
         indicator.dodgeCircle = CreateActionVisual(row.transform, "Shield", dodgeCircleSource, dodgeTextSource,
             1, diameter, slot, "B", null, out indicator.dodgeLetter, out _);
         indicator.specialCircle = CreateActionVisual(row.transform, "Super", specialCircleSource, specialTextSource,
             2, diameter, slot, "S", chargeSource, out indicator.specialLetter, out indicator.specialCharge);
 
-        indicator.specialValue = MakeText(row.transform, "SuperChargeValue", "0%",
-            Vector2.zero, new Vector2(2f * slot, 0f), new Vector2(diameter, 22f),
-            splitScreen ? 18 : 20, TextAnchor.MiddleCenter, Color.white);
         indicator.attackRest = indicator.attackCircle ? indicator.attackCircle.color : Color.white;
         indicator.dodgeRest = indicator.dodgeCircle ? indicator.dodgeCircle.color : Color.white;
         indicator.specialRest = indicator.specialCircle ? indicator.specialCircle.color : Color.white;
@@ -192,15 +215,18 @@ public sealed class DesktopCombatHud : MonoBehaviour
 
         var animator = indicator.fighter.GetComponent<Animator>();
         bool alternateAttack = animator && animator.GetInteger("BasicAttack") != 0;
+        if (indicator.attackBackground) indicator.attackBackground.gameObject.SetActive(alternateAttack);
         if (indicator.attackLetter) indicator.attackLetter.text = alternateAttack ? "X" : "A";
         SetPressed(indicator.attackCircle, indicator.attackLetter,
-            input.a || now < indicator.attackPulseUntil, indicator.attackRest, indicator.attackLetterRest);
+            input.a || now < indicator.attackPulseUntil,
+            alternateAttack ? Color.black : indicator.attackRest,
+            alternateAttack ? Color.black : indicator.attackLetterRest);
         SetPressed(indicator.dodgeCircle, indicator.dodgeLetter,
             input.b || now < indicator.dodgePulseUntil, indicator.dodgeRest, indicator.dodgeLetterRest);
 
         float amount;
         bool ready;
-        if (indicator.playerIndex == 0)
+        if (indicator.playerIndex == 0 && !LocalOfflinePlayerInput.IsLocalBattle)
         {
             var meter = BattleSceneSingleton.i ? BattleSceneSingleton.i.SpecialAtk : null;
             amount = meter && meter.chargeImg ? meter.chargeImg.fillAmount : 0f;
@@ -209,11 +235,11 @@ public sealed class DesktopCombatHud : MonoBehaviour
         else
         {
             var damage = indicator.fighter.GetComponent<DamageOnCollision>();
-            amount = damage ? Mathf.Clamp01(damage.specialCharge / 10f) : 0f;
-            ready = damage && damage.specialCharge > 10f;
+            amount = damage ? Mathf.Clamp01(damage.specialCharge / LocalOfflinePlayerInput.SpecialCapacity) : 0f;
+            ready = LocalOfflinePlayerInput.IsSpecialReady(indicator.fighter);
         }
         amount = Mathf.Clamp01(amount);
-        bool unlocked = IsSpecialUnlocked(indicator.fighter);
+        bool unlocked = LocalOfflinePlayerInput.IsLocalBattle || IsSpecialUnlocked(indicator.fighter);
         bool active = input.s || now < indicator.specialPulseUntil || ready;
         SetPressed(indicator.specialCircle, indicator.specialLetter, active,
             indicator.specialRest, indicator.specialLetterRest);
@@ -223,7 +249,6 @@ public sealed class DesktopCombatHud : MonoBehaviour
             indicator.specialCharge.fillAmount = ready ? 1f : amount;
             indicator.specialCharge.color = ready ? new Color(.35f, .94f, .48f, .86f) : new Color(.13f, .76f, .97f, .72f);
         }
-        if (indicator.specialValue) indicator.specialValue.text = ready ? (unlocked ? "LISTO" : "BLOQ") : Mathf.RoundToInt(amount * 100f) + "%";
     }
 
     private static void SetPressed(Image circle, Text letter, bool pressed, Color circleRest, Color letterRest)

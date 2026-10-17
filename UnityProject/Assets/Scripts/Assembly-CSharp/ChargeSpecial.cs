@@ -17,6 +17,7 @@ public class ChargeSpecial : StateMachineBehaviour
 		if (clips.Length == 0 || !clips[0].clip) return;
 		newAtk = clips[0].clip.name;
 		lastAtk = newAtk;
-		if (SpecialAtk.specialAtk) SpecialAtk.specialAtk.ChargeSpecial(.03f);
+		if (LocalOfflinePlayerInput.IsLocalBattle) LocalOfflinePlayerInput.AddSpecialCharge(animator.gameObject, .3f);
+		else if (SpecialAtk.specialAtk) SpecialAtk.specialAtk.ChargeSpecial(.03f);
 	}
 }
