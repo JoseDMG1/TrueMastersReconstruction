@@ -120,9 +120,9 @@ public class TransladeController : MonoBehaviour
   translation.Battle_Quit_MainMenu="Main Menu";
   translation.Tournament_Cancel="Cancel";
   translation.Tournament_MainMenu="Main Menu";
-  translation.Battle_Quit_PlayAgain="Play Again";
-  translation.Winner_PlayAgain="Play Again";
-  translation.Tournament_PlayAgain="Play Again";
+  translation.Battle_Quit_PlayAgain="Select Character";
+  translation.Winner_PlayAgain="Select Character";
+  translation.Tournament_PlayAgain="Select Character";
   translation.Tournament_ExitGame="Exit Game";
   translation.SharingGame_HeyCheckThisGame="Hey check this game!";
   translation.SharingGame_Video="Video";

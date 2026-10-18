@@ -47,52 +47,6 @@
       ]
     },
     {
-      "file": "UnityProject/Assets/Resources/photonprefabs/AirAtkR2.prefab",
-      "sha256": "265ab40fbd5d1b99cdb88b82df32583d1b3e00b0fe0a02959baae3bc6cf4e5c2",
-      "resource": "photonprefabs/AirAtkR2",
-      "name": "AirAtkR2",
-      "follow": true,
-      "dormantFollow": false,
-      "light": false,
-      "forward": false,
-      "followSpeed": 0.7,
-      "startFaster": false,
-      "startSpeed": 7,
-      "startTime": 1,
-      "delay": 0.75,
-      "lightSpeed": 0,
-      "forwardSpeed": 0,
-      "rotationDelay": 0,
-      "edge": false,
-      "fighters": [
-        "Sora",
-        "Aura"
-      ]
-    },
-    {
-      "file": "UnityProject/Assets/Resources/photonprefabs/AirAtkL2.prefab",
-      "sha256": "9c83000b1e32de9f8def8189f05e17c5cb03bdc90542a16a8b53b59fb1c2367d",
-      "resource": "photonprefabs/AirAtkL2",
-      "name": "AirAtkL2",
-      "follow": true,
-      "dormantFollow": false,
-      "light": false,
-      "forward": false,
-      "followSpeed": 0.7,
-      "startFaster": false,
-      "startSpeed": 7,
-      "startTime": 1,
-      "delay": 0.75,
-      "lightSpeed": 0,
-      "forwardSpeed": 0,
-      "rotationDelay": 0,
-      "edge": false,
-      "fighters": [
-        "Sora",
-        "Aura"
-      ]
-    },
-    {
       "file": "UnityProject/Assets/Resources/photonprefabs/AirAtkTwisterSpecial.prefab",
       "sha256": "c0df1282248be87a7435d221eb061a0df5262c6e1b0808d5d19e53e793f84a22",
       "resource": "photonprefabs/AirAtkTwisterSpecial",

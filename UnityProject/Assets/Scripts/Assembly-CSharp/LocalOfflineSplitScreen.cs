@@ -9,6 +9,15 @@ public sealed class LocalOfflineSplitScreen : MonoBehaviour
     private Camera leftCamera;
     private Camera rightCamera;
     private Canvas overlay;
+    private bool showingWinner;
+
+    public void ShowWinner()
+    {
+        showingWinner = true;
+        if (leftCamera) { leftCamera.enabled = true; leftCamera.rect = new Rect(0f, 0f, 1f, 1f); }
+        if (rightCamera) rightCamera.enabled = false;
+        if (overlay) overlay.enabled = false;
+    }
 
     public void Configure(GameObject player1, GameObject player2)
     {
@@ -38,7 +47,7 @@ public sealed class LocalOfflineSplitScreen : MonoBehaviour
 
     private void UpdateViews()
     {
-        if (!leftCamera || !rightCamera || !firstPlayer || !secondPlayer) return;
+        if (showingWinner || !leftCamera || !rightCamera || !firstPlayer || !secondPlayer) return;
         UpdateCamera(leftCamera.transform, firstPlayer, secondPlayer);
         UpdateCamera(rightCamera.transform, secondPlayer, firstPlayer);
     }
@@ -50,7 +59,7 @@ public sealed class LocalOfflineSplitScreen : MonoBehaviour
         if (direction.sqrMagnitude < .01f) direction = player.forward;
         direction.Normalize();
         bool farCamera = PlayerPrefs.GetInt("Cam", 0) != 0;
-        float distance = (farCamera ? 6f : 4f) * 1.6f;
+        float distance = (farCamera ? 6f : 4f) * 1.6f * 1.25f;
         float cameraHeight = distance * (farCamera ? 4f / 6f : 3f / 4f);
         Vector3 target = (player.position + opponent.position) * .5f + Vector3.up * 1.2f;
         cameraTransform.position = player.position - direction * distance + Vector3.up * cameraHeight;

@@ -28,11 +28,9 @@ public class IncreaseSize : MonoBehaviour
     {
         while (transform.localScale.y < originalSize.y * .99f)
         {
-            var current = transform.localScale;
-            // Native z interpolation starts at .99 rather than current.z (0x1297860).
-            // Preserve the observed arithmetic; this is not a generic scale tween.
-            current.z = .99f;
-            transform.localScale = Vector3.Lerp(current, originalSize, speed);
+            // The second get_localScale (0x1297840) returns current z in s2.
+            // The .99 constant belongs only to the earlier loop threshold.
+            transform.localScale = Vector3.Lerp(transform.localScale, originalSize, speed);
             yield return new WaitForSeconds(.02f);
         }
     }

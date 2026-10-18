@@ -494,3 +494,13 @@ RAG reconstruido después de terminar los tres trabajadores: **26 documentos,438
 - Previous control/flight acceptance reports belong to earlier assembly hashes; they do not validate the new mapping. Updated desktop probe source for future explicit control validation.
 
 Final verification: Evidence/offline-smoke-probe-20261016-033453.json passed; inspected Evidence/offline-smoke-probe-20261016-033453.Bending-Battle.png confirms horizontal eye, restored gear and both rectangular score backgrounds with no oversized oval/vertical strip. Windows build succeeded0 errors (Evidence/windows-build-validation.json, generated08:34:45 UTC). Gameplay DLL6ca9bfe6325e59bcb7e3755f0725f62eb195d4dcbc4dd7c6cf6a4fe94efe5144; scene assets changed in this build, so the DLL hash alone does not identify visual asset revisions. Physical new control mapping was not separately exercised.
+
+## Correcciones de la lista del usuario — 2026-10-18
+
+Implementadas en UnityProject: reflejo de JumpR para Dante/Agata; tornados laterales Sora/Aura con trayectoria mundial fija tras .75s (se respeta el giro de CreateKickAttack); zoom adicional 25%; reparación de interpolación z en IncreaseSize mediante revisión del ARM64 retenido; ganador local a pantalla completa, sin cámara del perdedor/divisor/HUD de combate; SELECT CHARACTER con autoajuste en los botones que retornan a selección.
+
+Ver `Knowledge/corrections-2026-10-18.md` para evidencia, archivos y límites. Roslyn editor/Windows development: 0 errores; auditoría de recursos aprobada (25 registros). El primer intento de Unity falló por licencia; al repetirlo, el player Windows se compiló correctamente y pasó el smoke test. No atribuir a este checkpoint pruebas anteriores a sus cambios. Probes y contratos actualizados; el escenario completo OctoberCorrections y la revisión visual siguen pendientes.
+
+## Recompilación completada — 2026-10-18 21:57 UTC
+
+La licencia se reconoció correctamente al repetir la compilación en la sesión del usuario. Player Windows actualizado: Succeeded, 0 errores, 43 advertencias (`Evidence/windows-build-validation.json`, log `Evidence/unity-windows-build-20261018-final.log`). El smoke antiguo esperaba la cámara anterior y botones táctiles activos; se adaptó al zoom out 25% y al callback de ataque de PC. Smoke final `Evidence/offline-smoke-probe-20261018-165734.json`: passed, sin errores; movimiento/cámara/ataque/CPU observados. Gameplay DLL SHA256 c15befd179d65f606030a0e4a061d0c281324a6f4ae84d4be7b62579a24823b7. Builds/Windows ya contiene los cambios del 18 de octubre. El escenario OctoberCorrections completo y la comparación visual permanecen pendientes.

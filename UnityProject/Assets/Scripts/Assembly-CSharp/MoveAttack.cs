@@ -29,10 +29,21 @@ public class MoveAttack : MonoBehaviour
 	// produced sideways or owner-directed travel.
 	public bool aimAtTarget;
 
+	// Optional authored flight direction, captured in world space when summoned.
+	// Air's lateral tornadoes charge in place, then travel without homing.
+	public Vector3 fixedLocalDirection;
+	private Vector3 fixedWorldDirection;
+
 	public float startRotation;
 
 	private void Start()
 	{
+		if (fixedLocalDirection.sqrMagnitude > .0001f)
+		{
+			fixedWorldDirection = transform.TransformDirection(fixedLocalDirection).normalized;
+			var follow = GetComponent<Follow>();
+			if (follow) follow.enabled = false;
+		}
 		transform.position += transform.forward * StartPosition.x + transform.up * StartPosition.y + transform.right * StartPosition.z;
 		EndPosition2 = transform.position + transform.forward * EndPosition.x + transform.up * EndPosition.y + transform.right * EndPosition.z;
 		Invoke(nameof(StartMov), timeToStart);
@@ -44,6 +55,11 @@ public class MoveAttack : MonoBehaviour
 			transform.position = transform.position - transform.up * speed * 0.35f + transform.right * speed * 0.1f;
 		else if (moving)
 		{
+			if (fixedWorldDirection.sqrMagnitude > .0001f)
+			{
+				transform.position += fixedWorldDirection * speed;
+				return;
+			}
 			if (changeDirectionAtStart || aimAtTarget) ChangeDirection();
 			ready = true;
 			transform.position += (aimAtTarget ? transform.forward : transform.right) * speed;

@@ -21,8 +21,8 @@ public class CameraManager : MonoBehaviour
     private void Start() { cameraM = this; }
     private bool IsSplitScreenMode => SystemManager.i && SystemManager.i.mode == GameMode.LocalOffline;
     public void ChangeCameraParent(GameObject newParent) { if (!IsSplitScreenMode) transform.parent = newParent.transform; }
-    public void ChangeCameraToClose() { if (!IsSplitScreenMode) BeginTransition(ViewCameraClose, ViewCamaraRot); }
-    public void ChangeCameraToFar() { if (!IsSplitScreenMode) BeginTransition(ViewCameraFar, ViewCamaraRot); }
+    public void ChangeCameraToClose() { if (!IsSplitScreenMode) BeginTransition(ViewCameraClose * 1.25f, ViewCamaraRot); }
+    public void ChangeCameraToFar() { if (!IsSplitScreenMode) BeginTransition(ViewCameraFar * 1.25f, ViewCamaraRot); }
     public void ChangeToSceneCamera()
     {
         if (IsSplitScreenMode) return;
@@ -43,8 +43,13 @@ public class CameraManager : MonoBehaviour
     }
     public void ChangeCameraToWinner(GameObject winner)
     {
-        if (IsSplitScreenMode) return;
-        ChangeCameraParent(winner);
+        if (!winner) return;
+        if (IsSplitScreenMode)
+        {
+            var splitScreen = FindAnyObjectByType<LocalOfflineSplitScreen>();
+            if (splitScreen) splitScreen.ShowWinner();
+        }
+        transform.SetParent(winner.transform, true);
         BeginTransition(ViewWinCamera, ViewWinCamaraRot);
     }
     private void BeginTransition(Vector3 position, Quaternion rotation)

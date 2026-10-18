@@ -113,7 +113,7 @@ public sealed class OfflinePlayerProbe : MonoBehaviour
     }
     void Update() {
         if (done || report == null) return;
-        double maximumSeconds = Environment.GetCommandLineArgs().Contains("-rea-desktop-controls-probe") ? 300 : Environment.GetCommandLineArgs().Any(a => a == "-rea-ability-aim-probe" || a == "-rea-shadow-roster-probe" || a == "-rea-roster-probe" || a == "-rea-specials-probe" || a == "-rea-defense-probe" || a == "-rea-moves-probe") ? 1200 : 180;
+        double maximumSeconds = Environment.GetCommandLineArgs().Contains("-rea-desktop-controls-probe") ? 300 : Environment.GetCommandLineArgs().Any(a => a == "-rea-ability-aim-probe" || a == "-rea-shadow-roster-probe" || a == "-rea-roster-probe" || a == "-rea-october-corrections-probe" || a == "-rea-specials-probe" || a == "-rea-defense-probe" || a == "-rea-moves-probe") ? 1200 : 180;
         if (Time.realtimeSinceStartupAsDouble - started > maximumSeconds) { Finish("timeout"); return; }
         if (report.errors.Count > 0) { Finish("runtime_errors"); return; }
         if(observeMoves) {
@@ -358,15 +358,18 @@ public sealed class OfflinePlayerProbe : MonoBehaviour
         camera.ChangeCameraParent(game.MainCharacter);
         camera.ChangeCameraToClose();
         yield return new WaitForSeconds(camera.transitionDuration + .2f);
-        float cameraDistance = Vector3.Distance(camera.transform.localPosition, new Vector3(0f, 3f, -4f));
+        float cameraDistance = Vector3.Distance(camera.transform.localPosition, new Vector3(0f, 3f, -4f) * 1.25f);
         float cameraAngle = Quaternion.Angle(camera.transform.localRotation, Quaternion.Euler(15f, 0f, 0f));
         Observe("camera", "position error=" + cameraDistance + "; angle error=" + cameraAngle);
         if (cameraDistance > .01f || cameraAngle > .1f) { Fail("Camera transition did not reach the target pose"); yield break; }
 
-        var button = UnityEngine.Object.FindObjectsByType<ButtonAttack>(FindObjectsInactive.Exclude).OrderBy(b => b.attackType).FirstOrDefault();
-        if (button == null) { Fail("No active attack control"); yield break; }
-        Observe("attack-control", button.name + "; type=" + button.attackType + "; letter=" + button.letter);
-        button.OnButtonPress();
+        // Desktop action indicators are passive; exercise the shared input callback.
+        Observe("attack-control", "Injected primary attack through InputReader/GameController; no physical input assertion");
+        reader.SetAButton(true);
+        game.Attacking(true);
+        yield return new WaitForSeconds(.2f);
+        reader.SetAButton(false);
+        game.Attacking(false);
         yield return new WaitForSeconds(12f);
         var ai = game.OpponentCharacter.GetComponent<AI>();
         Observe("combat-observation", "player projectiles=" + playerProjectiles + "; CPU projectiles=" + opponentProjectiles + "; hit events=" + hitEvents + "; AI enabled=" + ai.enabled + "; on=" + ai.on);
@@ -689,6 +692,7 @@ public sealed class OfflinePlayerProbe : MonoBehaviour
         var args = Environment.GetCommandLineArgs();
         bool earthPrison=args.Contains("-rea-earth-prison-probe");
         bool dianaEvade=args.Contains("-rea-diana-evade-probe");
+        bool october=args.Contains("-rea-october-corrections-probe"); int octoberCase=0;
         bool hudProbe=args.Contains("-rea-desktop-hud-probe"); int hudCase=0;
         bool dragonwood=args.Contains("-rea-dragonwood-probe");
         bool mayaProduction=args.Contains("-rea-maya-production-probe");
@@ -718,6 +722,7 @@ public sealed class OfflinePlayerProbe : MonoBehaviour
         if(prisonOnly) roster = new[] {"Maya"};
         if(earthPrison) roster = new[] {"Diana", "Diana"};
         if(dianaEvade) roster = new[] {"Diana"};
+        if(october) roster = new[] {"Dante", "Agata", "Sora", "Aura", "Raven", "Sora", "Sora"};
         if(hudProbe) roster = new[] {"Sora", "Sora"};
         if(desktopControls) roster = new[] {"Sora", "Sora"};
         if(vineaLeftEvade) roster = new[] {"Vinea"};
@@ -735,6 +740,7 @@ public sealed class OfflinePlayerProbe : MonoBehaviour
             yield return SceneReady("Character Selection");
             SelectionController.i.ChangeCharacter(fighter);
             SelectionController.i.cpuController.ChangeCharacter("Amon");
+            if(october) SystemManager.i.ChangePlayingMode(octoberCase >= 5 ? GameMode.LocalOffline : GameMode.SinglePlayer);
             if(hudProbe) SystemManager.i.ChangePlayingMode(hudCase == 0 ? GameMode.SinglePlayer : GameMode.LocalOffline);
             Observe("special-select", fighter);
             Click("start", true);
@@ -746,6 +752,12 @@ public sealed class OfflinePlayerProbe : MonoBehaviour
             var reader = BattleSceneSingleton.i.inputReader;
             reader.dPad = true; reader.keyboard = false; reader.SetXpos(0); reader.SetYpos(0);
             var anim = game.animMainChar;
+            if(october) {
+                report.limitation="2026-10-18 corrections: actual battle scene, injected input and isolated projectile trajectory/growth fixtures; third-fall winner cameras for both players. Not physical input or original-video visual equivalence.";
+                yield return OfflineOctoberCorrectionsProbe.Run(game, octoberCase, output, Observe, Fail);
+                if(done) yield break;
+                octoberCase++; game.Restart(); continue;
+            }
             if(hudProbe) {
                 report.limitation="Desktop HUD in actual single-player and local split-screen scenes; source sprite, geometry, non-interactivity and controlled super-meter checks. No physical input claim.";
                 yield return DesktopHudProbe.Run(game, output, Observe, Fail);

@@ -24729,7 +24729,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: play again
+  m_text: SELECT CHARACTER
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1de111da0e3811449ab50d67a2b1de99, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: d6721fed4113e66479b9b0f312195ac4, type: 2}
@@ -24759,7 +24759,7 @@ MonoBehaviour:
   m_fontSize: 55
   m_fontSizeBase: 55
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 33
@@ -26937,7 +26937,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Play again\n"
+  m_text: SELECT CHARACTER
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 664a008f667577c479731e1b4bf98348, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: b99a1bf3a7092d64ba8e9710896414f1, type: 2}
@@ -26967,7 +26967,7 @@ MonoBehaviour:
   m_fontSize: 70
   m_fontSizeBase: 70
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -31394,7 +31394,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: e516f6f7af3dc5b458511cd44e5165ae, type: 3}
     m_FontSize: 55
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 5
     m_MaxSize: 55
     m_Alignment: 4
@@ -31403,7 +31403,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: play again
+  m_Text: SELECT CHARACTER
 --- !u!114 &1368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32624,7 +32624,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: e516f6f7af3dc5b458511cd44e5165ae, type: 3}
     m_FontSize: 55
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 5
     m_MaxSize: 55
     m_Alignment: 4
@@ -32633,7 +32633,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: play again
+  m_Text: SELECT CHARACTER
 --- !u!114 &1411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38841,7 +38841,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: e516f6f7af3dc5b458511cd44e5165ae, type: 3}
     m_FontSize: 70
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 5
     m_MaxSize: 70
     m_Alignment: 4
@@ -38850,7 +38850,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Play Again
+  m_Text: SELECT CHARACTER
 --- !u!114 &1636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40745,7 +40745,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: e516f6f7af3dc5b458511cd44e5165ae, type: 3}
     m_FontSize: 55
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 5
     m_MaxSize: 55
     m_Alignment: 4
@@ -40754,7 +40754,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: play again
+  m_Text: SELECT CHARACTER
 --- !u!114 &1711
 MonoBehaviour:
   m_ObjectHideFlags: 0

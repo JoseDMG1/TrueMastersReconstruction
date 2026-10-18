@@ -42,7 +42,7 @@ public static class DesktopHudProbe
                 var player = camera.rect.x < .25f ? game.MainCharacter : game.OpponentCharacter;
                 float distance = Vector3.ProjectOnPlane(camera.transform.position - player.transform.position, Vector3.up).magnitude;
                 report.cameraDistances.Add(distance);
-                float expected = (PlayerPrefs.GetInt("Cam", 0) != 0 ? 6f : 4f) * 1.6f;
+                float expected = (PlayerPrefs.GetInt("Cam", 0) != 0 ? 6f : 4f) * 1.6f * 1.25f;
                 if (Mathf.Abs(distance - expected) > .02f) fail("Local camera did not use the updated zoom distance");
             }
             if (report.cameraDistances.Count != 2) fail("Expected two local camera viewports");
