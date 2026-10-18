@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -39,11 +40,18 @@ public sealed class LocalOfflineSplitScreen : MonoBehaviour
         rightCamera.depth = leftCamera.depth + .01f;
         rightCamera.tag = "Untagged";
         rightCamera.transform.SetParent(transform, false);
-        CreateDivider();
+        StartCoroutine(CreateDividerAfterAwake());
         UpdateViews();
     }
 
     private void LateUpdate() { UpdateViews(); }
+
+    private IEnumerator CreateDividerAfterAwake()
+    {
+        // Configure runs in GameController.Awake, before Score and TMP necessarily awaken.
+        yield return null;
+        CreateDivider();
+    }
 
     private void UpdateViews()
     {
@@ -68,14 +76,20 @@ public sealed class LocalOfflineSplitScreen : MonoBehaviour
 
     private void CreateDivider()
     {
-        var canvasObject = new GameObject("LocalOfflineSplitOverlay", typeof(Canvas), typeof(CanvasScaler));
+        // Share the scene HUD canvas so hierarchy order also works with its UI camera.
+        // A separate overlay canvas would paint over the score and pause menu.
+        var hudCanvas = Score.score.timeText.canvas.rootCanvas;
+        var canvasObject = new GameObject("LocalOfflineSplitOverlay", typeof(RectTransform), typeof(Canvas));
+        canvasObject.layer = hudCanvas.gameObject.layer;
+        var bounds = canvasObject.GetComponent<RectTransform>();
+        bounds.SetParent(hudCanvas.transform, false);
+        bounds.SetAsFirstSibling();
+        bounds.anchorMin = Vector2.zero; bounds.anchorMax = Vector2.one;
+        bounds.offsetMin = bounds.offsetMax = Vector2.zero;
         overlay = canvasObject.GetComponent<Canvas>();
-        overlay.renderMode = RenderMode.ScreenSpaceOverlay;
-        overlay.sortingOrder = 150;
-        var scaler = canvasObject.GetComponent<CanvasScaler>();
-        scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-        scaler.referenceResolution = new Vector2(1280f, 720f);
+        overlay.overrideSorting = false;
         var divider = new GameObject("PlayerSplitDivider", typeof(RectTransform), typeof(Image));
+        divider.layer = canvasObject.layer;
         divider.transform.SetParent(canvasObject.transform, false);
         var rect = divider.GetComponent<RectTransform>();
         rect.anchorMin = new Vector2(.5f, 0f);
@@ -83,6 +97,7 @@ public sealed class LocalOfflineSplitScreen : MonoBehaviour
         rect.anchoredPosition = Vector2.zero;
         rect.sizeDelta = new Vector2(3f, 0f);
         divider.GetComponent<Image>().color = new Color(.03f, .06f, .09f, .9f);
+        divider.GetComponent<Image>().raycastTarget = false;
     }
 
     private void OnDestroy()

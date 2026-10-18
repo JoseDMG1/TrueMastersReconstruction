@@ -71,7 +71,8 @@ public sealed class DesktopCombatHud : MonoBehaviour
         if (!canvas || !game) return;
         bool overlayMenuOpen = (Score.score && Score.score.battleFinish) ||
             (game.resumeButton && game.resumeButton.activeInHierarchy) ||
-            (BattleSceneSingleton.i && BattleSceneSingleton.i.finishMenu && BattleSceneSingleton.i.finishMenu.activeInHierarchy);
+            (BattleSceneSingleton.i && BattleSceneSingleton.i.finishMenu && BattleSceneSingleton.i.finishMenu.activeInHierarchy) ||
+            (LoadingScreen.i && LoadingScreen.i.loading);
         canvas.enabled = !overlayMenuOpen;
         if (overlayMenuOpen || !game.gameStarted || Time.timeScale <= 0f) return;
         UpdateIndicator(first);

@@ -13,6 +13,9 @@ public class StagesManager : MonoBehaviour
 
 	public int lastStage;
 
+	// This reconstruction build exposes every map without changing saved ownership.
+	public bool unlockAllMaps = true;
+
 	private void Start()
 	{
 		if (i == null) i = this;
@@ -29,7 +32,7 @@ public class StagesManager : MonoBehaviour
 	public void SetPlayableStages()
 	{
 		playableStages = new List<int>(stages);
-		RemoveBlockStages();
+		if (!unlockAllMaps) RemoveBlockStages();
 	}
 
 	private void RemoveBlockStages()

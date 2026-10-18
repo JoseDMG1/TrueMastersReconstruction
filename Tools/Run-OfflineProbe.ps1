@@ -1,5 +1,5 @@
 ﻿param(
-    [ValidateSet('Smoke','Rounds','ImpactAndRounds','Survival','Tournament','Roster','Menu','Graphics','Specials','Defenses','Prison','Moves','EarthPrison','Dragonwood','MayaProduction','DesktopControls','ShadowRoster','AbilityAim','ReportedFailures','MovingTarget','FlightMatrix','AwakeJumps','OctoberCorrections')][string]$Scenario = 'Smoke',
+    [ValidateSet('Smoke','Rounds','ImpactAndRounds','Survival','Tournament','Roster','Menu','Graphics','Specials','Defenses','Prison','Moves','EarthPrison','Dragonwood','MayaProduction','DesktopControls','ShadowRoster','AbilityAim','ReportedFailures','MovingTarget','FlightMatrix','AwakeJumps','OctoberCorrections','LocalSelection','LocalSelectionUI','ThunderLight')][string]$Scenario = 'Smoke',
     [ValidateSet('Sora','Vinea','Diana','Amon','Aura','Eliot','Ren','Rina','Dante','Agata','Raven','Maya')][string]$Fighter,
     [string]$FlightProfile
 )
@@ -21,6 +21,9 @@ if ($Scenario -eq 'Tournament') { $taskArgs += '-rea-tournament-probe' }
 if ($Scenario -eq 'Roster') { $taskArgs += '-rea-roster-probe' }
 if ($Scenario -eq 'OctoberCorrections') { $taskArgs += '-rea-october-corrections-probe' }
 if ($Scenario -eq 'Menu') { $taskArgs += '-rea-menu-probe' }
+if ($Scenario -eq 'LocalSelection') { $taskArgs += '-rea-local-selection-probe' }
+if ($Scenario -eq 'LocalSelectionUI') { $taskArgs += @('-rea-local-selection-probe','-rea-ui-selection-probe') }
+if ($Scenario -eq 'ThunderLight') { $taskArgs += '-rea-thunder-light-probe' }
 if ($Scenario -eq 'AbilityAim') { $taskArgs += '-rea-ability-aim-probe' }
 if ($Scenario -eq 'ReportedFailures') { $taskArgs += @('-rea-ability-aim-probe','-rea-reported-failures-probe') }
 if ($Scenario -eq 'MovingTarget') { $taskArgs += @('-rea-ability-aim-probe','-rea-moving-target-probe'); if(-not $Fighter) {$Fighter='Sora'}; if($Fighter -ne 'Sora') {throw 'MovingTarget currently covers Sora UpAttack2 only.'} }

@@ -103,6 +103,7 @@ public class SelectionController : MonoBehaviour
 		actualCharacterIndex = CharactersManager.i.characters.IndexOf(PlayerPrefs.GetString("Character"));
 		ChangeCharacter(PlayerPrefs.GetString("Character"));
 		if (SystemManager.i.mode == GameMode.LocalMultiplayer) ChangeCharacter("Sora");
+		if (SystemManager.i.mode == GameMode.LocalOffline) gameObject.AddComponent<LocalOfflineSelection>();
 	}
 
 	private void OnDestroy()

@@ -1,145 +1,54 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
+﻿using System.Collections;
 using UnityEngine;
 
+// Restored from retained ARM64 Start/On/Off and their coroutine bodies.
+// Native constants: +0.15/-0.15 intensity per 0.02 scaled-second wait.
 public class LightOn : MonoBehaviour
 {
-	[CompilerGenerated]
-	private sealed class _003COff_003Ed__6 : IEnumerator<object>, IEnumerator, IDisposable
-	{
-		private int _003C_003E1__state;
+    private float maxLight;
+    private Light effectLight;
+    public float duration = .5f;
+    public bool off;
+    public float delayOff = 2f;
 
-		private object _003C_003E2__current;
+    private void Start()
+    {
+        effectLight = GetComponent<Light>();
+        if (!effectLight) return;
+        maxLight = effectLight.intensity;
+        effectLight.intensity = 0f;
+        StartCoroutine(On());
+        if (off) StartCoroutine(Off());
+    }
 
-		public LightOn _003C_003E4__this;
+    private IEnumerator On()
+    {
+        if (duration <= 0f) { effectLight.intensity = maxLight; yield break; }
+        for (float t = 0f; t <= 1f;)
+        {
+            t += Time.deltaTime / duration;
+            if (effectLight.intensity <= maxLight)
+            {
+                effectLight.intensity += .15f;
+                yield return new WaitForSeconds(.02f);
+            }
+        }
+        effectLight.intensity = maxLight;
+    }
 
-		private float _003Ct_003E5__2;
-
-		object IEnumerator<object>.Current
-		{
-			[DebuggerHidden]
-			get
-			{
-				return null;
-			}
-		}
-
-		object IEnumerator.Current
-		{
-			[DebuggerHidden]
-			get
-			{
-				return null;
-			}
-		}
-
-		[DebuggerHidden]
-		public _003COff_003Ed__6(int _003C_003E1__state)
-		{
-		}
-
-		[DebuggerHidden]
-		void IDisposable.Dispose()
-		{
-		}
-
-		private bool MoveNext()
-		{
-			return false;
-		}
-
-		bool IEnumerator.MoveNext()
-		{
-			//ILSpy generated this explicit interface implementation from .override directive in MoveNext
-			return this.MoveNext();
-		}
-
-		[DebuggerHidden]
-		void IEnumerator.Reset()
-		{
-		}
-	}
-
-	[CompilerGenerated]
-	private sealed class _003COn_003Ed__5 : IEnumerator<object>, IEnumerator, IDisposable
-	{
-		private int _003C_003E1__state;
-
-		private object _003C_003E2__current;
-
-		public LightOn _003C_003E4__this;
-
-		private float _003Ct_003E5__2;
-
-		object IEnumerator<object>.Current
-		{
-			[DebuggerHidden]
-			get
-			{
-				return null;
-			}
-		}
-
-		object IEnumerator.Current
-		{
-			[DebuggerHidden]
-			get
-			{
-				return null;
-			}
-		}
-
-		[DebuggerHidden]
-		public _003COn_003Ed__5(int _003C_003E1__state)
-		{
-		}
-
-		[DebuggerHidden]
-		void IDisposable.Dispose()
-		{
-		}
-
-		private bool MoveNext()
-		{
-			return false;
-		}
-
-		bool IEnumerator.MoveNext()
-		{
-			//ILSpy generated this explicit interface implementation from .override directive in MoveNext
-			return this.MoveNext();
-		}
-
-		[DebuggerHidden]
-		void IEnumerator.Reset()
-		{
-		}
-	}
-
-	private float maxLight;
-
-	public float duration;
-
-	public bool off;
-
-	public float delayOff;
-
-	private void Start()
-	{
-	}
-
-	[IteratorStateMachine(typeof(_003COn_003Ed__5))]
-	private IEnumerator On()
-	{
-		return null;
-	}
-
-	[IteratorStateMachine(typeof(_003COff_003Ed__6))]
-	private IEnumerator Off()
-	{
-		return null;
-	}
+    private IEnumerator Off()
+    {
+        yield return new WaitForSeconds(delayOff);
+        if (duration <= 0f) { effectLight.intensity = 0f; yield break; }
+        for (float t = 0f; t <= 1f;)
+        {
+            t += Time.deltaTime / duration;
+            if (effectLight.intensity >= 0f)
+            {
+                effectLight.intensity -= .15f;
+                yield return new WaitForSeconds(.02f);
+            }
+        }
+        effectLight.intensity = 0f;
+    }
 }

@@ -33,6 +33,7 @@ Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'unity-validation\OfflineDesktop
 Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'unity-validation\OfflineDianaRockProbe.cs') -Destination $taskRuntime -Force
 Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'unity-validation\DesktopHudProbe.cs') -Destination $taskRuntime -Force
 Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'unity-validation\OfflineOctoberCorrectionsProbe.cs') -Destination $taskRuntime -Force
+Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'unity-validation\OfflineThunderLightProbe.cs') -Destination $taskRuntime -Force
 $taskLog = Join-Path $taskRoot ('Evidence\unity-windows-build-' + (Get-Date -Format 'yyyyMMdd-HHmmss') + '.log')
 $taskArgs = @('-batchmode', '-nographics', '-projectPath', ('"' + $taskProject + '"'), '-executeMethod', 'BuildOfflinePlayer.Run', '-logFile', ('"' + $taskLog + '"'))
 $taskProcess = Start-Process -FilePath $Unity -ArgumentList $taskArgs -WindowStyle Hidden -PassThru

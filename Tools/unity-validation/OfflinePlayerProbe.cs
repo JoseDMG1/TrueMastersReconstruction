@@ -305,8 +305,13 @@ public sealed class OfflinePlayerProbe : MonoBehaviour
     IEnumerator Run() {
         Observe("boot", "Development Windows player, original boot scene");
         yield return SceneReady("StartMenu");
+        if (Environment.GetCommandLineArgs().Contains("-rea-local-selection-probe")) {
+            yield return LocalSelectionTrip();
+            if (!done) Finish(report.errors.Count == 0 ? "passed" : "runtime_errors");
+            yield break;
+        }
         if(Environment.GetCommandLineArgs().Contains("-rea-graphics-probe")) {CaptureFixture();PlayerPrefs.SetInt("userQualityGraphics",1);}
-        if (Environment.GetCommandLineArgs().Any(a => a == "-rea-specials-probe" || a == "-rea-defense-probe" || a == "-rea-prison-probe" || a == "-rea-moves-probe" || a == "-rea-earth-prison-probe" || a == "-rea-dragonwood-probe" || a == "-rea-maya-production-probe" || a == "-rea-desktop-controls-probe" || a == "-rea-vinea-left-evade-probe" || a == "-rea-diana-evade-probe" || a == "-rea-desktop-hud-probe" || a == "-rea-ability-aim-probe" || a == "-rea-reported-failures-probe" || a == "-rea-shadow-roster-probe")) {
+        if (Environment.GetCommandLineArgs().Any(a => a == "-rea-specials-probe" || a == "-rea-defense-probe" || a == "-rea-prison-probe" || a == "-rea-moves-probe" || a == "-rea-earth-prison-probe" || a == "-rea-dragonwood-probe" || a == "-rea-maya-production-probe" || a == "-rea-desktop-controls-probe" || a == "-rea-vinea-left-evade-probe" || a == "-rea-diana-evade-probe" || a == "-rea-desktop-hud-probe" || a == "-rea-ability-aim-probe" || a == "-rea-reported-failures-probe" || a == "-rea-shadow-roster-probe" || a == "-rea-thunder-light-probe")) {
             yield return CombatTrip(Environment.GetCommandLineArgs().Contains("-rea-defense-probe"), Environment.GetCommandLineArgs().Contains("-rea-prison-probe"));
             if (!done) Finish(report.errors.Count == 0 ? "passed" : "runtime_errors");
             yield break;
@@ -440,9 +445,179 @@ public sealed class OfflinePlayerProbe : MonoBehaviour
         Observe("graphics-comparison", "Captured same frozen scene with original projectors and all projectors disabled; original enable flags restored. Images require inspection; no automatic visual-equivalence assertion.");
         report.limitation = "Bounded combat smoke plus controlled projector A/B captures. Diagnostic component states restored; captures alone do not establish original game rendering fidelity.";
     }
+    [System.Runtime.InteropServices.DllImport("user32.dll")] static extern bool SetForegroundWindow(IntPtr handle);
+    [System.Runtime.InteropServices.DllImport("user32.dll")] static extern IntPtr GetForegroundWindow();
+    [System.Runtime.InteropServices.DllImport("user32.dll")] static extern bool ShowWindow(IntPtr handle, int command);
+    [System.Runtime.InteropServices.DllImport("user32.dll")] static extern void keybd_event(byte key, byte scan, uint flags, UIntPtr extra);
+    [System.Runtime.InteropServices.DllImport("user32.dll")] static extern uint MapVirtualKey(uint key, uint type);
+    private delegate bool WindowVisitor(IntPtr window, IntPtr context);
+    [System.Runtime.InteropServices.DllImport("user32.dll")] static extern bool EnumWindows(WindowVisitor callback, IntPtr context);
+    [System.Runtime.InteropServices.DllImport("user32.dll")] static extern uint GetWindowThreadProcessId(IntPtr window, out uint process);
+    [System.Runtime.InteropServices.DllImport("user32.dll")] static extern bool AttachThreadInput(uint source, uint target, bool attach);
+    [System.Runtime.InteropServices.DllImport("kernel32.dll")] static extern uint GetCurrentThreadId();
+    [System.Runtime.InteropServices.DllImport("user32.dll", CharSet = System.Runtime.InteropServices.CharSet.Unicode)] static extern int GetClassName(IntPtr window, System.Text.StringBuilder name, int length);
+    static IntPtr SelectionWindow() {
+        IntPtr found = IntPtr.Zero;
+        uint own = (uint)System.Diagnostics.Process.GetCurrentProcess().Id;
+        EnumWindows((window, context) => {
+            GetWindowThreadProcessId(window, out uint owner);
+            if (owner != own) return true;
+            var name = new System.Text.StringBuilder(128); GetClassName(window, name, 128);
+            if (name.ToString() != "UnityWndClass") return true;
+            found = window; return false;
+        }, IntPtr.Zero);
+        return found;
+    }
+    IEnumerator SelectionKey(byte key) {
+        if (Environment.GetCommandLineArgs().Contains("-rea-ui-selection-probe")) {
+            // Rendering/menu regressions can use real UGUI buttons without stealing keyboard focus.
+            string path = key == 0x45 || key == 0x44 ? "Player1Choice/Next" :
+                key == 0x48 || key == 0x27 ? "Player2Choice/Next" :
+                key == 0x55 ? "Player2Choice/Ready" : "Player1Choice/Ready";
+            SelectionClick(path);
+            yield return null;
+            yield break;
+        }
+        var window = SelectionWindow();
+        for (int attempt = 0; attempt < 4 && GetForegroundWindow() != window; attempt++) {
+            uint foregroundThread = GetWindowThreadProcessId(GetForegroundWindow(), out uint _);
+            uint ownThread = GetCurrentThreadId();
+            bool attached = foregroundThread != ownThread && AttachThreadInput(ownThread, foregroundThread, true);
+            try { ShowWindow(window, 9); SetForegroundWindow(window); }
+            finally { if (attached) AttachThreadInput(ownThread, foregroundThread, false); }
+            yield return new WaitForSecondsRealtime(.2f);
+        }
+        if (window == IntPtr.Zero || GetForegroundWindow() != window) { Fail("Selection input needs its own focused player window; own=" + window + "; active=" + GetForegroundWindow()); yield break; }
+        uint extended = key >= 0x25 && key <= 0x28 ? 1u : 0u;
+        try {
+            keybd_event(key, (byte)MapVirtualKey(key, 0), extended, UIntPtr.Zero);
+            yield return new WaitForSecondsRealtime(.11f);
+        } finally { keybd_event(key, (byte)MapVirtualKey(key, 0), extended | 2u, UIntPtr.Zero); }
+        yield return new WaitForSecondsRealtime(.15f);
+    }
+    void SelectionClick(string path) {
+        var target = GameObject.Find("LocalSelectionUI/" + path);
+        var button = target ? target.GetComponent<Button>() : null;
+        if (!button || !button.interactable) { Fail("Local selection button unavailable: " + path); return; }
+        ExecuteEvents.Execute(button.gameObject, new PointerEventData(EventSystem.current) { button = PointerEventData.InputButton.Left }, ExecuteEvents.pointerClickHandler);
+    }
+    IEnumerator LocalSelectionTrip() {
+        CaptureFixture();
+        string controls = JsonUtility.ToJson(LocalControls.Data);
+        var previousWindow = GetForegroundWindow();
+        try {
+            var config = LocalControls.Data;
+            config.player1.useGamepad = config.player2.useGamepad = false;
+            config.player1.inputModeConfigured = config.player2.inputModeConfigured = true;
+            config.player1.useAlternate = config.player2.useAlternate = false;
+            config.player1.defaults.left = "Q"; config.player1.defaults.right = "E";
+            config.player1.defaults.attack = "Z"; config.player1.defaults.jump = "X";
+            config.player2.defaults.left = "F"; config.player2.defaults.right = "H";
+            config.player2.defaults.attack = "U"; config.player2.defaults.jump = "O";
+            config.player1.alternate.right = "D"; config.player2.alternate.right = "RightArrow";
+            PlayerPrefs.SetString("Character", "Sora"); PlayerPrefs.SetString("CharacterCPU", "Amon");
+            var owned = SystemManager.i.tmPlayer.characters;
+            owned.aura = owned.eliot = owned.ren = owned.rina = owned.dante = owned.agata = owned.raven = owned.maya = 1;
+            CharactersManager.i.SetPlayableCharacters();
+            UnityEngine.Object.FindAnyObjectByType<StarMenuManager>().Online2Players();
+            var localButton = UnityEngine.Object.FindObjectsByType<Button>(FindObjectsInactive.Exclude).Single(b => b.name == "Local Offline");
+            ExecuteEvents.Execute(localButton.gameObject, new PointerEventData(EventSystem.current) { button = PointerEventData.InputButton.Left }, ExecuteEvents.pointerClickHandler);
+            yield return SceneReady("Character Selection");
+            yield return new WaitForSecondsRealtime(.7f);
+            var selection = UnityEngine.Object.FindAnyObjectByType<LocalOfflineSelection>();
+            var cameras = UnityEngine.Object.FindObjectsByType<Camera>(FindObjectsInactive.Exclude).Where(c => c.enabled && Mathf.Abs(c.rect.width - .5f) < .001f).OrderBy(c => c.rect.x).ToArray();
+            if (!selection || cameras.Length != 2) { Fail("Local selection needs two active half-width cameras"); yield break; }
+            // This build must expose all maps even to a save with no purchased stages.
+            var stageOwnership = SystemManager.i.tmPlayer.stages;
+            stageOwnership.stage1 = stageOwnership.stage2 = stageOwnership.stage3 = stageOwnership.stage4 = stageOwnership.stage5 = stageOwnership.stage6 = 0;
+            StagesManager.i.SetPlayableStages();
+            if (StagesManager.i.playableStages.Count != 8) { Fail("Build did not unlock all seven maps and random"); yield break; }
+            var preview = GameObject.Find("LocalSelectionUI/SharedSettings/StagePreview").GetComponent<Image>();
+            var previewPanel = preview.transform.parent.GetComponent<RectTransform>();
+            ShowWindow(SelectionWindow(), 9);
+            yield return new WaitForSecondsRealtime(.2f);
+            for (int map = 0; map < 8; map++) {
+                if (StagesManager.i.actualStage != map || !preview.sprite || !preview.sprite.texture || preview.color != Color.white) { Fail("Map thumbnail missing/tinted for stage " + map); yield break; }
+                var corners = new Vector3[4]; preview.rectTransform.GetWorldCorners(corners);
+                foreach (var corner in corners) if (!previewPanel.rect.Contains(previewPanel.InverseTransformPoint(corner))) { Fail("Map thumbnail outside the shared header"); yield break; }
+                ScreenCapture.CaptureScreenshot(Path.ChangeExtension(output, ".map-" + map + ".png"));
+                yield return new WaitForEndOfFrame(); yield return null;
+                SelectionClick("SharedSettings/NextMap");
+            }
+            Observe("local-map-previews", "All seven maps plus random unlocked with zero saved stage ownership; eight white-tinted thumbnails contained in the upper shared header");
+            Vector3 rightBefore = cameras[1].transform.position;
+            yield return SelectionKey(0x45); // Rebound Player 1 right: E.
+            yield return new WaitForSecondsRealtime(.8f);
+            if (PlayerPrefs.GetString("Character") != "Vinea" || PlayerPrefs.GetString("CharacterCPU") != "Amon" || Vector3.Distance(rightBefore, cameras[1].transform.position) > .01f) Fail("Player 1 selection changed Player 2 choice or camera");
+            Vector3 leftBefore = cameras[0].transform.position;
+            yield return SelectionKey(0x48); // Rebound Player 2 right: H.
+            yield return new WaitForSecondsRealtime(.8f);
+            if (PlayerPrefs.GetString("CharacterCPU") != "Aura" || PlayerPrefs.GetString("Character") != "Vinea" || Vector3.Distance(leftBefore, cameras[0].transform.position) > .03f) Fail("Player 2 selection changed Player 1 choice or camera");
+            Observe("local-selection-input", Environment.GetCommandLineArgs().Contains("-rea-ui-selection-probe") ? "UGUI character arrows; both selections and camera isolation verified; no physical input" : "Real OS E/H with rebound independent keyboard profiles; both selections and camera isolation verified");
+            config.player1.useAlternate = config.player2.useAlternate = true;
+            yield return SelectionKey(0x44);
+            yield return SelectionKey(0x27);
+            if (PlayerPrefs.GetString("Character") != "Diana" || PlayerPrefs.GetString("CharacterCPU") != "Eliot") Fail("Selection did not follow alternate profiles");
+            config.player1.useAlternate = config.player2.useAlternate = false;
+            selection.SetReady(0, false); selection.SetReady(1, false);
+            SelectionClick("SharedSettings/NextSpeed");
+            int speed = PlayerPrefs.GetInt("GameSpeed");
+            SelectionClick("SharedSettings/NextMap");
+            int stage = StagesManager.i.actualStage;
+            if (!StagesManager.i.IsStageUnlocked(stage)) Fail("Shared stage is locked");
+            yield return SelectionKey(0x5A);
+            var speedButton = GameObject.Find("LocalSelectionUI/SharedSettings/NextSpeed").GetComponent<Button>();
+            if (SelectionController.i.inBattle || speedButton.interactable) Fail("One ready player must wait and lock shared settings");
+            string first = PlayerPrefs.GetString("Character");
+            yield return SelectionKey(0x45);
+            if (PlayerPrefs.GetString("Character") != first) Fail("Ready player changed character");
+            yield return SelectionKey(0x58);
+            if (!speedButton.interactable) Fail("Unready did not release shared settings");
+            ScreenCapture.CaptureScreenshot(Path.ChangeExtension(output, ".selection.png"));
+            yield return new WaitForEndOfFrame();
+            Observe("local-selection-ready", Environment.GetCommandLineArgs().Contains("-rea-ui-selection-probe") ? "UGUI ready/cancel; shared settings locked until cancellation; no physical input" : "Actual mapped Z confirms/X cancels; shared settings locked until cancellation; alternate D/RightArrow bindings passed");
+            SelectionClick("Player2Choice/Previous");
+            SelectionClick("Player2Choice/Next");
+            string second = PlayerPrefs.GetString("CharacterCPU");
+            yield return SelectionKey(0x5A);
+            yield return SelectionKey(0x55);
+            yield return SceneReady("Bending Battle");
+            while (!GameController.i || !GameController.i.gameStarted) yield return null;
+            var game = GameController.i;
+            if (game.MainCharacter.name != first + "(Clone)" || game.OpponentCharacter.name != second + "(Clone)") Fail("Local battle did not use both selected fighters");
+            if (PlayerPrefs.GetInt("GameSpeed") != speed || (stage != 7 && PlayerPrefs.GetInt("Stage") != stage)) Fail("Shared settings not preserved into battle");
+            if (Mathf.Abs(Time.timeScale - new[] { 1.15f, 1.275f, 1.4f }[speed]) > .001f) Fail("Shared game speed not applied in battle");
+            Observe("local-selection-battle", first + " vs " + second + "; stage=" + PlayerPrefs.GetInt("Stage") + "; timescale=" + Time.timeScale);
+            ScreenCapture.CaptureScreenshot(Path.ChangeExtension(output, ".battle.png"));
+            yield return new WaitForEndOfFrame(); yield return null;
+            var splitCanvas = GameObject.Find("LocalOfflineSplitOverlay").GetComponent<Canvas>();
+            var divider = splitCanvas.GetComponentInChildren<Image>();
+            Canvas.ForceUpdateCanvases();
+            if (splitCanvas.rootCanvas != Score.score.timeText.canvas.rootCanvas || splitCanvas.overrideSorting || splitCanvas.transform.GetSiblingIndex() != 0 || divider.raycastTarget || divider.depth >= Score.score.timeText.depth) { Fail("Divider is not behind the scoreboard in the scene HUD canvas"); yield break; }
+            if (splitCanvas.rootCanvas.worldCamera && (splitCanvas.rootCanvas.worldCamera.cullingMask & (1 << divider.gameObject.layer)) == 0) { Fail("HUD camera cannot render the divider layer"); yield break; }
+            var pauseMenu = UnityEngine.Object.FindAnyObjectByType<ExitMenu>(FindObjectsInactive.Exclude);
+            pauseMenu.OpenMenu();
+            yield return new WaitForSeconds(.7f);
+            // The menu's OpenMenu callback is the gear's actual UI route. The legacy
+            // GameController.pauseGame callback also activates the mobile help panel.
+            yield return new WaitForSecondsRealtime(.15f);
+            Canvas.ForceUpdateCanvases();
+            foreach (var label in pauseMenu.GetComponentsInChildren<UnityEngine.UI.Graphic>())
+                if (label.depth >= 0 && label.depth <= divider.depth) { Fail("Divider renders above a pause menu graphic"); yield break; }
+            ScreenCapture.CaptureScreenshot(Path.ChangeExtension(output, ".pause.png"));
+            yield return new WaitForEndOfFrame(); yield return null;
+            pauseMenu.CloseMenu();
+            Observe("divider-layering", "Divider is the first child of the scene HUD canvas, below live score and open pause menu graphics; raycasts disabled");
+            report.limitation = Environment.GetCommandLineArgs().Contains("-rea-ui-selection-probe") ? "Eight unlocked map previews, UGUI character/ready buttons, actual local battle, and divider below scoreboard and pause graphics. Save/preferences restored. No physical input or every aspect ratio assertion." : "Independent split selection, rebound and alternate physical keyboard input, mapped ready/cancel, shared UI controls and actual local battle transition verified. Physical gamepad selection and every display aspect ratio remain untested.";
+        } finally {
+            JsonUtility.FromJsonOverwrite(controls, LocalControls.Data);
+            var window = SelectionWindow();
+            if (GetForegroundWindow() == window && previousWindow != IntPtr.Zero) SetForegroundWindow(previousWindow);
+        }
+    }
     void CaptureFixture() {
         savedPlayer = JsonUtility.FromJson<TMPlayer>(JsonUtility.ToJson(SystemManager.i.tmPlayer));
-        foreach (string key in new[] { "Character", "CharacterCPU", "Joystick" }) {
+        foreach (string key in new[] { "Character", "CharacterCPU", "Joystick", "LocalControls.v1" }) {
             if (PlayerPrefs.HasKey(key)) savedStringPrefs.Add(key, PlayerPrefs.GetString(key)); else absentPrefs.Add(key);
         }
         foreach (string key in new[] { "Stage", "TourneyTimes", "Timer", "TimeOption", "GameSpeed", "CpuMode", "RateGame", "ControllerInverted", "AlternateKeyboardControls", "userQualityGraphics", "userFrameCap" }) {
@@ -691,6 +866,7 @@ public sealed class OfflinePlayerProbe : MonoBehaviour
     IEnumerator CombatTrip(bool defensesOnly, bool prisonOnly) {
         var args = Environment.GetCommandLineArgs();
         bool earthPrison=args.Contains("-rea-earth-prison-probe");
+        bool thunderLight=args.Contains("-rea-thunder-light-probe");
         bool dianaEvade=args.Contains("-rea-diana-evade-probe");
         bool october=args.Contains("-rea-october-corrections-probe"); int octoberCase=0;
         bool hudProbe=args.Contains("-rea-desktop-hud-probe"); int hudCase=0;
@@ -720,6 +896,7 @@ public sealed class OfflinePlayerProbe : MonoBehaviour
         if(flightMatrix)roster=new[]{"Sora"};
         if(awakeJumps)roster=OfflineFlightMatrixProbe.Load().jumps.Select(j=>j.fighter).ToArray();
         if(prisonOnly) roster = new[] {"Maya"};
+        if(thunderLight) roster = new[] {"Dante", "Agata"};
         if(earthPrison) roster = new[] {"Diana", "Diana"};
         if(dianaEvade) roster = new[] {"Diana"};
         if(october) roster = new[] {"Dante", "Agata", "Sora", "Aura", "Raven", "Sora", "Sora"};
@@ -752,6 +929,12 @@ public sealed class OfflinePlayerProbe : MonoBehaviour
             var reader = BattleSceneSingleton.i.inputReader;
             reader.dPad = true; reader.keyboard = false; reader.SetXpos(0); reader.SetYpos(0);
             var anim = game.animMainChar;
+            if(thunderLight) {
+                report.limitation="Dante/Agata DOWN+A via production InputReader/GameController callbacks and natural DownAttack2 alternation; target placement, real strike creation and live authored floor-light expiry. CPU disabled; original preferences/save restored. No physical input or original rendering parity assertion.";
+                yield return OfflineThunderLightProbe.Run(game,output,Observe,Fail);
+                if(done) yield break;
+                game.Restart(); continue;
+            }
             if(october) {
                 report.limitation="2026-10-18 corrections: actual battle scene, injected input and isolated projectile trajectory/growth fixtures; third-fall winner cameras for both players. Not physical input or original-video visual equivalence.";
                 yield return OfflineOctoberCorrectionsProbe.Run(game, octoberCase, output, Observe, Fail);
@@ -910,7 +1093,7 @@ public sealed class OfflinePlayerProbe : MonoBehaviour
             yield return new WaitForEndOfFrame();
             game.Restart();
         }
-        if(hudProbe || dianaEvade || abilityAim || flightMatrix || awakeJumps || args.Contains("-rea-moves-probe") || earthPrison || dragonwood || mayaProduction || desktopControls || shadowRoster) yield break;
+        if(thunderLight || october || hudProbe || dianaEvade || abilityAim || flightMatrix || awakeJumps || args.Contains("-rea-moves-probe") || earthPrison || dragonwood || mayaProduction || desktopControls || shadowRoster) yield break;
         report.limitation = prisonOnly
             ? "Maya down attack entered through actual pointer input; native opponent placement and real physics trap, prison animation, crush creation and cleanup tested. Any synthetic CPU placement is explicitly reported; no claim of general natural aiming or every branch-prison outcome. Save/preferences restored."
             : defensesOnly
