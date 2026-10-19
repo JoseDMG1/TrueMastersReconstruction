@@ -15,9 +15,7 @@ public sealed class AndroidProductNameBuildProcessor : IPreprocessBuildWithRepor
     private static Dictionary<PlatformIconKind, Texture2D[][]> previousAndroidIcons;
     private static readonly PlatformIconKind[] AndroidIconKinds =
     {
-        AndroidPlatformIconKind.Adaptive,
-        AndroidPlatformIconKind.Legacy,
-        AndroidPlatformIconKind.Round
+        AndroidPlatformIconKind.Adaptive
     };
 
     public int callbackOrder => 0;
@@ -38,11 +36,19 @@ public sealed class AndroidProductNameBuildProcessor : IPreprocessBuildWithRepor
 
     public void OnPostprocessBuild(BuildReport report)
     {
-        if (report.summary.platform != BuildTarget.Android || !restoreProductName) return;
+        if (report.summary.platform != BuildTarget.Android) return;
 
-        PlayerSettings.productName = previousProductName;
-        previousProductName = null;
-        restoreProductName = false;
+        RestoreAfterBuild();
+    }
+
+    public static void RestoreAfterBuild()
+    {
+        if (restoreProductName)
+        {
+            PlayerSettings.productName = previousProductName;
+            previousProductName = null;
+            restoreProductName = false;
+        }
         RestoreAndroidIcons();
     }
 

@@ -4,6 +4,7 @@
 **/Logs/
 **/UserSettings/
 **/Builds/
+**/.utmp/
 **/*.csproj
 **/*.sln
 Tools/unity-audit/node_modules/
