@@ -38,7 +38,7 @@ public class StatsController : MonoBehaviour
             return;
         }
         player1Name.text = "Player";
-        player2Name.text = "CPU";
+        player2Name.text = SystemManager.i != null && SystemManager.i.mode == GameMode.LocalOffline ? "Player 2" : "CPU";
     }
     public void LoseHealth(float amount, bool opponent = false)
     {
