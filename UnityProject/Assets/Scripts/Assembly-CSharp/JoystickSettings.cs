@@ -48,11 +48,39 @@ public class JoystickSettings : MonoBehaviour
 		}
 		if (Photon.Pun.PhotonNetwork.IsConnected && OnlineManager.i && OnlineManager.i.IsSpectator()) return;
 		string mode = PlayerPrefs.GetString("Joystick", "Joystick");
-		if (mode == "Joystick") JoystickOn();
+		if (Application.platform == RuntimePlatform.Android)
+		{
+			JoystickOn();
+			ConfigureAndroidTouchLayout();
+		}
+		else if (mode == "Joystick") JoystickOn();
 		else if (mode == "Dpad") DpadOn();
 		else if (mode == "Controller") ControllerOn();
 		if (PlayerPrefs.GetInt("ControllerInverted", 0) == 1) invertedToggle.isOn = true;
-		CreateAlternateKeysToggle();
+	}
+
+	private void ConfigureAndroidTouchLayout()
+	{
+		ConfigureActionButton(buttonA, new Vector2(-350f, 18f));
+		ConfigureActionButton(buttonB, new Vector2(-48f, 18f));
+		if (GameController.i && GameController.i.SpecialButton)
+			ConfigureActionButton(GameController.i.SpecialButton, new Vector2(-48f, 320f));
+		if (joystick) joystick.transform.localScale = Vector3.one * 1.15f;
+	}
+
+	private static void ConfigureActionButton(GameObject target, Vector2 anchoredPosition)
+	{
+		if (!target) return;
+		var rect = target.GetComponent<RectTransform>();
+		if (rect)
+		{
+			rect.anchorMin = rect.anchorMax = new Vector2(1f, 0f);
+			rect.pivot = new Vector2(1f, 0f);
+			rect.anchoredPosition = anchoredPosition;
+			rect.sizeDelta = new Vector2(340f, 340f);
+		}
+		target.transform.localScale = Vector3.one * 1.12f;
+		target.SetActive(true);
 	}
 
 	private void CreateAlternateKeysToggle()

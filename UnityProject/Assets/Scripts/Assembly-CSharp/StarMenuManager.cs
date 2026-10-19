@@ -122,6 +122,11 @@ public class StarMenuManager : MonoBehaviourPunCallbacks
         if (!local) return;
         SetButtonLabel(local.gameObject, "Local LAN");
         var offline = multiplayer_UI.transform.Find("Local Offline");
+        if (Application.isMobilePlatform)
+        {
+            if (offline) offline.gameObject.SetActive(false);
+            return;
+        }
         if (!offline)
         {
             offline = CreateLocalOfflineOption(local).transform;

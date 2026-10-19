@@ -33,6 +33,11 @@ public class LocalControlsMenu : MonoBehaviour
     private static void SceneLoaded(Scene scene, LoadSceneMode mode) { EnsureForScene(scene); }
     private static void EnsureForScene(Scene scene)
     {
+        if (Application.isMobilePlatform)
+        {
+            if (instance) { Destroy(instance.gameObject); instance = null; }
+            return;
+        }
         if (scene.name != "StartMenu")
         {
             if (instance) { Destroy(instance.gameObject); instance = null; }
