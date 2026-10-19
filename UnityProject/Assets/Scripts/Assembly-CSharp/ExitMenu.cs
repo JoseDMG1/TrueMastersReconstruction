@@ -20,5 +20,5 @@ public class ExitMenu : MonoBehaviour
         // Offline reconstruction keeps restart free of the original store-rating gate.
         GameController.i.Restart();
     }
-    public void MainMenu() { LevelChanger.i.FadeToLevel(1); }
+    public void MainMenu() { LevelChanger.i.MainMenu(); }
 }

@@ -30,7 +30,7 @@ public class SystemManager : MonoBehaviour
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
         if (tmPlayer != null) playedTime = tmPlayer.playedTime;
-        StartCoroutine(NextScene(3f));
+        StartCoroutine(NextScene(0.1f));
     }
 
     public void ChangePlayingMode(GameMode playingMode)

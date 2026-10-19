@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class LocalMultiplayerManager : MonoBehaviour
 {
@@ -51,5 +52,7 @@ public class LocalMultiplayerManager : MonoBehaviour
 
 	public void GoToMainMenu()
 	{
+		if (LevelChanger.i != null) LevelChanger.i.MainMenu();
+		else SceneManager.LoadScene(1);
 	}
 }

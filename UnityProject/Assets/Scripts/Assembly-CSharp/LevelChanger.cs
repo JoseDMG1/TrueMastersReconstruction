@@ -57,12 +57,13 @@ public class LevelChanger : MonoBehaviour
 
     public void MainMenu()
     {
-        // Offline branch only. Original connected branch disconnects Photon.
-        if (SystemManager.i.mode == GameMode.Online || SystemManager.i.mode == GameMode.Spectator)
-        {
-            Debug.LogError("Connected-session shutdown has not been reconstructed.", this);
-            return;
-        }
+        // Confirmed Quit returns to the menu from offline, LAN, and Photon screens.
+        if (SystemManager.i != null) SystemManager.i.mode = GameMode.StartMenu;
+        TCPConnection tcp = FindObjectOfType<TCPConnection>();
+        if (tcp != null) tcp.CloseConnection();
+        UDPConnectionManager udp = FindObjectOfType<UDPConnectionManager>();
+        if (udp != null) udp.CloseConnection();
+        if (Photon.Pun.PhotonNetwork.IsConnected) Photon.Pun.PhotonNetwork.Disconnect();
         FadeToLevel(1);
     }
 
