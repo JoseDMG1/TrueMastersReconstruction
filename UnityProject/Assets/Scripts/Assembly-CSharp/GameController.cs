@@ -312,6 +312,7 @@ public class GameController : MonoBehaviour
 		MainCharacter = hostPlayer;
 		OpponentCharacter = guestPlayer;
 		CompleteMainChar();
+		if (!online && SystemManager.i.mode != GameMode.LocalOffline) EnableSpecial();
 		if (SystemManager.i.mode == GameMode.LocalOffline)
 		{
 			if (guestPlayer.GetComponent<Description>().moveset == 1)
@@ -500,8 +501,8 @@ public class GameController : MonoBehaviour
 			return;
 		}
 		// 0x1293668. The Stunned parameter gates entry and is set on activation.
-		if (specialUnlocked && SpecialAtk.specialAtk.charged && MainCharacter &&
-			!SpecialAtk.specialAtk.decharging && !animMainChar.GetBool("Stunned"))
+		if (specialUnlocked && SpecialAtk.specialAtk && SpecialAtk.specialAtk.charged && MainCharacter &&
+			!SpecialAtk.specialAtk.decharging && animMainChar && !animMainChar.GetBool("Stunned"))
 		{
 			animMainChar.SetTrigger("Special");
 			animMainChar.SetBool("Stunned", true);

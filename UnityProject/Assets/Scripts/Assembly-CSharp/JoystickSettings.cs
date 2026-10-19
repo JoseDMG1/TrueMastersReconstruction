@@ -64,11 +64,14 @@ public class JoystickSettings : MonoBehaviour
 		ConfigureActionButton(buttonA, new Vector2(-350f, 18f));
 		ConfigureActionButton(buttonB, new Vector2(-48f, 18f));
 		if (GameController.i && GameController.i.SpecialButton)
-			ConfigureActionButton(GameController.i.SpecialButton, new Vector2(-48f, 320f));
+			ConfigureActionButton(GameController.i.SpecialButton, new Vector2(-48f, 320f), false);
 		if (joystick) joystick.transform.localScale = Vector3.one * 1.15f;
+		var joystickControl = joystick ? joystick.GetComponent<VariableJoystick>() : null;
+		if (joystickControl && joystickControl.Background)
+			joystickControl.Background.anchoredPosition += Vector2.down * 40f;
 	}
 
-	private static void ConfigureActionButton(GameObject target, Vector2 anchoredPosition)
+	private static void ConfigureActionButton(GameObject target, Vector2 anchoredPosition, bool activate = true)
 	{
 		if (!target) return;
 		var rect = target.GetComponent<RectTransform>();
@@ -80,7 +83,7 @@ public class JoystickSettings : MonoBehaviour
 			rect.sizeDelta = new Vector2(340f, 340f);
 		}
 		target.transform.localScale = Vector3.one * 1.12f;
-		target.SetActive(true);
+		if (activate) target.SetActive(true);
 	}
 
 	private void CreateAlternateKeysToggle()

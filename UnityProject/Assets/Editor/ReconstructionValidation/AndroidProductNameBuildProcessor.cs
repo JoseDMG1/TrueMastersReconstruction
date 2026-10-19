@@ -24,14 +24,15 @@ public sealed class AndroidProductNameBuildProcessor : IPreprocessBuildWithRepor
     {
         if (report.summary.platform != BuildTarget.Android) return;
 
-        var gameIcon = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/Texture2D/TrueMastersIso.png");
-        if (!gameIcon)
-            throw new BuildFailedException("True Masters Android icon was not found at Assets/Texture2D/TrueMastersIso.png.");
+        var iconForeground = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/Texture2D/TrueMastersAndroidIconForeground.png");
+        var iconBackground = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/Texture2D/TrueMastersAndroidIconBackground.png");
+        if (!iconForeground || !iconBackground)
+            throw new BuildFailedException("True Masters Android adaptive icon layers were not found in Assets/Texture2D.");
 
         previousProductName = PlayerSettings.productName;
         restoreProductName = true;
         PlayerSettings.productName = AndroidProductName;
-        ConfigureAndroidIcons(gameIcon);
+        ConfigureAndroidIcons(iconForeground, iconBackground);
     }
 
     public void OnPostprocessBuild(BuildReport report)
@@ -52,7 +53,7 @@ public sealed class AndroidProductNameBuildProcessor : IPreprocessBuildWithRepor
         RestoreAndroidIcons();
     }
 
-    private static void ConfigureAndroidIcons(Texture2D gameIcon)
+    private static void ConfigureAndroidIcons(Texture2D foreground, Texture2D background)
     {
         previousAndroidIcons = new Dictionary<PlatformIconKind, Texture2D[][]>();
         foreach (var kind in AndroidIconKinds)
@@ -61,8 +62,10 @@ public sealed class AndroidProductNameBuildProcessor : IPreprocessBuildWithRepor
             previousAndroidIcons[kind] = icons.Select(icon => icon.GetTextures()).ToArray();
             foreach (var icon in icons)
             {
-                var layers = new Texture2D[Mathf.Max(1, icon.maxLayerCount)];
-                for (int i = 0; i < layers.Length; i++) layers[i] = gameIcon;
+                var layers = new Texture2D[Mathf.Max(2, icon.maxLayerCount)];
+                layers[0] = background;
+                layers[1] = foreground;
+                for (int i = 2; i < layers.Length; i++) layers[i] = background;
                 icon.SetTextures(layers);
             }
             PlayerSettings.SetPlatformIcons(NamedBuildTarget.Android, kind, icons);

@@ -67,7 +67,7 @@ public class SpecialAtk : MonoBehaviour
         letter.color = sBlack;
         circle.color = sBlack;
         GameController.i.animMainChar.SetInteger("NumSpecials", 0);
-        letter.text = "X";
+		letter.text = "S";
         charged = false;
         soundPlayed = false;
     }

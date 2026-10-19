@@ -36,6 +36,8 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IEventSystemHandler,
 
 	public float Vertical => snapY ? SnapFloat(input.y, AxisOptions.Vertical) : input.y;
 
+	public RectTransform Background => background;
+
 	public Vector2 Direction => new Vector2(Horizontal, Vertical);
 
 	public float HandleRange
