@@ -24,7 +24,7 @@ public static class BuildAndroidPlayer
     public static void Run()
     {
         var projectRoot = Path.GetFullPath(Path.Combine(Application.dataPath, "../.."));
-        var output = Path.Combine(projectRoot, "Builds/Android/TM_Rebuilding.apk");
+        var output = Path.Combine(projectRoot, "Builds/Android/TM_Rebuilding_PortraitPrototype.apk");
         Directory.CreateDirectory(Path.GetDirectoryName(output));
 
         BuildReport build;

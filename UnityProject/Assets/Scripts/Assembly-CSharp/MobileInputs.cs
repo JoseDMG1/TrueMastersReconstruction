@@ -9,6 +9,7 @@ public class MobileInputs : MonoBehaviour
  private PhotonView PV;
  public float x;
  public float z;
+ public bool suppressTouchMovement;
  private void Start()
  {
   anim = GetComponent<Animator>();
@@ -29,7 +30,7 @@ public class MobileInputs : MonoBehaviour
   float vertical = input.y > .3f ? 1f : input.y < -.3f ? -1f : 0f;
   anim.SetFloat("SHorizontal", horizontal, .2f, Time.deltaTime);
   anim.SetFloat("SVertical", vertical, .2f, Time.deltaTime);
-  FighterLocomotion.Move(transform, anim, speed);
+  if (!suppressTouchMovement) FighterLocomotion.Move(transform, anim, speed);
   anim.SetFloat("Horizontal", horizontal);
   anim.SetFloat("Vertical", vertical);
  }

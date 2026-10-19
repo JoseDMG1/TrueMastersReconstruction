@@ -15,6 +15,8 @@ public class JoystickSettings : MonoBehaviour
 
 	private bool desktopControls;
 
+	private bool portraitControlsActive;
+
 	private void Awake()
 	{
 		desktopControls = !Application.isMobilePlatform;
@@ -37,6 +39,24 @@ public class JoystickSettings : MonoBehaviour
 
 	private void Start()
 	{
+		if (Application.isMobilePlatform && Photon.Pun.PhotonNetwork.IsConnected && OnlineManager.i && OnlineManager.i.IsSpectator()) return;
+		if (Application.platform == RuntimePlatform.Android && Screen.height >= Screen.width)
+		{
+			var reader = FindObjectOfType<InputReader>();
+			if (reader)
+			{
+				var portraitControls = reader.gameObject.AddComponent<PortraitCombatTouchControls>();
+				portraitControls.Initialize(reader);
+				reader.ActivateDpad(true);
+				portraitControlsActive = true;
+				HideObject(dpad);
+				HideObject(joystick);
+				HideObject(buttonA);
+				HideObject(buttonB);
+				if (GameController.i) HideObject(GameController.i.SpecialButton);
+				return;
+			}
+		}
 		if (desktopControls)
 		{
 			CreateAlternateKeysToggle();
@@ -165,7 +185,7 @@ public class JoystickSettings : MonoBehaviour
 
 	private void Update()
 	{
-		if (desktopControls) return;
+		if (desktopControls || portraitControlsActive) return;
 		var game = GameController.i;
 		if (!game || !game.MainCharacter) return;
 		if (BattleSceneSingleton.i.counter && BattleSceneSingleton.i.counter.value > 0f) return;

@@ -9,7 +9,7 @@ using UnityEngine;
 /// <summary>Applies the Android app name and True Masters launcher icons during Android builds.</summary>
 public sealed class AndroidProductNameBuildProcessor : IPreprocessBuildWithReport, IPostprocessBuildWithReport
 {
-    private const string AndroidProductName = "TM Rebuilding";
+    private const string AndroidProductName = "TM Rebuilding Portrait";
     private static string previousProductName;
     private static bool restoreProductName;
     private static Dictionary<PlatformIconKind, Texture2D[][]> previousAndroidIcons;
